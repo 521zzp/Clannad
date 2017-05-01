@@ -6,12 +6,15 @@ import router from './router'
 import store from './store'
 import iView from 'iview'
 import '@/config/theme.less'
+import {dateFormat} from '@/tool/date'
+
 
 Vue.config.productionTip = false
 
 Vue.use(iView)
 
 
+dateFormat(); //给日期添加格式化方法
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

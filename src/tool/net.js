@@ -13,22 +13,23 @@ export const status = (response) => {
 /*
  * 不需要登陆即可请求的接口
  */
-export const analy = (statu) => status(statu).then(json)
+export const analy = (response) => status(response).then(json)
 
 /*
  * 根据接口需要判断是否登陆状态
  */
-export const onanaly = (status) => status(statu).then(json).then(
+export const onanaly = (response) => status(response).then(json).then(
 	(dp) => {
 		if (dp.status) {
-			return 
+			router.push('/regist');
+			return; 
 		} else{
-			
+			return dp.datas;
 		}
 	}
 );
 /**
- * post method
+ * post method  带token
  * Requests  params, returning a common request config.
  *
  * @param  {object} params  the method wangt to post
@@ -43,11 +44,14 @@ export const postModelOne = ( params ) => {
 		    'Content-Type': 'application/json'
 		},
 		body: JSON.stringify( 
-			Object.assign( {token:store.state.token}, params)
+			Object.assign( {}, {token:store.state.token}, params)
 		)
 	}
 }
 
+/*
+ * get method 不带token
+ */
 export const getModel = () =>{
 	return{
 		method: 'get',
