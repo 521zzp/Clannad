@@ -1,5 +1,11 @@
 import * as types from '../mutation-types'
-import {status,json} from '@/tools/tool'
+import {LOGIN} from '@/config/url'
+import {postModelTwo,analy} from '@/tool/net'
+import store from '@/store'
+
+console.log(1)
+console.log(analy)
+console.log(2)
 
 const state = {
 	
@@ -11,39 +17,24 @@ const getters = {
 
 const actions = {
 	login ({commit},obj){
-		
-		console.log('登陆：');
-		console.log(obj);
-		obj.type=1;
-		var data ={
-			useraccount : '15773270836',
-			password :'asfa454152',
-			captcha : 'sfag'
-		}
-		
-		fetch('http://192.168.1.200:8083/usesr/check', {
-				method: 'post',
-				credentials: 'include',
-				headers: {
-				    'Accept': 'application/json',
-				    'Content-Type': 'application/json'
-				 },
-				body : JSON.stringify(data)
-				}).then(status).then(json)
+		fetch(LOGIN, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
-				console.log('请求到数据为：');
-				console.log(datas);
-			
-			commit(types.LOGIN,obj);
+				commit(types.LOGIN,datas);
 			}).catch(function(error) {
-			   console.log('request failed', error)
+			    console.log('用户登陆异常', error)
 			  });
   	}
 }
 
 const mutations = {
 	[types.LOGIN] (state,obj) {
-		
+		if (obj.code === 200) {
+			store.token = obj.token;
+			store.user = obj.obj;
+			console.log('登陆成功')
+		}else{
+			console.log('登陆失败')
+		}
     }
 }
 

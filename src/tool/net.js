@@ -1,8 +1,11 @@
 import router from '@/router'
 import store from '@/store'
 export const json = (response) => response.json();
+export const jsonay = (response) => response.json();
+
 
 export const status = (response) => {
+	console.log(response)
 	if (response.status >= 200 && response.status < 300) {
 	    	return response
 	  }
@@ -13,16 +16,15 @@ export const status = (response) => {
 /*
  * 不需要登陆即可请求的接口
  */
-export const analy = (response) => status(response).then(json)
+export const analy = (response) => Promise.resolve(response).then(status).then(json)
 
 /*
  * 根据接口需要判断是否登陆状态
  */
-export const onanaly = (response) => status(response).then(json).then(
+export const onanaly = (response) => Promise.resolve(response).then(status).then(json).then(
 	(dp) => {
-		if (dp.status) {
-			router.push('/regist');
-			return; 
+		if (!dp.status) {
+			router.push('/login');
 		} else{
 			return dp.datas;
 		}
@@ -44,7 +46,28 @@ export const postModelOne = ( params ) => {
 		    'Content-Type': 'application/json'
 		},
 		body: JSON.stringify( 
-			Object.assign( {}, {token:store.state.token}, params)
+			Object.assign( {}, {token:store.state.token}, {datas: params})
+		)
+	}
+}
+
+/**
+ * post method  不带token
+ * Requests  params, returning a common request config.
+ *
+ * @param  {object} params  the method wangt to post
+ * 
+ */
+export const postModelTwo = ( params ) => {
+	return {
+		method: 'post',
+		credentials: 'include',
+		headers: {
+		    'Accept': 'application/json',
+		    'Content-Type': 'application/json'
+		},
+		body: JSON.stringify( 
+			Object.assign(params)
 		)
 	}
 }

@@ -1,5 +1,36 @@
 @import '~iview/src/styles/index.less';
+@import './base.less';
 
 // 下面是要覆盖的变量，例如：
-@primary-color: #8c0776;
-@base-url: 'http://www.art.com/';
+@primary-color: @theme;
+
+html,body,h1,h2,h3,h4,h5,h6,textarea,ul,li,span,p,input,ol,ul,a,img{
+    padding: 0;
+    margin: 0;
+}
+html{
+    font-size: 14px;
+    font-family: "微软雅黑";
+}
+a,ul,li,ol{
+    list-style: none;
+    text-decoration: none;
+    outline: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.clearfix:after{
+    display: block;
+    clear: both;
+    content: '';
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+body{
+    background-color: #f7f7f7;
+}

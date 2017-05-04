@@ -1,15 +1,1 @@
-export const CHANGE = 'CHANGE'
 export const LOGIN = 'LOGIN'
-export const S_LOGIN = 'S_LOGIN' //积分商城进来登陆
-export const S_C_LIST = 'S_C_LIST' //积分商城中心商品信息查询
-export const S_G_INFO = 'S_G_INFO' //商品详情信息获取后渲染
-export const S_G_EXCHANGE = 'S_G_EXCHANGE' //兑换商品
-export const S_G_EX_RE = 'S_G_EX_RE' //兑换成功页面渲染
-export const S_G_SHOW = 'S_G_SHOW' //商城兑换记录展示
-export const U_ORDER_LIST_INIT = 'U_ORDER_LIST_INIT' //用户兑换记录
-export const U_ORDER_LIST = 'U_ORDER_LIST' //用户兑换记录
-export const U_ORDER_LIST_LOADING = 'U_ORDER_LIST_LOADING' //用户兑换记录请求数据中（loading状态）
-export const U_POINT_LIST_INIT = 'U_POINT_LIST_INIT' //用户积分记录初始话
-export const U_POINT_LIST = 'U_POINT_LIST' //查询用户积分记录
-export const U_POINT_LIST_LOADING = 'U_POINT_LIST_LOADING' //用户积分记录请求中
-export const G_LOADING = 'G_LOADING' //全局loading状态切换
