@@ -21,3 +21,30 @@ export const validatePwd = (rule, value, callback) => {
 		callback();
 	}
 };
+
+/*
+ * 验证邀请码格式
+ */
+export const validateInvitePhone = (rule, value, callback) => {
+	let regx = /^1[34578]\d{9}$/;
+	
+	console.log(value)
+	if (value !=='' && !regx.test(value)) {
+		 callback(new Error('邀请码不正确'));
+	} else{
+		callback();
+	}
+};
+
+
+/*
+ * 验证手机号，返回布尔
+ */
+export const checkPhone = ( phone ) => {
+	let regx = /^1[34578]\d{9}$/;
+	if (!phone || !regx.test(phone)) {
+		return false;
+	} else{
+		return true;
+	}
+};

@@ -31,7 +31,7 @@ export default {
 	display: inline-block;
 	height: 60%;
 	float: left;
-	margin-top: 10px;
+	margin-top: 7px;
 	background-color: @border-two;
 }
 .time{
@@ -43,16 +43,16 @@ export default {
 	float: left;
 	margin-left: 10px;
 	margin-right: 20px;
-	margin-top: 22px;
+	margin-top: 18px;
 	color: @theme;
 }
 .notice{
-	height: 44px;
+	height: 34px;
 	width: 100%;
 	max-width: 1200px;
 	min-width: 1000px;
 	margin: 0 auto;
-	line-height: 44px;
-	font-size: @fz;
+	line-height: 34px;
+	font-size: @fz - 2;
 }
 </style>

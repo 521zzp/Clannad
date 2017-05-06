@@ -55,7 +55,7 @@ export default{
 }
 .show-pic{
 	display: inline-block;
-	height: 122px;
+	height: 120px;
 	width: 164px;
 	float: left;
 	text-align: center;
@@ -74,7 +74,7 @@ export default{
 .show-item{
 	display: inline-block;
 	width: calc((1200-2)/3px);	
-	height: 122px;
+	height: 120px;
 	background-color: #FFFFFF;
 }
 .container{

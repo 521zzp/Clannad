@@ -4,7 +4,7 @@
 		<div class="content">
 			<div class="center">
 				<div class="form-plant fr">
-					<FormOne/>
+					<FormOne @login="login"/>
 				</div>
 			</div>
 		</div>
@@ -21,6 +21,11 @@
 			BHeader,
 			AFooter,
 			FormOne
+		},
+		methods:{
+			login (obj) {
+				this.$store.dispatch('login',obj);
+			}
 		}
 	}
 </script>

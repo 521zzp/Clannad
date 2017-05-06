@@ -2,10 +2,7 @@ import * as types from '../mutation-types'
 import {LOGIN} from '@/config/url'
 import {postModelTwo,analy} from '@/tool/net'
 import store from '@/store'
-
-console.log(1)
-console.log(analy)
-console.log(2)
+import router from '@/router'
 
 const state = {
 	
@@ -29,8 +26,9 @@ const actions = {
 const mutations = {
 	[types.LOGIN] (state,obj) {
 		if (obj.code === 200) {
-			store.token = obj.token;
-			store.user = obj.obj;
+			store.state.token = obj.token;
+			store.state.user = obj.obj;
+			router.push('/')
 			console.log('登陆成功')
 		}else{
 			console.log('登陆失败')

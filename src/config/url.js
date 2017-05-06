@@ -4,4 +4,6 @@ export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=p
 
 
 export const LOGIN = BASEURL + '/inlet/login'
+export const REGISTER = BASEURL + '/inlet/register'
+export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码接口
 

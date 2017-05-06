@@ -19,7 +19,7 @@
 	            <Button class="login-btn" type="primary" @click="handleSubmit('loginForm')">登录</Button>
 	        </Form-item>
 	        <span class="link-one clearfix to-regist">
-	        	<router-link to="/">立即注册</router-link>
+	        	<router-link to="/regist">立即注册</router-link>
 	        </span>
 	    </Form>
     </div>
@@ -49,8 +49,7 @@ import {validatePhone,validatePwd} from '@/tool/regx'
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                    	console.log(this.loginForm)
-                    	this.$store.dispatch('login',{account: this.loginForm.account, password: this.loginForm.password});
+                    	this.$emit('login',{account: this.loginForm.account, password: this.loginForm.password})
                         this.$Message.success('提交成功!');
                     } else {
                         this.$Message.error('表单验证失败!');
