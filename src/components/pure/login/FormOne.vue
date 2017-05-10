@@ -50,9 +50,7 @@ import {validatePhone,validatePwd} from '@/tool/regx'
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                     	this.$emit('login',{account: this.loginForm.account, password: this.loginForm.password})
-                        this.$Message.success('提交成功!');
                     } else {
-                        this.$Message.error('表单验证失败!');
                     }
                 })
             }
@@ -66,6 +64,7 @@ import {validatePhone,validatePwd} from '@/tool/regx'
 	.dsbjfs input{
 		height: 40px !important;
 		background-color: rgb(0,0,0,0.3);
+		color: #FFFFFF;
 	}
 	.dsbjfs .ivu-input-group-prepend{
 		background-color: rgb(0,0,0,0.3) !important;

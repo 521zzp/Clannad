@@ -8,7 +8,7 @@
 			<div class="clearfix fr">
 				<div class="fl user-status">
 					<span v-if="online">您好，{{this.$store.state.user.name}}
-						<span class="exit">退出</span>
+						<span class="exit" @click="exit">退出</span>
 					</span>
 					<span v-else>您好，<router-link to="/login" class="to-login">请登陆</router-link>
 							   <router-link to="/regist" class="to-regist">注册</router-link>
@@ -43,6 +43,9 @@ import {IMG,WEIBO} from '@/config/url'
 		methods: {
 			weibo () {
 				window.open(WEIBO)
+			},
+			exit () {
+				this.$store.dispatch('exit');
 			}
 		}
 	}
@@ -75,7 +78,7 @@ import {IMG,WEIBO} from '@/config/url'
 	top: 12px;
 	opacity: 1;
 	width: 270px;
-	z-index: 1;
+	z-index: 10;
 }
 .wechat{
 	position: relative;
@@ -128,7 +131,7 @@ import {IMG,WEIBO} from '@/config/url'
 	opacity: 0;
 	left: -100px;
 	transition: top .8s, opacity .8s;
-	z-index: 1;
+	z-index: 10;
 }
 .app-dl:hover .app-download{
 	top: 1em;

@@ -24,7 +24,10 @@ export const analy = (response) => Promise.resolve(response).then(status).then(j
 export const onanaly = (response) => Promise.resolve(response).then(status).then(json).then(
 	(dp) => {
 		if (!dp.status) {
+			store.state.token = '',
+			store.state.user = {},
 			router.push('/login');
+			return null;
 		} else{
 			return dp.datas;
 		}

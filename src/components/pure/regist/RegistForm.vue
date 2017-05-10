@@ -14,8 +14,7 @@
 	        </Form-item>
 	        <Form-item  class="rela-plant"label="验证码" prop="picCode">
 	            <Input type="text" placeholder="请输入图形验证码" v-model="registForm.picCode"></Input>
-	            <img :src="imgCodeSrc" @click="imgRefresh"
-						alt="点击更新" title="点击更新" />
+	            <img class="imgVali" :src="imgCodeSrc" @click="imgRefresh" alt="点击更新" title="点击更新" />
 	        </Form-item>
 	        <Form-item>
 	        	 <span class="invite-btn" @click="inviteChange">> 邀请码（选填）</span>
@@ -90,9 +89,7 @@
 		                    inviteCode: this.registForm.inviteCode
                     	}
                     	this.$store.dispatch('regist',obj)
-                        this.$Message.success('提交成功!');
                     } else {
-                        this.$Message.error('表单验证失败!');
                     }
                 })
             },
@@ -140,6 +137,13 @@
 	margin-top: 80px;
 	margin-left: auto;
 	margin-right: auto;
+}
+.imgVali{
+	height: 30px;
+	position: absolute;
+	top: 6px;
+	right: 10px;
+	cursor: pointer;
 }
 .send-code{
 	font-size: @fz;

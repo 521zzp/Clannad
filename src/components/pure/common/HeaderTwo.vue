@@ -98,7 +98,7 @@ export default {
 	background-color: #FFFFFF;
 	border-radius: @br;
 	overflow: hidden;
-	z-index: 1;
+	z-index: 10;
 }
 .drop-arrow{
 	transition: transform .5s;

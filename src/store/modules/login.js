@@ -1,6 +1,7 @@
 import * as types from '../mutation-types'
 import {LOGIN} from '@/config/url'
 import {postModelTwo,analy} from '@/tool/net'
+import {message} from '@/tool/talk'
 import store from '@/store'
 import router from '@/router'
 
@@ -28,10 +29,9 @@ const mutations = {
 		if (obj.code === 200) {
 			store.state.token = obj.token;
 			store.state.user = obj.obj;
-			router.push('/')
-			console.log('登陆成功')
+			message(obj.msg, 2, ()=>router.push('/'));
 		}else{
-			console.log('登陆失败')
+			message(obj.msg, 4)
 		}
     }
 }

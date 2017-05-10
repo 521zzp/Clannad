@@ -2,7 +2,7 @@
 	<div>
 		<BHeader/>
 		<div class="content">
-			<span class="to-login fr">已有账户？ <router-link to="/regist" class="to-regist">立即登陆</router-link></span>
+			<span class="to-login fr">已有账户？ <router-link to="/login" class="to-regist">立即登陆</router-link></span>
 			<RegistForm/>
 		</div>
 		<AFooter/>

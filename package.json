@@ -15,6 +15,7 @@
     "fetch-polyfill": "^0.8.2",
     "iview": "^2.0.0-rc.12",
     "vue": "^2.2.6",
+    "vue-awesome-swiper": "^2.4.0",
     "vue-router": "^2.3.1",
     "vuex": "^2.3.1",
     "whatwg-fetch": "^2.0.3"
