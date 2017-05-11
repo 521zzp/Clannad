@@ -3,12 +3,15 @@
 		<BHeader/>
 			<div class="container">
 				<div class="clearfix step">
-					<Steps :current="1" status="error">
+					<Steps :current="step" :status="status">
 				        <Step title="Step-One" content="验证手机号码"></Step>
 				        <Step title="Step-Two" content="重置登陆密码"></Step>
 				        <Step title="Step-Three" content="重置密码成功"></Step>
 				    </Steps>
 				</div>
+				<StepOne v-if="step === 0" :text="text" @sendCode="sendCode" @submit="resetPwdOne" @tempRestore="tempRestore"/>
+				<StepTwo v-if="step === 1" @submit="resetPwdTwo"/>
+				<StepThree v-if="step === 2" />
 			</div>
 		<AFooter/>
 	</div>
@@ -17,15 +20,50 @@
 <script>
 	import BHeader from '@/components/pure/common/BHeader'
 	import AFooter from '@/components/pure/common/AFooter'
+	import StepOne from "@/components/pure/resetpwd/StepOne"
+	import StepTwo from "@/components/pure/resetpwd/StepTwo"
+	import StepThree from "@/components/pure/resetpwd/StepThree"
+	
 	export default {
 		data () {
 			return {
-				
+				state: {
+					account:'',
+					phoneCode:''
+				}
+			}
+		},
+		computed: {
+			status () {
+				return this.$store.state.resetpwd.status
+			},
+			text () {
+        		return this.$store.state.resetpwd.text
+       		},
+			step () {
+				return this.$store.state.resetpwd.step
+			}
+		},
+		methods: {
+			sendCode (obj) {
+				this.$store.dispatch('resetPwdSendCode',Object.assign({}, obj, {state: 1}))
+			},
+			resetPwdOne (obj) {
+				this.$store.dispatch('resetPwdOne',obj)
+			},
+			resetPwdTwo (obj) {
+				this.$store.dispatch('resetPwdTwo',Object.assign(this.state, obj))
+			},
+			tempRestore (obj) {
+				this.state = obj;
 			}
 		},
 		components: {
 			BHeader,
-			AFooter
+			AFooter,
+			StepOne,
+			StepTwo,
+			StepThree
 		}
 	}
 </script>
@@ -43,7 +81,6 @@
 }
 .step{
 	width: 80%;
-	margin-left: auto;
 	margin-left: auto;
 	margin-top: 50px;
 }

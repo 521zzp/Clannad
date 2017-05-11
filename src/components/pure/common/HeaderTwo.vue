@@ -28,7 +28,7 @@
 				<div class="nav-item more-items user-info">
 					<span class="level-one fl ">
 						<router-link to="/" class="level-one fl">
-							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face"/>
+							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face" @click="modal = true"/>
 							我的账户</router-link>
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
@@ -40,18 +40,77 @@
 					</nav>
 				</div>
 			</nav>
+			<Modal
+		        v-model="modal"
+		        title="上传头像"
+		        @on-ok="ok"
+		        @on-cancel="cancel">
+		        <Upload 
+		        	:format="['jpg','jpeg','png','gif','bpm']"
+		        	:max-size="2048"
+		        	:name="img"
+		        	:data="withToken"
+		        	:on-success="handleSuccess"
+		        	:on-format-error="handleFormatError"
+        			:on-exceeded-size="handleMaxSize"
+		        	:action="uploadUrl">
+			        <Button type="ghost" icon="ios-cloud-upload-outline">上传文件</Button>
+			    </Upload>
+		    </Modal>
+			
 		</div>
 	</div>
 </template>
 
 <script>
-import {IMG,WEIBO} from '@/config/url'
+import {analy} from '@/tool/net'
+import {IMG, WEIBO, FACEUPLOAD} from '@/config/url'
 export default {
 	data () {
 		return {
-			face: this.$store.state.user.face,
+			modal: false,
+			img: 'img',
+			uploadUrl: FACEUPLOAD,
+			withToken: {
+		        token: this.$store.state.token
+			},
 			logo: IMG + '/common/header/logo.png' 
 		}
+	},
+	computed: {
+		face () {
+			return this.$store.state.user.img
+		}
+	},
+	methods: {
+		ok () {
+            this.$Message.info('点击了确定');
+        },
+        cancel () {
+            this.$Message.info('点击了取消');
+        },
+        handleFormatError (file) {
+            this.$Notice.warning({
+                title: '文件格式不正确',
+                desc: '文件 ' + file.name + ' 格式不正确，请上传 jpg 或 png 格式的图片。'
+            });
+        },
+        handleMaxSize (file) {
+            this.$Notice.warning({
+                title: '超出文件大小限制',
+                desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+            });
+        },
+        handleSuccess (response) {
+            // 因为上传过程为实例，这里模拟添加 url
+            let img = response.datas.path;
+            this.$store.dispatch('userImgUpload',{img: img});
+            this.modal = false;
+            this.$refs.upload.fileList=[];
+           /* Promise.resolve(response).then(analy).then(
+            	(datas) => console.log(datas)
+            )*/
+        },
 	}
 }
 </script>
@@ -69,6 +128,10 @@ export default {
 	margin-right: 10px;
 	background-image: url(../../../assets/icon/user-face-bg.png);
 	background-size: 100% 100%;
+}
+.upload{
+	position: absolute;
+	right: 50px;
 }
 .nav-two a:hover{
 	text-indent: 1.5em;

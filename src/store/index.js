@@ -7,6 +7,7 @@ import home from './modules/home'
 import login from './modules/login'
 import regist from './modules/regist'
 import recharge from './modules/recharge'
+import resetpwd from './modules/resetpwd'
 
 
 Vue.use(Vuex)
@@ -61,7 +62,8 @@ const store = new Vuex.Store({
 		home,
 		login,
 		regist,
-		recharge
+		recharge,
+		resetpwd
 	}
 })
 

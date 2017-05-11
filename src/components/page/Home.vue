@@ -4,8 +4,8 @@
 		<Banner/>
 		<Notice/>
 		<Show/>
-		<Hot/>
-		<Products/>
+		<Hot :main="main"/>
+		<Products :list="products"/>
 		<Agent/>
 		<News/>
 		<Partner/>
@@ -38,6 +38,17 @@ export default {
 		Agent,
 		News,
 		Partner
+	},
+	computed: {
+		products () {
+			return this.$store.state.home.products
+		},
+		main () {
+			return this.$store.state.home.main
+		}
+	},
+	mounted () {
+		this.$store.dispatch('homeProducts')
 	}
 }
 </script>

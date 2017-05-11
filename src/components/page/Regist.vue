@@ -5,18 +5,18 @@
 			<span class="to-login fr">已有账户？ <router-link to="/login" class="to-regist">立即登陆</router-link></span>
 			<RegistForm/>
 		</div>
-		<AFooter/>
+		<BFooter/>
 	</div>
 </template>
 
 <script>
 import BHeader from '@/components/pure/common/BHeader'
-import AFooter from '@/components/pure/common/AFooter'
+import BFooter from '@/components/pure/common/BFooter'
 import RegistForm from '@/components/pure/regist/RegistForm'
 export default {
 	components:{
 		BHeader,
-		AFooter,
+		BFooter,
 		RegistForm
 	}
 }

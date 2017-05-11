@@ -8,18 +8,18 @@
 				</div>
 			</div>
 		</div>
-		<AFooter/>
+		<BFooter/>
 	</div>
 </template>
 
 <script>
 	import BHeader from '@/components/pure/common/BHeader'
-	import AFooter from '@/components/pure/common/AFooter'
+	import BFooter from '@/components/pure/common/BFooter'
 	import FormOne from '@/components/pure/login/FormOne'
 	export default {
 		components:{
 			BHeader,
-			AFooter,
+			BFooter,
 			FormOne
 		},
 		methods:{

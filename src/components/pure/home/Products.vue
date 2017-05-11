@@ -6,130 +6,25 @@
 		</div>
 		<div class="content clearfix">
 			<ul class="product-list">
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
+				<li v-for="item in list" class="product-item">
+					<span class="pro-name">{{item.name}}</span>
 					<div class="pro-info clearfix">
 						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
+							<span class="pro-rate">{{item.rate}}%</span>
 							<span class="i">年化收益率</span>
 						</div>
 						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
+							<span class="pro-day"><span>{{item.day}}</span>天</span>
 							<span class="i">投资期限</span>
 						</div>
 					</div>
 					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
+						 <Progress class="theme-proress" :percent="item.percent" :stroke-width="8" hide-info></Progress>
 						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
+						 	<span class="i fl money">剩余投资金额：{{item.left}}元</span>
 						 	<span class="i fr percent">45%</span>
 						 </div>
-						 <button class="buy">立即购买</button>
-					</div>
-				</li>
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
-					<div class="pro-info clearfix">
-						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
-							<span class="i">年化收益率</span>
-						</div>
-						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
-							<span class="i">投资期限</span>
-						</div>
-					</div>
-					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
-						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
-						 	<span class="i fr percent">45%</span>
-						 </div>
-						 <button class="buy">立即购买</button>
-					</div>
-				</li>
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
-					<div class="pro-info clearfix">
-						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
-							<span class="i">年化收益率</span>
-						</div>
-						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
-							<span class="i">投资期限</span>
-						</div>
-					</div>
-					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
-						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
-						 	<span class="i fr percent">45%</span>
-						 </div>
-						 <button class="buy">立即购买</button>
-					</div>
-				</li>
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
-					<div class="pro-info clearfix">
-						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
-							<span class="i">年化收益率</span>
-						</div>
-						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
-							<span class="i">投资期限</span>
-						</div>
-					</div>
-					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
-						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
-						 	<span class="i fr percent">45%</span>
-						 </div>
-						 <button class="buy">立即购买</button>
-					</div>
-				</li>
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
-					<div class="pro-info clearfix">
-						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
-							<span class="i">年化收益率</span>
-						</div>
-						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
-							<span class="i">投资期限</span>
-						</div>
-					</div>
-					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
-						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
-						 	<span class="i fr percent">45%</span>
-						 </div>
-						 <button class="buy">立即购买</button>
-					</div>
-				</li>
-				<li class="product-item">
-					<span class="pro-name">月月盈</span>
-					<div class="pro-info clearfix">
-						<div class="fl rate">
-							<span class="pro-rate">4.80%</span>
-							<span class="i">年化收益率</span>
-						</div>
-						<div class="fr day">
-							<span class="pro-day"><span>30</span>天</span>
-							<span class="i">投资期限</span>
-						</div>
-					</div>
-					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="30" :stroke-width="8" hide-info></Progress>
-						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：10000元</span>
-						 	<span class="i fr percent">45%</span>
-						 </div>
-						 <button class="buy">立即购买</button>
+						 <button class="buy" @onclick="buy(item.id)">立即购买</button>
 					</div>
 				</li>
 			</ul>
@@ -139,8 +34,18 @@
 
 <script>
 	export default {
-		
+		props: ['list'],
+		methods: {
+			buy(id) {
+				console.log(454545)
+				console.log(id)
+			}
+		},
+		mounted () {
+			console.log(this.list)
+		}
 	}
+	
 </script>
 <style lang="less">
 @import '../../../config/base.less';

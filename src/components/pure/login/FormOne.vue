@@ -13,7 +13,7 @@
 	            </Input>
 	        </Form-item>
 	        <span class="link-one clearfix">
-	        	<router-link to="/" class="fr">忘记密码</router-link>
+	        	<router-link to="/resetpwd" class="fr">忘记密码</router-link>
 	        </span>
 	        <Form-item class="item">
 	            <Button class="login-btn" type="primary" @click="handleSubmit('loginForm')">登录</Button>
@@ -63,11 +63,11 @@ import {validatePhone,validatePwd} from '@/tool/regx'
 	@import url("../../../config/base.less");
 	.dsbjfs input{
 		height: 40px !important;
-		background-color: rgb(0,0,0,0.3);
+		background-color: rgba(0,0,0,0.3);
 		color: #FFFFFF;
 	}
 	.dsbjfs .ivu-input-group-prepend{
-		background-color: rgb(0,0,0,0.3) !important;
+		background-color: rgba(0,0,0,0.3) !important;
 	}
 </style>
 <style scoped="scoped" lang="less">

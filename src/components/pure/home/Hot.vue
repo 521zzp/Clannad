@@ -3,21 +3,21 @@
 		<router-link to="/regist" class="clearfix fr pic-link">
 			<img src="../../../assets/home/about-yhb.png" alt="一分钟了解余惠宝" />
 		</router-link>
-		<div class="main-product">
+		<div v-if="main.type === 0" class="main-product">
 			<span class="label">热门</span>
 			<span class="title fl">热门活动</span>
 			<div class="content clearfix fl">
 				<div class="rate fl clearfix">
-					<span class="rate-value">12.00%</span>
+					<span class="rate-value">{{main.rate}}%</span>
 					<span class="desc">年化收益率</span>
 				</div>
 				<div class="day fl clearfix">
-					<span class="day-value">15<span>天</span></span>
+					<span class="day-value">{{main.day}}<span>天</span></span>
 					<span class="desc">投资期限</span>
 				</div>
 				<div class="buy fr clearfix">
 					<span class="buy-now">立即投资</span>
-					<span class="desc">已购：100001人</span>
+					<span class="desc">已购：{{main.people}}人</span>
 				</div>
 			</div>
 		</div>
@@ -29,7 +29,9 @@
 
 <script>
 	export default {
-		
+		props: ['main'],
+		computed: {
+		},
 	}
 </script>
 

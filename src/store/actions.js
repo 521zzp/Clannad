@@ -1,5 +1,5 @@
 import * as types from './mutation-types'
-import {EXIT} from '@/config/url'
+import {EXIT,} from '@/config/url'
 import {postModelOne,analy} from '@/tool/net'
 import {confirmMoadl} from '@/tool/talk'
 
@@ -13,6 +13,8 @@ export const actions = {
 			    console.log(error)
 			  })
 		},()=>{} )
-		
+	},
+	userImgUpload ({commit},obj) {
+		commit(types.HOME_IMG_UPLOAD,obj);
 	}
 }

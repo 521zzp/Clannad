@@ -12,5 +12,11 @@ export const mutations = {
 		}else{
 			message(obj.msg,4);
 		}
+    },
+    [types.HOME_IMG_UPLOAD] (state,obj) {
+    	console.log(2222)
+    	console.log(obj)
+    	state.user.img = obj.img
+    	console.log(state.user.img)
     }
 }

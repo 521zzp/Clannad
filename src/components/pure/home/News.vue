@@ -128,6 +128,9 @@
 .a:hover .hidden-msg{
 	bottom: 0;
 }
+.news-title:hover{
+	color: @theme;
+}
 .hidden-msg{
 	position: absolute;
 	display: block;

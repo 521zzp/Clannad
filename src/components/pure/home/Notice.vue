@@ -18,6 +18,7 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import url("../../../config/base.less");
+
 .notice-more{ 
 	color: @gray-one;
 }

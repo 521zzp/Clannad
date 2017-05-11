@@ -34,6 +34,10 @@
 				</li>
 			</ul>
 		</div>
+		<div class="copyRight">
+			<span>Copyright © yhb118.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
+			<span>上海岚儒金融信息服务有限公司</span>
+		</div>
 	</footer>
 </template>
 
@@ -53,8 +57,18 @@ export default {
 
 footer{
 	width: 100%;
-	background-color: #30373a;
-	padding-bottom: 30px;
+	background-color: @gray-one;
+}
+.copyRight{
+	font-size: 14px;
+	background-color: #4c4c4c;
+	margin-top: 10px;
+	color: #ffffff;
+	padding: 14px 0;
+}
+.copyRight>span{
+	display: block;
+	text-align: center;
 }
 .item-msg{
 	width: 25%;
@@ -78,7 +92,7 @@ footer{
 	margin-top: 28px;
 }
 .container .link-group{
-	color: @border-two;
+	color: @white;
 	width: 100%;
 }
 .item{
@@ -93,7 +107,7 @@ footer{
 	margin-top: 6px;
 }
 .item a{
-	color: @border-two;
+	color: @white;
 	font-size: @fz;
 }
 </style>
