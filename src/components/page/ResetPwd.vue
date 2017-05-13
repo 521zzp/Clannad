@@ -13,13 +13,13 @@
 				<StepTwo v-if="step === 1" @submit="resetPwdTwo"/>
 				<StepThree v-if="step === 2" />
 			</div>
-		<AFooter/>
+		<BFooter/>
 	</div>
 </template>
 
 <script>
 	import BHeader from '@/components/pure/common/BHeader'
-	import AFooter from '@/components/pure/common/AFooter'
+	import BFooter from '@/components/pure/common/BFooter'
 	import StepOne from "@/components/pure/resetpwd/StepOne"
 	import StepTwo from "@/components/pure/resetpwd/StepTwo"
 	import StepThree from "@/components/pure/resetpwd/StepThree"
@@ -60,7 +60,7 @@
 		},
 		components: {
 			BHeader,
-			AFooter,
+			BFooter,
 			StepOne,
 			StepTwo,
 			StepThree
@@ -75,7 +75,7 @@
 	height: 724px;
 	border: 1px solid @border-one;
 	background-color: @white;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	margin-left: auto;
 	margin-right: auto;
 }

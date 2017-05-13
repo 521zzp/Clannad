@@ -5,6 +5,7 @@ import Regist from '@/components/page/Regist'
 import Home from '@/components/page/Home'
 import Recharge from '@/components/page/Recharge'
 import ResetPwd from '@/components/page/ResetPwd'
+import ProductCenter from '@/components/page/ProductCenter'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/resetpwd',
       name: 'ResetPwd',
       component: ResetPwd
+    },
+    {
+      path: '/product',
+      name: 'ProductCenter',
+      component: ProductCenter
     },
     {
       path: '/recharge',

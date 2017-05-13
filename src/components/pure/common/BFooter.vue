@@ -18,6 +18,18 @@
 </script>
 
 <style scoped="scoped" lang="less">
+@import '../../../config/base.less';
 
+.copyRight{
+	font-size: 14px;
+	margin-top: 10px;
+	color: @gray-three;
+	padding: 14px 0;
+}
+.copyRight>span{
+	display: block;
+	margin-bottom: 10px;
+	text-align: center;
+}
 
 </style>

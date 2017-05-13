@@ -1,5 +1,5 @@
-export const BASEURL = 'http://192.168.1.200:8080'  //服务器地址  孔
-//export const BASEURL = 'http://192.168.1.215:8080'  //服务器地址  汪
+//export const BASEURL = 'http://192.168.1.200:8080'  //服务器地址  孔
+export const BASEURL = 'http://192.168.1.215:8888'  //服务器地址  汪
 
 export const IMG = 'http://www.art.com' //图片服务器地址
 export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=personinfo' //余惠宝官方微博
@@ -18,5 +18,5 @@ export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密�
 
 // 首页
 export const FACEUPLOAD = BASEURL + '/file/uploadImage'  //用户头像上传接口
-export const HOME_PRODUCTS = BASEURL + '/index/getPro' //获取产品列表
+export const HOME_PRODUCTS = BASEURL + '/invest/center' //获取产品列表
 

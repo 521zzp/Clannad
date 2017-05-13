@@ -10,7 +10,7 @@ export const actions = {
 				.then((datas)=>{
 				commit(types.EXIT,datas);
 				}).catch(function(error) {
-			    console.log(error)
+			   	commit(types.EXIT,{});
 			  })
 		},()=>{} )
 	},

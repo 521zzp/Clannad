@@ -1,0 +1,149 @@
+//进中心卡信息
+post: {
+	token: '',
+	datas:{}
+}
+返回：
+{
+	status:true,
+	datas:{
+		flag: true/false,
+		items: {
+			name: '',
+			card: '',
+			user: ''
+		}
+	}
+}
+
+
+
+
+
+
+
+
+//添加银行卡提交
+{
+	token:'',
+	datas:{
+		name:'',
+		idcard:'',
+		bank:'',
+		pro:'',
+		city:'',
+		branch：'',
+		subbranch: '',
+		card:'',
+		phone:'',
+		phoneCode:''
+	}
+}
+
+//获取银行列表
+get
+返回：
+	{
+		status: true,
+		datas:[
+			{
+				value: '', //代号
+				label: '' //银行名
+			},
+			{
+				value: '', //代号
+				label: '' //银行名
+			},
+			...
+			
+		]
+	}
+	
+省市
+{
+	status: true,
+	datas: [
+		{
+	        value: '565',
+	        label: '北京',
+	        children: [
+	            {
+	                value: '26',
+	                label: '故宫'
+	            },
+	            {
+	                value: '26',
+	                label: '天坛'
+	            },
+	            {
+	                value: '2323,',
+	                label: '王府井'
+	            }
+	        ]
+	    },
+	    ...
+	]
+}
+
+
+//更换获取已经绑定信息
+post: {
+	token: '',
+	datas:{}
+}
+
+{
+	status: true/false,
+	datas: {
+		name:'',//展示，不可编辑
+		idcard:'',//展示，不可编辑
+		bank:{
+			selected: ['5245'],
+			datas: [
+				{
+					value: '', //代号
+					label: '' //银行名
+				},
+				{
+					value: '', //代号
+					label: '' //银行名
+				},
+				...
+				
+			]
+		
+		},
+		pro:{
+			selected: ['565', '26'],
+			datas: [
+						{
+					        value: '565',
+					        label: '北京',
+					        children: [
+					            {
+					                value: '26',
+					                label: '故宫'
+					            },
+					            {
+					                value: '26',
+					                label: '天坛'
+					            },
+					            {
+					                value: '2323,',
+					                label: '王府井'
+					            }
+					            ...
+					        ]
+					    },
+					    ...
+					]
+		},
+		branch：'',
+		subbranch: '',
+		card:'',//银行卡号
+		phone:'',
+	}
+}
+
+
+

@@ -85,7 +85,7 @@ import {validatePhone,validatePwd} from '@/tool/regx'
 	height: 100%;
 }
 .link-one a{
-	color: @gray-one;
+	color: @white;
 }
 .link-one{
 	display: block;

@@ -27,7 +27,9 @@ export default {
 .content{
 	width: 1200px;
 	height: 722px;
-	margin: 20px auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: #FFFFFF;
 	border-radius: @bbr;
 	overflow: hidden;

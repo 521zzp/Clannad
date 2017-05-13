@@ -16,10 +16,10 @@
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
 					<nav class="nav-two clearfix">
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
 					</nav>
 				</div>
 				<div class="nav-item">
@@ -33,10 +33,10 @@
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
 					<nav class="nav-two clearfix">
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
-						<router-link to="/" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/product" class="level-two">我要理财</router-link>
 					</nav>
 				</div>
 			</nav>
@@ -46,6 +46,7 @@
 		        @on-ok="ok"
 		        @on-cancel="cancel">
 		        <Upload 
+		        	ref="upload"
 		        	:format="['jpg','jpeg','png','gif','bpm']"
 		        	:max-size="2048"
 		        	:name="img"
@@ -63,7 +64,8 @@
 </template>
 
 <script>
-import {analy} from '@/tool/net'
+import {analyJson} from '@/tool/net'
+import router from '@/router'
 import {IMG, WEIBO, FACEUPLOAD} from '@/config/url'
 export default {
 	data () {
@@ -103,13 +105,12 @@ export default {
         },
         handleSuccess (response) {
             // 因为上传过程为实例，这里模拟添加 url
-            let img = response.datas.path;
-            this.$store.dispatch('userImgUpload',{img: img});
+            let img = analyJson(response).path;
+            if (img) {
+            	this.$store.dispatch('userImgUpload',{img: img});
+            }
             this.modal = false;
             this.$refs.upload.fileList=[];
-           /* Promise.resolve(response).then(analy).then(
-            	(datas) => console.log(datas)
-            )*/
         },
 	}
 }

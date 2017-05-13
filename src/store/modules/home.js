@@ -39,8 +39,53 @@ const actions = {
 
 const mutations = {
 	[types.HOME_PRODUCTS] (state,obj) {
+		console.log(obj)
 		state.main = obj.main;
 		state.products = obj.list;
+		//state.main.endMillFlag = 2 * 24 * 60 * 60 * 1000 + 0 * 60 * 60 * 1000 + 3 * 60 * 1000;
+		let maxTimeDelay = 1000;
+		let minTimeDelay = 21;
+		let secClock = setInterval(function(){
+			let start = state.main.startMilliseconds;
+			let end = state.main.endMilliseconds;
+			if (start > 0) {
+				state.main.startMilliseconds = state.main.startMilliseconds - maxTimeDelay
+				if (start < state.main.startMillFlag) {
+					clearInterval(secClock);
+					secClock = setInterval(function(){ //秒杀开始倒计时毫秒
+						if (state.main.startMilliseconds > 0) {
+							state.main.startMilliseconds = state.main.startMilliseconds - minTimeDelay
+						} else {
+							clearInterval(secClock);
+							setInterval(function () { //秒杀进行中倒计时秒
+								if (state.main.endMilliseconds > state.main.endMillFlag) { 
+									state.main.endMilliseconds = state.main.endMilliseconds -maxTimeDelay
+								} else {
+									clearInterval(secClock);
+									secClock = setInterval(function () { //秒杀即将结束倒计时毫秒
+										state.main.endMilliseconds = state.main.endMilliseconds - minTimeDelay;
+										if (state.main.endMilliseconds < 0) {
+											clearInterval(secClock);
+										}
+									}, minTimeDelay);
+								}
+							}, maxTimeDelay);
+						}
+					}, minTimeDelay)
+				} 
+			} else if (end > 0) {
+				state.main.endMilliseconds = state.main.endMilliseconds - maxTimeDelay
+				if (end < state.main.endMillFlag) {
+					clearInterval(secClock);
+					secClock = setInterval(function () {
+						state.main.endMilliseconds = state.main.endMilliseconds - minTimeDelay;
+						if (state.main.endMilliseconds < 0) {
+							clearInterval(secClock);
+						}
+					}, minTimeDelay);
+				} 
+			}
+		}, maxTimeDelay)
     }
 }
 

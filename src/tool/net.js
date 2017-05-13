@@ -33,6 +33,21 @@ export const onanaly = (response) => Promise.resolve(response).then(status).then
 		}
 	}
 );
+/*
+ * 解析JSON，判断是否登陆状态
+ */
+export const analyJson = (dp) => {
+	if (!dp.status) {
+		store.state.token = '',
+		store.state.user = {},
+		router.push('/login');
+		return null;
+	} else{
+		return dp.datas;
+	}
+}
+
+
 /**
  * post method  带token
  * Requests  params, returning a common request config.
