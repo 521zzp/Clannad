@@ -3,6 +3,7 @@
 		<router-link to="/regist" class="clearfix fr pic-link">
 			<img src="../../../assets/home/about-yhb.png" alt="一分钟了解余惠宝" />
 		</router-link>
+		<!--热门-->
 		<div v-if="main.type === 0" class="main-product">
 			<span class="label">热门</span>
 			<span class="title fl">热门活动</span>
@@ -21,6 +22,45 @@
 				</div>
 			</div>
 		</div>
+		<!--秒杀-->
+		<div v-else class="main-product">
+			<!--<span class="label">秒杀</span>-->
+			<div class="time-count">
+				<img class="fl" src="../../../assets/product-center/i-icon.png" alt=""/>
+				<img class="fl clock" src="../../../assets/home/seckill-clock.png"/>
+				<span v-if="time.secKilling" class="time-area">{{main.startMilliseconds >= 0 ? '倒计时' : '离结束'}}
+					<span class="t-o w-two">{{time.min}}</span>分
+					<span class="t-o w-two">{{time.sec}}</span>秒
+					<span class="t-o w-three">{{time.mili}}</span>毫秒
+				</span>
+				<span v-else class="time-area">{{main.startMilliseconds >= 0 ? '倒计时' : '离结束'}}
+					<span class="t-o w-two">{{time.day}}</span>天
+					<span class="t-o w-two">{{time.hour}}</span>时
+					<span class="t-o w-two">{{time.min}}</span>分
+					<span class="t-o w-two">{{time.sec}}</span>秒
+				</span>
+			</div>
+			
+			<div class="content clearfix fl">
+				<div class="rate fl clearfix">
+					<span class="rate-value">{{main.rate}}%</span>
+					<span class="desc">年化收益率</span>
+				</div>
+				<div class="day fl clearfix">
+					<span class="day-value">{{main.day}}<span>天</span></span>
+					<span class="desc">投资期限</span>
+				</div>
+				<div class="buy fr clearfix">
+					<span class="buy-now unable" v-if="main.left > 0 && main.startMilliseconds > 0">即将开始</span>
+					<span class="buy-now" v-else-if="main.left > 0 && main.startMilliseconds < 0 && main.endMilliseconds > 0">立即投资</span>
+					<span class="buy-now unable" v-else-if="main.left > 0 && main.endMilliseconds <= 0">已结束</span>
+					<span v-else class="buy-now unable">已售罄</span>
+					
+					<span class="desc">已购：{{main.people}}人</span>
+				</div>
+			</div>
+		</div>
+		
 		<router-link to="/regist" class="clearfix fl pic-link">
 			<img src="../../../assets/home/sprog-gift.png" alt="新手福利" />
 		</router-link>
@@ -29,7 +69,7 @@
 
 <script>
 	export default {
-		props: ['main'],
+		props: ['main','time'],
 		computed: {
 		},
 	}
@@ -46,6 +86,17 @@
 	background-color: #ffffff;
 	position: relative;
 	overflow: hidden;
+}
+.w-two{
+	width: 48px;
+}
+.w-three{
+	width: 65px;
+}
+.buy-now.unable{
+	background-color: @border-one;
+	border: 1px solid @border-one;
+	cursor: not-allowed;
 }
 .buy-now{
 	color: #FFFFFF;
@@ -114,7 +165,36 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-
-
+.time-area{
+	color: #ff7f7c;
+	font-size: @fz + 12;
+	margin-left: 20px;
+	float: left;
+}
+.time-count{
+	height: 76px;
+	line-height: 76px;
+}
+.min{
+	display: block;
+	text-align: center;
+	color: @border-one;
+}
+.clock{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+.t-o{
+	font-size: 32px;
+	border: 1px solid #ff7f7c;
+	border-radius: @br;
+	padding: 2px 4px 2px 5px;
+	margin-right: 5px;
+	text-align: center;
+	color: #7447ff;
+	display: inline-block;
+	height: 42px;
+    line-height: 40px;
+}
 
 </style>

@@ -6,6 +6,7 @@ import Home from '@/components/page/Home'
 import Recharge from '@/components/page/Recharge'
 import ResetPwd from '@/components/page/ResetPwd'
 import ProductCenter from '@/components/page/ProductCenter'
+import ProductDetail from '@/components/page/ProductDetail'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/product',
       name: 'ProductCenter',
       component: ProductCenter
+    },
+    {
+      path: '/product/:id',
+      name: 'ProductDetail',
+      component: ProductDetail
     },
     {
       path: '/recharge',

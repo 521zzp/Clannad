@@ -24,7 +24,8 @@
 						 	<span class="i fl money">剩余投资金额：{{item.left}}元</span>
 						 	<span class="i fr percent">45%</span>
 						 </div>
-						 <button class="buy" @onclick="buy(item.id)">立即购买</button>
+						 <router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>
+						 <button v-else class="buy unable">已售罄</button>
 					</div>
 				</li>
 			</ul>
@@ -36,10 +37,6 @@
 	export default {
 		props: ['list'],
 		methods: {
-			buy(id) {
-				console.log(454545)
-				console.log(id)
-			}
 		},
 		mounted () {
 			console.log(this.list)
@@ -59,6 +56,14 @@
 .container{
 	width: @mw;
 	margin:0 auto;
+}
+.buy.unable:hover{
+	background-color: @border-one;
+}
+.buy.unable{
+	background-color: @border-one;
+	border: 1px solid @border-one;
+	cursor: not-allowed;
 }
 .buy{
 	width: 210px;

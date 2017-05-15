@@ -27,7 +27,7 @@
 					</div>
 					<div  class="buy fr">
 						<span class="min">起投金额：{{product.min}}元</span>
-						<button v-if="product.left > 0">立即投资</button>
+						<router-link  v-if="product.left > 0" :to="'/product/'+product.id" class="to-regist"><button>立即投资</button></router-link>
 						<button v-else class="unable">已售罄</button>
 					</div>
 				</div>

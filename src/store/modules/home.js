@@ -39,12 +39,12 @@ const actions = {
 
 const mutations = {
 	[types.HOME_PRODUCTS] (state,obj) {
-		console.log(obj)
 		state.main = obj.main;
 		state.products = obj.list;
 		//state.main.endMillFlag = 2 * 24 * 60 * 60 * 1000 + 0 * 60 * 60 * 1000 + 3 * 60 * 1000;
 		let maxTimeDelay = 1000;
 		let minTimeDelay = 21;
+		clearInterval(secClock);
 		let secClock = setInterval(function(){
 			let start = state.main.startMilliseconds;
 			let end = state.main.endMilliseconds;

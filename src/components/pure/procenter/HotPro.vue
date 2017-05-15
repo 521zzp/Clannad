@@ -43,8 +43,8 @@
 					</div>
 					<div class="buy fr">
 						<span class="min">起投金额：{{hot.min}}元</span>
-						<button class="unable" v-if="hot.left > 0 && hot.startMilliseconds > 0">敬请期待</button>
-						<button v-else-if="hot.left > 0 && hot.startMilliseconds < 0 && hot.endMilliseconds > 0">立即投资</button>
+						<button class="unable" v-if="hot.left > 0 && hot.startMilliseconds > 0">即将开始</button>
+						<router-link  v-else-if="hot.left > 0 && hot.startMilliseconds < 0 && hot.endMilliseconds > 0" :to="'/product/'+hot.id" class="to-regist"><button>立即投资</button></router-link>
 						<button class="unable" v-else-if="hot.left > 0 && hot.endMilliseconds <= 0">已结束</button>
 						<button v-else class="unable">已售罄</button>
 					</div>

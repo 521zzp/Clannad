@@ -34,10 +34,10 @@ export const countDownSec = (millisecond) => {
 	let min = parseInt( (millisecond % (60 * 60 * 1000)) / (60 * 1000) );
 	let sec = parseInt( (millisecond % (60 * 1000)) / 1000 );
 	return {
-		day: day ? day : 0,
-		hour: hour ? hour : 0,
-		min: min ? min : 0,
-		sec: sec ? sec : 0
+		day: day >= 0 ? day : 0,
+		hour: hour >= 0  ? hour : 0,
+		min: min >= 0  ? min : 0,
+		sec: sec >= 0  ? sec : 0
 	}
 }
 
@@ -49,8 +49,8 @@ export const countDownMiliSec = (millisecond) => {
 	let sec = parseInt( (millisecond % (60 * 1000)) / 1000 );
 	let mili = parseInt( millisecond % 1000 ) 
 	return {
-		min: min ? min : 0,
-		sec: sec ? sec : 0,
-		mili: mili ? mili : 0
+		min: min >= 0  ? min : 0,
+		sec: sec >= 0  ? sec : 0,
+		mili: mili >= 0  ? mili : 0
 	}
 }

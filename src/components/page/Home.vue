@@ -4,7 +4,7 @@
 		<Banner/>
 		<Notice/>
 		<Show/>
-		<Hot :main="main"/>
+		<Hot :main="main" :time="countSec"/>
 		<Products :list="products"/>
 		<Agent/>
 		<News/>
@@ -25,6 +25,7 @@ import Products from '@/components/pure/home/Products'
 import Agent from '@/components/pure/home/Agent'
 import News from '@/components/pure/home/News'
 import Partner from '@/components/pure/home/Partner'
+import {countDownSec, countDownMiliSec} from '@/tool/date'
 
 export default {
 	components:{
@@ -45,10 +46,32 @@ export default {
 		},
 		main () {
 			return this.$store.state.home.main
+		},
+		countSec () {
+			let timeObj = null;
+			let secKilling = false;
+			if (this.$store.state.home.main.startMilliseconds > 0 ) {
+				if (this.$store.state.home.main.startMilliseconds > this.$store.state.home.main.startMillFlag) {
+					secKilling = false
+					timeObj =  countDownSec(this.$store.state.home.main.startMilliseconds)
+				} else{
+					secKilling = true
+					timeObj = countDownMiliSec(this.$store.state.home.main.startMilliseconds)
+				}
+			} else {
+				if (this.$store.state.home.main.endMilliseconds > this.$store.state.home.main.endMillFlag) {
+					secKilling = false
+					timeObj = countDownSec(this.$store.state.home.main.endMilliseconds)
+				} else{
+					secKilling = true
+					timeObj = countDownMiliSec(this.$store.state.home.main.endMilliseconds)
+				}
+			}
+			return Object.assign(timeObj, {secKilling: secKilling})
 		}
 	},
 	mounted () {
-		this.$store.dispatch('homeProducts')
+		this.$store.dispatch('homeProducts') //产品列表
 	}
 }
 </script>
