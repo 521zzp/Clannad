@@ -1,34 +1,35 @@
 <template>
 	<div>
-		<div class="title">四月限量首发</div>	
+		<div class="title">{{product.name}}</div>	
 		<div class="detail-info clearfix">
 			<div class="rate sec fl">
-				<span class="value">8.50<span class="value-end">%</span></span>
+				<span class="value">{{product.rate.toFixed(2)}}<span class="value-end">%</span></span>
 				<span class="desc">预期年利率</span>
 			</div>
 			<div class="memberRate sec fl">
-				<span class="value">9.50<span class="value-end">%</span></span>
+				<span class="value">{{product.memberRate.toFixed(2)}}<span class="value-end">%</span></span>
 				<span class="desc">会员年利率</span>
 			</div>
 			<div class="day sec fl">
-				<span class="value">270<span class="value-end">天</span></span>
+				<span class="value">{{product.day}}<span class="value-end">天</span></span>
 				<span class="desc">项目期限</span>
 			</div>
 			<div class="progress sec fl">
-				<Progress class="i-pro-detail-progress" :percent="25" status="active" :stroke-width="6" hide-info></Progress>
-				<span class="desc">进度：20%</span>
+				<Progress class="i-pro-detail-progress" :percent="product.percent" 
+					status="active" :stroke-width="6" hide-info></Progress>
+				<span class="desc">进度：{{product.percent}}%</span>
 			</div>
 		</div>
 		<div class="more-detail-info clearfix">
 			<div class="one fl">
-				<span class="more-detail-item">总金额：<span>300万元</span></span>
-				<span class="more-detail-item">发布时间：<span>2014-05-07</span></span>
+				<span class="more-detail-item">总金额：<span>{{product.total / 10000}}万元</span></span>
+				<span class="more-detail-item">发布时间：<span>{{product.time}}</span></span>
 			</div>
 			<div class="two fl">
-				<span class="more-detail-item">起投金额：<span>1000元</span></span>
+				<span class="more-detail-item">起投金额：<span>{{product.min}}元</span></span>
 			</div>
 			<div class="three fl">
-				<span class="more-detail-item">剩余可投：<span>1000000元</span></span>
+				<span class="more-detail-item">剩余可投：<span>{{product.left}}元</span></span>
 			</div>
 		</div>
 	</div>
@@ -36,6 +37,7 @@
 
 <script>
 export default {
+	props: ["product"],
 	data () {
 		return {
 			

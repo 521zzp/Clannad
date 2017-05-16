@@ -11,3 +11,10 @@ export const HOME_PRODUCTS = 'HOME_PRODUCTS'  //主页产品渲染
 export const HOME_IMG_UPLOAD = 'HOME_IMG_UPLOAD' //主页用户头像上传
 
 
+export const PRO_DETAIL_INFO = 'PRO_DETAIL_INFO' //产品详情信息
+export const PRO_DETAIL_LIST = 'PRO_DETAIL_LIST' //产品投资记录
+
+
+export const ACC_BREAD_CHANGE = 'ACC_BREAD_CHANGE' //用户中心面包屑切换
+
+

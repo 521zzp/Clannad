@@ -1,31 +1,33 @@
 <template>
-	<div>
+	<div style="position: relative;">
 		<AHeader/>
 		<div class="container">
 			<Breadcrumb class="breadcrumbs" separator=">">
 		        <Breadcrumb-item v-for="nav in breadcrumbs" :href="nav.url" key="nav">{{nav.name}}</Breadcrumb-item>
 		    </Breadcrumb>
 		    <div class="clearfix" >
-		    	<ProInfo  class="info fl"/>
+		    	<ProInfo  class="info fl" :product="product"/>
 		    	<div class="buy fr">
-		    		<span class="pro-left">剩余可投：<span>100000</span>元</span>
-		    		<div v-if="this.$store.state.token !== ''" class="online">
+		    		<span class="pro-left">剩余可投：<span>{{product.left}}</span>元</span>
+		    		<div v-if="online" class="online">
 		    			<span>账户余额：<span class="balance">{{this.$store.state.user.balance}}</span>元</span>
 		    			<router-link to="/product" class="fr">充值</router-link>
 		    		</div>
 		    		<div v-else class="online">
 		    			<span>账户余额<router-link to="/login" class="to-login">登陆</router-link>后可见</span>
 		    		</div>
-		    		<Input v-model="money" class="pro-detail-count">
+		    		<Input v-model="money" number :placeholder="placeholder" :disabled="!online" class="pro-detail-count" @on-change="change">
 				        <Button @click="minus" slot="prepend" icon="ios-minus-empty"></Button>
 				        <Button @click="add" slot="append" icon="ios-plus-empty"></Button>
 				    </Input>
 				    <span class="vali-notice">{{valiMsg}}</span>
-				    <button class="buy-now">立即购买</button>
+				    <span v-if="online" class="expect">预期收益：{{profit}}元</span>
+				    <button v-if="online" class="buy-now" @click="buy($route.params.id)">立即购买</button>
+				    <button v-else class="buy-now unable">立即购买</button>
 		    	</div>
 		    </div>
 		    <div class="taps-detail">
-		    	<ProInfoTaps/>
+		    	<ProInfoTaps :taps="product.productItems"/>
 		    </div>
 		</div>
 		<AFooter/>
@@ -41,8 +43,10 @@ import ProInfoTaps from '@/components/pure/prodetail/ProInfoTaps'
 export default {
 	data () {
 		return {
-			money: 1000,
-			valiMsg: '购买金额必须为整数',
+			money: '',
+			valiMsg: '',
+			valiFlag: false,
+			placeholder: 1000 + '元起投',
 			breadcrumbs: [
 				{
 					name: '余惠宝首页',
@@ -55,6 +59,25 @@ export default {
 			]
 		}
 	},
+	created () {
+		let id =  this.$route.params.id
+		this.$store.dispatch('getProDetailInfo', {id: id})
+	  },
+	computed: {
+		online () {
+			return this.$store.state.token !== ''
+		},
+		product () {
+			return this.$store.state.prodetail.details
+		},
+		profit () {
+			if (this.$store.state.user.level == '会员') {
+				return (this.money * this.product.memberRate / 100 / 365 * this.product.day).toFixed(2)
+			} else{
+				return (this.money * this.product.rate / 100 / 365 * this.product.day).toFixed(2)
+			}
+		}
+	},
 	components: {
 		AHeader,
 		AFooter,
@@ -63,10 +86,43 @@ export default {
 	},
 	methods: {
 		minus () {
-			console.log('minus')
+			if (this.online && Number.isInteger(this.money) && this.money > 500) {
+				this.money = this.money - 500
+				this.change()
+			}
 		},
 		add () {
-			console.log('add')
+			if (this.online) {
+				if (Number.isInteger(this.money)) {
+					this.money = this.money + 500
+					this.change()
+				}else if (this.money == '') {
+					this.money = 500
+					this.change()
+				}
+			}
+		},
+		change () {
+			let intRegx = /^[1-9][0-9]*$/;
+			if (this.money !== '' && !intRegx.test(this.money)) {
+				this.valiFlag = false
+				this.valiMsg = '购买金额必须为正整数'
+			} else if (this.money < this.product.min) {
+				this.valiFlag = false
+				this.valiMsg = this.product.min + '元起投'
+			} else if (this.money > this.$store.state.user.balance) {
+				this.valiFlag = false
+				this.valiMsg = '账户余额不足，请先充值'
+			} else if (this.money > this.product.left) {
+				this.valiFlag = false
+				this.valiMsg = '超出剩余可投金额'
+			} else{
+				this.valiFlag = true
+				this.valiMsg = ''
+			}
+		},
+		buy (id) {
+			console.log(id)
 		}
 	}
 }
@@ -93,8 +149,22 @@ export default {
 	width: @mw;
 	margin:0 auto;
 }
+.buy-now.unable:hover{
+	cursor: not-allowed;
+	background-color: @border-two;
+}
+.buy-now.unable{
+	background-color: @border-two;
+	color: @gray-one;
+	border: 1px solid @border-two;
+	margin-top: 40px;
+}
 .buy-now:hover{
 	background-color: lighten(@theme,5%);;
+}
+.expect{
+	display: inline-block;
+	margin-top: 4px;
 }
 .buy-now{
 	display: block;
@@ -106,7 +176,7 @@ export default {
 	font-size: @bfz;
 	border-radius: @br;
 	border: 1px solid @theme;
-	margin-top: 30px;;
+	margin-top: 20px;
 }
 .vali-notice{
 	display: block;

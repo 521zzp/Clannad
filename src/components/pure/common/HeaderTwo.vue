@@ -9,7 +9,7 @@
 					<router-link to="/" class="level-one fl">首页</router-link>
 				</div>
 				<div class="nav-item">
-					<router-link to="/" class="level-one fl">我要理财</router-link>
+					<router-link to="/product" class="level-one fl">我要理财</router-link>
 				</div>
 				<div class="nav-item more-items info-show">
 					<span class="level-one fl ">信息披露
@@ -33,10 +33,14 @@
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
 					<nav class="nav-two clearfix">
-						<router-link to="/product" class="level-two">我要理财</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/account" class="level-two">账户总览</router-link>
+						<router-link to="/product" class="level-two">我的理财</router-link>
+						<router-link to="/product" class="level-two">活期宝</router-link>
+						<router-link to="/product" class="level-two">我的礼券</router-link>
+						<router-link to="/product" class="level-two">我的商品</router-link>
+						<router-link to="/product" class="level-two">我是经销商</router-link>
+						<router-link to="/product" class="level-two">个人资料</router-link>
+						<router-link to="/product" class="level-two">资金记录</router-link>
 					</nav>
 				</div>
 			</nav>

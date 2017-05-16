@@ -1,0 +1,15 @@
+{
+	currBalance: 45554,
+	yesterday: 5552,
+	total: 121,
+	rate: 3.20,
+},
+
+
+
+公共：
+
+{
+	balance: 4545, //余额
+	freeze：4165, //冻结金额
+}

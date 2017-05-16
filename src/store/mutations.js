@@ -11,6 +11,9 @@ export const mutations = {
 			message(obj.msg, 2, ()=>router.push('/'))
 		}else{
 			message(obj.msg,4);
+			store.state.token = '';
+			store.state.user = {};
+			message(obj.msg, 2, ()=>router.push('/'))
 		}
     },
     [types.HOME_IMG_UPLOAD] (state,obj) {

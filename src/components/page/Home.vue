@@ -10,7 +10,6 @@
 		<News/>
 		<Partner/>
 		<AFooter/>
-		
 	</div>
 </template>
 
