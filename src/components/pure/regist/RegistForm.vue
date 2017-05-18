@@ -12,7 +12,7 @@
 	            <Input type="text" placeholder="请输入手机验证码" v-model="registForm.phoneCode"></Input>
 	            <span class="send-code" @click="sendCode">{{text}}</span>
 	        </Form-item>
-	        <Form-item  class="rela-plant"label="验证码" prop="picCode">
+	        <Form-item  class="rela-plant" label="验证码" prop="picCode">
 	            <Input type="text" placeholder="请输入图形验证码" v-model="registForm.picCode"></Input>
 	            <img class="imgVali" :src="imgCodeSrc" @click="imgRefresh" alt="点击更新" title="点击更新" />
 	        </Form-item>

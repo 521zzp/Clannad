@@ -27,9 +27,8 @@
 				</div>
 				<div class="nav-item more-items user-info">
 					<span class="level-one fl ">
-						<router-link to="/" class="level-one fl">
 							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face" @click="modal = true"/>
-							我的账户</router-link>
+							我的账户
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
 					<nav class="nav-two clearfix">
@@ -90,10 +89,8 @@ export default {
 	},
 	methods: {
 		ok () {
-            this.$Message.info('点击了确定');
         },
         cancel () {
-            this.$Message.info('点击了取消');
         },
         handleFormatError (file) {
             this.$Notice.warning({

@@ -5,7 +5,9 @@
 				<Breadcrumb :bread="bread"/>
 		</div>
 		<div class="container clearfix">
-			<div class="content fr"></div>
+			<div class="content fr">
+				<router-view></router-view>
+			</div>
 			<div class="navs fl">
 				<UserInfo class="user-info"/>
 				<NavBar/>
@@ -32,19 +34,6 @@ export default {
 			return this.$store.state.account.bread
 		}
 	},
-	created () {
-		let bread = [
-				{
-					name: '余惠宝首页',
-					url: '/'
-				},
-				{
-					name: '账户总览',
-					url: ''
-				},
-			];
-		this.$store.dispatch('accountBreadChange', bread)
-	},
 	components: {
 		AHeader,
 		AFooter,
@@ -61,8 +50,10 @@ export default {
 .container{
 	width: @mwsec;
 	margin:0 auto;
+	margin-bottom: 40px;
 	min-height: 1030px;
 	border:1px solid @border-two;
+	background-color: #fafafa;
 }
 .my-bread{
 	width: @mwsec;
@@ -81,5 +72,6 @@ export default {
 	min-height: 1030px;
 	background-color: @white;
 	border-left: 1px solid @border-two; 
+	padding: 48px 48px;
 }
 </style>

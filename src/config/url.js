@@ -1,5 +1,5 @@
-export const BASEURL = 'http://192.168.1.200:8080'  //服务器地址  孔
-//export const BASEURL = 'http://192.168.1.215:8888'  //服务器地址  汪
+//export const BASEURL = 'http://192.168.1.200:8080'  //服务器地址  孔
+export const BASEURL = 'http://192.168.1.215:8888'  //服务器地址  汪
 
 export const IMG = 'http://www.art.com' //图片服务器地址
 export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=personinfo' //余惠宝官方微博
@@ -24,3 +24,12 @@ export const HOME_PRODUCTS = BASEURL + '/invest/center' //获取产品列表
 
 //产品详情页
 export const PRO_DETAIL_INFO = BASEURL + '/invest/proInfo' //产品详情信息
+
+//个人中心
+export const ACC_BIND_STATE = BASEURL + '/user/grade' //四种绑定状态
+
+//账户总览
+export const ACC_OV_CAP = BASEURL + '/user/info'  //账户总览资金概况
+
+//银行卡管理 
+export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的银行列表

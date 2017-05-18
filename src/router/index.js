@@ -51,6 +51,31 @@ const Account = resolve => {
     resolve(require('@/components/page/Account.vue'))
   })
 }
+const Overview = resolve => {
+  require.ensure(['@/components/page/account/Overview.vue'], () => {
+    resolve(require('@/components/page/account/Overview.vue'))
+  })
+}
+const BankCard = resolve => {
+  require.ensure(['@/components/page/account/BankCard.vue'], () => {
+    resolve(require('@/components/page/account/BankCard.vue'))
+  })
+}
+const BankCardAdd = resolve => {
+  require.ensure(['@/components/page/account/BankCardAdd.vue'], () => {
+    resolve(require('@/components/page/account/BankCardAdd.vue'))
+  })
+}
+const BankCardChange = resolve => {
+  require.ensure(['@/components/page/account/BankCardChange.vue'], () => {
+    resolve(require('@/components/page/account/BankCardChange.vue'))
+  })
+}
+const Current = resolve => {
+  require.ensure(['@/components/page/account/Current.vue'], () => {
+    resolve(require('@/components/page/account/Current.vue'))
+  })
+}
 
 
 
@@ -92,8 +117,40 @@ export default new Router({
 	    },
 	    {
 	      path: '/account',
-	      name: 'Account',
-	      component: Account
+	      component: Account,
+	      children: [
+	      	{
+	      		path: '',
+	      		name:'overview',
+	      	  component: Overview,
+	      	  meta: {accBar: 1}
+	      	},
+	      	{
+	      		path: 'current',
+	      		name:'current',
+	      	  component: Current,
+	      	  meta: {accBar: 3}
+	      	},
+	      	{
+	      		path: 'bankcard',
+	      		name:'bankcard',
+	      	  component: BankCard,
+	      	  meta: {accBar: 9}
+	      	},
+	      	{
+	      		path: 'bankcard-add',
+	      		name:'bankcard-add',
+	      	  component: BankCardAdd,
+	      	  meta: {accBar: 9}
+	      	},
+	      	{
+	      		path: 'bankcard-change',
+	      		name:'bankcard-change',
+	      	  component: BankCardChange,
+	      	  meta: {accBar: 9}
+	      	},
+	      	
+	      ]
 	    },
 	    {
 	      path: '/recharge',

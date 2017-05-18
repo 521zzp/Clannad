@@ -13,3 +13,39 @@
 	balance: 4545, //余额
 	freeze：4165, //冻结金额
 }
+
+
+活期宝转入/转出记录： 
+请求总页数
+post,带token
+datas: {
+	startTime: '',
+	emdTime: '',
+}
+
+返回：
+datas {
+	total: 100
+}
+
+请求每页数据，集合
+post,带token
+datas: {
+	startTime: '',
+	emdTime: '',
+	current: 15
+}
+
+返回：
+datas: [
+	{
+		time: '',
+		money: 450
+	}
+]
+
+转入/转出：
+{
+	money: 500,
+	paypwd: 552341
+}

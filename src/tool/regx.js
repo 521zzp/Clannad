@@ -27,14 +27,45 @@ export const validatePwd = (rule, value, callback) => {
  */
 export const validateInvitePhone = (rule, value, callback) => {
 	let regx = /^1[34578]\d{9}$/;
-	
-	console.log(value)
 	if (value !=='' && !regx.test(value)) {
 		 callback(new Error('邀请码不正确'));
 	} else{
 		callback();
 	}
 };
+/*
+ * 验证身份证号
+ */
+export const validateIdcard = (rule, value, callback) => {
+	let regx = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/;
+	if (!regx.test(value)) {
+		 callback(new Error('身份证不正确'));
+	} else{
+		callback();
+	}
+};
+/*
+ * 验证银行卡号
+ */
+export const validateBankcard = (rule, value, callback) => {
+	let regx = /^(\d{16}|\d{19})$/;
+	if (!regx.test(value)) {
+		 callback(new Error('银行卡号不正确'));
+	} else{
+		callback();
+	}
+};
+/*
+ * 验证省市级联
+ */
+export const validateProCity = (rule, value, callback) => {
+	if (!value[0]) {
+		 callback(new Error('请选择省市'));
+	} else{
+		callback();
+	}
+};
+
 
 
 /*

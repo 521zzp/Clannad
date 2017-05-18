@@ -3,16 +3,16 @@
 		<div class="head clearfix">
 			<img class="head-img fl" :src="img" alt="" />
 			<div class="head-info fl">
-				<span class="name">音无结弦</span>
+				<span class="name">{{this.$store.state.user.name}}</span>
 				<span v-if="$store.state.user.level === '会员'"  class="level">会员</span>
 				<span class="level">普通</span>
 			</div>
 		</div>
 		<div class="infos clearfix">
-			<router-link to="/product" class="info-item fl id-card"></router-link>
-			<router-link to="/product" class="info-item fl bank-acrd"></router-link>
-			<router-link to="/product" class="info-item fl pay-pwd"></router-link>
-			<router-link to="/product" class="info-item fl assurance"></router-link>
+			<router-link to="/product" class="info-item fl id-card" :class="{active: idCard}" :title="idCardT"></router-link>
+			<router-link to="/product" class="info-item fl bank-acrd" :class="{active: bankCard}" :title="bankCardT"></router-link>
+			<router-link to="/product" class="info-item fl pay-pwd" :class="{active: payPwd}" :title="payPwdT"></router-link>
+			<router-link to="/product" class="info-item fl assurance" :class="{active: assuer}" :title="assuerT"></router-link>
 		</div>
 	</div>
 </template>
@@ -25,7 +25,34 @@ export default {
 		}
 	},
 	computed: {
+		idCard () {
+			return this.$store.state.account.bindStatus.idCard
+		},
+		idCardT () {
+			return this.$store.state.account.bindStatus.idCard ? '您已完成实名认证' : '您还未完成实名认证'
+		},
+		bankCard () {
+			return this.$store.state.account.bindStatus.bankCard
+		},
+		bankCardT () {
+			return this.$store.state.account.bindStatus.bankCard ? '您已绑定银行卡' : '您还未绑定银行卡'
+		},
+		payPwd () {
+			return this.$store.state.account.bindStatus.payPwd
+		},
+		payPwdT () {
+			return this.$store.state.account.bindStatus.payPwd ? '您已设置支付密码' : '您还未设置支付密码'
+		},
+		assuer () {
+			return this.$store.state.account.bindStatus.insur
+		},
+		assuerT () {
+			return this.$store.state.account.bindStatus.insur ? '您已购买保险' : '您还未购买保险'
+		}
 		
+	},
+	created () {
+		this.$store.dispatch('accountBindState')
 	}
 }
 </script>
