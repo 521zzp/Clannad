@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<Form id="one-form" class="only-regist-form"  ref="oneForm" :model="oneForm" :rules="rules" :label-width="80">
+		<Form id="one-form" class="only-regist-form"  ref="oneForm" :model="oneForm" :rules="rules" :label-width="100">
 	        <Form-item label="手机号码" prop="account">
-	            <Input class="regist-item" type="text" placeholder="请输入手机号码" v-model="oneForm.account"></Input>
+	            <Input size="large" class="regist-item" type="text" placeholder="请输入手机号码" v-model="oneForm.account"></Input>
 	        </Form-item>
 	        <Form-item class="rela-plant" label="手机验证码" prop="phoneCode">
-	            <Input type="text" placeholder="请输入手机验证码" v-model="oneForm.phoneCode"></Input>
+	            <Input size="large" type="text" placeholder="请输入手机验证码" v-model="oneForm.phoneCode"></Input>
 	            <span class="send-code" @click="sendCode">{{text}}</span>
 	        </Form-item>
 	        <Form-item>
@@ -79,11 +79,11 @@ import {validatePhone,checkPhone} from '@/tool/regx'
 	padding-left: 10px;
 	position: absolute;
 	right: 10px;
-	top: 6px;
+	top: 1px;
 	cursor: pointer;
-	height: 30px;
+	height: 34px;
 	display: block;
-	line-height: 30px;
+	line-height: 34px;
 	color: @border-one;
 	border-left: 1px solid @border-one;
 }

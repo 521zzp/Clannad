@@ -44,6 +44,14 @@ export default {
 	
 }
 </script>
+<style lang="less">
+@import '../../config/base.less';
+.user-account-common-title{
+	font-size: @bfz;
+	color: @gray-three;
+	display: block;
+}
+</style>
 
 <style scoped="scoped" lang="less">
 @import '../../config/base.less';

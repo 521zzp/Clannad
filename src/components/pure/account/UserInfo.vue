@@ -125,6 +125,7 @@ export default {
 }
 .level{
 	width: 56px;
+	margin-left: 8px;
 	height: 18px;
 	display: inline-block;
 	text-indent: 2em;

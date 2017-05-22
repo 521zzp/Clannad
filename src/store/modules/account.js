@@ -25,7 +25,7 @@ const state = {
 		baseInfo: {
 		},
 		banks: [] //支持银行列表
-	},
+	}
 }
 
 

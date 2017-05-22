@@ -56,6 +56,18 @@ export const validateBankcard = (rule, value, callback) => {
 	}
 };
 /*
+ * 验证支付密码
+ */
+export const validatePayPwd = (rule, value, callback) => {
+	let regx = /^\d{6}$/;
+	if (!regx.test(value)) {
+		 callback(new Error('支付密码不正确'));
+	} else{
+		callback();
+	}
+}
+
+/*
  * 验证省市级联
  */
 export const validateProCity = (rule, value, callback) => {
@@ -79,3 +91,25 @@ export const checkPhone = ( phone ) => {
 		return true;
 	}
 };
+/*
+ * 验证密码格式，返回布尔
+ */
+export const checkPwd = ( value ) => {
+	let regx = /^(?![^a-zA-Z]+$)(?!\D+$).{6,18}$/;
+	if (!regx.test(value)) {
+		return false;
+	} else{
+		return true;
+	}
+}
+/*
+ * 验证支付密码格式，返回布尔
+ */
+export const checkPayPwd = ( value )=> {
+	let regx = /^\d{6}$/;
+	if (!regx.test(value)) {
+		return false;
+	} else{
+		return true;
+	}
+}

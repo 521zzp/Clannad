@@ -76,6 +76,21 @@ const Current = resolve => {
     resolve(require('@/components/page/account/Current.vue'))
   })
 }
+const Insurance = resolve => {
+  require.ensure(['@/components/page/account/Insurance.vue'], () => {
+    resolve(require('@/components/page/account/Insurance.vue'))
+  })
+}
+const Message = resolve => {
+  require.ensure(['@/components/page/account/Message.vue'], () => {
+    resolve(require('@/components/page/account/Message.vue'))
+  })
+}
+const Information = resolve => {
+  require.ensure(['@/components/page/account/Information.vue'], () => {
+    resolve(require('@/components/page/account/Information.vue'))
+  })
+}
 
 
 
@@ -132,6 +147,18 @@ export default new Router({
 	      	  meta: {accBar: 3}
 	      	},
 	      	{
+	      		path: 'insurance',
+	      		name:'insurance',
+	      	  component: Insurance,
+	      	  meta: {accBar: 7}
+	      	},
+	      	{
+	      		path: 'information',
+	      		name:'information',
+	      	  component: Information,
+	      	  meta: {accBar: 8}
+	      	},
+	      	{
 	      		path: 'bankcard',
 	      		name:'bankcard',
 	      	  component: BankCard,
@@ -149,7 +176,12 @@ export default new Router({
 	      	  component: BankCardChange,
 	      	  meta: {accBar: 9}
 	      	},
-	      	
+	      	{
+	      		path: 'message',
+	      		name:'message',
+	      	  component: Message,
+	      	  meta: {accBar: 11}
+	      	},
 	      ]
 	    },
 	    {

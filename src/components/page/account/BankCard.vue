@@ -1,6 +1,6 @@
 <template>
 	<div class="bank-acrd">
-		<b class="title">银行卡管理</b>
+		<b class="user-account-common-title">银行卡管理</b>
 		<div v-if="!$store.state.account.bindStatus.bankCard" class="add">
 			<div class="add-btn">
 				<router-link to="/account/bankcard-add" class=""><Icon class="add-icon" type="plus-circled" :size="64"></Icon></router-link>
@@ -67,11 +67,6 @@
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
-.title{
-	font-size: @bfz;
-	color: @gray-three;
-	display: block;
-}
 .slide-fade-enter-active {
   transition: all .3s ease;
 }

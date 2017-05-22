@@ -1,38 +1,38 @@
 <template>
 	<div>
-		<b class="title">更换银行卡</b>
+		<b class="user-account-common-title">更换银行卡</b>
 		<Form class="my-form" ref="form" :model="form" :rules="ruleValidate" :label-width="100">
 	        <Form-item label="真实姓名" prop="name">
-	            <Input v-model="form.name" placeholder="请输入姓名" disabled></Input>
+	            <Input size="large" v-model="form.name" placeholder="请输入姓名" disabled></Input>
 	        </Form-item>
 	        <Form-item label="身份证" prop="idcard">
-	            <Input v-model="form.idcard" placeholder="请输身份证号" :maxlength="18" disabled></Input>
+	            <Input size="large" v-model="form.idcard" placeholder="请输身份证号" :maxlength="18" disabled></Input>
 	        </Form-item>
 	        <Form-item label="选择银行" prop="bank">
-	            <Cascader v-model="form.bank" :data="bankList"></Cascader>
+	            <Cascader size="large" v-model="form.bank" :data="bankList"></Cascader>
 	        </Form-item>
 	        <Form-item label="开户省/市" prop="area" class="add-bankcard-pro-city">
-	            <Cascader v-model="form.area" :data="form.areaList"></Cascader>
+	            <Cascader size="large" v-model="form.area" :data="form.areaList"></Cascader>
 	        </Form-item>
 	        <Form-item label="开户支行" prop="branch">
-	            <Input v-model="form.branch" placeholder="请输入开户支行"></Input>
+	            <Input size="large" v-model="form.branch" placeholder="请输入开户支行"></Input>
 	        </Form-item>
 	        <Form-item label="开户分行" prop="subbranch">
-	            <Input v-model="form.subbranch" placeholder="请输入开户分行"></Input>
+	            <Input size="large" v-model="form.subbranch" placeholder="请输入开户分行"></Input>
 	        </Form-item>
 	        <Form-item label="银行卡号" prop="card">
-	            <Input v-model="form.card" placeholder="请输入银行卡号" :maxlength="19"></Input>
+	            <Input size="large" v-model="form.card" placeholder="请输入银行卡号" :maxlength="19"></Input>
 	        </Form-item>
 	        <Form-item label="预留手机号" prop="phone">
-	            <Input v-model="form.phone" placeholder="请输入银行预留手机号" :maxlength="11"></Input>
+	            <Input size="large" v-model="form.phone" placeholder="请输入银行预留手机号" :maxlength="11"></Input>
 	        </Form-item>
 	        <Form-item label="验证码" class="rela-plant" prop="phoneCode">
-	            <Input v-model="form.phoneCode" placeholder="请输入验证码"></Input>
+	            <Input size="large" v-model="form.phoneCode" placeholder="请输入验证码"></Input>
 	            <span class="send-code" >发送验证码</span>
 	        </Form-item>
 	        <Form-item>
-	            <Button type="primary" @click="handleSubmit('form')">提交</Button>
-	            <Button type="ghost" @click="handleReset('form')" style="margin-left: 8px">重置</Button>
+	            <Button size="large" type="primary" @click="handleSubmit('form')">提交</Button>
+	            <Button size="large" type="ghost" @click="handleReset('form')" style="margin-left: 8px">重置</Button>
 	        </Form-item>
 	    </Form>
 	</div>
@@ -138,7 +138,9 @@ export default {
         }
     },
     created () {
-    	this.$store.dispatch('supportBankUpdate')
+    	if (this.$store.state.account.bankCard.banks.length === 0) {
+    		this.$store.dispatch('supportBankUpdate')
+    	}
     },
     computed: {
     	bankList () {
@@ -199,11 +201,6 @@ export default {
 </style>
 <style lang="less" scoped="scoped">
 @import '../../../config/base.less';
-.title{
-	font-size: @bfz;
-	color: @gray-three;
-	display: block;
-}
 .rela-plant{
 	position: relative;
 }
@@ -216,8 +213,9 @@ export default {
 .send-code{
 	position: absolute;
 	right: 10px;
-	height: 30px;
-	top: 2px;
+	height: 34px;
+	line-height: 34px;
+	top: 1px;
 	padding-left: 10px;
 	cursor: pointer;
 	border-left: 1px solid @border-one;
