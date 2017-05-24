@@ -1,0 +1,16 @@
+1.引用Echarts插件在ie及edge中均报错，chrome和firefox中正常
+	解决办法：检测浏览器类型，动态生成标签
+2.列表渲染多个router-link时生成不同router-link异常
+	解决办法：编程式导航，用事件触发导航
+3.在store里面mutations触发导航变化
+	解决办法: import router from '@/router' 然后就可以用router的方法
+3.在store子模块里面改变其他模块的state，如根模块，
+	解决办法：commit 或者注入 根store
+4.vuex在ie中报错
+	解决办法：在store中 import 'babel-polyfill' //vuex 兼容ie需要
+5.ie不支持fetch
+	解决办法：在main.js中引入 import 'whatwg-fetch' fetch兼容需要
+6.第三方充值接口回调发的是post请求，无法解析
+	解决办法：发送到后台生成jsp页面，里面写js带参数跳转
+7.iview表单验证一般只验证格式，参数都写死的，想要根据store里面数据进行验证
+	解决办法：由于验证函数是单独抽离开来的，里面不能用this，那么只有在组件内手动引入store

@@ -3,7 +3,7 @@
 		<b class="user-account-common-title">银行卡管理</b>
 		<div v-if="!$store.state.account.bindStatus.bankCard" class="add">
 			<div class="add-btn">
-				<router-link to="/account/bankcard-add" class=""><Icon class="add-icon" type="plus-circled" :size="64"></Icon></router-link>
+				<router-link to="/account/bankcard/add" class=""><Icon class="add-icon" type="plus-circled" :size="64"></Icon></router-link>
 			</div>
 			<span class="add-desc">添加银行卡</span>
 		</div>
@@ -18,7 +18,7 @@
 			</div>
 			<div class="operate clearfix">
 				<span class="fl" @click="bankInfoOpen = !bankInfoOpen">详细信息<Icon class="arrow" :class="{down: bankInfoOpen}" type="chevron-down"></Icon></span>
-				<router-link class="fr" to="/account/bankcard-change">修改</router-link>
+				<router-link class="fr" to="/account/bankcard/change">修改</router-link>
 			</div>
 			<transition name="slide-fade">
 				<div v-if="bankInfoOpen" class="bank-info clearfix">

@@ -56,6 +56,11 @@ const Overview = resolve => {
     resolve(require('@/components/page/account/Overview.vue'))
   })
 }
+const Financing = resolve => {
+  require.ensure(['@/components/page/account/Financing.vue'], () => {
+    resolve(require('@/components/page/account/Financing.vue'))
+  })
+}
 const BankCard = resolve => {
   require.ensure(['@/components/page/account/BankCard.vue'], () => {
     resolve(require('@/components/page/account/BankCard.vue'))
@@ -74,6 +79,21 @@ const BankCardChange = resolve => {
 const Current = resolve => {
   require.ensure(['@/components/page/account/Current.vue'], () => {
     resolve(require('@/components/page/account/Current.vue'))
+  })
+}
+const CurrentOut = resolve => {
+  require.ensure(['@/components/page/account/CurrentOut.vue'], () => {
+    resolve(require('@/components/page/account/CurrentOut.vue'))
+  })
+}
+const CurrentIn = resolve => {
+  require.ensure(['@/components/page/account/CurrentIn.vue'], () => {
+    resolve(require('@/components/page/account/CurrentIn.vue'))
+  })
+}
+const Franchiser = resolve => {
+  require.ensure(['@/components/page/account/Franchiser.vue'], () => {
+    resolve(require('@/components/page/account/Franchiser.vue'))
   })
 }
 const Insurance = resolve => {
@@ -141,10 +161,34 @@ export default new Router({
 	      	  meta: {accBar: 1}
 	      	},
 	      	{
+	      		path: 'financing',
+	      		name:'financing',
+	      	  component: Financing,
+	      	  meta: {accBar: 2}
+	      	},
+	      	{
 	      		path: 'current',
 	      		name:'current',
 	      	  component: Current,
 	      	  meta: {accBar: 3}
+	      	},
+	      	{
+	      		path: 'current/out',
+	      		name:'current-out',
+	      	  component: CurrentOut,
+	      	  meta: {accBar: 3}
+	      	},
+	      	{
+	      		path: 'current/in',
+	      		name:'current-in',
+	      	  component: CurrentIn,
+	      	  meta: {accBar: 3}
+	      	},
+	      	{
+	      		path: 'franchiser',
+	      		name:'franchiser',
+	      	  component: Franchiser,
+	      	  meta: {accBar: 6}
 	      	},
 	      	{
 	      		path: 'insurance',
@@ -165,13 +209,13 @@ export default new Router({
 	      	  meta: {accBar: 9}
 	      	},
 	      	{
-	      		path: 'bankcard-add',
+	      		path: 'bankcard/add',
 	      		name:'bankcard-add',
 	      	  component: BankCardAdd,
 	      	  meta: {accBar: 9}
 	      	},
 	      	{
-	      		path: 'bankcard-change',
+	      		path: 'bankcard/change',
 	      		name:'bankcard-change',
 	      	  component: BankCardChange,
 	      	  meta: {accBar: 9}

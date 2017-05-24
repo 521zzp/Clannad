@@ -34,6 +34,9 @@ const store = new Vuex.Store({
 			name: '音无结弦',
 			img: '//i0.hdslb.com/bfs/face/121922b3ec1235997d5611f826e19faf31bd6d40.jpg_52x52.jpg',
 		}, */
+		capital: {
+			balance: 1000
+		},
 		notice: {
 			state: 1,
 			type: 0,

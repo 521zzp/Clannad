@@ -25,6 +25,9 @@ const state = {
 		baseInfo: {
 		},
 		banks: [] //支持银行列表
+	},
+	current: {
+		balance: 5000
 	}
 }
 

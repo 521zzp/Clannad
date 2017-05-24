@@ -66,6 +66,17 @@ export const validatePayPwd = (rule, value, callback) => {
 		callback();
 	}
 }
+/*
+ * 转入转出金额整数验证
+ */
+export const ValidateChangeMoney = (rule, value, callback) => {
+	let regx = /^[1-9][0-9]*$/;
+	if (!regx.test(value)) {
+		 callback(new Error('金额只能为正整数'));
+	} else{
+		callback();
+	}
+}
 
 /*
  * 验证省市级联
@@ -77,6 +88,8 @@ export const validateProCity = (rule, value, callback) => {
 		callback();
 	}
 };
+
+
 
 
 

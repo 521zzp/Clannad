@@ -43,11 +43,11 @@
 			<span class="item-desc">交易密码</span>
 			<span class="item-info">保障资金安全，充值、提现、投资登资金相关操作时使用</span>
 			<span v-if="payPwd" class="fr link-btn">
-				<span  @click="openChange(4),payPwdTypeSet(2)">修改</span>
+				<span  @click="payPwdTypeSet(2)">修改</span>
 				|
-				<span @click="openChange(4),payPwdTypeSet(3)">找回</span>
+				<span @click="payPwdTypeSet(3)">找回</span>
 			</span>
-			<span v-else class="fr link-btn" @click="openChange(4),payPwdTypeSet(1)" >立即设置</span>
+			<span v-else class="fr link-btn" @click="payPwdTypeSet(1)" >立即设置</span>
 		</div>
 		<InfoPayPwd class="fold" :class="{open: open === 4}" :type="payPwdTypeChild"/>		
 	</div>
@@ -96,7 +96,17 @@ export default {
 			
 		},
 		payPwdTypeSet (type) {
-			this.payPwdType = type
+			if (this.payPwdType !== type && this.open === 4) {
+				this.payPwdType = type
+			} else{
+				if (this.open !== 4) {
+					this.open = 4
+					this.payPwdType = type
+				} else{
+					this.open = 0
+				}
+				
+			}
 		}
 	},
 	components: {

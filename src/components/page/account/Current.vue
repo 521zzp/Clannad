@@ -58,25 +58,25 @@ export default {
 		}
 	},
 	mounted () {
-			let bread = [
-					{
-						name: '余惠宝',
-						url: '/'
-					},
-					{
-						name: '我的账户',
-						url: '/account'
-					},
-					{
-						name: '活期宝',
-						url: ''
-					},
-				];
-			this.$store.dispatch('accountBreadChange', bread)
-		},
-		components: {
-			CurrentRecord
-		}
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '我的账户',
+					url: '/account'
+				},
+				{
+					name: '活期宝',
+					url: ''
+				},
+			];
+		this.$store.dispatch('accountBreadChange', bread)
+	},
+	components: {
+		CurrentRecord
+	}
 }
 </script>
 
@@ -89,11 +89,11 @@ export default {
 }
 .recently .desc{
 	display: block;
-	text-align: center;
+	text-align: left;
 }
 .recently .value{
 	display: block;
-	text-align: center;
+	text-align: left;
 	font-size: @sfz * 2;
 	color: @gray-three;
 	margin-top: @fz;
