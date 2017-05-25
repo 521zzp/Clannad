@@ -10,6 +10,7 @@ import recharge from './modules/recharge'
 import resetpwd from './modules/resetpwd'
 import prodetail from './modules/prodetail'
 import account from './modules/account'
+import publicity from './modules/publicity'
 
 
 Vue.use(Vuex)
@@ -70,7 +71,8 @@ const store = new Vuex.Store({
 		recharge,
 		resetpwd,
 		prodetail,
-		account
+		account,
+		publicity
 	}
 })
 

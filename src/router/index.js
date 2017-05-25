@@ -111,8 +111,56 @@ const Information = resolve => {
     resolve(require('@/components/page/account/Information.vue'))
   })
 }
-
-
+const Publicity = resolve => {
+  require.ensure(['@/components/page/Publicity.vue'], () => {
+    resolve(require('@/components/page/Publicity.vue'))
+  })
+}
+const SystemIllustrate = resolve => {
+  require.ensure(['@/components/page/publicity/SystemIllustrate.vue'], () => {
+    resolve(require('@/components/page/publicity/SystemIllustrate.vue'))
+  })
+}
+const Deposit = resolve => {
+  require.ensure(['@/components/page/publicity/Deposit.vue'], () => {
+    resolve(require('@/components/page/publicity/Deposit.vue'))
+  })
+}
+const Provisions = resolve => {
+  require.ensure(['@/components/page/publicity/Provisions.vue'], () => {
+    resolve(require('@/components/page/publicity/Provisions.vue'))
+  })
+}
+const SafeConduct = resolve => {
+  require.ensure(['@/components/page/publicity/SafeConduct.vue'], () => {
+    resolve(require('@/components/page/publicity/SafeConduct.vue'))
+  })
+}
+const Partner = resolve => {
+  require.ensure(['@/components/page/publicity/Partner.vue'], () => {
+    resolve(require('@/components/page/publicity/Partner.vue'))
+  })
+}
+const ServiceNote = resolve => {
+  require.ensure(['@/components/page/publicity/ServiceNote.vue'], () => {
+    resolve(require('@/components/page/publicity/ServiceNote.vue'))
+  })
+}
+const YhbData = resolve => {
+  require.ensure(['@/components/page/publicity/Data.vue'], () => {
+    resolve(require('@/components/page/publicity/Data.vue'))
+  })
+}
+const ContactUs = resolve => {
+  require.ensure(['@/components/page/publicity/ContactUs.vue'], () => {
+    resolve(require('@/components/page/publicity/ContactUs.vue'))
+  })
+}
+const Aptitude = resolve => {
+  require.ensure(['@/components/page/publicity/Aptitude.vue'], () => {
+    resolve(require('@/components/page/publicity/Aptitude.vue'))
+  })
+}
 
 
 Vue.use(Router)
@@ -225,6 +273,67 @@ export default new Router({
 	      		name:'message',
 	      	  component: Message,
 	      	  meta: {accBar: 11}
+	      	},
+	      ]
+	    },
+	    {
+	      path: '/publicity',
+	      name: 'Publicity',
+	      component: Publicity,
+	      children: [
+	      	{
+	      		path: 'systemIllustrate',
+	      		name:'systemIllustrate',
+	      	  component: SystemIllustrate,
+	      	  meta: {pubBar: 1}
+	      	},
+	      	{
+	      		path: 'deposit',
+	      		name:'deposit',
+	      	  component: Deposit,
+	      	  meta: {pubBar: 2}
+	      	},
+	      	{
+	      		path: 'provisions',
+	      		name:'provisions',
+	      	  component: Provisions,
+	      	  meta: {pubBar: 3}
+	      	},
+	      	{
+	      		path: 'data',
+	      		name:'yhbData',
+	      	  component: YhbData,
+	      	  meta: {pubBar: 4}
+	      	},
+	      	{
+	      		path: 'safeConduct',
+	      		name:'safeConduct',
+	      	  component: SafeConduct,
+	      	  meta: {pubBar: 5}
+	      	},
+	      	{
+	      		path: 'aptitude',
+	      		name:'aptitude',
+	      	  component: Aptitude,
+	      	  meta: {pubBar: 10}
+	      	},
+	      	{
+	      		path: 'serviceNote',
+	      		name:'serviceNote',
+	      	  component: ServiceNote,
+	      	  meta: {pubBar: 11}
+	      	},
+	      	{
+	      		path: 'partner',
+	      		name:'partner',
+	      	  component: Partner,
+	      	  meta: {pubBar: 12}
+	      	},
+	      	{
+	      		path: 'contactUs',
+	      		name:'contactUs',
+	      	  component: ContactUs,
+	      	  meta: {pubBar: 13}
 	      	},
 	      ]
 	    },

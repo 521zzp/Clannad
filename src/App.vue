@@ -16,4 +16,5 @@ export default {
 </script>
 
 <style>
+	@import 'config/animate.css';
 </style>

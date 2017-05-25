@@ -12,11 +12,11 @@
 					<router-link to="/product" class="level-one fl">我要理财</router-link>
 				</div>
 				<div class="nav-item more-items info-show">
-					<span class="level-one fl ">信息披露
+					<router-link to="/publicity/systemIllustrate" class="level-one fl ">信息披露
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
-					</span>
+					</router-link>
 					<nav class="nav-two clearfix">
-						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/publicity/systemIllustrate" class="level-two">系统说明</router-link>
 						<router-link to="/product" class="level-two">我要理财</router-link>
 						<router-link to="/product" class="level-two">我要理财</router-link>
 						<router-link to="/product" class="level-two">我要理财</router-link>
@@ -28,7 +28,7 @@
 				<div class="nav-item more-items user-info">
 					<span class="level-one fl ">
 							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face" @click="modal = true"/>
-							我的账户
+							<router-link to="/account" class="level-one">我的账户</router-link>
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</span>
 					<nav class="nav-two clearfix">
