@@ -81,9 +81,9 @@ import {validatePhone,checkPhone} from '@/tool/regx'
 	right: 10px;
 	top: 1px;
 	cursor: pointer;
-	height: 34px;
+	height: 42px;
 	display: block;
-	line-height: 34px;
+	line-height: 42px;
 	color: @border-one;
 	border-left: 1px solid @border-one;
 }

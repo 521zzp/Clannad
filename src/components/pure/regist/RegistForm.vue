@@ -150,11 +150,11 @@
 	padding-left: 10px;
 	position: absolute;
 	right: 10px;
-	top: 6px;
+	top: 1px;
 	cursor: pointer;
-	height: 30px;
+	height: 42px;
 	display: block;
-	line-height: 30px;
+	line-height: 42px;
 	color: @border-one;
 	border-left: 1px solid @border-one;
 }

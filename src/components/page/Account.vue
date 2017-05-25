@@ -51,6 +51,12 @@ export default {
 	color: @gray-three;
 	display: block;
 }
+.acc-page-wrap{
+	text-align: center;
+}
+.acc-page-nav-center{
+	display: inline-block;
+}
 </style>
 
 <style scoped="scoped" lang="less">

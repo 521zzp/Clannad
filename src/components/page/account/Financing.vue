@@ -1,7 +1,7 @@
 <template>
 	<div class="clearfix">
 		<b class="user-account-common-title">我的理财</b>
-		<span class="yesterday">昨日收益（元）：50</span>
+		<span class="yesterday">昨日收益（元）：<span class="theme-color">50</span></span>
 		<Tabs class="only-financing-taps" value="on">
 	        <Tab-pane label="持有中" name="on">
 	        	<FinanceOn/>
@@ -46,6 +46,9 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
+.theme-color{
+	color: @theme;
+}
 .only-financing-taps{
 	margin-top: 24px;
 }
