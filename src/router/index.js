@@ -161,6 +161,11 @@ const Aptitude = resolve => {
     resolve(require('@/components/page/publicity/Aptitude.vue'))
   })
 }
+const AppDownload = resolve => {
+  require.ensure(['@/components/page/AppDownload.vue'], () => {
+    resolve(require('@/components/page/AppDownload.vue'))
+  })
+}
 
 
 Vue.use(Router)
@@ -285,63 +290,68 @@ export default new Router({
 	      		path: 'systemIllustrate',
 	      		name:'systemIllustrate',
 	      	  component: SystemIllustrate,
-	      	  meta: {pubBar: 1}
+	      	  meta: {pubBar: 2}
 	      	},
 	      	{
 	      		path: 'deposit',
 	      		name:'deposit',
 	      	  component: Deposit,
-	      	  meta: {pubBar: 2}
+	      	  meta: {pubBar: 3}
 	      	},
 	      	{
 	      		path: 'provisions',
 	      		name:'provisions',
 	      	  component: Provisions,
-	      	  meta: {pubBar: 3}
+	      	  meta: {pubBar: 4}
 	      	},
 	      	{
 	      		path: 'data',
 	      		name:'yhbData',
 	      	  component: YhbData,
-	      	  meta: {pubBar: 4}
+	      	  meta: {pubBar: 5}
 	      	},
 	      	{
 	      		path: 'safeConduct',
 	      		name:'safeConduct',
 	      	  component: SafeConduct,
-	      	  meta: {pubBar: 5}
+	      	  meta: {pubBar: 6}
 	      	},
 	      	{
 	      		path: 'aptitude',
 	      		name:'aptitude',
 	      	  component: Aptitude,
-	      	  meta: {pubBar: 10}
+	      	  meta: {pubBar: 11}
 	      	},
 	      	{
 	      		path: 'serviceNote',
 	      		name:'serviceNote',
 	      	  component: ServiceNote,
-	      	  meta: {pubBar: 11}
+	      	  meta: {pubBar: 12}
 	      	},
 	      	{
 	      		path: 'partner',
 	      		name:'partner',
 	      	  component: Partner,
-	      	  meta: {pubBar: 12}
+	      	  meta: {pubBar: 13}
 	      	},
 	      	{
 	      		path: 'contactUs',
 	      		name:'contactUs',
 	      	  component: ContactUs,
-	      	  meta: {pubBar: 13}
+	      	  meta: {pubBar: 14}
 	      	},
 	      ]
+	    },
+	    {
+	      path: '/app',
+	      name: 'AppDownload',
+	      component: AppDownload
 	    },
 	    {
 	      path: '/recharge',
 	      name: 'Recharge',
 	      component: Recharge
-	    }
+	    },
 	    
 	  ]
 })

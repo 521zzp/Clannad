@@ -2,10 +2,10 @@
 	<div>
 		<Form id="one-form" class="only-regist-form"  ref="oneForm" :model="oneForm" :rules="rules" :label-width="100">
 	        <Form-item label="手机号码" prop="account">
-	            <Input size="large" class="regist-item" type="text" placeholder="请输入手机号码" v-model="oneForm.account"></Input>
+	            <Input  class="regist-item" type="text" placeholder="请输入手机号码" v-model="oneForm.account"></Input>
 	        </Form-item>
 	        <Form-item class="rela-plant" label="手机验证码" prop="phoneCode">
-	            <Input size="large" type="text" placeholder="请输入手机验证码" v-model="oneForm.phoneCode"></Input>
+	            <Input  type="text" placeholder="请输入手机验证码" v-model="oneForm.phoneCode"></Input>
 	            <span class="send-code" @click="sendCode">{{text}}</span>
 	        </Form-item>
 	        <Form-item>
@@ -62,6 +62,21 @@ import {validatePhone,checkPhone} from '@/tool/regx'
         }
     }
 </script>
+
+<style type="text/css">
+	.only-regist-form.ivu-form .ivu-form-item-content{
+		margin-left: 100px !important;
+	}
+	.only-regist-form.ivu-form .ivu-form-item-label{
+		font-size: 14px;
+		width: 100px !important;
+		padding: 15px 12px 15px 0;
+	}
+	.only-regist-form input{
+		height: 44px;
+		font-size: 14px;
+	}
+</style>
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';

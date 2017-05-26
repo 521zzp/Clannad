@@ -1,32 +1,21 @@
 <template>
 	<div class="clearfix">
 		<div class="clearfix">
-			<div class="nav-title" @click="openGroup = 1"><span>平台介绍<Icon class="title-arrow fr" :class="{open : openGroup === 1}" type="chevron-right"></Icon></span></div>
-				<template v-if="open === 1">
-					<router-link to="/publicity/systemIllustrate"  style="animation-delay: 0s;" class="nav-item animated lightSpeedIn" :class="{active: active === 1}">系统说明</router-link>
-					<router-link to="/publicity/deposit"  style="animation-delay: .1s;" class="nav-item animated lightSpeedIn" :class="{active: active ===2}">银行资金存管</router-link>
-					<router-link to="/publicity/provisions"  style="animation-delay: .2s;" class="nav-item animated lightSpeedIn" :class="{active: active ===3}">风险备付金</router-link>
-					<router-link to="/publicity/data"  style="animation-delay: .3s;" class="nav-item animated lightSpeedIn" :class="{active: active ===4}">平台数据</router-link>
-					<router-link to="/publicity/safeConduct"  style="animation-delay: .4s;" class="nav-item animated lightSpeedIn" :class="{active: active ===5}">安全保障</router-link>
+			<div class="nav-title" @click="open(1)"><span>平台介绍<Icon class="title-arrow fr" :class="{open : openGroup === 1}" type="chevron-right"></Icon></span></div>
+				<template v-if="openGroup === 1">
+					<router-link v-for="item,index in listOne" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
 				</template>
 		</div>
 		<div class="clearfix">
-			<div class="nav-title"  @click="openGroup = 2"><span>新闻与公告<Icon class="fr title-arrow" :class="{open : openGroup === 6}" type="chevron-right"></Icon></span></div>
-				<template v-if="open === 2">
-					<router-link to="" style="animation-delay: 0s;" class="nav-item animated lightSpeedIn" :class="{active: active === 7}">惠宝公告</router-link>
-					<router-link to="" style="animation-delay: .1s;" class="nav-item animated lightSpeedIn" :class="{active: active === 8}">惠宝新闻</router-link>
+			<div class="nav-title"  @click="open(2)"><span>新闻与公告<Icon class="fr title-arrow" :class="{open : openGroup === 6}" type="chevron-right"></Icon></span></div>
+				<template v-if="openGroup === 2">
+					<router-link v-for="item,index in listTwo" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
 				</template>
 		</div>
 		<div class="clearfix">
-			<div class="nav-title"  @click="openGroup = 3"><span>关于我们<Icon class="fr title-arrow" :class="{open : openGroup === 3}" type="chevron-right"></Icon></span></div>
-				<template v-if="open === 3">
-					<router-link to=""  style="animation-delay: 0s;" class="nav-item animated lightSpeedIn">新手引导</router-link>
-					<router-link to=""  style="animation-delay: .1s;" class="nav-item animated lightSpeedIn">APP下载</router-link>
-					<router-link to="/publicity/aptitude"  style="animation-delay: .2s;" class="nav-item animated lightSpeedIn" :class="{active: active === 10}">荣誉资质</router-link>
-					<router-link to="/publicity/serviceNote"  style="animation-delay: .3s;" class="nav-item animated lightSpeedIn" :class="{active: active === 11}">服务说明</router-link>
-					<router-link to="/publicity/partner"  style="animation-delay: .4s;" class="nav-item animated lightSpeedIn" :class="{active: active === 12}">合作伙伴</router-link>
-					<router-link to="/publicity/contactUs"  style="animation-delay: .5s;" class="nav-item animated lightSpeedIn" :class="{active: active === 13}">联系我们</router-link>
-					<router-link to=""  style="animation-delay: .6s;" class="nav-item animated lightSpeedIn">加入我们</router-link>
+			<div class="nav-title"  @click="open(3)"><span>关于我们<Icon class="fr title-arrow" :class="{open : openGroup === 3}" type="chevron-right"></Icon></span></div>
+				<template v-if="openGroup === 3">
+					<router-link v-for="item,index in listThree" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
 				</template>
 				
 		
@@ -38,17 +27,100 @@
 export default {
 	data () {
 		return {
-			openGroup: 1
+			openGroup: 1,
+			listOne: [
+				{
+					path: '/publicity/systemIllustrate',
+					active: 1,
+					name: '平台介绍'
+				},
+				{
+					path: '/publicity/systemIllustrate',
+					active: 2,
+					name: '系统说明'
+				},
+				{
+					path: '/publicity/deposit',
+					active: 3,
+					name: '银行资金存管'
+				},
+				{
+					path: '/publicity/provisions',
+					active: 4,
+					name: '风险备付金'
+				},
+				{
+					path: '/publicity/data',
+					active: 5,
+					name: '平台数据'
+				},
+				{
+					path: '/publicity/safeConduct',
+					active:6,
+					name: '安全保障'
+				},
+			],
+			listTwo: [
+				{
+					path: '/publicity/systemIllustrate',
+					active: 7,
+					name: '惠宝公告'
+				},
+				{
+					path: '/publicity/deposit',
+					active:8,
+					name: '惠宝新闻'
+				},
+			],
+			listThree: [
+				{
+					path: '',
+					active: 9,
+					name: '新手引导'
+				},
+				{
+					path: '/app',
+					active: 10,
+					name: 'APP下载'
+				},
+				{
+					path: '/publicity/aptitude',
+					active: 11,
+					name: '荣誉资质'
+				},
+				{
+					path: '/publicity/serviceNote',
+					active: 12,
+					name: '服务说明'
+				},
+				{
+					path: '/publicity/partner',
+					active: 13,
+					name: '合作伙伴'
+				},
+				{
+					path: '/publicity/contactUs',
+					active:14,
+					name: '联系我们'
+				},
+				{
+					path: '',
+					active:15,
+					name: '加入我们'
+				},
+			],
 		}
 	},
 	computed: {
 		active () {
 			return this.$route.matched[1].meta.pubBar 
-		},
-		open () {
-			return this.openGroup
 		}
 	},
+	methods: {
+		open (index) {
+			this.openGroup = this.openGroup === index ? 0 : index
+		}
+	}
 	
 }
 </script>

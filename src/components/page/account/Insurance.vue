@@ -14,6 +14,17 @@
 				<router-link to="/regist" class="about-detail">查看详情</router-link>
 				<button class="insure-btn insure-unable">周期内无法购买</button>
 			</div>
+			<div class="inuser-item">
+				<img class="insure-icon" src="" alt="" />
+				<span class="name">一级保险</span>
+				<div class="insure-info">
+					<span class="insure-info-item">保险期限：<span>1</span>年</span>
+					<span class="insure-info-item">保险金额：<span>3000</span>元</span>
+					<span class="insure-info-item">保费金额：<span>1000000</span>元</span>
+				</div>
+				<router-link to="/regist" class="about-detail">查看详情</router-link>
+				<button class="insure-btn insure-unable">周期内无法购买</button>
+			</div>
 		</div>
 	</div>
 	
@@ -88,6 +99,7 @@ export default {
 .inuser-item{
 	width: 850px;
 	height: 128px;
+	margin-bottom: 40px;
 	border: 1px solid @border-two;
 	border-left: 4px solid @theme;
 	line-height: 126px;
