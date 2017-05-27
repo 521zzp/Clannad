@@ -1,0 +1,33 @@
+<template>
+	<div>
+		<CHeader/>
+		<div class="content"></div>
+		<AFooter/>
+	</div>
+</template>
+
+<script>
+import CHeader from '@/components/pure/common/CHeader'
+import AFooter from '@/components/pure/common/AFooter'
+export default {
+	data () {
+		return {
+			
+		}
+	},
+	components: {
+		CHeader,
+		AFooter
+	}
+}
+</script>
+
+<style scoped="scoped" lang="less">
+@import '../../config/base.less';
+.content{
+	height: 3196px;
+	background-image: url('@{image}/publicity/novice-guide.png');
+	background-position: center;
+	min-width: @minw;
+}
+</style>

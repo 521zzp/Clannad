@@ -161,9 +161,29 @@ const Aptitude = resolve => {
     resolve(require('@/components/page/publicity/Aptitude.vue'))
   })
 }
+const YhbIntroduce = resolve => {
+  require.ensure(['@/components/page/publicity/Introduce.vue'], () => {
+    resolve(require('@/components/page/publicity/Introduce.vue'))
+  })
+}
+const YhbAnnouncement = resolve => {
+  require.ensure(['@/components/page/publicity/Announcement.vue'], () => {
+    resolve(require('@/components/page/publicity/Announcement.vue'))
+  })
+}
+const YhbNews = resolve => {
+  require.ensure(['@/components/page/publicity/News.vue'], () => {
+    resolve(require('@/components/page/publicity/News.vue'))
+  })
+}
 const AppDownload = resolve => {
   require.ensure(['@/components/page/AppDownload.vue'], () => {
     resolve(require('@/components/page/AppDownload.vue'))
+  })
+}
+const Guide = resolve => {
+  require.ensure(['@/components/page/Guide.vue'], () => {
+    resolve(require('@/components/page/Guide.vue'))
   })
 }
 
@@ -286,6 +306,12 @@ export default new Router({
 	      name: 'Publicity',
 	      component: Publicity,
 	      children: [
+	     	  {
+	      		path: 'introduce',
+	      		name:'yhbIntroduce',
+	      	  component: YhbIntroduce,
+	      	  meta: {pubBar: 1}
+	      	},
 	      	{
 	      		path: 'systemIllustrate',
 	      		name:'systemIllustrate',
@@ -317,6 +343,18 @@ export default new Router({
 	      	  meta: {pubBar: 6}
 	      	},
 	      	{
+	      		path: 'announcement',
+	      		name:'yhbAnnouncement',
+	      	  component: YhbAnnouncement,
+	      	  meta: {pubBar: 7}
+	      	},
+	      	{
+	      		path: 'news',
+	      		name:'YhbNews',
+	      	  component: YhbNews,
+	      	  meta: {pubBar: 8}
+	      	},
+	      	{
 	      		path: 'aptitude',
 	      		name:'aptitude',
 	      	  component: Aptitude,
@@ -341,6 +379,11 @@ export default new Router({
 	      	  meta: {pubBar: 14}
 	      	},
 	      ]
+	    },
+	    {
+	      path: '/guide',
+	      name: 'Guide',
+	      component: Guide
 	    },
 	    {
 	      path: '/app',

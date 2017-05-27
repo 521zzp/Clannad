@@ -7,7 +7,7 @@ import {IMG} from '@/config/url'
 export default {
 	data () {
 		return {
-			img: IMG + '/publicity/yhb-introduce.png' 
+			img: IMG + '/publicity/yhb-illustrate.png' 
 		}
 	}
 }

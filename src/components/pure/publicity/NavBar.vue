@@ -30,7 +30,7 @@ export default {
 			openGroup: 1,
 			listOne: [
 				{
-					path: '/publicity/systemIllustrate',
+					path: '/publicity/introduce',
 					active: 1,
 					name: '平台介绍'
 				},
@@ -62,26 +62,26 @@ export default {
 			],
 			listTwo: [
 				{
-					path: '/publicity/systemIllustrate',
+					path: '/publicity/announcement',
 					active: 7,
 					name: '惠宝公告'
 				},
 				{
-					path: '/publicity/deposit',
+					path: '/publicity/news',
 					active:8,
 					name: '惠宝新闻'
 				},
 			],
 			listThree: [
 				{
-					path: '',
-					active: 9,
-					name: '新手引导'
-				},
-				{
 					path: '/app',
 					active: 10,
 					name: 'APP下载'
+				},
+				{
+					path: '/guide',
+					active: 9,
+					name: '新手引导'
 				},
 				{
 					path: '/publicity/aptitude',

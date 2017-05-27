@@ -1,39 +1,43 @@
 <template>
 	<div class="clearfix">
-		<CHeader/>
-		<div class="content-group clearfix">
+		<CHeader class="download-title"/>
+		<div class="content-group clearfix wrap-minw">
 			<div class="plant plant-one">
 				<div class="container">
-					<img class="plant-one-img fl show" :src="plantOne.img" alt="" />
-					<img class="plant-one-msg fr show" :src="plantOne.msg" alt="" />
+					<!--<img class="plant-one-img fr" :class="{show: show.one}" :src="plantOne.img" alt="" />-->
+					<div class="plant-one-img fl bottom-shadow item" :class="{show: show.one}"><img  :src="plantOne.img" alt="" /></div>
+					<img class="plant-one-msg fr item" :class="{show: show.one}" :src="plantOne.msg" alt="" />
 				</div>
 			</div>
 			<div class="plant plant-two">
 				<div class="container">
-					<img class="plant-two-img fr show" :src="plantTwo.img" alt="" />
-					<img class="plant-two-msg fl show" :src="plantTwo.msg" alt="" />
+					<!--<img class="plant-two-img fr" :class="{show: show.two}" :src="plantTwo.img" alt="" />-->
+					<div class="plant-two-img fr bottom-shadow item" :class="{show: show.two}"><img  :src="plantTwo.img" alt="" /></div>
+					<img class="plant-two-msg fl item" :class="{show: show.two}" :src="plantTwo.msg" alt="" />
 				</div>
 			</div>
 			<div class="plant plant-three">
 				<div class="container">
-					<div class="fl flod-contet open clearfix">
+					<div class="fl flod-contet clearfix"  :class="{open: show.three}">
 						<img class="bottom flod-item" :src="plantThree.bottom" alt="" />
 						<img class="middle flod-item" :src="plantThree.middle" alt="" />
 						<img class="top flod-item" :src="plantThree.top" alt="" />
 					</div>
-					<img class="plant-three-msg fr show" :src="plantThree.msg" alt="" />
+					<img class="plant-three-msg fr item" :class="{show: show.three}" :src="plantThree.msg" alt="" />
 				</div>
 			</div>
 			<div class="plant plant-four">
 				<div class="container">
-					<img class="plant-four-img fl show" :src="plantFour.img" alt="" />
-					<img class="plant-four-msg fr show" :src="plantFour.msg" alt="" />
+					<!--<img class="plant-four-img fl" :class="{show: show.four}" :src="plantFour.img" alt="" />-->
+					<div class="plant-four-img fl bottom-shadow item" :class="{show: show.four}"><img  :src="plantFour.img" alt="" /></div>
+					<img class="plant-four-msg fr item" :class="{show: show.four}" :src="plantFour.msg" alt="" />
 				</div>
 			</div>
 			<div class="plant plant-five">
 				<div class="container">
-					<img class="plant-five-img fr show" :src="plantFive.img" alt="" />
-					<img class="plant-five-msg fl show" :src="plantFive.msg" alt="" />
+					<!--<img class="plant-five-img fr" :class="{show: show.five}" :src="plantFive.img" alt="" />-->
+					<div class="plant-five-img fr bottom-shadow item" :class="{show: show.five}"><img  :src="plantFive.img" alt="" /></div>
+					<img class="plant-five-msg fl item" :class="{show: show.five}" :src="plantFive.msg" alt="" />
 				</div>
 			</div>
 		</div>
@@ -69,6 +73,30 @@ export default  {
 				img: IMG + '/app-download/p-five-img.png',
 				msg: IMG + '/app-download/p-five-msg.png',
 			},
+			show: {
+				one: true,
+				two: false,
+				three: false,
+				four: false,
+				five: false
+			}
+		}
+	},
+	mounted () {
+		let vm = this
+		window.onscroll = this.scrollEvent
+	},
+	methods: {
+		scrollEvent () {
+			let height = document.documentElement.scrollTop || document.body.scrollTop;
+		 	this.height = height
+		 	this.show = {
+		 		one : height < 840 ? true : false ,
+				two : (height >= 660 && height < 1580) ? true : false,
+				three: (height >= 1580 && height < 2490) ? true : false,
+				four: (height >= 2490 && height < 3400) ? true : false,
+				five: height > 3150 ? true : false
+		 	}
 		}
 	},
 	components: {
@@ -81,42 +109,61 @@ export default  {
 <style scoped="scoped" lang="less">
 @import '../../config/base.less';
 
+.bottom-shadow::before{
+	position: absolute;
+	content: '';
+	height: 30px;
+	top: 102%;
+	left: 5%;
+	width: 90%;
+	background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, transparent 70%);
+	transition-duration: 0.3s;
+}
 .flod-contet.open{
 	opacity: 1;
-	left: 72px;
+	margin-left: 172px;
 }
 .flod-contet{
-	top: 72px;
+	margin-top: 202px;
 	opacity: 0;
-	left: 0px;
 	transition: all 1s;
+	perspective: 100vw;
+	perspective-origin: 50% 0%;
+	/*transform: rotateY(40deg) rotateZ(-30deg) rotateX(40deg);
+	transform-origin: left center;
+	transform-style: preserve-3d;*/
 }
 .flod-item{
 	position: absolute;
-	/*transform:rotateX(40deg) rotateY(40deg) rotateZ(-70deg);*/
-	
 	top: 0;
 	left: 0;
 	transition: all .8s;
 	transition-delay: 1s;
 }
 .open .flod-item{
-	box-shadow: -5px 6px 20px 0 #000000;
-	perspective-origin: 100% 0;
-	transform: rotateZ(-60deg) rotateY(-20deg) rotateX(-20deg);
+	box-shadow: -3px 2px 20px 0 #4c4c4c;
+	transform: rotateY(20deg) rotateZ(-30deg) rotateX(30deg);
+	transform-origin: left center;
+	transform-style: preserve-3d;
+}
+.open .flod-item:hover{
+	z-index: 1000;
+	left: 50px;
+	cursor: pointer;
+	transition-delay: 0s;
 }
 .open .bottom{
-	left: -30px;
+	left: 0px;
 	top: 90px;
+	animation: randomShake 4s ease 1s infinite;
+}
+.open .middle{
+	animation: randomShake 4s ease 1.6s infinite;
 }
 .open .top{
-	left: 30px;
+	left: 0px;
 	top: -90px;
-}
-.flod-contet{
-	margin-left: 72px;
-	margin-top: 72px;
-	position: relative;
+	animation: randomShake 4s ease 2.1s infinite;
 }
 
 .plant-five-msg.show{
@@ -134,6 +181,8 @@ export default  {
 .plant-five-img{
 	opacity: 0;
 	margin-top: 120px;
+	position: relative;
+	animation: colShake 2s ease 1s infinite;
 }
 .plant-four-msg.show{
 	margin-right: 154px;
@@ -150,6 +199,8 @@ export default  {
 .plant-four-img{
 	opacity: 0;
 	margin-top: 160px;
+	position: relative;
+	animation: colShake 2s ease 1s infinite;
 }
 .plant-three-msg.show{
 	margin-right: 144px;
@@ -170,6 +221,8 @@ export default  {
 .plant-two-img.show{
 	opacity: 1;
 	margin-right: 78px;
+	position: relative;
+	animation: colShake 2s ease 1s infinite;
 }
 .plant-two-img{
 	opacity: 0;
@@ -186,16 +239,17 @@ export default  {
 .plant-one-img.show{
 	margin-left: 74px;
 	opacity: 1;
+	position: relative;
+	animation: colShake 2s ease 1s infinite;
 }
 .plant-one-img{
 	margin-top: 170px;
 	opacity: 0;
 }
-.show{
+.item{
 	transition: all 1s;
 }
 .content-group{
-	position: absolute;
 	width: 100%;
 	margin-top: 60px;
 	z-index: -1;
@@ -204,6 +258,8 @@ export default  {
 	width: @mw;
 	height: 100%;
 	margin: 0 auto;
+	/*perspective: 100vw;
+	perspective-origin: 50% 0%;*/
 }
 .plant-five{
 	height: 865px;
@@ -230,4 +286,47 @@ export default  {
 	width: 100%;
 	background-position: center;
 }
+.download-title{
+	position: fixed;
+	top: 0;
+	z-index: 1;
+}
+@keyframes colShake{
+	0% {
+		top: 0;
+	}
+	50% {
+		top: 10px;
+	}
+	100% {
+		top: 0px;
+	}
+}
+@widthRange: 5px;
+@heightRange: 5px;
+
+@keyframes  randomShake{
+	0% {
+		margin-top: -@heightRange;
+		margin-left: 0;
+	}
+	25% {
+		margin-top: @heightRange;
+		margin-left: -@widthRange;
+	}
+	50% {
+		margin-top: @heightRange;
+		margin-left: 0;
+	}
+	75% {
+		margin-top: @heightRange;
+		margin-left: @widthRange;
+	}
+	100% {
+		margin-top: -@heightRange;
+		margin-left: 0;
+	}
+}
+
+
 </style>

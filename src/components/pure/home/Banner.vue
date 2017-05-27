@@ -1,5 +1,5 @@
 <template>
-    <Carousel class="my-banner" autoplay  :autoplay-speed="setting.speed"  trigger='hover'>
+    <Carousel class="my-banner wrap-minw" autoplay  :autoplay-speed="setting.speed"  trigger='hover'>
         <Carousel-item v-for="item,index in banners" key='index'>
             <div class="carousel-items" :style="{backgroundImage: 'url('+item.img+')'}" @click='location(item.url)'>
             </div>

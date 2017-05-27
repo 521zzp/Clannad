@@ -1,5 +1,5 @@
 <template>
-	<footer class="clearfix">
+	<footer class="clearfix wrap-minw">
 		<div class="container clearfix">
 			<ul class="clearfix link-group">
 				<li class="item fl clearfix ">
@@ -54,7 +54,6 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
-
 footer{
 	width: 100%;
 	background-color: @gray-one;

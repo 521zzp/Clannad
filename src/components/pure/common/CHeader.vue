@@ -1,5 +1,5 @@
 <template>
-	<div class="clearfix title">
+	<div class="clearfix title wrap-minw">
 		<div class="container">
 			<router-link to="/" class="to-home clearfix">
 				<img src="../../../assets/icon/logo-type-two.png"/>
@@ -9,7 +9,7 @@
 				<span class="back" @click="back">返回</span>
 			</div>
 		</div>
-		<div class="fliter-bg"></div>
+		<div class="fliter-bg wrap-minw"></div>
 	</div>	
 </template>
 
@@ -50,7 +50,6 @@ export default {
 	vertical-align: middle;
 }
 .title{
-	position: fixed;
 	width: 100%;
 }
 .fliter-bg{

@@ -1,5 +1,5 @@
 <template>
-	<div class="out clearfix">
+	<div class="out clearfix wrap-minw">
 		<div class="container clearfix">
 			<div class="title">合作伙伴</div>
 			<div class="content clearfix">
