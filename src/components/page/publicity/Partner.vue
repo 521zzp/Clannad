@@ -9,7 +9,25 @@ export default {
 		return {
 			img: IMG + '/publicity/yhb-partner.png' 
 		}
-	}
+	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '信息披露',
+					url: '/publicity/introduce'
+				},
+				{
+					name: '合作伙伴',
+					url: ''
+				},
+			];
+		this.$store.dispatch('publicityBreadChange', bread)
+		this.$store.dispatch('publicityNavChange', 3)
+	},
 }
 </script>
 

@@ -20,6 +20,7 @@
 import AHeader from '@/components/pure/common/AHeader'
 import AFooter from '@/components/pure/common/AFooter'
 import NavBar from '@/components/pure/publicity/NavBar'
+import Breadcrumb from '@/components/pure/common/Breadcrumb'
 
 export default {
 	data () {
@@ -29,11 +30,14 @@ export default {
 	},
 	computed: {
 		bread () {
+			console.log(233)
+			console.log(this.$store.state.publicity.bread)			
 			return this.$store.state.publicity.bread
 		}
 	},
 	components: {
 		AHeader,
+		Breadcrumb,
 		AFooter,
 		NavBar
 	}
@@ -62,6 +66,7 @@ export default {
 	border:1px solid @border-two;
 	width: 910px;
 	min-height: 1030px;
+	overflow: hidden;
 	background-color: @white;
 }
 </style>

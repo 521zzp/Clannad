@@ -26,11 +26,6 @@ const Home = resolve => {
     resolve(require('@/components/page/Home.vue'))
   })
 }
-const Recharge = resolve => {
-  require.ensure(['@/components/page/Recharge.vue'], () => {
-    resolve(require('@/components/page/Recharge.vue'))
-  })
-}
 const ResetPwd = resolve => {
   require.ensure(['@/components/page/ResetPwd.vue'], () => {
     resolve(require('@/components/page/ResetPwd.vue'))
@@ -54,6 +49,11 @@ const Account = resolve => {
 const Overview = resolve => {
   require.ensure(['@/components/page/account/Overview.vue'], () => {
     resolve(require('@/components/page/account/Overview.vue'))
+  })
+}
+const Recharge = resolve => {
+  require.ensure(['@/components/page/account/Recharge.vue'], () => {
+    resolve(require('@/components/page/account/Recharge.vue'))
   })
 }
 const Financing = resolve => {
@@ -156,6 +156,11 @@ const ContactUs = resolve => {
     resolve(require('@/components/page/publicity/ContactUs.vue'))
   })
 }
+const JoinUs = resolve => {
+  require.ensure(['@/components/page/publicity/JoinUs.vue'], () => {
+    resolve(require('@/components/page/publicity/JoinUs.vue'))
+  })
+}
 const Aptitude = resolve => {
   require.ensure(['@/components/page/publicity/Aptitude.vue'], () => {
     resolve(require('@/components/page/publicity/Aptitude.vue'))
@@ -233,6 +238,12 @@ export default new Router({
 	      	  component: Overview,
 	      	  meta: {accBar: 1}
 	      	},
+	      	{
+			      path: 'recharge',
+			      name: 'Recharge',
+			      component: Recharge,
+			      meta: {accBar: 1}
+			    },
 	      	{
 	      		path: 'financing',
 	      		name:'financing',
@@ -378,6 +389,12 @@ export default new Router({
 	      	  component: ContactUs,
 	      	  meta: {pubBar: 14}
 	      	},
+	      	{
+	      		path: 'join',
+	      		name:'JoinUs',
+	      	  component: JoinUs,
+	      	  meta: {pubBar: 15}
+	      	},
 	      ]
 	    },
 	    {
@@ -390,11 +407,5 @@ export default new Router({
 	      name: 'AppDownload',
 	      component: AppDownload
 	    },
-	    {
-	      path: '/recharge',
-	      name: 'Recharge',
-	      component: Recharge
-	    },
-	    
 	  ]
 })

@@ -33,6 +33,23 @@ export default {
 			single: false
 		}
 	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '我的账户',
+					url: '/account'
+				},
+				{
+					name: '我的消息',
+					url: ''
+				},
+			];
+		this.$store.dispatch('accountBreadChange', bread)
+	},
 	methods: {
         deleteMsg (e) {
             this.$Message.info('删除'+e);
@@ -70,8 +87,12 @@ export default {
 .time{
 	margin-left: 144px;
 }
+.preview:hover{
+	color: @theme;
+}
 .preview{
 	width: 260px;
+	color: @gray-one;
 	display: inline-block;
 	margin-left: 92px;
 	overflow: hidden;

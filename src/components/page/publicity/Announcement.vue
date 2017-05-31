@@ -26,9 +26,27 @@ export default {
 	data () {
 		return {
 			img: IMG + '/publicity/announcement-top-bg.png',
-			list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+			list: [1, 2, 3, 4, 5, 6, 7, 8 ]
 		}
-	}
+	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '信息披露',
+					url: '/publicity/introduce'
+				},
+				{
+					name: '惠宝公告',
+					url: ''
+				},
+			];
+		this.$store.dispatch('publicityBreadChange', bread)
+		this.$store.dispatch('publicityNavChange', 2)
+	},
 }
 </script>
 

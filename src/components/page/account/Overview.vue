@@ -19,7 +19,7 @@
 				</span>
 			</div>
 			<div class="link-group">
-				<router-link to="/account" class="link-btn">充值</router-link>
+				<router-link to="/account/recharge" class="link-btn">充值</router-link>
 				<router-link to="/account" class="link-btn">提现</router-link>
 			</div>
 		</div>
@@ -43,6 +43,10 @@
 					},
 					{
 						name: '我的账户',
+						url: '/account'
+					},
+					{
+						name: '账户总览',
 						url: ''
 					},
 				];

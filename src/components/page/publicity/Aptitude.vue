@@ -63,6 +63,24 @@ export default {
 			]
 		}
 	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '信息披露',
+					url: '/publicity/introduce'
+				},
+				{
+					name: '荣誉资质',
+					url: ''
+				},
+			];
+		this.$store.dispatch('publicityBreadChange', bread)
+		this.$store.dispatch('publicityNavChange', 3)
+	},
 	methods: {
 		ingShow (src) {
 			this.modalImg = src

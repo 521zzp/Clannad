@@ -7,7 +7,7 @@ import {IMG} from '@/config/url'
 export default {
 	data () {
 		return {
-			img: IMG + '/publicity/statistics-data.png' 
+			img: IMG + '/publicity/join-us.png' 
 		}
 	},
 	mounted () {
@@ -21,12 +21,12 @@ export default {
 					url: '/publicity/introduce'
 				},
 				{
-					name: '平台数据',
+					name: '加入我们',
 					url: ''
 				},
 			];
 		this.$store.dispatch('publicityBreadChange', bread)
-		this.$store.dispatch('publicityNavChange', 1)
+		this.$store.dispatch('publicityNavChange', 3)
 	},
 }
 </script>

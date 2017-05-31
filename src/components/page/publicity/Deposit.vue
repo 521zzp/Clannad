@@ -9,7 +9,25 @@ export default {
 		return {
 			img: IMG + '/publicity/bank-deposit.png' 
 		}
-	}
+	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '信息披露',
+					url: '/publicity/introduce'
+				},
+				{
+					name: '银行资金存管',
+					url: ''
+				},
+			];
+		this.$store.dispatch('publicityBreadChange', bread)
+		this.$store.dispatch('publicityNavChange', 1)
+	},
 }
 </script>
 

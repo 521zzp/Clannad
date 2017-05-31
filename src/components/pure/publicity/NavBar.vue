@@ -27,7 +27,6 @@
 export default {
 	data () {
 		return {
-			openGroup: 1,
 			listOne: [
 				{
 					path: '/publicity/introduce',
@@ -62,14 +61,14 @@ export default {
 			],
 			listTwo: [
 				{
-					path: '/publicity/announcement',
-					active: 7,
-					name: '惠宝公告'
-				},
-				{
 					path: '/publicity/news',
 					active:8,
 					name: '惠宝新闻'
+				},
+				{
+					path: '/publicity/announcement',
+					active: 7,
+					name: '惠宝公告'
 				},
 			],
 			listThree: [
@@ -104,7 +103,7 @@ export default {
 					name: '联系我们'
 				},
 				{
-					path: '',
+					path: '/publicity/join',
 					active:15,
 					name: '加入我们'
 				},
@@ -112,13 +111,17 @@ export default {
 		}
 	},
 	computed: {
+		openGroup () {
+			return this.$store.state.publicity.navOpen
+		},
 		active () {
 			return this.$route.matched[1].meta.pubBar 
 		}
 	},
 	methods: {
 		open (index) {
-			this.openGroup = this.openGroup === index ? 0 : index
+			let open = this.openGroup === index ? 0 : index
+			this.$store.dispatch('publicityNavChange', open)
 		}
 	}
 	

@@ -26,6 +26,23 @@ export default {
 			
 		}
 	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '我的账户',
+					url: '/account'
+				},
+				{
+					name: '我的理财',
+					url: ''
+				},
+			];
+		this.$store.dispatch('accountBreadChange', bread)
+	},
 	components: {
 		FinanceOn,
 		FinanceOut,

@@ -36,7 +36,24 @@ export default {
 		return {
 			
 		}
-	}
+	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '我的账户',
+					url: '/account'
+				},
+				{
+					name: '我的保险',
+					url: ''
+				},
+			];
+		this.$store.dispatch('accountBreadChange', bread)
+	},
 }
 </script>
 

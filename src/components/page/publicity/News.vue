@@ -53,7 +53,25 @@ export default {
 				},
 			]
 		}
-	}
+	},
+	mounted () {
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '信息披露',
+					url: '/publicity/introduce'
+				},
+				{
+					name: '惠宝新闻',
+					url: ''
+				},
+			];
+		this.$store.dispatch('publicityBreadChange', bread)
+		this.$store.dispatch('publicityNavChange', 2)
+	},
 }
 </script>
 
@@ -71,6 +89,7 @@ export default {
 }
 .name{
 	font-weight: 600;
+	color: @gray-three;
 }
 .item-msg{
 	width: 580px;

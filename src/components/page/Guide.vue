@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<CHeader/>
+		<CHeader  class="guide-title"/>
 		<div class="content"></div>
 		<AFooter/>
 	</div>
@@ -29,5 +29,11 @@ export default {
 	background-image: url('@{image}/publicity/novice-guide.png');
 	background-position: center;
 	min-width: @minw;
+	margin-top: 60px;
+}
+.guide-title{
+	position: fixed;
+	top: 0;
+	z-index: 1;
 }
 </style>

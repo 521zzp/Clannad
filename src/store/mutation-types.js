@@ -23,6 +23,10 @@ export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
 //银行卡管理
 export const SUPPORT_BANK_UPDATE = 'SUPPORT_BANK_UPDATE' //获取支持的银行列表
 
+//信息披露
+export const PUB_BREAD_CHANGE = 'PUB_BREAD_CHANGE' //信息披露面包屑切换
+export const PUB_NAV_CHANGE = 'PUB_NAV_CHANGE' //信息披露右边导航手风琴切换
+
 
 
 

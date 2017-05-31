@@ -85,6 +85,21 @@ export default {
 	},
 	mounted () {
 		this.open = 0
+		let bread = [
+				{
+					name: '余惠宝',
+					url: '/'
+				},
+				{
+					name: '我的账户',
+					url: '/account'
+				},
+				{
+					name: '账户信息',
+					url: ''
+				},
+			];
+		this.$store.dispatch('accountBreadChange', bread)
 	},
 	methods: {
 		openChange (index) {

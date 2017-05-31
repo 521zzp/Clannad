@@ -47,7 +47,7 @@
 						<span >购买金额（元）：<span class="attention">40000.00</span></span>
 					</div>
 					<div class="o-operate fr">
-						<router-link to="/account/financing" class="contract">理财合同</router-link>
+						<router-link to="/account/financing" class="contract">理财协议</router-link>
 						<router-link to="/account/financing" class="apply-out">申请转出</router-link>
 					</div>
 				</div>

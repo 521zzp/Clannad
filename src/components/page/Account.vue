@@ -31,7 +31,7 @@ export default {
 	},
 	computed: {
 		bread () {
-			return this.$store.state.publicity.bread
+			return this.$store.state.account.bread
 		}
 	},
 	components: {

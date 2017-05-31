@@ -16,10 +16,15 @@
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</router-link>
 					<nav class="nav-two clearfix">
-						<router-link to="/publicity/systemIllustrate" class="level-two">系统说明</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
-						<router-link to="/product" class="level-two">我要理财</router-link>
+						<router-link to="/publicity/introduce" class="level-two">平台介绍</router-link>
+						<router-link to="/publicity/deposit" class="level-two">银行资金存管</router-link>
+						<router-link to="/publicity/provisions" class="level-two">风险备付金</router-link>
+						<router-link to="/publicity/data" class="level-two">平台数据</router-link>
+						<router-link to="/publicity/safeConduct" class="level-two">安全保障</router-link>
+						<router-link to="/publicity/news" class="level-two">新闻公告</router-link>
+						<router-link to="/app" class="level-two">APP下载</router-link>
+						<router-link to="/publicity/aptitude" class="level-two">荣誉资质</router-link>
+						<router-link to="/publicity/partner" class="level-two">合作伙伴</router-link>
 					</nav>
 				</div>
 				<div class="nav-item">

@@ -69,7 +69,7 @@
 	color: @white;
 	padding: 2px 5px;
 	vertical-align: 3px;
-	margin-left: 10px;
+	margin-right: 10px;
 }
 .i-p-progress{
 	position: absolute;

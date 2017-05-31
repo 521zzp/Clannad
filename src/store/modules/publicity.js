@@ -7,30 +7,27 @@ import router from '@/router'
 
 const state = {
 	bread: [], //面包屑导航
+	navOpen: 1
 }
 
-
 const actions = {
-	login ({commit},obj){
-		fetch(LOGIN, postModelTwo(obj)).then(analy)
-				.then((datas)=>{
-				commit(types.LOGIN,datas);
-			}).catch(function(error) {
-			    console.log('用户登陆异常', error)
-			  });
-  	}
+	publicityBreadChange ({commit}, obj) {
+		commit(types.PUB_BREAD_CHANGE, obj) 
+	},
+	publicityNavChange ({commit}, obj) {
+		commit(types.PUB_NAV_CHANGE, obj)
+	}
 }
 
 const mutations = {
-	[types.LOGIN] (state,obj) {
-		if (obj.code === 200) {
-			store.state.token = obj.token;
-			store.state.user = obj.obj;
-			message(obj.msg, 2, ()=>router.push('/'));
-		}else{
-			message(obj.msg, 4)
-		}
-    }
+	[types.PUB_BREAD_CHANGE] (state,obj) {
+		state.bread = obj
+		console.log(state.bread)
+    },
+    [types.PUB_NAV_CHANGE] (state,obj) {
+		state.navOpen = obj
+    },
+   
 }
 
 
