@@ -56,6 +56,11 @@ const Recharge = resolve => {
     resolve(require('@/components/page/account/Recharge.vue'))
   })
 }
+const Enchashment = resolve => {
+  require.ensure(['@/components/page/account/Enchashment.vue'], () => {
+    resolve(require('@/components/page/account/Enchashment.vue'))
+  })
+}
 const Financing = resolve => {
   require.ensure(['@/components/page/account/Financing.vue'], () => {
     resolve(require('@/components/page/account/Financing.vue'))
@@ -242,6 +247,12 @@ export default new Router({
 			      path: 'recharge',
 			      name: 'Recharge',
 			      component: Recharge,
+			      meta: {accBar: 1}
+			    },
+			    {
+			      path: 'enchashment',
+			      name: 'Enchashment',
+			      component: Enchashment,
 			      meta: {accBar: 1}
 			    },
 	      	{

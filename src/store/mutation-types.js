@@ -18,6 +18,7 @@ export const PRO_DETAIL_LIST = 'PRO_DETAIL_LIST' //产品投资记录
 export const ACC_BREAD_CHANGE = 'ACC_BREAD_CHANGE' //用户中心面包屑切换
 export const ACC_BIND_STATE = 'ACC_BIND_STATE' //用户中心四种绑定状态
 export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
+export const ACC_RECHARGE_LOADING = 'ACC_RECHARGE_LOADING' //用户总览充值加载中
 
 
 //银行卡管理

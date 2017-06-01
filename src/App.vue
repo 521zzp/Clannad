@@ -15,6 +15,7 @@ export default {
 }
 </script>
 
-<style>
-	@import 'config/animate.css';
+<style lang="less">
+@import 'config/animate.css';
+@import 'config/loading.less';
 </style>

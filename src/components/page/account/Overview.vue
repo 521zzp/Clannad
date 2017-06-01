@@ -20,7 +20,7 @@
 			</div>
 			<div class="link-group">
 				<router-link to="/account/recharge" class="link-btn">充值</router-link>
-				<router-link to="/account" class="link-btn">提现</router-link>
+				<router-link to="/account/enchashment" class="link-btn">提现</router-link>
 			</div>
 		</div>
 		<HotRecom class="ab-hot"/>

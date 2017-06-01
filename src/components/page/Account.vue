@@ -61,6 +61,7 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import '../../config/base.less';
+
 .container{
 	width: @mwsec;
 	margin:0 auto;

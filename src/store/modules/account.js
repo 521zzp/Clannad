@@ -21,6 +21,9 @@ const state = {
 		accumulate: 0,
 		points: 0
 	},
+	recharge: {
+		loading: false
+	},
 	bankCard: { //银行卡信息
 		baseInfo: {
 		},
@@ -40,6 +43,9 @@ const actions = {
   		fetch(ACC_BIND_STATE, postModelOne(obj)).then(onanaly).then(
 			(datas) => commit(types.ACC_BIND_STATE,datas)
 		)
+  	},
+  	accountRechargeLoading ({commit},obj) {
+  		commit(types.ACC_RECHARGE_LOADING, obj)
   	},
   	ovCap ({commit},obj) {
   		fetch(ACC_OV_CAP, postModelOne(obj)).then(onanaly).then(
@@ -66,6 +72,9 @@ const mutations = {
     },
     [types.SUPPORT_BANK_UPDATE] (state,obj) {
 		state.bankCard.banks = []
+    },
+    [types.ACC_RECHARGE_LOADING] (state,obj) {
+		state.recharge.loading = obj
     },
 }
 

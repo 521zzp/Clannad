@@ -10,16 +10,50 @@
 					<label :for="item.name" class="bank-bg" :style="{backgroundImage: 'url('+item.bg+')'}"></label>
 					<span>{{item.bank}}</span>
 				</li>
+				<span class="bank-tip">{{bankNotice}}</span>
 			</ul>
-			
 	 	</div>
+	 	<Form class="only-recharge-form" ref="form" :model="form" :rules="ruleCustom" :label-width="104" label-position="left">
+	        <Form-item label="充值金额：" prop="money">
+	            <Input size="large"  type="text" v-model="form.money" placeholder="请输入充值金额（元）"></Input>
+	        </Form-item>
+	        <Form-item >
+	        	 <span class="tip">金额最大值为：<span class="max-money">5000000</span></span>
+	        </Form-item>
+	        <Form-item>
+	            <Button size="large" type="primary" @click="formSubmit('form')" class="sub-btn">确认充值</Button>
+	        </Form-item>
+	    </Form>
+	    <div class="hint">
+	    	<span class="hint-title">温馨提示</span>
+	    	<ul class="clearfix">
+	    		<li class="hint-item">为了您的账户安全，请在充值前进行实名认证、银行卡绑定及交易密码设置。</li>
+	    		<li class="hint-item">选择的银行卡开户名必须与您的余惠宝实名认证一致，否则提现申请将无法提交。</li>
+	    		<li class="hint-item">禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用。</li>
+	    		<li class="hint-item">充值前请确认您的银行卡限额。如充值成功后未能及时到账，请联系客服：400-838-8304</li>
+	    	</ul>
+	    </div>
+	    <div v-if="loading" class="promot loading">
+			<div class="loader-atom"></div>
+		</div>
 	 </div>
 </template>
 
 <script>
 import {IMG} from '@/config/url'
+import {ValidateChangeMoney} from '@/tool/regx'
+
 export default {
 	data () {
+		const ValidateRechargeMoneyRange = (rule, value, callback) => {
+			if (value < 1000) {
+				 callback(new Error('最低充值金额为1000元'));
+			} else if (value > 500000) {
+				 callback(new Error('最大充值金额为500000元'));
+			} else {
+				callback();
+			}
+		}
 		return {
 			banks: [
 				{	
@@ -131,13 +165,50 @@ export default {
 					value: '0801040000'
 				},
 			],
-			bankCode: ''
+			bankCode: '',
+			bankNotice: '',
+			form: {
+                money: '',
+            },
+            ruleCustom: {
+                money: [
+                	{ required: true, message: '请填写密码', trigger: 'blur' },
+                	{ validator: ValidateChangeMoney, trigger: 'blur' },
+                	{ validator: ValidateRechargeMoneyRange, trigger: 'blur' }
+                ],
+            }
+		}
+	},
+	computed: {
+		loading () {
+			return this.$store.state.account.recharge.loading
 		}
 	},
 	methods: {
 		change (e) {
 			console.log(e)
-		}
+			this.bankCode = e
+			this.bankNotice = ''
+		},
+		formSubmit (name) {
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    if (this.bankCode === '') {
+                    	this.bankNotice = '请选择银行'
+                    } else{
+                    	let obj = {
+                    		bankCode: this.bankCode,
+                    		money: this.form.money
+                    	}
+                    	this.$store.dispatch('accountRechargeLoading', true)
+                    	let vm = this
+                    	setTimeout(function () {
+                    		vm.$store.dispatch('accountRechargeLoading', false)
+                    	},5000)
+                    }
+                }
+            })
+        },
 	},
 	mounted () {
 		let bread = [
@@ -160,14 +231,75 @@ export default {
 			];
 		this.$store.dispatch('accountBreadChange', bread)
 	},
+	destroyed () {
+		this.$store.dispatch('accountRechargeLoading', false)
+	}
 }
 </script>
+<style lang="less">
+@import '../../../config/base.less';
+.only-recharge-form .ivu-form-item .ivu-form-item-label{
+	padding: 11px 12px 11px 0;
+	font-size: @fz;
+}	
+</style>
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
-
+.promot{
+	width: 950px;
+	height: 1032px;
+	position: absolute;
+	left: -48px;
+	top: -48px;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+.loader-atom{
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	top: 40%;
+}
+.hint{
+	font-size: @fz;
+	color: @gray-one;
+	line-height: 2;
+	margin-top: 76px;
+}
+.hint-item{
+	list-style: disc;
+	margin-left: 24px;
+}
+.hint-title{
+	font-weight: 600;
+	color: @gray-three;
+}
 input:checked + .bank-bg{
 	background-position: 0 -90px;
+}
+.bank-tip{
+	color: @theme;
+	display: inline-block;
+	float: left;
+	width: 140px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.tip{
+	color: @linkc;
+}
+.max-money{
+	color: @theme;
+}
+.sub-btn{
+	width: 100%;
+}
+.only-recharge-form{
+	width: 380px;
 }
 .bank-bg{
 	width: 100%;
@@ -208,5 +340,6 @@ input:checked + .bank-bg{
 }
 .recharge{
 	color: @gray-one;
+	position: relative;
 }
 </style>
