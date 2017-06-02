@@ -3,7 +3,7 @@
 		<router-link to="/account" class="nav-item" :class="{active: active === 1}">账户总览</router-link>
 		<router-link to="/account/financing" class="nav-item" :class="{active: active === 2}">我的理财</router-link>
 		<router-link to="/account/current" class="nav-item" :class="{active: active === 3}">活期宝</router-link>
-		<router-link to="/account" class="nav-item" :class="{active: active === 4}">我的礼券</router-link>
+		<router-link to="/account/coupon" class="nav-item" :class="{active: active === 4}">我的礼券</router-link>
 		<router-link to="/account" class="nav-item" :class="{active: active === 5}">我的商品</router-link>
 		<router-link to="/account/franchiser" class="nav-item" :class="{active: active === 6}">我是经销商</router-link>
 		<router-link to="/account/insurance" class="nav-item" :class="{active: active === 7}">我的保险</router-link>

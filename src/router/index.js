@@ -96,6 +96,11 @@ const CurrentIn = resolve => {
     resolve(require('@/components/page/account/CurrentIn.vue'))
   })
 }
+const Coupon = resolve => {
+  require.ensure(['@/components/page/account/Coupon.vue'], () => {
+    resolve(require('@/components/page/account/Coupon.vue'))
+  })
+}
 const Franchiser = resolve => {
   require.ensure(['@/components/page/account/Franchiser.vue'], () => {
     resolve(require('@/components/page/account/Franchiser.vue'))
@@ -184,6 +189,11 @@ const YhbAnnouncement = resolve => {
 const YhbNews = resolve => {
   require.ensure(['@/components/page/publicity/News.vue'], () => {
     resolve(require('@/components/page/publicity/News.vue'))
+  })
+}
+const NewsItem = resolve => {
+  require.ensure(['@/components/page/publicity/NewsItem.vue'], () => {
+    resolve(require('@/components/page/publicity/NewsItem.vue'))
   })
 }
 const AppDownload = resolve => {
@@ -278,6 +288,12 @@ export default new Router({
 	      		name:'current-in',
 	      	  component: CurrentIn,
 	      	  meta: {accBar: 3}
+	      	},
+	      	{
+	      		path: 'coupon',
+	      		name:'coupon',
+	      	  component: Coupon,
+	      	  meta: {accBar: 4}
 	      	},
 	      	{
 	      		path: 'franchiser',
@@ -377,6 +393,12 @@ export default new Router({
 	      	  meta: {pubBar: 8}
 	      	},
 	      	{
+	      		path: 'news/:id',
+	      		name:'newsItem',
+	      	  component: NewsItem,
+	      	  meta: {pubBar: 8}
+	      	},
+	      	{
 	      		path: 'aptitude',
 	      		name:'aptitude',
 	      	  component: Aptitude,
@@ -418,5 +440,12 @@ export default new Router({
 	      name: 'AppDownload',
 	      component: AppDownload
 	    },
-	  ]
+	  ],
+	  scrollBehavior (to, from, savedPosition) {  //滚动行为
+		  if (savedPosition) {
+		    return savedPosition
+		  } else {
+		    return { x: 0, y: 0 }
+		  }
+		}
 })

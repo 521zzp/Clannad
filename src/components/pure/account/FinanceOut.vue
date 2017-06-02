@@ -6,7 +6,7 @@
 			<span class="time-btn" :class="{active: selectTap === 3}" @click="selectTapChange(3)">近15天</span>
 			<span class="time-btn" :class="{active: selectTap === 4}" @click="selectTapChange(4)">近1个月</span>
 			<div class="time-picker fr">
-				日期<Date-picker class="data-input" type="daterange" placement="bottom-end" placeholder="选择日期" ></Date-picker>
+				日期<Date-picker class="data-input" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
 			</div>
 		</div>
 		<div class="clearfix item-group">
