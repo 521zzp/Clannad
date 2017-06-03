@@ -27,8 +27,11 @@
 					</div>
 					<div  class="buy fr">
 						<span class="min">起投金额：{{product.min}}元</span>
-						<router-link  v-if="product.left > 0" :to="'/product/'+product.id" class="to-regist"><button>立即投资</button></router-link>
-						<button v-else class="unable">已售罄</button>
+						<template v-if="trade">
+							<router-link  v-if="product.left > 0" :to="'/product/'+product.id" ><button>立即投资</button></router-link>
+							<button v-else class="unable">已售罄</button>
+						</template>
+						<router-link  v-else to="/app"><button>下载APP购买</button></router-link>
 					</div>
 				</div>
 				 <Progress :title="product.percent + '%'" class="i-p-progress" :percent="product.percent" status="active" :stroke-width="6" hide-info></Progress>
@@ -52,6 +55,11 @@
 						color: '#98d1ff'
 					}
 				]
+			}
+		},
+		computed: {
+			trade () {
+				return this.$store.state.trade
 			}
 		}
 	}

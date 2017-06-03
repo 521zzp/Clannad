@@ -24,8 +24,11 @@
 						 	<span class="i fl money">剩余投资金额：{{item.left}}元</span>
 						 	<span class="i fr percent">45%</span>
 						 </div>
-						 <router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>
-						 <button v-else class="buy unable">已售罄</button>
+						 <template v-if="trade">
+						 	<router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>
+						 	<button v-else class="buy unable">已售罄</button>
+						 </template>
+						 <router-link  v-else to="/app"><button class="buy">下载APP购买</button></router-link>
 					</div>
 				</li>
 			</ul>
@@ -36,7 +39,15 @@
 <script>
 	export default {
 		props: ['list'],
-		methods: {
+		data () {
+			return {
+				
+			}
+		},
+		computed: {
+			trade () {
+				return this.$store.state.trade
+			}
 		},
 		mounted () {
 			console.log(this.list)

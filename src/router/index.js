@@ -249,7 +249,7 @@ export default new Router({
 	      children: [
 	      	{
 	      		path: '',
-	      		name:'overview',
+	      		name: 'overview',
 	      	  component: Overview,
 	      	  meta: {accBar: 1}
 	      	},
@@ -267,73 +267,73 @@ export default new Router({
 			    },
 	      	{
 	      		path: 'financing',
-	      		name:'financing',
+	      		name: 'financing',
 	      	  component: Financing,
 	      	  meta: {accBar: 2}
 	      	},
 	      	{
 	      		path: 'current',
-	      		name:'current',
+	      		name: 'current',
 	      	  component: Current,
 	      	  meta: {accBar: 3}
 	      	},
 	      	{
 	      		path: 'current/out',
-	      		name:'current-out',
+	      		name: 'current-out',
 	      	  component: CurrentOut,
 	      	  meta: {accBar: 3}
 	      	},
 	      	{
 	      		path: 'current/in',
-	      		name:'current-in',
+	      		name: 'current-in',
 	      	  component: CurrentIn,
 	      	  meta: {accBar: 3}
 	      	},
 	      	{
 	      		path: 'coupon',
-	      		name:'coupon',
+	      		name: 'coupon',
 	      	  component: Coupon,
 	      	  meta: {accBar: 4}
 	      	},
 	      	{
 	      		path: 'franchiser',
-	      		name:'franchiser',
+	      		name: 'franchiser',
 	      	  component: Franchiser,
 	      	  meta: {accBar: 6}
 	      	},
 	      	{
 	      		path: 'insurance',
-	      		name:'insurance',
+	      		name: 'insurance',
 	      	  component: Insurance,
 	      	  meta: {accBar: 7}
 	      	},
 	      	{
 	      		path: 'information',
-	      		name:'information',
+	      		name: 'information',
 	      	  component: Information,
 	      	  meta: {accBar: 8}
 	      	},
 	      	{
 	      		path: 'bankcard',
-	      		name:'bankcard',
+	      		name: 'bankcard',
 	      	  component: BankCard,
 	      	  meta: {accBar: 9}
 	      	},
 	      	{
 	      		path: 'bankcard/add',
-	      		name:'bankcard-add',
+	      		name: 'bankcard-add',
 	      	  component: BankCardAdd,
 	      	  meta: {accBar: 9}
 	      	},
 	      	{
 	      		path: 'bankcard/change',
-	      		name:'bankcard-change',
+	      		name: 'bankcard-change',
 	      	  component: BankCardChange,
 	      	  meta: {accBar: 9}
 	      	},
 	      	{
 	      		path: 'message',
-	      		name:'message',
+	      		name: 'message',
 	      	  component: Message,
 	      	  meta: {accBar: 11}
 	      	},
@@ -346,85 +346,91 @@ export default new Router({
 	      children: [
 	     	  {
 	      		path: 'introduce',
-	      		name:'yhbIntroduce',
+	      		name: 'yhbIntroduce',
 	      	  component: YhbIntroduce,
 	      	  meta: {pubBar: 1}
 	      	},
 	      	{
 	      		path: 'systemIllustrate',
-	      		name:'systemIllustrate',
+	      		name: 'systemIllustrate',
 	      	  component: SystemIllustrate,
 	      	  meta: {pubBar: 2}
 	      	},
 	      	{
 	      		path: 'deposit',
-	      		name:'deposit',
+	      		name: 'deposit',
 	      	  component: Deposit,
 	      	  meta: {pubBar: 3}
 	      	},
 	      	{
 	      		path: 'provisions',
-	      		name:'provisions',
+	      		name: 'provisions',
 	      	  component: Provisions,
 	      	  meta: {pubBar: 4}
 	      	},
 	      	{
 	      		path: 'data',
-	      		name:'yhbData',
+	      		name: 'yhbData',
 	      	  component: YhbData,
 	      	  meta: {pubBar: 5}
 	      	},
 	      	{
 	      		path: 'safeConduct',
-	      		name:'safeConduct',
+	      		name: 'safeConduct',
 	      	  component: SafeConduct,
 	      	  meta: {pubBar: 6}
 	      	},
 	      	{
 	      		path: 'announcement',
-	      		name:'yhbAnnouncement',
+	      		name: 'yhbAnnouncement',
 	      	  component: YhbAnnouncement,
 	      	  meta: {pubBar: 7}
 	      	},
 	      	{
+	      		path: 'announcement/:id',
+	      		name: 'NewsItem',
+	      	  component: NewsItem,
+	      	  meta: {pubBar: 7}
+	      	},
+	      	{
 	      		path: 'news',
-	      		name:'YhbNews',
+	      		name: 'YhbNews',
 	      	  component: YhbNews,
 	      	  meta: {pubBar: 8}
 	      	},
 	      	{
 	      		path: 'news/:id',
-	      		name:'newsItem',
+	      		name: 'newsItem',
 	      	  component: NewsItem,
 	      	  meta: {pubBar: 8}
 	      	},
 	      	{
 	      		path: 'aptitude',
-	      		name:'aptitude',
+	      		name: 'aptitude',
 	      	  component: Aptitude,
 	      	  meta: {pubBar: 11}
 	      	},
 	      	{
 	      		path: 'serviceNote',
-	      		name:'serviceNote',
+	      		name: 'serviceNote',
 	      	  component: ServiceNote,
 	      	  meta: {pubBar: 12}
 	      	},
 	      	{
 	      		path: 'partner',
-	      		name:'partner',
+	      		name: 'partner',
 	      	  component: Partner,
 	      	  meta: {pubBar: 13}
 	      	},
 	      	{
 	      		path: 'contactUs',
-	      		name:'contactUs',
+	      		name: 'contactUs',
 	      	  component: ContactUs,
 	      	  meta: {pubBar: 14}
 	      	},
 	      	{
 	      		path: 'join',
-	      		name:'JoinUs',
+	      		name: 'JoinUs',
 	      	  component: JoinUs,
 	      	  meta: {pubBar: 15}
 	      	},

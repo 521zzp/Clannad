@@ -31,12 +31,16 @@
 </template>
 
 <script>
-	
 export default {
 	props: ['list'],
 	data () {
 		return {
 			
+		}
+	},
+	computed: {
+		trade () {
+			return this.$store.state.trade
 		}
 	}
 }

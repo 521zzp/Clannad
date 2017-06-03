@@ -7,11 +7,11 @@
 			</div>
 			<div class="content">
 				<div class="p fl clearfix">
-					<router-link to="/regist" class="a clearfix">
+					<router-link to="/publicity/news/1" class="a clearfix">
 						<img src="//i0.hdslb.com/bfs/archive/0b787d2a3b6b81ed14a363368b86b5ae33dc92fb.jpg" alt="" />
 						<span class="hidden-msg">我看完评论后完评论后谁完评论后谁都不服，完评论后谁都不服，都不服，完评论后谁都不服，谁都不服，就服你！虚渊玄被沙耶追杀</span>
 					</router-link>
-					<router-link to="/regist" class="a clearfix">
+					<router-link to="/publicity/news/2" class="a clearfix">
 						<img src="//i0.hdslb.com/bfs/archive/0b787d2a3b6b81ed14a363368b86b5ae33dc92fb.jpg" alt="" />
 						<span class="hidden-msg">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀</span>
 					</router-link>
@@ -19,42 +19,42 @@
 				<div class="t fr clearfix">
 					<ul class="clearfix">
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/52" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
 							</router-link>
 						</li>
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/53" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
 							</router-link>
 						</li>
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/54" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
 							</router-link>
 						</li>
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/55" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
 							</router-link>
 						</li>
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/56" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
 							</router-link>
 						</li>
 						<li>
-							<router-link to="/regist" class="b clearfix">
+							<router-link to="/publicity/news/54" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
 								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
@@ -62,7 +62,7 @@
 						</li>
 					</ul>
 					<div class="more">
-						<router-link to="/regist" class="fr clearfix">
+						<router-link to="/publicity/news" class="fr clearfix">
 							查看更多>>
 						</router-link>
 					</div>

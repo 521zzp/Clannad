@@ -7,7 +7,7 @@
 				<div class="operate clearfix">
 					<span v-if="eyeSwitch" class="money">900000</span>
 					<span v-else class="money">***</span>
-					<div class="op-link">
+					<div class="op-link" v-if="trade">
 						<router-link to="/account/current/in" class="in">转入</router-link>
 						<router-link to="/account/current/out" class="out">转出</router-link>
 					</div>
@@ -55,6 +55,11 @@ export default {
 	data () {
 		return {
 			eyeSwitch: false
+		}
+	},
+	computed: {
+		trade () {
+			return this.$store.state.trade
 		}
 	},
 	mounted () {

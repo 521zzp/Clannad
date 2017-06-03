@@ -48,7 +48,7 @@
 					</div>
 					<div class="o-operate fr">
 						<router-link to="/account/financing" class="contract">理财协议</router-link>
-						<router-link to="/account/financing" class="apply-out">申请转出</router-link>
+						<router-link to="/account/financing" class="apply-out" v-if="trade">申请转出</router-link>
 					</div>
 				</div>
 			</div>
@@ -66,6 +66,11 @@ export default{
 			selectTap: 1,
 			open: -1,
 			list: [1, 2, 3, 4, ]
+		}
+	},
+	computed: {
+		trade () {
+			return this.$store.state.trade
 		}
 	},
 	watch: {

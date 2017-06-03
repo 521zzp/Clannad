@@ -1,6 +1,6 @@
 <template>
 	<div class="container clearfix">
-		<router-link to="/regist" class="clearfix fr pic-link">
+		<router-link to="/guide" class="clearfix fr pic-link">
 			<img src="../../../assets/home/about-yhb.png" alt="一分钟了解余惠宝" />
 		</router-link>
 		<!--热门-->
@@ -17,7 +17,8 @@
 					<span class="desc">投资期限</span>
 				</div>
 				<div class="buy fr clearfix">
-					<span class="buy-now">立即投资</span>
+					<router-link v-if="trade" to="/product" class="buy-now">立即投资</router-link to="/product">
+					<router-link v-else to="/app" class="buy-now">下载APP购买</router-link to="/product">
 					<span class="desc">已购：{{main.people}}人</span>
 				</div>
 			</div>
@@ -51,11 +52,13 @@
 					<span class="desc">投资期限</span>
 				</div>
 				<div class="buy fr clearfix">
-					<span class="buy-now unable" v-if="main.left > 0 && main.startMilliseconds > 0">即将开始</span>
-					<span class="buy-now" v-else-if="main.left > 0 && main.startMilliseconds < 0 && main.endMilliseconds > 0">立即投资</span>
-					<span class="buy-now unable" v-else-if="main.left > 0 && main.endMilliseconds <= 0">已结束</span>
-					<span v-else class="buy-now unable">已售罄</span>
-					
+					<template v-if="trade">
+						<span class="buy-now unable" v-if="main.left > 0 && main.startMilliseconds > 0">即将开始</span>
+						<span class="buy-now" v-else-if="main.left > 0 && main.startMilliseconds < 0 && main.endMilliseconds > 0">立即投资</span>
+						<span class="buy-now unable" v-else-if="main.left > 0 && main.endMilliseconds <= 0">已结束</span>
+						<span v-else class="buy-now unable">已售罄</span>
+					</template>
+					<router-link v-else to="/app" class="buy-now">APP购买</router-link>
 					<span class="desc">已购：{{main.people}}人</span>
 				</div>
 			</div>
@@ -70,7 +73,15 @@
 <script>
 	export default {
 		props: ['main','time'],
+		data () {
+			return {
+				
+			}
+		},
 		computed: {
+			trade () {
+				return this.$store.state.trade
+			}
 		},
 	}
 </script>
@@ -99,6 +110,7 @@
 	cursor: not-allowed;
 }
 .buy-now{
+	display: block;
 	color: #FFFFFF;
 	background-color: @theme;
 	padding: 8px 23px;

@@ -18,7 +18,7 @@
 					<router-link to="/account" class="level-two">可购商品</router-link>
 				</span>
 			</div>
-			<div class="link-group">
+			<div class="link-group" v-if="trade">
 				<router-link to="/account/recharge" class="link-btn">充值</router-link>
 				<router-link to="/account/enchashment" class="link-btn">提现</router-link>
 			</div>
@@ -56,6 +56,9 @@
 			HotRecom,
 		},
 		computed: {
+			trade () {
+				return this.$store.state.trade
+			},
 			capital () {
 				return this.$store.state.account.overViewCapital
 			}
