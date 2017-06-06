@@ -101,9 +101,9 @@ const Coupon = resolve => {
     resolve(require('@/components/page/account/Coupon.vue'))
   })
 }
-const Franchiser = resolve => {
-  require.ensure(['@/components/page/account/Franchiser.vue'], () => {
-    resolve(require('@/components/page/account/Franchiser.vue'))
+const AgentPlatform = resolve => {
+  require.ensure(['@/components/page/account/AgentPlatform.vue'], () => {
+    resolve(require('@/components/page/account/AgentPlatform.vue'))
   })
 }
 const Insurance = resolve => {
@@ -116,11 +116,17 @@ const Message = resolve => {
     resolve(require('@/components/page/account/Message.vue'))
   })
 }
+const Invitation = resolve => {
+  require.ensure(['@/components/page/account/Invitation.vue'], () => {
+    resolve(require('@/components/page/account/Invitation.vue'))
+  })
+}
 const Information = resolve => {
   require.ensure(['@/components/page/account/Information.vue'], () => {
     resolve(require('@/components/page/account/Information.vue'))
   })
 }
+//信息披露模块
 const Publicity = resolve => {
   require.ensure(['@/components/page/Publicity.vue'], () => {
     resolve(require('@/components/page/Publicity.vue'))
@@ -206,6 +212,13 @@ const Guide = resolve => {
     resolve(require('@/components/page/Guide.vue'))
   })
 }
+//代理商模块
+const Agent = resolve => {
+  require.ensure(['@/components/page/Agent.vue'], () => {
+    resolve(require('@/components/page/Agent.vue'))
+  })
+}
+
 
 
 Vue.use(Router)
@@ -296,9 +309,9 @@ export default new Router({
 	      	  meta: {accBar: 4}
 	      	},
 	      	{
-	      		path: 'franchiser',
-	      		name: 'franchiser',
-	      	  component: Franchiser,
+	      		path: 'platform',
+	      		name: 'agentPlatform',
+	      	  component: AgentPlatform,
 	      	  meta: {accBar: 6}
 	      	},
 	      	{
@@ -336,6 +349,12 @@ export default new Router({
 	      		name: 'message',
 	      	  component: Message,
 	      	  meta: {accBar: 11}
+	      	},
+	      	{
+	      		path: 'invitation',
+	      		name: 'invitation',
+	      	  component: Invitation,
+	      	  meta: {accBar: 12}
 	      	},
 	      ]
 	    },
@@ -445,6 +464,13 @@ export default new Router({
 	      path: '/app',
 	      name: 'AppDownload',
 	      component: AppDownload
+	    },
+	    {
+	      path: '/agent',
+	      name: 'agent',
+	      component: Agent,
+	      children: [
+	      ]
 	    },
 	  ],
 	  scrollBehavior (to, from, savedPosition) {  //滚动行为

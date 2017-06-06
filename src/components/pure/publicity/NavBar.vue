@@ -17,8 +17,6 @@
 				<template v-if="openGroup === 3">
 					<router-link v-for="item,index in listThree" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
 				</template>
-				
-		
 		</div>
 	</div>
 </template>

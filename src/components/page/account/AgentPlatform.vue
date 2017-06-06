@@ -1,6 +1,6 @@
 <template>
 	<div class="clearfix">
-		<b class="user-account-common-title">经销商</b>
+		<b class="user-account-common-title">代理平台</b>
 		
 	</div>
 </template>

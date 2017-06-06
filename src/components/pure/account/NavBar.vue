@@ -5,14 +5,13 @@
 		<router-link to="/account/current" class="nav-item" :class="{active: active === 3}">活期宝</router-link>
 		<router-link to="/account/coupon" class="nav-item" :class="{active: active === 4}">我的礼券</router-link>
 		<router-link to="/account" class="nav-item" :class="{active: active === 5}">我的商品</router-link>
-		<router-link to="/account/franchiser" class="nav-item" :class="{active: active === 6}">我是经销商</router-link>
+		<router-link to="/account/platform" class="nav-item" :class="{active: active === 6}">代理平台</router-link>
 		<router-link to="/account/insurance" class="nav-item" :class="{active: active === 7}">我的保险</router-link>
 		<router-link to="/account/information" class="nav-item" :class="{active: active === 8}">账户信息</router-link>
 		<router-link to="/account/bankcard" class="nav-item" :class="{active: active === 9}">银行卡管理</router-link>
 		<router-link to="/account" class="nav-item" :class="{active: active === 10}">资金记录</router-link>
-		<!--<Badge style="display: block;" count="2"><router-link to="/account/message" class="nav-item" :class="{active: active === 11}">我的消息</router-link></Badge>-->
 		<router-link to="/account/message" class="nav-item" :class="{active: active === 11}"><Badge count="2"><span>我的消息</span></Badge></router-link>
-		<router-link to="/account" class="nav-item" :class="{active: active === 12}">推荐好友</router-link>
+		<router-link to="/account/invitation" class="nav-item" :class="{active: active === 12}">推荐好友</router-link>
 	</div>
 </template>
 

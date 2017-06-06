@@ -19,7 +19,7 @@
 export default {
 	data () {
 		return {
-			stateTap: 1,
+			stateTap: 0,
 			rankTap: 1,
 		}
 	},
