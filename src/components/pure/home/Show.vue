@@ -22,7 +22,7 @@
 			</div>
 			<div class="info">
 				<span class="title">平台注册量</span>
-				<span class="desc">迄今，平台注册量已突破1000，00万</span>
+				<span class="desc">迄今，平台注册量已突破1000，00</span>
 			</div>
 		</router-link>
 	</div>

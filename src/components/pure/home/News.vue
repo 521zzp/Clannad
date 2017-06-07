@@ -8,12 +8,12 @@
 			<div class="content">
 				<div class="p fl clearfix">
 					<router-link to="/publicity/news/1" class="a clearfix">
-						<img src="//i0.hdslb.com/bfs/archive/0b787d2a3b6b81ed14a363368b86b5ae33dc92fb.jpg" alt="" />
-						<span class="hidden-msg">我看完评论后完评论后谁完评论后谁都不服，完评论后谁都不服，都不服，完评论后谁都不服，谁都不服，就服你！虚渊玄被沙耶追杀</span>
+						<img :src="newsImg" alt="" />
+						<span class="hidden-msg">全国首批理财说明会在重庆圆满谢幕</span>
 					</router-link>
 					<router-link to="/publicity/news/2" class="a clearfix">
-						<img src="//i0.hdslb.com/bfs/archive/0b787d2a3b6b81ed14a363368b86b5ae33dc92fb.jpg" alt="" />
-						<span class="hidden-msg">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀</span>
+						<img :src="newsImg" alt="" />
+						<span class="hidden-msg">在余惠宝理财，你还在担心这些资金安全问题吗？</span>
 					</router-link>
 				</div>
 				<div class="t fr clearfix">
@@ -22,42 +22,42 @@
 							<router-link to="/publicity/news/52" class="b clearfix">
 								<span class="time">03.06.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">诚挚祝贺余惠宝受邀参加北京中国互联网金融协会第一次高级管理员培训！</span>
 							</router-link>
 						</li>
 						<li>
 							<router-link to="/publicity/news/53" class="b clearfix">
-								<span class="time">03.06.</span>
+								<span class="time">03.10.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">余惠宝祝贺首期互联网金融从业机构高管培训（第一期）圆满落幕</span>
 							</router-link>
 						</li>
 						<li>
 							<router-link to="/publicity/news/54" class="b clearfix">
-								<span class="time">03.06.</span>
+								<span class="time">03.15.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">余惠宝2.0正式上线了！</span>
 							</router-link>
 						</li>
 						<li>
 							<router-link to="/publicity/news/55" class="b clearfix">
-								<span class="time">03.06.</span>
+								<span class="time">05.07.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">余惠宝诚邀您参加一周年庆典暨客户答谢会活动</span>
 							</router-link>
 						</li>
 						<li>
 							<router-link to="/publicity/news/56" class="b clearfix">
-								<span class="time">03.06.</span>
+								<span class="time">05.20.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">关于余惠宝的这件事，你知道吗？</span>
 							</router-link>
 						</li>
 						<li>
 							<router-link to="/publicity/news/54" class="b clearfix">
-								<span class="time">03.06.</span>
+								<span class="time">06.01.</span>
 								<em></em>
-								<span class="news-title">我看完评论后谁都不服，就服你！虚渊玄被沙耶追杀（翠星上的加尔刚提亚还好）。冈本伦被露西碎尸万段。（极黑的不论希尔特还没那么操蛋）</span>
+								<span class="news-title">4.21余惠宝app版本更新公告</span>
 							</router-link>
 						</li>
 					</ul>
@@ -80,7 +80,7 @@
 					  <swiper-slide class="swiper-no-swiping swiper-item" v-for="slide,index in swiperSlides" key="index">
 					  		<li class="clearfix">
 								<span class="fl">138****4562</span>
-								<span class="fr">投资<span class="money">666465</span>元</span>
+								<span class="fr">投资<span class="money">2465</span>元</span>
 							</li>
 					  </swiper-slide>
 					</swiper>
@@ -91,6 +91,7 @@
 </template>
 
 <script>
+	import {IMG} from '@/config/url'
 	export default {
 	  name: 'carrousel',
 	  data() {
@@ -104,13 +105,14 @@
 	        direction: 'vertical',
 	        pagination : '.swiper-pagination',
 	      },
-	      swiperSlides: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+	      swiperSlides: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+	      newsImg: IMG + '/temp/news-img.png'
 	    }
 	  },
 	  computed: {
 	    swiper() {
 	      return this.$refs.mySwiper.swiper
-	    }
+	    },
 	  },
 	  methods: {
 	  }
@@ -124,6 +126,7 @@
 	margin-top:10px;
 	margin-left: auto;
 	margin-right:auto;
+	margin-bottom: 20px;
 }
 .a:hover .hidden-msg{
 	bottom: 0;

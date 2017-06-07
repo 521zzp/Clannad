@@ -9,7 +9,17 @@ export const validatePhone = (rule, value, callback) => {
 		callback();
 	}
 };
-
+/*
+ * 筛选条件验证手机号格式，可为空
+ */
+export const validatePhoneFilter = (rule, value, callback) => {
+	let regx = /^1[34578]\d{9}$/;
+	if ( (value !== '') && !regx.test(value)) {
+		 callback(new Error('手机号码错误'));
+	} else{
+		callback();
+	}
+};
 /*
  * 验证密码格式
  */

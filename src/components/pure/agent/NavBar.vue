@@ -1,25 +1,25 @@
 <template>
 	<div class="clearfix">
 		<div class="nav-one">
-			<router-link to="/" class="first-level">推广管理</router-link><Icon type="ios-arrow-right" class="arrow-icon" :size="20"></Icon>
+			<router-link to="/agent/invitation" class="first-level">推广管理</router-link><Icon type="ios-arrow-right" class="arrow-icon" :size="20"></Icon>
 			<div class="nav-two">
-				<router-link to="/" class="second-level">推广链接</router-link>
-				<router-link to="/" class="second-level">推广收益明细</router-link>
-				<router-link to="/" class="second-level">推广提现记录</router-link>
+				<router-link to="/agent/invitation" class="second-level">推广链接</router-link>
+				<router-link to="/agent/inviteProfit" class="second-level">推广收益明细</router-link>
+				<router-link to="/agent/inviteWithdraw" class="second-level">推广提现记录</router-link>
 			</div>
 		</div>
 		<div class="nav-one">
-			<router-link to="/" class="first-level">商户管理</router-link><Icon type="ios-arrow-right" class="arrow-icon":size="20"></Icon>
+			<router-link to="/agent/merchants" class="first-level">商户管理</router-link><Icon type="ios-arrow-right" class="arrow-icon":size="20"></Icon>
 			<div class="nav-two">
-				<router-link to="/" class="second-level">商户列表</router-link>
-				<router-link to="/" class="second-level">添加商户</router-link>
+				<router-link to="/agent/merchants" class="second-level">商户列表</router-link>
+				<router-link to="/agent/addMerchants" class="second-level">添加商户</router-link>
 			</div>
 		</div>
 		<div class="nav-one">
 			<router-link to="/" class="first-level">业绩管理</router-link><Icon type="ios-arrow-right" class="arrow-icon" :size="20"></Icon>
 			<div class="nav-two">
-				<router-link to="/" class="second-level">业绩统计</router-link>
-				<router-link to="/" class="second-level">提现明细</router-link>
+				<router-link to="/agent/achievement" class="second-level">业绩统计</router-link>
+				<router-link to="/agent/achievementWithdraw" class="second-level">提现明细</router-link>
 			</div>
 		</div>
 		<div class="nav-one no-children">
@@ -79,6 +79,8 @@ export default {
 	border: 1px solid @border-two;
 	border-left: none;
 	display: none;
+	background-color: @white;
+	z-index: 1;
 }
 .nav-one:hover .nav-two{
 	display: block;

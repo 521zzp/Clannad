@@ -3,7 +3,7 @@
 		<span class="title">资金明细</span>
 		<div class="clearfix taps-group">
 			<Tabs value="in" type="card" class="my-current-record">
-		        <Tab-pane label="转入" name="in">
+		        <Tab-pane label="转入记录" name="in">
 		        	<div class="head">
 		        		<b class="time">时间</b>
 		        		<b class="money">金额（元）</b>
@@ -16,7 +16,7 @@
 		        		<Page :total="400" size="small" class="page-nav"></Page>
 		        	</div>
 		        </Tab-pane>
-		        <Tab-pane label="转出" name="out">
+		        <Tab-pane label="转出记录" name="out">
 		        	<div class="head">
 		        		<b class="time">时间</b>
 		        		<b class="money">金额（元）</b>
@@ -29,7 +29,7 @@
 		        		<Page :total="400" size="small" class="page-nav"></Page>
 		        	</div>
 		        </Tab-pane>
-		        <Tab-pane label="收益" name="profit">
+		        <Tab-pane label="收益记录" name="profit">
 		        	<div class="head">
 		        		<b class="time">时间</b>
 		        		<b class="money">金额（元）</b>

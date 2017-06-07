@@ -4,16 +4,16 @@
 			<ul class="clearfix link-group">
 				<li class="item fl clearfix ">
 					<span class="title">关于我们</span>
-					<div class="foot-item"><router-link to="/home">荣誉资质</router-link></div>
-					<div class="foot-item"><router-link to="/home">联系我们</router-link></div>
+					<!--<div class="foot-item"><router-link to="/home">荣誉资质</router-link></div>-->
+					<div class="foot-item"><router-link to="/publicity/contactUs">联系我们</router-link></div>
 				</li>
-				<li class="item fl clearfix">
+				<li v-if="trade" class="item fl clearfix">
 					<span class="title">安全保障</span>
 					<div class="foot-item"><router-link to="/home">平台安全</router-link></div>
 					<div class="foot-item"><router-link to="/home">服务说明</router-link></div>
 					<div class="foot-item"><router-link to="/home">法律意见书</router-link></div>
 				</li>
-				<li class="item fl clearfix">
+				<!--<li class="item fl clearfix">
 					<span class="title">合作伙伴</span>
 					<div class="foot-item"><a href="http://www.cmbc.com.cn/" target="_blank">中国民生银行</a></div>
 					<div class="foot-item"><a href="http://www.cgbchina.com.cn/" target="_blank">广发银行</a></div>
@@ -21,13 +21,14 @@
 					<div class="foot-item"><a href="http://www.cmbchina.com/" target="_blank">招商银行</a></div>
 					<div class="foot-item"><a href="http://www.chinapnr.com/" target="_blank">汇付天下</a></div>
 					<div class="foot-item"><a href="http://www.jsfund.cn/" target="_blank">嘉实基金</a></div>
-				</li>
+				</li>-->
 				<li class="item-msg fl clearfix">
 					<span class="title">热线电话</span>
 					<span class="foot-phone line-span">400-838-8304</span>
+				</li>
+				<li class="item-msg fl clearfix">
 					<span class="line-span">服务时间：08:00-21:00（周一至周日）</span>
 					<span class="line-span">邮箱：postmaster@qingxijituan.com</span>
-					<span>网络投诉咨询中心</span>
 				</li>
 				<li class="item-pic fl clearfix">
 					<img class="wechat-img" :src="wechatImg"/>
@@ -35,7 +36,8 @@
 			</ul>
 		</div>
 		<div class="copyRight">
-			<span>Copyright © yhb118.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
+			<span v-if="trade">Copyright © yhb118.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
+			<span>Copyright © yhb118.com  网站备案号:沪ICP备15026013号</span>
 			<span>上海岚儒金融信息服务有限公司</span>
 		</div>
 	</footer>
@@ -47,6 +49,11 @@ export default {
 	data () {
 		return {
 			wechatImg: IMG + '/common/footer/wechat.png'
+		}
+	},
+	computed : {
+		trade () {
+			return this.$store.state.trade
 		}
 	}
 }

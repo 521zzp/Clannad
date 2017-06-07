@@ -218,10 +218,56 @@ const Agent = resolve => {
     resolve(require('@/components/page/Agent.vue'))
   })
 }
+const AgentInvitation = resolve => {
+  require.ensure(['@/components/page/agent/Invitation.vue'], () => {
+    resolve(require('@/components/page/agent/Invitation.vue'))
+  })
+}
+const AgentInviteProfit= resolve => {
+  require.ensure(['@/components/page/agent/InviteProfit.vue'], () => {
+    resolve(require('@/components/page/agent/InviteProfit.vue'))
+  })
+}
+const AgentInviteWithdraw= resolve => {
+  require.ensure(['@/components/page/agent/InviteWithdraw.vue'], () => {
+    resolve(require('@/components/page/agent/InviteWithdraw.vue'))
+  })
+}
+const AgentMerchants= resolve => {
+  require.ensure(['@/components/page/agent/Merchants.vue'], () => {
+    resolve(require('@/components/page/agent/Merchants.vue'))
+  })
+}
+const AgentAddMerchant= resolve => {
+  require.ensure(['@/components/page/agent/AddMerchant.vue'], () => {
+    resolve(require('@/components/page/agent/AddMerchant.vue'))
+  })
+}
+const AgentAchievement= resolve => {
+  require.ensure(['@/components/page/agent/Achievement.vue'], () => {
+    resolve(require('@/components/page/agent/Achievement.vue'))
+  })
+}
+const AgentAchievementWithdraw= resolve => {
+  require.ensure(['@/components/page/agent/AchievementWithdraw.vue'], () => {
+    resolve(require('@/components/page/agent/AchievementWithdraw.vue'))
+  })
+}
 
+const Developing= resolve => {
+  require.ensure(['@/components/page/Developing.vue'], () => {
+    resolve(require('@/components/page/Developing.vue'))
+  })
+}
+const Error= resolve => {
+  require.ensure(['@/components/page/Error.vue'], () => {
+    resolve(require('@/components/page/Error.vue'))
+  })
+}
 
 
 Vue.use(Router)
+import store from '../store'
 
 export default new Router({
 	mode: 'history',
@@ -234,12 +280,26 @@ export default new Router({
 	    {
 	      path: '/login',
 	      name: 'Login',
-	      component: Login
+	      component: Login,
+	      beforeEnter: (to, from, next) => {
+	        if (store.state.trade) {
+	        	next()
+	        } else {
+	        	 next({ path: '/developing' })
+	        }
+	      }
 	    },
 	    {
 	      path: '/regist',
 	      name: 'Regist',
-	      component: Regist
+	      component: Regist,
+	      beforeEnter: (to, from, next) => {
+	        if (store.state.trade) {
+	        	next()
+	        } else {
+	        	 next({ path: '/developing' })
+	        }
+	      }
 	    },
 	    {
 	      path: '/resetpwd',
@@ -254,11 +314,25 @@ export default new Router({
 	    {
 	      path: '/product/:id',
 	      name: 'ProductDetail',
+	      beforeEnter: (to, from, next) => {
+	        if (store.state.trade) {
+	        	next()
+	        } else {
+	        	 next({ path: '/developing' })
+	        }
+	      },
 	      component: ProductDetail
 	    },
 	    {
 	      path: '/account',
 	      component: Account,
+	      beforeEnter: (to, from, next) => {
+	        if (store.state.token) {
+	        	next()
+	        } else {
+	        	 next({ path: '/login' })
+	        }
+	      },
 	      children: [
 	      	{
 	      		path: '',
@@ -469,8 +543,60 @@ export default new Router({
 	      path: '/agent',
 	      name: 'agent',
 	      component: Agent,
+	      beforeEnter: (to, from, next) => {
+	        if (store.state.trade) {
+	        	next()
+	        } else {
+	        	 next({ path: '/developing' })
+	        }
+	      },
 	      children: [
+	      	{
+	      		path: 'invitation',
+			      name: 'invitation',
+			      component: AgentInvitation,
+	      	},
+	      	{
+	      		path: 'inviteProfit',
+			      name: 'inviteProfit',
+			      component: AgentInviteProfit,
+	      	},
+	      	{
+	      		path: 'inviteWithdraw',
+			      name: 'inviteWithdraw',
+			      component: AgentInviteWithdraw,
+	      	},
+	      	{
+	      		path: 'merchants',
+			      name: 'merchants',
+			      component: AgentMerchants,
+	      	},
+	      	{
+	      		path: 'addMerchants',
+			      name: 'addMerchants',
+			      component: AgentAddMerchant,
+	      	},
+	      	{
+	      		path: 'achievement',
+			      name: 'AgentAchievement',
+			      component: AgentAchievement,
+	      	},
+	      	{
+	      		path: 'achievementWithdraw',
+			      name: 'AgentAchievementWithdraw',
+			      component: AgentAchievementWithdraw,
+	      	},
 	      ]
+	    },
+	    {
+	      path: '/developing',
+	      name: 'developing',
+	      component: Developing
+	    },
+	    {
+	      path: '/*',
+	      name: 'Error',
+	      component: Error
 	    },
 	  ],
 	  scrollBehavior (to, from, savedPosition) {  //滚动行为

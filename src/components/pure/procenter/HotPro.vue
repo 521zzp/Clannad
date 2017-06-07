@@ -35,7 +35,7 @@
 					</div>
 					<div class="money sec fl">
 						<span class="desc">投资金额</span>
-						<span class="value">{{hot.total}}<span>元</span></span>
+						<span class="value">{{parseInt(hot.total / 10000)}}<span>元</span></span>
 					</div>
 					<div class="left sec fl">
 						<span class="desc">剩余可投</span>

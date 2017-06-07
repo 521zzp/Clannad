@@ -2,7 +2,7 @@
 	<div class="second">
 		<div class="container">
 			<div class="logo fl">
-				<img :src="logo"/>
+				<img class="logo-img" :src="logo"/>
 			</div>
 			<nav class="fr nav-one">
 				<div class="nav-item">
@@ -11,26 +11,28 @@
 				<div class="nav-item">
 					<router-link to="/product" class="level-one fl">我要理财</router-link>
 				</div>
+				<div class="nav-item">
+					<router-link to="/app" class="level-one fl">APP下载</router-link>
+				</div>
 				<div class="nav-item more-items info-show">
 					<router-link to="/publicity/systemIllustrate" class="level-one fl ">信息披露
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</router-link>
 					<nav class="nav-two clearfix">
 						<router-link to="/publicity/introduce" class="level-two">平台介绍</router-link>
-						<router-link to="/publicity/deposit" class="level-two">银行资金存管</router-link>
-						<router-link to="/publicity/provisions" class="level-two">风险备付金</router-link>
-						<router-link to="/publicity/data" class="level-two">平台数据</router-link>
+						<router-link v-if="trade" to="/publicity/deposit" class="level-two">银行资金存管</router-link>
+						<router-link v-if="trade" to="/publicity/provisions" class="level-two">风险备付金</router-link>
+						<router-link v-if="trade" to="/publicity/data" class="level-two">平台数据</router-link>
 						<router-link to="/publicity/safeConduct" class="level-two">安全保障</router-link>
 						<router-link to="/publicity/news" class="level-two">新闻公告</router-link>
-						<router-link to="/app" class="level-two">APP下载</router-link>
-						<router-link to="/publicity/aptitude" class="level-two">荣誉资质</router-link>
-						<router-link to="/publicity/partner" class="level-two">合作伙伴</router-link>
+						<router-link v-if="trade" to="/publicity/aptitude" class="level-two">荣誉资质</router-link>
+						<router-link v-if="trade" to="/publicity/partner" class="level-two">合作伙伴</router-link>
 					</nav>
 				</div>
-				<div class="nav-item">
+				<div v-if="trade" class="nav-item">
 					<router-link to="/" class="level-one fl">积分商城</router-link>
 				</div>
-				<div class="nav-item more-items user-info">
+				<div v-if="online" class="nav-item more-items user-info">
 					<span class="level-one fl ">
 							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face" @click="modal = true"/>
 							<router-link to="/account" class="level-one">我的账户</router-link>
@@ -41,7 +43,7 @@
 						<router-link to="/account/financing" class="level-two">我的理财</router-link>
 						<router-link to="/account/current" class="level-two">活期宝</router-link>
 						<router-link to="/account/coupon" class="level-two">我的礼券</router-link>
-						<router-link to="/account" class="level-two">我的商品</router-link>
+						<router-link v-if="trade" to="/account" class="level-two">我的商品</router-link>
 						<router-link to="/account" class="level-two">我是经销商</router-link>
 						<router-link to="/account/information" class="level-two">个人资料</router-link>
 						<router-link to="/account" class="level-two">资金记录</router-link>
@@ -90,6 +92,14 @@ export default {
 	computed: {
 		face () {
 			return this.$store.state.user.img
+		},
+		trade () {
+			return this.$store.state.trade
+		},
+		online () {
+			console.log(1)
+			console.log(!!this.$store.state.token)
+			return !!this.$store.state.token
 		}
 	},
 	methods: {
@@ -135,6 +145,10 @@ export default {
 	margin-right: 10px;
 	background-image: url(../../../assets/icon/user-face-bg.png);
 	background-size: 100% 100%;
+}
+.logo-img{
+	display: inline-block;
+	vertical-align: middle;
 }
 .upload{
 	position: absolute;
@@ -199,6 +213,7 @@ export default {
 	display: inline-block;
 	width: 290px;
 	height: 100%;
+	line-height: 90px;
 }
 .nav-one{
 	display: inline-block;	

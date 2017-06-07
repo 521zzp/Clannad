@@ -6,7 +6,7 @@
 		</div>
 		<em class="r-border"></em>
 		<marquee class="notice-info">恭喜月色成功突围进入b站番剧前9！！！</marquee>
-		<router-link to="/more" class="notice-more fr">更多>></router-link>
+		<router-link to="/publicity/news" class="notice-more fr">更多>></router-link>
 	</div>
 </template>
 

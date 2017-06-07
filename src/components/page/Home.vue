@@ -8,7 +8,7 @@
 		<Products :list="products"/>
 		<Agent/>
 		<News/>
-		<Partner/>
+		<Partner v-if="trade"/>
 		<AFooter/>
 	</div>
 </template>
@@ -67,6 +67,9 @@ export default {
 				}
 			}
 			return Object.assign(timeObj, {secKilling: secKilling})
+		},
+		trade () {
+			return this.$store.state.trade
 		}
 	},
 	mounted () {

@@ -49,6 +49,14 @@ export default {
 
 <style lang="less">
 @import '../../config/base.less';
+.agent-common-title{
+	font-size: @bfz;
+	color: @gray-three;
+	display: block;
+}
+</style>
+<style lang="less">
+@import '../../config/base.less';
 .only-agent-center-bread .ivu-breadcrumb a{
 	color: @white;
 }

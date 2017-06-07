@@ -25,7 +25,7 @@
 export default {
 	data () {
 		return {
-			listOne: [
+			listOne: this.trade ? [
 				{
 					path: '/publicity/introduce',
 					active: 1,
@@ -56,6 +56,18 @@ export default {
 					active:6,
 					name: '安全保障'
 				},
+			] : 
+			[
+				{
+					path: '/publicity/introduce',
+					active: 1,
+					name: '平台介绍'
+				},
+				{
+					path: '/publicity/safeConduct',
+					active:6,
+					name: '安全保障'
+				},
 			],
 			listTwo: [
 				{
@@ -69,7 +81,7 @@ export default {
 					name: '惠宝公告'
 				},
 			],
-			listThree: [
+			listThree: this.trade ? [
 				{
 					path: '/app',
 					active: 10,
@@ -105,6 +117,28 @@ export default {
 					active:15,
 					name: '加入我们'
 				},
+			] : 
+			[
+				{
+					path: '/app',
+					active: 10,
+					name: 'APP下载'
+				},
+				{
+					path: '/guide',
+					active: 9,
+					name: '新手引导'
+				},
+				{
+					path: '/publicity/contactUs',
+					active:14,
+					name: '联系我们'
+				},
+				{
+					path: '/publicity/join',
+					active:15,
+					name: '加入我们'
+				},
 			],
 		}
 	},
@@ -114,6 +148,9 @@ export default {
 		},
 		active () {
 			return this.$route.matched[1].meta.pubBar 
+		},
+		trade () {
+			return this.$store.state.trade
 		}
 	},
 	methods: {

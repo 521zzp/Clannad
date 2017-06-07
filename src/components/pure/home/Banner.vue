@@ -9,11 +9,30 @@
 
 
 <script>
+	import {IMG} from '@/config/url'
     export default {
         data () {
             return {
                 value2: 0,
-                banners: this.$store.state.home.banner,
+                /*banners: this.$store.state.home.banner,*/
+                banners: [
+					{
+						img: IMG + '/home/banner/banner-one.jpg',
+						url: 'a'
+					},
+					{
+						img: IMG + '/home/banner/banner-two.jpg',
+						url: 'b'
+					},
+					{
+						img: IMG + '/home/banner/banner-three.jpg',
+						url: 'c'
+					},
+					{
+						img: IMG + '/home/banner/banner-four.jpg',
+						url: 'd'
+					},
+				],
                 setting: {
                 	speed:5000
                 }
@@ -21,7 +40,6 @@
         },
         methods: {
         	location (url) {
-        		console.log(url)
         	}
         }
     }

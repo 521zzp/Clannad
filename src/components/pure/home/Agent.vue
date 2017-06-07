@@ -5,7 +5,7 @@
 		  <swiper-slide class="swiper-no-swiping swiper-item fl" v-for="slide,index in swiperSlides" key="index">
 		  		<div class="agent-item ">
 		  			<div class="face">
-		  				<img class="agent-img" src="//i0.hdslb.com/bfs/face/90bf2d1de7bec85601e7f35635b358a22336cece.jpg_52x52.jpg" alt="" />
+		  				<img class="agent-img" :src="face" alt="" />
 		  				<div class="face-bg bg-gold"></div>
 		  			</div>
 		  			<div class="agent-info">
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+	import {IMG} from '@/config/url'
 	export default {
 	  name: 'carrousel',
 	  data() {
@@ -40,6 +41,9 @@
 	  computed: {
 	    swiper() {
 	      return this.$refs.mySwiper.swiper
+	    },
+	    face () {
+	    	return IMG + '/temp/face.jpg'
 	    }
 	  },
 	  methods: {
