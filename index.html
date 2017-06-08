@@ -2,10 +2,129 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="./static/fvico.ico">
     <title>余惠宝</title>
+    <style type="text/css">
+    	#nonsupport-browser{
+    		width: 100%;
+    		height: 100%;
+    		position: fixed;
+    		top: 0;
+    		background-color: pink;
+    		z-index: 10000;
+    		background-color: #FFFFFF;
+    		display: none;
+    	}
+    	#nonsupport-browser .top-head{
+    		height: 40px;
+    		line-height: 40px;
+    		box-shadow: 0 5px 5px 0px #ececec;
+    	}
+    	.nonsupport-container{
+    		width: 1200px;
+    		margin: 0 auto;
+    	}
+    	.nonsupport-container.nonsupport-browser-list{
+    		margin-top: 72px;
+    		width: 780px;
+    		margin-left: auto;
+    		margin-right: auto;
+    	}
+    	.nonsupport-title{
+    		font-size: 24px;
+    		color: #000000;
+    	}
+    	.nonsupport-item {
+    		display: inline-block;
+    		color: #3399ff;
+    		text-decoration: none;
+    		font-size: 14px;
+    		text-align: center;
+    	}
+    	.nonsupport-item img{
+    		display: inline-block;
+    	}
+    	.nonsupport-item span{
+    		display: block;
+    		margin-top: 40px;
+    	}
+    	.nonsupport-cry{
+    		display: block;
+    		width: 165px;
+    		margin: 102px auto 48px auto;
+    	}
+    	.nonsupport-chrome{
+    		float: right;
+    	}
+    	.nonsupport-firefox{
+    		margin-left: 240px;
+    	}
+    	.nonsupport-content{
+    		min-width: 1200px;
+    	}
+    	.nonsupport-desc{
+    		display: block;
+    		text-align: center;
+    		font-size: 28px;
+    		color: #808080;
+    	}
+    </style>
   </head>
   <body>
     <div id="app"></div>
+    <div id="nonsupport-browser">
+			<div class="top-head">
+				<div class="nonsupport-container">
+					<span class="nonsupport-title">余惠宝</span>
+				</div>
+			</div>
+			<div class="nonsupport-content">
+				<img class="nonsupport-cry" src="./static/nonsupport-browser/nonsupport-cry.png" alt="" />
+				<span class="nonsupport-desc">您正在使用的浏览器版本过低，将不能正常浏览和使用余惠宝</span>
+				<div class="nonsupport-container nonsupport-browser-list">
+					<a href="https://www.microsoft.com/zh-cn/download/internet-explorer.aspx" class="nonsupport-item nonsupport-ie">
+						<img src="./static/nonsupport-browser/browser-ie.png"/>
+						<span>升级IE浏览器</span>
+					</a>
+					<a href="http://www.firefox.com.cn/" class="nonsupport-item nonsupport-firefox">
+						<img src="./static/nonsupport-browser/browser-firefox.png"/>
+						<span>下载火狐浏览器</span>
+					</a>
+					<a href="http://www.google.cn/chrome/browser/desktop/" class="nonsupport-item nonsupport-chrome">
+						<img src="./static/nonsupport-browser/browser-chrome.png"/>
+						<span>下载chrome浏览器</span>
+					</a>
+				</div>
+			</div>
+			
+    </div>
     <!-- built files will be auto injected -->
+    <script type="text/javascript">
+    	function browserSupport(){
+				var userAgent = navigator.userAgent;
+				if (userAgent.indexOf('Edge') > -1) {
+					return true
+				} else if (userAgent.indexOf('Firefox') > -1) {
+					return true
+				} else if (userAgent.indexOf('OPR') > -1) {
+					return true
+				} else if (userAgent.indexOf('rv:11.0') > -1){
+					return true
+				} else if (userAgent.indexOf('MSIE') > -1) {
+					if (userAgent.indexOf('MSIE 10.0') > -1) {
+						return true
+					} else{
+						return false
+					}
+				} else if (userAgent.indexOf('Chrome') > -1) {
+					return true
+				}else {
+					return true
+				}
+			}
+    	if (!browserSupport()) {
+    		document.getElementById('nonsupport-browser').style.display = 'block'
+    	}
+    </script>
   </body>
 </html>

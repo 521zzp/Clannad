@@ -48,7 +48,7 @@ export default {
 }
 .only-coupon-taps .ivu-tabs-nav .ivu-tabs-tab{
 		padding: 8px 40px;
-	}
+}
 </style>
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';

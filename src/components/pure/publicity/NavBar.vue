@@ -25,7 +25,32 @@
 export default {
 	data () {
 		return {
-			listOne: this.trade ? [
+			listTwo: [
+				{
+					path: '/publicity/news',
+					active:8,
+					name: '惠宝新闻'
+				},
+				{
+					path: '/publicity/announcement',
+					active: 7,
+					name: '惠宝公告'
+				},
+			],
+		}
+	},
+	computed: {
+		openGroup () {
+			return this.$store.state.publicity.navOpen
+		},
+		active () {
+			return this.$route.matched[1].meta.pubBar 
+		},
+		trade () {
+			return this.$store.state.trade
+		},
+		listOne () {
+			return this.trade ? [
 				{
 					path: '/publicity/introduce',
 					active: 1,
@@ -68,20 +93,10 @@ export default {
 					active:6,
 					name: '安全保障'
 				},
-			],
-			listTwo: [
-				{
-					path: '/publicity/news',
-					active:8,
-					name: '惠宝新闻'
-				},
-				{
-					path: '/publicity/announcement',
-					active: 7,
-					name: '惠宝公告'
-				},
-			],
-			listThree: this.trade ? [
+			]
+		},
+		listThree () {
+			return this.trade ? [
 				{
 					path: '/app',
 					active: 10,
@@ -139,19 +154,11 @@ export default {
 					active:15,
 					name: '加入我们'
 				},
-			],
+			]
 		}
-	},
-	computed: {
-		openGroup () {
-			return this.$store.state.publicity.navOpen
-		},
-		active () {
-			return this.$route.matched[1].meta.pubBar 
-		},
-		trade () {
-			return this.$store.state.trade
-		}
+		
+		
+		
 	},
 	methods: {
 		open (index) {

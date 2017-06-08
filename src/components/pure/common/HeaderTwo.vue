@@ -44,7 +44,7 @@
 						<router-link to="/account/current" class="level-two">活期宝</router-link>
 						<router-link to="/account/coupon" class="level-two">我的礼券</router-link>
 						<router-link v-if="trade" to="/account" class="level-two">我的商品</router-link>
-						<router-link to="/account" class="level-two">我是经销商</router-link>
+						<router-link to="/account/platform" class="level-two">我是经销商</router-link>
 						<router-link to="/account/information" class="level-two">个人资料</router-link>
 						<router-link to="/account" class="level-two">资金记录</router-link>
 					</nav>
@@ -97,8 +97,6 @@ export default {
 			return this.$store.state.trade
 		},
 		online () {
-			console.log(1)
-			console.log(!!this.$store.state.token)
 			return !!this.$store.state.token
 		}
 	},
@@ -120,7 +118,6 @@ export default {
             });
         },
         handleSuccess (response) {
-            // 因为上传过程为实例，这里模拟添加 url
             let img = analyJson(response).path;
             if (img) {
             	this.$store.dispatch('userImgUpload',{img: img});
@@ -199,6 +196,7 @@ export default {
 .level-one{
 	font-size: 18px;
 	color: #4c4c4c;
+	font-weight: 600;
 }
 .container{
 	width: 1200px;

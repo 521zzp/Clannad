@@ -28,7 +28,6 @@ const mutations = {
 		state.action = obj.action;
 		state.items = obj.items;
 		state.count++;
-		console.log(obj)
     }
 }
 

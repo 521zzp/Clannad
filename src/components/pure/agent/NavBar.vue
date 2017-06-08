@@ -16,14 +16,14 @@
 			</div>
 		</div>
 		<div class="nav-one">
-			<router-link to="/" class="first-level">业绩管理</router-link><Icon type="ios-arrow-right" class="arrow-icon" :size="20"></Icon>
+			<router-link to="/agent/achievement" class="first-level">业绩管理</router-link><Icon type="ios-arrow-right" class="arrow-icon" :size="20"></Icon>
 			<div class="nav-two">
 				<router-link to="/agent/achievement" class="second-level">业绩统计</router-link>
 				<router-link to="/agent/achievementWithdraw" class="second-level">提现明细</router-link>
 			</div>
 		</div>
 		<div class="nav-one no-children">
-			<router-link to="/"  class="first-level">排行榜</router-link>
+			<router-link to="/agent/rank"  class="first-level">排行榜</router-link>
 		</div>
 
 	</div>

@@ -16,5 +16,8 @@ export const actions = {
 	},
 	userImgUpload ({commit},obj) {
 		commit(types.HOME_IMG_UPLOAD,obj);
+	},
+	developeTrapdoor ({commit},obj) {
+		commit(types.TRAPDOOR,obj);
 	}
 }

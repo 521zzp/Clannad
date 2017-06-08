@@ -22,7 +22,6 @@ const actions = {
 const mutations = {
 	[types.PUB_BREAD_CHANGE] (state,obj) {
 		state.bread = obj
-		console.log(state.bread)
     },
     [types.PUB_NAV_CHANGE] (state,obj) {
 		state.navOpen = obj

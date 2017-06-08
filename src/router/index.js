@@ -223,43 +223,48 @@ const AgentInvitation = resolve => {
     resolve(require('@/components/page/agent/Invitation.vue'))
   })
 }
-const AgentInviteProfit= resolve => {
+const AgentInviteProfit = resolve => {
   require.ensure(['@/components/page/agent/InviteProfit.vue'], () => {
     resolve(require('@/components/page/agent/InviteProfit.vue'))
   })
 }
-const AgentInviteWithdraw= resolve => {
+const AgentInviteWithdraw = resolve => {
   require.ensure(['@/components/page/agent/InviteWithdraw.vue'], () => {
     resolve(require('@/components/page/agent/InviteWithdraw.vue'))
   })
 }
-const AgentMerchants= resolve => {
+const AgentMerchants = resolve => {
   require.ensure(['@/components/page/agent/Merchants.vue'], () => {
     resolve(require('@/components/page/agent/Merchants.vue'))
   })
 }
-const AgentAddMerchant= resolve => {
+const AgentAddMerchant = resolve => {
   require.ensure(['@/components/page/agent/AddMerchant.vue'], () => {
     resolve(require('@/components/page/agent/AddMerchant.vue'))
   })
 }
-const AgentAchievement= resolve => {
+const AgentAchievement = resolve => {
   require.ensure(['@/components/page/agent/Achievement.vue'], () => {
     resolve(require('@/components/page/agent/Achievement.vue'))
   })
 }
-const AgentAchievementWithdraw= resolve => {
+const AgentAchievementWithdraw = resolve => {
   require.ensure(['@/components/page/agent/AchievementWithdraw.vue'], () => {
     resolve(require('@/components/page/agent/AchievementWithdraw.vue'))
   })
 }
+const AgentRank = resolve => {
+  require.ensure(['@/components/page/agent/Rank.vue'], () => {
+    resolve(require('@/components/page/agent/Rank.vue'))
+  })
+}
 
-const Developing= resolve => {
+const Developing = resolve => {
   require.ensure(['@/components/page/Developing.vue'], () => {
     resolve(require('@/components/page/Developing.vue'))
   })
 }
-const Error= resolve => {
+const Error = resolve => {
   require.ensure(['@/components/page/Error.vue'], () => {
     resolve(require('@/components/page/Error.vue'))
   })
@@ -553,7 +558,7 @@ export default new Router({
 	      children: [
 	      	{
 	      		path: 'invitation',
-			      name: 'invitation',
+			      name: 'agentInvitation',
 			      component: AgentInvitation,
 	      	},
 	      	{
@@ -585,6 +590,11 @@ export default new Router({
 	      		path: 'achievementWithdraw',
 			      name: 'AgentAchievementWithdraw',
 			      component: AgentAchievementWithdraw,
+	      	},
+	      	{
+	      		path: 'rank',
+			      name: 'AgentRank',
+			      component: AgentRank,
 	      	},
 	      ]
 	    },

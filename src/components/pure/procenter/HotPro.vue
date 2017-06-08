@@ -21,7 +21,7 @@
 				<div class="item-title clearfix">
 					<span class="name">{{hot.name}}</span>
 					<div class="taps">
-						<span v-for="item in taps" :style="{ backgroundColor: item.color}">{{item.tap}}</span>
+						<span v-for="item in hot.taps" :style="{ backgroundColor: item.color}">{{item.tap}}</span>
 					</div>
 				</div>
 				<div class="item-info clearfix">

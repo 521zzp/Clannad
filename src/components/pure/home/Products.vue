@@ -50,7 +50,6 @@
 			}
 		},
 		mounted () {
-			console.log(this.list)
 		}
 	}
 	

@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import iView from 'iview'
+import 'whatwg-fetch' //兼容IE fetch
 import AwesomeSwiper from 'vue-awesome-swiper'
 import '@/config/theme.less'
 import {dateFormat} from '@/tool/date'

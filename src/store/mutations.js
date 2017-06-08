@@ -18,5 +18,10 @@ export const mutations = {
     },
     [types.HOME_IMG_UPLOAD] (state,obj) {
     	state.user.img = obj.img
+    },
+    [types.TRAPDOOR] (state,obj) {
+    	state.token = obj.token
+    	state.user = obj.user
+    	state.trade = true
     }
 }

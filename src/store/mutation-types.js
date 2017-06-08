@@ -28,6 +28,8 @@ export const SUPPORT_BANK_UPDATE = 'SUPPORT_BANK_UPDATE' //获取支持的银行
 export const PUB_BREAD_CHANGE = 'PUB_BREAD_CHANGE' //信息披露面包屑切换
 export const PUB_NAV_CHANGE = 'PUB_NAV_CHANGE' //信息披露右边导航手风琴切换
 
+export const TRAPDOOR = 'TRAPDOOR'
+
 
 
 

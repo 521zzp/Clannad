@@ -48,11 +48,9 @@
 	  },
 	  methods: {
 	  	prev () {
-	  		console.log('prev')
 	  		this.swiper.slidePrev();
 	  	},
 	  	next () {
-	  		console.log('next')
 	  		this.swiper.slideNext();
 	  	}
 	  }

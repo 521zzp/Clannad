@@ -62,7 +62,6 @@ const actions = {
 const mutations = {
 	[types.ACC_BREAD_CHANGE] (state,obj) {
 		state.bread = obj
-		console.log(state.bread)
     },
     [types.ACC_BIND_STATE] (state,obj) {
 		state.bindStatus = obj
