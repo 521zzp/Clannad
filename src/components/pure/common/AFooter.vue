@@ -27,8 +27,8 @@
 					<span class="foot-phone line-span">400-838-8304</span>
 				</li>
 				<li class="item-msg fl clearfix">
-					<span class="line-span">服务时间：08:00-21:00（周一至周日）</span>
-					<span class="line-span">邮箱：postmaster@qingxijituan.com</span>
+					<span class="line-span">服务时间：08:00-18:00（工作日）</span>
+					<span class="line-span">邮箱：yhb_service@163.com</span>
 				</li>
 				<li class="item-pic fl clearfix">
 					<img class="wechat-img" :src="wechatImg"/>

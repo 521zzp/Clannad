@@ -9,8 +9,6 @@ export const status = (response) => {
 	if (response.status >= 200 && response.status < 300) {
 	    	return response
 	  }
-	console.log('状态：')
-	console.log(response.status)
 	throw new Error(response.statusText)
 } 
 /*

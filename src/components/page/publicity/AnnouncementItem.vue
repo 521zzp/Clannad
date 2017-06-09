@@ -1,18 +1,18 @@
 <template>
 	<div class="clearfix news-item-container">
 		<div class="top">
-			<span class="title">{{news.title}}</span>	
+			<span class="title">{{announcement.title}}</span>	
 			<div class="auxiliary-msg clearfix">
-				<span class="origin fl">来源：{{news.origin}}</span>
-				<span class="time fr">发布时间：{{news.time}}</span>
+				<span class="origin fl">来源：{{announcement.origin}}</span>
+				<span class="time fr">发布时间：{{announcement.time}}</span>
 			</div>
 		</div>
-		<div class="news-content clearfix" v-html="news.content">
+		<div class="news-content clearfix" v-html="announcement.content">
 		</div>
 		<div class="news-foot">
-			<router-link v-if="!!news.previous.title" class="news-nav fl" :to="'/publicity/news/' + news.previous.id">上一篇：{{news.previous.title}}</router-link>
+			<router-link v-if="!!announcement.previous.title" class="news-nav fl" :to="'/publicity/announcement/' + announcement.previous.id">上一篇：{{announcement.previous.title}}</router-link>
 			<span v-else class="news-nav fl" >上一篇：无</span>
-			<router-link v-if="!!news.next.title" class="news-nav fr" :to="'/publicity/news/' + news.next.id">下一篇：{{news.next.title}}</router-link>
+			<router-link v-if="!!announcement.next.title" class="news-nav fr" :to="'/publicity/announcement/' + announcement.next.id">下一篇：{{announcement.next.title}}</router-link>
 			<span v-else class="news-nav fr" >下一篇：无</span>
 		</div>
 	</div>
@@ -26,13 +26,13 @@ export default {
 		}
 	},
 	computed: {
-		news () {
-			return this.$store.state.publicity.newsDetails
+		announcement () {
+			return this.$store.state.publicity.announcementDetails
 		}
 	},
 	watch: {
 	    '$route' (to, from) {
-	    	this.$store.dispatch('publicityNewsDetails', {id: this.$route.params.id})
+	    	this.$store.dispatch('publicityAnnouncementDetails', {id: this.$route.params.id})
 	    }
 	},
 	mounted () {
@@ -54,7 +54,7 @@ export default {
 		this.$store.dispatch('publicityNavChange', 2)
 	},
 	created () {
-		this.$store.dispatch('publicityNewsDetails', {id: this.$route.params.id})
+		this.$store.dispatch('publicityAnnouncementDetails', {id: this.$route.params.id})		
 	}
 }
 </script>

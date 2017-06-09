@@ -43,12 +43,15 @@ export default {
 	text-align: center;
 	font-size: @fz;
 	color: @gray-three;
+	text-indent: 0;
+	transition: text-indent .3s;
 	border-bottom: 1px solid @border-two;
 }
 .nav-item:hover{
 	color: @theme;
 	background-color: @white;
 	width: 229px;
+	text-indent: 2em;
 }
 .nav-item.active{
 	color: @theme;

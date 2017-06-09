@@ -1,6 +1,6 @@
 import * as types from './mutation-types'
-import {EXIT,} from '@/config/url'
-import {postModelOne,analy} from '@/tool/net'
+import {EXIT, TRADE} from '@/config/url'
+import {postModelOne, analy, getModel} from '@/tool/net'
 import {confirmMoadl} from '@/tool/talk'
 
 export const actions = {
@@ -19,5 +19,10 @@ export const actions = {
 	},
 	developeTrapdoor ({commit},obj) {
 		commit(types.TRAPDOOR,obj);
+	},
+	tradeSwitch ({commit},obj) {
+		fetch(TRADE, getModel()).then(analy).then(
+			(datas) => commit(types.TRADE,datas)
+		)
 	}
 }

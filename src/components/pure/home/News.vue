@@ -7,58 +7,31 @@
 			</div>
 			<div class="content">
 				<div class="p fl clearfix">
-					<router-link to="/publicity/news/1" class="a clearfix">
-						<img :src="newsImg" alt="" />
-						<span class="hidden-msg">全国首批理财说明会在重庆圆满谢幕</span>
-					</router-link>
-					<router-link to="/publicity/news/2" class="a clearfix">
-						<img :src="newsImg" alt="" />
-						<span class="hidden-msg">在余惠宝理财，你还在担心这些资金安全问题吗？</span>
-					</router-link>
+					
+					<template v-for="item,index in picList">
+						<router-link v-if="item.type === 'in'" :to="'/publicity/news/' + item.id" class="a clearfix">
+							<img :src="item.img" alt="" />
+							<span class="hidden-msg">{{item.title}}</span>
+						</router-link>
+						<a v-if="item.type === 'out'" :href="item.link" class="a clearfix">
+							<img :src="item.img" alt="" />
+							<span class="hidden-msg">{{item.title}}</span>
+						</a>
+					</template>
 				</div>
 				<div class="t fr clearfix">
 					<ul class="clearfix">
-						<li>
-							<router-link to="/publicity/news/52" class="b clearfix">
-								<span class="time">03.06.</span>
+						<li v-for="item,index in textList">
+							<router-link v-if="item.type === 'in'" :to="'/publicity/news/' + item.id" class="b clearfix">
+								<span class="time">{{item.time}}</span>
 								<em></em>
-								<span class="news-title">诚挚祝贺余惠宝受邀参加北京中国互联网金融协会第一次高级管理员培训！</span>
+								<span class="news-title">{{item.title}}！</span>
 							</router-link>
-						</li>
-						<li>
-							<router-link to="/publicity/news/53" class="b clearfix">
-								<span class="time">03.10.</span>
+							<a v-if="item.type === 'out'" :href="item.link" class="b clearfix">
+								<span class="time">{{item.time}}</span>
 								<em></em>
-								<span class="news-title">余惠宝祝贺首期互联网金融从业机构高管培训（第一期）圆满落幕</span>
-							</router-link>
-						</li>
-						<li>
-							<router-link to="/publicity/news/54" class="b clearfix">
-								<span class="time">03.15.</span>
-								<em></em>
-								<span class="news-title">余惠宝2.0正式上线了！</span>
-							</router-link>
-						</li>
-						<li>
-							<router-link to="/publicity/news/55" class="b clearfix">
-								<span class="time">05.07.</span>
-								<em></em>
-								<span class="news-title">余惠宝诚邀您参加一周年庆典暨客户答谢会活动</span>
-							</router-link>
-						</li>
-						<li>
-							<router-link to="/publicity/news/56" class="b clearfix">
-								<span class="time">05.20.</span>
-								<em></em>
-								<span class="news-title">关于余惠宝的这件事，你知道吗？</span>
-							</router-link>
-						</li>
-						<li>
-							<router-link to="/publicity/news/54" class="b clearfix">
-								<span class="time">06.01.</span>
-								<em></em>
-								<span class="news-title">4.21余惠宝app版本更新公告</span>
-							</router-link>
+								<span class="news-title">{{item.title}}！</span>
+							</a>
 						</li>
 					</ul>
 					<div class="more">
@@ -69,18 +42,18 @@
 				</div>
 			</div>
 		</div>
-		<div class="fr record">
+		<div v-if="trade" class="fr record">
 			<div class="title">
 				<span class="one">投资记录</span>
 				<span class="two">惠生活 惠理财</span>
 			</div>
 			<div class="record-list">
 				<ul class="clearfix">
-					<swiper class="swiper-group fl" :options="swiperOption" ref="mySwiper">
-					  <swiper-slide class="swiper-no-swiping swiper-item" v-for="slide,index in swiperSlides" key="index">
+					<swiper v-if="investList.length > 0" class="swiper-group fl" :options="swiperOption" ref="mySwiper">
+					  <swiper-slide class="swiper-no-swiping swiper-item" v-for="item,index in investList" key="index">
 					  		<li class="clearfix">
-								<span class="fl">138****4562</span>
-								<span class="fr">投资<span class="money">2465</span>元</span>
+								<span class="fl">{{item.phone}}</span>
+								<span class="fr">投资<span class="money">{{item.money}}</span>元</span>
 							</li>
 					  </swiper-slide>
 					</swiper>
@@ -93,19 +66,19 @@
 <script>
 	import {IMG} from '@/config/url'
 	export default {
+	  props: ['news', 'invest'],
 	  name: 'carrousel',
 	  data() {
 	    return {
 	      swiperOption: {
-	      	autoplay:100,
-	        speed:1000,
-	        loop:true,
-	        loopedSlides: 15,
+	      	autoplay: 100,
+	        speed: 1000,
+	        loop: true,
+	        loopedSlides: this.invest.length,
 			slidesPerView : 'auto',
 	        direction: 'vertical',
 	        pagination : '.swiper-pagination',
 	      },
-	      swiperSlides: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 	      newsImg: IMG + '/temp/news-img.png'
 	    }
 	  },
@@ -113,6 +86,18 @@
 	    swiper() {
 	      return this.$refs.mySwiper.swiper
 	    },
+	    textList () {
+	    	return this.news.textList
+	    },
+	    picList () {
+	    	return this.news.picList
+	    },
+	    investList () {
+	    	return this.invest
+	    },
+	    trade () {
+	    	return this.$store.state.trade
+	    }
 	  },
 	  methods: {
 	  }

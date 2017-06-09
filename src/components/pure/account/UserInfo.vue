@@ -52,7 +52,7 @@ export default {
 		
 	},
 	created () {
-		this.$store.dispatch('accountBindState')
+		//this.$store.dispatch('accountBindState')
 	}
 }
 </script>

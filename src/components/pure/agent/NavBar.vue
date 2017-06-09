@@ -49,7 +49,7 @@ export default {
 	position: absolute;
 	top: 20px;
 	right: 60px;
-	transition: right .5s; 
+	transition: right .4s; 
 	color: @gray-one;
 }
 .second-level:hover{

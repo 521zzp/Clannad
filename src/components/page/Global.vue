@@ -38,7 +38,6 @@
 				localStorage.setItem('user',JSON.stringify(this.$store.state.user))
 			},
 			notice: function () {
-				console.log('触发')
 				let config = this.$store.state.notice.config;
 				let type = this.$store.state.notice.type;
 				switch (type){
@@ -69,7 +68,6 @@
 			},
 			noticeClose: function () {
 				let key = this.$store.state.noticeClose.key;
-				console.log('global:'+key);
 				this.$Notice.destroy();
 			},
 			message: function () {

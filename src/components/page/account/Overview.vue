@@ -64,7 +64,7 @@
 			}
 		},
 		created () {
-			this.$store.dispatch('ovCap')
+			//this.$store.dispatch('ovCap')
 		}
 	}
 	

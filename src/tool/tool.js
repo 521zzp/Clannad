@@ -30,7 +30,6 @@ export const loadJs = (loadUrl,callBack,argObj) =>{
 	let loadScript=document.createElement('script');
         loadScript.setAttribute("type","text/javascript");
         loadScript.setAttribute('src',loadUrl);
-        console.log(loadUrl)
         document.getElementsByTagName("head")[0].appendChild(loadScript);
         //judge browser typ
         if(navigator.userAgent.indexOf("IE") >=0){

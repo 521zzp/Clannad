@@ -3,11 +3,11 @@
 		<AHeader/>
 		<Banner/>
 		<Notice/>
-		<Show/>
+		<Show v-if="trade"/>
 		<Hot :main="main" :time="countSec"/>
 		<Products :list="products"/>
-		<Agent/>
-		<News/>
+		<Agent v-if="trade"/>
+		<News :news="news" :invest="investRecords"/>
 		<Partner v-if="trade"/>
 		<AFooter/>
 	</div>
@@ -70,10 +70,18 @@ export default {
 		},
 		trade () {
 			return this.$store.state.trade
+		},
+		news () {
+			return this.$store.state.home.newsList
+		},
+		investRecords () {
+			return this.$store.state.home.investList
 		}
 	},
 	mounted () {
 		this.$store.dispatch('homeProducts') //产品列表
+		this.$store.dispatch('homeInvestRecords') //投资记录
+		this.$store.dispatch('homeNewsList') //新闻列表
 	}
 }
 </script>

@@ -1,8 +1,8 @@
-export const BASEURL = 'http://192.168.1.200:8080'  //服务器地址  孔
+export const BASEURL = 'http://192.168.1.200:8080/web'  //服务器地址  孔
 //export const BASEURL = 'http://192.168.1.61:8888'  //服务器地址  汪
 //export const BASEURL = 'http://192.168.1.203:8080'  //服务器地址  林
 //export const BASEURL = 'http://www.yhb118.com/api'  //服务器地址 正式环境
-//export const BASEURL = 'http://139.196.25.57/api'  //服务器地址   57测试
+//export const BASEURL = 'http://139.196.25.57/web'  //服务器地址   57测试
 
 
 export const IMG = 'http://www.art.com' //图片服务器地址
@@ -23,9 +23,14 @@ export const PHONECODEVALI = BASEURL + '/inlet/checkPhoneVerifCodeJson' //短信
 
 export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密码接口
 
+//配置项
+export const TRADE = BASEURL + '/index/getTransaction' //平台是否开启交易接口
+
 // 首页
 export const FACEUPLOAD = BASEURL + '/file/uploadImage'  //用户头像上传接口
 export const HOME_PRODUCTS = BASEURL + '/invest/center' //获取产品列表
+export const HOME_INVEST_RECORD = BASEURL + '/index/getInvestRecord' //首页投资记录
+export const HOME_NEWS_LIST = BASEURL + '/index/getNewsForIndex'  //首页新闻列表
 
 
 
@@ -40,3 +45,11 @@ export const ACC_OV_CAP = BASEURL + '/user/info'  //账户总览资金概况
 
 //银行卡管理 
 export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的银行列表
+
+//信息披露
+export const PUB_NEWS_DETAILS = BASEURL + '/news/newsDetails' //新闻详情展示
+export const PUB_NEWS_TOTAL = BASEURL + '/news/newsCout' //新闻列表总条数
+export const PUB_NEWS_LIST = BASEURL + '/news/newsList' //新闻列表当前页数据
+export const PUB_ANNOUNCEMENT_DETAILS = BASEURL + '/news/noticeDetails' //公告详情展示
+export const PUB_ANNOUNCEMENT_TOTAL = BASEURL + '/news/noticeCount' //公告列表总条数
+export const PUB_ANNOUNCEMENT_LIST = BASEURL + '/news/noticeList' //公告列表当前页数据

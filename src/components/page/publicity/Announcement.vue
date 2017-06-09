@@ -7,14 +7,14 @@
 		<div class="content clearfix">
 			<ul class="clearfix">
 				<li v-for="item,index in list" class="news-item clearfix">
-					<router-link to="/" class="link-item">
-						<span class="item-title fl">余惠宝2017年端午放假通知</span>
-						<span class="item-time fr">2017-05-26</span>
+					<router-link :to="'/publicity/announcement/' + item.id" class="link-item">
+						<span class="item-title fl">{{item.title}}</span>
+						<span class="item-time fr">{{item.time}}</span>
 					</router-link>
 				</li>
 			</ul>
 			<div class="common-center-page-wrap">
-        		<Page :total="400" size="small" class="common-center-page-nav"></Page>
+        		<Page :total="total" size="small" class="common-center-page-nav" @on-change="change" :page-size="size"></Page>
         	</div>
 		</div>
 	</div>
@@ -26,7 +26,27 @@ export default {
 	data () {
 		return {
 			img: IMG + '/publicity/announcement-top-bg.png',
-			list: [1, 2, 3, 4, 5, 6, 7, 8 ]
+			size: 8, //每页数据条数
+		}
+	},
+	computed: {
+		total () {
+			return this.$store.state.publicity.announcementTotal
+		},
+		list () {
+			return this.$store.state.publicity.announcementList
+		}
+	},
+	watch : {
+		total : function () {
+			if (this.total > 0) {
+				this.$store.dispatch('publicityAnnouncementList', {size: this.size, current: 1})
+			}
+		}
+	},
+	methods: {
+		change (current) {
+			this.$store.dispatch('publicityAnnouncementList', {size: this.size, current: current})
 		}
 	},
 	mounted () {
@@ -46,6 +66,7 @@ export default {
 			];
 		this.$store.dispatch('publicityBreadChange', bread)
 		this.$store.dispatch('publicityNavChange', 2)
+		this.$store.dispatch('publicityAnnouncementTotal') //新闻列表总数
 	},
 }
 </script>
@@ -71,6 +92,12 @@ export default {
 }
 .news-item:hover{
 	background-color: @gray-two;
+}
+.news-item:hover .item-title{
+	text-indent: 2em;
+}
+.item-title{
+	transition: text-indent .3s;
 }
 .news-item{
 	display: block;

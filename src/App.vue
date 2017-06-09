@@ -8,9 +8,12 @@
 <script>
 import Global from '@/components/page/Global'
 export default {
-  name: 'app',
+	name: 'app',
   components: {
   	Global
+  },
+  mounted () {
+  	this.$store.dispatch('tradeSwitch') //平台是否开启交易
   }
 }
 </script>

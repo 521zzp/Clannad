@@ -19,7 +19,7 @@
 							<span v-else class="value">***</span>
 						</div>
 						<div class="freeze fl">
-							<span class="desc">不可用余额（元）</span>
+							<span class="desc">冻结金额（元）</span>
 							<span v-if="eyeSwitch" class="value">10000</span>
 							<span v-else class="value">***</span>
 						</div>

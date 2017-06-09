@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {HOME_PRODUCTS} from '@/config/url'
+import {HOME_PRODUCTS, HOME_NEWS_LIST, HOME_INVEST_RECORD} from '@/config/url'
 import {getModel,analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import store from '@/store'
@@ -41,7 +41,10 @@ const state = {
 			img: 'http://www.art.com/home/banner/banner-four.jpg',
 			url: 'd'
 		},
-	]
+	],
+	investList: [],
+	newsList: {},
+	
 }
 
 const actions = {
@@ -49,7 +52,17 @@ const actions = {
 		fetch(HOME_PRODUCTS, getModel()).then(analy).then(
 			(datas) => commit(types.HOME_PRODUCTS,datas)
 		)
-	}
+	},
+	homeInvestRecords ({commit}, obj) {
+		fetch(HOME_INVEST_RECORD, getModel()).then(analy).then(
+			(datas) => commit(types.HOME_INVEST_RECORD,datas)
+		)
+	},
+	homeNewsList ({commit}, obj) {
+		fetch(HOME_NEWS_LIST, getModel()).then(analy).then(
+			(datas) => commit(types.HOME_NEWS_LIST,datas)
+		)
+	},
 }
 
 const mutations = {
@@ -102,8 +115,13 @@ const mutations = {
 				}
 			}, maxTimeDelay)
 		}
-		
-    }
+    },
+    [types.HOME_INVEST_RECORD] (state,obj) {
+    	state.investList = obj
+    },
+    [types.HOME_NEWS_LIST] (state,obj) {
+    	state.newsList = obj
+    },
 }
 
 

@@ -6,12 +6,12 @@
 		<span class="title">惠宝新闻</span>
 		<div class="content clearfix">
 			<ul class="clearfix">
-				<li class="clearfix news-tiem" v-for="item in list">
-					<router-link to="/" class="link-item">
+				<li class="clearfix news-tiem" v-for="item in lsits">
+					<router-link :to="'/publicity/news/' + item.id" class="link-item">
 						<img :src="item.img" alt="" class="item-img fl"/>
 						<div class="item-msg fr">
 							<div class="item-title clearfix">
-								<span class="name fl">{{item.name}}</span>
+								<span class="name fl">{{item.title}}</span>
 								<span class="time fr">{{item.time}}</span>
 							</div>
 							<span class="desc">{{item.content}}</span>
@@ -20,7 +20,7 @@
 				</li>
 			</ul>
 			<div class="common-center-page-wrap">
-        		<Page :total="400" size="small" class="common-center-page-nav"></Page>
+        		<Page :total="total" size="small" class="common-center-page-nav" @on-change="change" :page-size="size"></Page>
         	</div>
 		</div>
 	</div>
@@ -32,26 +32,27 @@ export default {
 	data () {
 		return {
 			img: IMG + '/publicity/news-top-bg.png',
-			list: [
-				{
-					img: IMG + '/temp/组-36.png',
-					name: '全国首批理财说明会在重庆圆满谢幕',
-					time: '2017-04-01 11:45:36',
-					content: '从小就能看见妖怪的少年夏目贵志。自从他从祖母玲子那里继承了与妖怪成为主从并将其名字书写在上的契约书“友人帐”以来，便与自称为保镖的妖怪猫咪老师一同，开始了将名字返还给妖怪的每一天。夏目与各种各样的妖怪与善良人们相遇，在构筑温暖的场所同时，也反复寄托着想要守护重要之物的想法。' 
-				},
-				{
-					img: IMG + '/temp/组-36.png',
-					name: '全国首批理财说明会在重庆圆满谢幕',
-					time: '2017-04-01 11:45:36',
-					content: '从小就能看见妖怪的少年夏目贵志。自从他从祖母玲子那里继承了与妖怪成为主从并将其名字书写在上的契约书“友人帐”以来，便与自称为保镖的妖怪猫咪老师一同，开始了将名字返还给妖怪的每一天。夏目与各种各样的妖怪与善良人们相遇，在构筑温暖的场所同时，也反复寄托着想要守护重要之物的想法。' 
-				},
-				{
-					img: IMG + '/temp/组-36.png',
-					name: '全国首批理财说明会在重庆圆满谢幕',
-					time: '2017-04-01 11:45:36',
-					content: '从小就能看见妖怪的少年夏目贵志。自从他从祖母玲子那里继承了与妖怪成为主从并将其名字书写在上的契约书“友人帐”以来，便与自称为保镖的妖怪猫咪老师一同，开始了将名字返还给妖怪的每一天。夏目与各种各样的妖怪与善良人们相遇，在构筑温暖的场所同时，也反复寄托着想要守护重要之物的想法。' 
-				},
-			]
+			size: 4, //每页数据条数
+		}
+	},
+	computed: {
+		total () {
+			return this.$store.state.publicity.newsTotal
+		},
+		lsits () {
+			return this.$store.state.publicity.newsList
+		}
+	},
+	watch : {
+		total : function () {
+			console.log('News.vue')
+			console.log(this.total)
+			this.$store.dispatch('publicityNewsList', {size: this.size, current: 1})
+		}
+	},
+	methods: {
+		change (current) {
+			this.$store.dispatch('publicityNewsList', {size: this.size, current: current})
 		}
 	},
 	mounted () {
@@ -71,6 +72,7 @@ export default {
 			];
 		this.$store.dispatch('publicityBreadChange', bread)
 		this.$store.dispatch('publicityNavChange', 2)
+		this.$store.dispatch('publicityNewsTotal') //新闻列表总数
 	},
 }
 </script>

@@ -11,7 +11,7 @@
 					<div class="pro-info clearfix">
 						<div class="fl rate">
 							<span class="pro-rate">{{item.rate}}%</span>
-							<span class="i">年化收益率</span>
+							<span class="i">预期年化收益率</span>
 						</div>
 						<div class="fr day">
 							<span class="pro-day"><span>{{item.day}}</span>天</span>
@@ -21,14 +21,14 @@
 					<div class="progress clearfix">
 						 <Progress class="theme-proress" :percent="item.percent" :stroke-width="8" hide-info></Progress>
 						 <div class="progress-info clearfix">
-						 	<span class="i fl money">剩余投资金额：{{item.left}}元</span>
-						 	<span class="i fr percent">45%</span>
+						 	<span v-if="trade" class="i fl money">剩余投资金额：{{item.left}}元</span>
+						 	<span class="i fr percent">{{item.percent}}%</span>
 						 </div>
 						 <template v-if="trade">
 						 	<router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>
 						 	<button v-else class="buy unable">已售罄</button>
 						 </template>
-						 <router-link  v-else to="/app"><button class="buy">下载APP购买</button></router-link>
+						 <router-link  v-else to="/app"><button class="buy">APP了解更多</button></router-link>
 					</div>
 				</li>
 			</ul>

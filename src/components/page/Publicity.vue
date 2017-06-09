@@ -30,8 +30,6 @@ export default {
 	},
 	computed: {
 		bread () {
-			console.log(233)
-			console.log(this.$store.state.publicity.bread)			
 			return this.$store.state.publicity.bread
 		}
 	},

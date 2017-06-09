@@ -29,7 +29,6 @@ export const notice = (title = '提示', desc = '将来送你上天堂', type = 
 			onClose: onClose
 		}
 	}
-	console.log(config)
 	store.state.notice.type = type;
 	store.state.notice.config = config;
 	store.state.notice.state++;

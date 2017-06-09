@@ -192,6 +192,11 @@ const YhbAnnouncement = resolve => {
     resolve(require('@/components/page/publicity/Announcement.vue'))
   })
 }
+const AnnouncementItem = resolve => {
+  require.ensure(['@/components/page/publicity/AnnouncementItem.vue'], () => {
+    resolve(require('@/components/page/publicity/AnnouncementItem.vue'))
+  })
+}
 const YhbNews = resolve => {
   require.ensure(['@/components/page/publicity/News.vue'], () => {
     resolve(require('@/components/page/publicity/News.vue'))
@@ -486,13 +491,13 @@ export default new Router({
 	      	},
 	      	{
 	      		path: 'announcement/:id',
-	      		name: 'NewsItem',
-	      	  component: NewsItem,
+	      		name: 'announcementItem',
+	      	  component: AnnouncementItem,
 	      	  meta: {pubBar: 7}
 	      	},
 	      	{
 	      		path: 'news',
-	      		name: 'YhbNews',
+	      		name: 'yhbNews',
 	      	  component: YhbNews,
 	      	  meta: {pubBar: 8}
 	      	},

@@ -10,10 +10,9 @@ export const mutations = {
 			store.state.user = {};
 			message(obj.msg, 2, ()=>router.push('/'))
 		}else{
-			message(obj.msg,4);
 			store.state.token = '';
 			store.state.user = {};
-			message(obj.msg, 2, ()=>router.push('/'))
+			message('您已成功退出', 2, ()=>router.push('/'))
 		}
     },
     [types.HOME_IMG_UPLOAD] (state,obj) {
@@ -23,5 +22,8 @@ export const mutations = {
     	state.token = obj.token
     	state.user = obj.user
     	state.trade = true
-    }
+    },
+    [types.TRADE] (state,obj) {
+    	state.trade = obj.trade
+    },
 }

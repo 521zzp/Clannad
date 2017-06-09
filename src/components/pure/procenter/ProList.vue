@@ -10,18 +10,18 @@
 				</div>
 				<div class="item-info clearfix">
 					<div class="rate sec fl">
-						<span class="desc">年化收益率</span>
+						<span class="desc">预期年化收益率</span>
 						<span class="value">{{product.rate}}<span>%</span></span>
 					</div>
 					<div class="day sec fl">
 						<span class="desc">投资期限</span>
 						<span class="value">{{product.day}}<span>天</span></span>
 					</div>
-					<div class="money sec fl">
+					<div v-if="trade" class="money sec fl">
 						<span class="desc">投资金额</span>
 						<span class="value">{{parseInt(product.total / 10000)}}<span>万元</span></span>
 					</div>
-					<div class="left sec fl">
+					<div v-if="trade" class="left sec fl">
 						<span class="desc">剩余可投</span>
 						<span class="value">{{product.left}}<span>元</span></span>
 					</div>

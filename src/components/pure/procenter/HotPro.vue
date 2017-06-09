@@ -26,18 +26,18 @@
 				</div>
 				<div class="item-info clearfix">
 					<div class="rate sec fl">
-						<span class="desc">年化收益率</span>
+						<span class="desc">预期年化收益率</span>
 						<span class="value">{{hot.rate}}<span>%</span></span>
 					</div>
 					<div class="day sec fl">
 						<span class="desc">投资期限</span>
 						<span class="value">{{hot.day}}<span>天</span></span>
 					</div>
-					<div class="money sec fl">
+					<div v-if="trade" class="money sec fl">
 						<span class="desc">投资金额</span>
 						<span class="value">{{parseInt(hot.total / 10000)}}<span>元</span></span>
 					</div>
-					<div class="left sec fl">
+					<div v-if="trade" class="left sec fl">
 						<span class="desc">剩余可投</span>
 						<span class="value">{{hot.left}}<span>元</span></span>
 					</div>
@@ -49,7 +49,7 @@
 							<button class="unable" v-else-if="hot.left > 0 && hot.endMilliseconds <= 0">已结束</button>
 							<button v-else class="unable">已售罄</button>
 						</template>
-						<router-link  v-else to="/app"><button>下载APP购买</button></router-link>
+						<router-link  v-else to="/app"><button>APP了解更多</button></router-link>
 					</div>
 				</div>
 				 <Progress title="45%" class="i-p-progress" :percent="45" status="active" :stroke-width="6" hide-info></Progress>
