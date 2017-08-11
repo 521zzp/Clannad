@@ -7,7 +7,6 @@
 			</div>
 			<div class="content">
 				<div class="p fl clearfix">
-					
 					<template v-for="item,index in picList">
 						<router-link v-if="item.type === 'in'" :to="'/publicity/news/' + item.id" class="a clearfix">
 							<img :src="item.img" alt="" />
@@ -87,7 +86,8 @@
 	      return this.$refs.mySwiper.swiper
 	    },
 	    textList () {
-	    	return this.news.textList
+	    	console.log(this.news.textList.slice(0, 8))
+	    	return this.news.textList.slice(0, 8)
 	    },
 	    picList () {
 	    	return this.news.picList

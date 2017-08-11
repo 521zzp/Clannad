@@ -19,10 +19,10 @@
 						</div>
 					</div>
 					<div class="progress clearfix">
-						 <Progress class="theme-proress" :percent="item.percent" :stroke-width="8" hide-info></Progress>
+						 <Progress class="theme-proress" :percent="item.percent > 100 ? 100 : item.percent" :stroke-width="8" hide-info></Progress>
 						 <div class="progress-info clearfix">
 						 	<span v-if="trade" class="i fl money">剩余投资金额：{{item.left}}元</span>
-						 	<span class="i fr percent">{{item.percent}}%</span>
+						 	<span class="i fr percent">{{item.percent > 100 ? 100 : item.percent}}%</span>
 						 </div>
 						 <template v-if="trade">
 						 	<router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>

@@ -1,8 +1,5 @@
-export const BASEURL = 'http://192.168.1.200:8080/web'  //服务器地址  孔
-//export const BASEURL = 'http://192.168.1.61:8888'  //服务器地址  汪
-//export const BASEURL = 'http://192.168.1.203:8080'  //服务器地址  林
-//export const BASEURL = 'http://www.yhb118.com/api'  //服务器地址 正式环境
-//export const BASEURL = 'http://139.196.25.57/web'  //服务器地址   57测试
+//export const BASEURL = 'http://192.168.1.3:8080/p2p_pb'  //服务器地址  林
+export const BASEURL = '/api'  //服务器地址  林
 
 
 export const IMG = 'http://www.art.com' //图片服务器地址
@@ -12,7 +9,7 @@ export const IMG = 'http://www.art.com' //图片服务器地址
 export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=personinfo' //余惠宝官方微博
 
 
-export const LOGIN = BASEURL + '/inlet/login' //登录接口
+export const LOGIN = BASEURL + '/app2/h5/test' //登录接口
 export const REGISTER = BASEURL + '/inlet/register' //注册接口
 export const EXIT = BASEURL + '/inlet/exit' //退出接口
 export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码接口
@@ -28,13 +25,10 @@ export const TRADE = BASEURL + '/index/getTransaction' //平台是否开启交�
 
 // 首页
 export const FACEUPLOAD = BASEURL + '/file/uploadImage'  //用户头像上传接口
-export const HOME_PRODUCTS = BASEURL + '/invest/center' //获取产品列表
+export const HOME_PRODUCTS = BASEURL + '/Zindex/pros.do' //获取产品列表
 export const HOME_INVEST_RECORD = BASEURL + '/index/getInvestRecord' //首页投资记录
-export const HOME_NEWS_LIST = BASEURL + '/index/getNewsForIndex'  //首页新闻列表
+export const HOME_NEWS_LIST = BASEURL + '/Zindex/news.do'  //首页新闻列表
 
-
-
-//产品详情页
 export const PRO_DETAIL_INFO = BASEURL + '/invest/proInfo' //产品详情信息
 
 //个人中心

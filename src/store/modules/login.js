@@ -27,6 +27,7 @@ const actions = {
 const mutations = {
 	[types.LOGIN] (state,obj) {
 		if (obj.code === 200) {
+			console.log('用户登陆返回信息' + obj);
 			store.state.token = obj.token;
 			store.state.user = obj.obj;
 			message(obj.msg, 2, ()=>router.push('/'));
