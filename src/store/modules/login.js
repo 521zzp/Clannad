@@ -17,7 +17,9 @@ const actions = {
 	login ({commit},obj){
 		fetch(LOGIN, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
-				commit(types.LOGIN,datas);
+					console.log(1)
+					console.log(datas)
+				commit(types.LOGIN, datas);
 			}).catch(function(error) {
 			    console.log('用户登陆异常', error)
 			  });
@@ -26,14 +28,20 @@ const actions = {
 
 const mutations = {
 	[types.LOGIN] (state,obj) {
-		if (obj.code === 200) {
+		store.state.token = obj.token;
+		store.state.user = obj.user;
+		message(obj.msg, 2, () => 
+			{
+				console.log('路由跳转')
+				router.push('/')
+			}
+		);
+		/*if (obj.code === 200) {
 			console.log('用户登陆返回信息' + obj);
-			store.state.token = obj.token;
-			store.state.user = obj.obj;
-			message(obj.msg, 2, ()=>router.push('/'));
+			
 		}else{
 			message(obj.msg, 4)
-		}
+		}*/
     }
 }
 

@@ -86,8 +86,7 @@
 	      return this.$refs.mySwiper.swiper
 	    },
 	    textList () {
-	    	console.log(this.news.textList.slice(0, 8))
-	    	return this.news.textList.slice(0, 8)
+	    	return this.news.textList
 	    },
 	    picList () {
 	    	return this.news.picList

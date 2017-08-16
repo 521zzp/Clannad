@@ -13,7 +13,7 @@ export default {
   	Global
   },
   mounted () {
-  	this.$store.dispatch('tradeSwitch') //平台是否开启交易
+  	//this.$store.dispatch('tradeSwitch') //平台是否开启交易
   }
 }
 </script>

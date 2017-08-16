@@ -1,5 +1,8 @@
 import router from '@/router'
 import store from '@/store'
+import {message} from '@/tool/talk'
+
+
 export const json = (response) => response.json();
 export const jsonay = (response) => response.json();
 
@@ -14,7 +17,29 @@ export const status = (response) => {
 /*
  * 不需要登陆即可请求的接口
  */
-export const analy = (response) => Promise.resolve(response).then(status).then(json)
+export const analy = (response) => Promise.resolve(response).then(status).then(json).then(resultAny)
+
+
+/*
+ * 解析返回code,纯数组或对象
+ */
+export const resultAny = (datas) => {
+	
+	console.log(JSON.stringify(datas)) //数据打印
+	if (datas.code === 200) {
+		if (Object.getOwnPropertyNames(datas.result).length === 1 && datas.result.list && Array.isArray(datas.result.list)) {
+			return datas.result.list
+		} else{
+			return Object.assign({}, datas.result, {msg: datas.message})
+		}
+		
+	} else{
+		if (datas.message) {
+			message(datas.message, 4)
+		}
+		return undefined
+	}
+}
 
 /*
  * 根据接口需要判断是否登陆状态
@@ -27,10 +52,10 @@ export const onanaly = (response) => Promise.resolve(response).then(status).then
 			router.push('/login');
 			return null;
 		} else{
-			return dp.datas;
+			return dp;
 		}
 	}
-);
+).then(resultAny);
 /*
  * 解析JSON，判断是否登陆状态
  */
@@ -62,7 +87,7 @@ export const postModelOne = ( params ) => {
 		    'Content-Type': 'application/json'
 		},
 		body: JSON.stringify( 
-			Object.assign( {}, {token:store.state.token}, {datas: params})
+			Object.assign( {}, {token: store.state.token}, {datas: params})
 		)
 	}
 }

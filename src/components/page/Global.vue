@@ -72,22 +72,22 @@
 			},
 			message: function () {
 				let type = this.$store.state.message.type;
-				let {content, duration, onClose} = this.$store.state.message.config;;
+				let config = this.$store.state.message.config;
 				switch (type){
 					case 1:
-						this.$Message.loading(content, duration, onClose)
+						this.$Message.loading(config)
 						break;
 					case 2:
-						this.$Message.success(content, duration, onClose)
+						this.$Message.success(config)
 						break;
 					case 3:
-						this.$Message.warning(content, duration, onClose)
+						this.$Message.warning(config)
 						break;
 					case 4:
-						this.$Message.error(content, duration, onClose)
+						this.$Message.error(config)
 						break;
 					default:
-						this.$Message.info(content, duration, onClose)
+						this.$Message.info(config)
 						break;
 				}
 			},

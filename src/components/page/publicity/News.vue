@@ -14,7 +14,7 @@
 								<span class="name fl">{{item.title}}</span>
 								<span class="time fr">{{item.time}}</span>
 							</div>
-							<span class="desc">{{item.content}}</span>
+							<span class="desc" v-html="item.content">{{}}</span>
 						</div>
 					</router-link>
 				</li>
@@ -45,8 +45,6 @@ export default {
 	},
 	watch : {
 		total : function () {
-			console.log('News.vue')
-			console.log(this.total)
 			this.$store.dispatch('publicityNewsList', {size: this.size, current: 1})
 		}
 	},

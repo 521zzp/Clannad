@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {LOGIN, PUB_NEWS_DETAILS, PUB_NEWS_TOTAL, PUB_NEWS_LIST, PUB_ANNOUNCEMENT_TOTAL, PUB_ANNOUNCEMENT_LIST, PUB_ANNOUNCEMENT_DETAILS} from '@/config/url'
+import {PUB_NEWS_DETAILS, PUB_NEWS_TOTAL, PUB_NEWS_LIST, PUB_ANNOUNCEMENT_TOTAL, PUB_ANNOUNCEMENT_LIST, PUB_ANNOUNCEMENT_DETAILS} from '@/config/url'
 import {postModelTwo, getModel, analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import store from '@/store'
@@ -90,7 +90,6 @@ const mutations = {
 		state.navOpen = obj
     },
     [types.PUB_NEWS_DETAILS] (state,obj) {
-    	console.log(obj.next)
 		state.newsDetails = obj
     },
     [types.PUB_NEWS_TOTAL] (state,obj) {

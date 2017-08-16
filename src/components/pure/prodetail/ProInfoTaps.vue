@@ -11,19 +11,15 @@
 	        		<span class="re-col">投资时间</span>
 	        	</div>
 	        	<swiper class="swiper-group" :options="swiperOption" ref="mySwiper">
-				  <swiper-slide class="swiper-no-swiping swiper-item" v-for="item,index in swiperSlides" key="index">
+				  <swiper-slide class="swiper-no-swiping swiper-item" v-for="item,index in records" key="index">
 				  		<div class="record-item ">
-				  			<span class="re-col">王**</span>
-				  			<span class="re-col">187****5523</span>
-				  			<span class="re-col"><span class="re-money">451</span>元</span>
-				  			<span class="re-col">2017-04-25 15:45</span>
+				  			<span class="re-col">{{item.name}}</span>
+				  			<span class="re-col">{{item.phone}}</span>
+				  			<span class="re-col"><span class="re-money">{{item.money}}</span>元</span>
+				  			<span class="re-col">{{item.time}}</span>
 				  		</div>
 				  </swiper-slide>
 				</swiper>
-	        	
-	        	
-	        	
-	        	
 	        </Tab-pane>
 	        <Tab-pane label="回款计划" v-html="taps.enterprise">回款计划</Tab-pane>
 	    </Tabs>
@@ -45,6 +41,11 @@ export default {
 		        pagination : '.swiper-pagination',
 		    },
 		    swiperSlides: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+		}
+	},
+	computed: {
+		records () {
+			return this.list
 		}
 	}
 }
@@ -84,6 +85,7 @@ export default {
 .swiper-group{
 	height: 480px;
 	margin-top: 10px;
+	overflow: hidden;
 }
 .swiper-item{
 	height: 40px;

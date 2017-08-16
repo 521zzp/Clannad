@@ -33,15 +33,20 @@ post
 	name: '',
 	day: 365,
 	percent: 12,
-	time: '2017-05-07' //发布日期
+	time: '2017-05-07', //发布日期
+	productItems:{
+		enterprise: '',
+		receive: '',
+		safeInsur: ''
+	}
 }
 
-//产品详情相关信息，标签文本
+//产品详情相关信息，标签文本  (取消)
 post
 {
 	id: ''
 }
-返回
+返回 productItems
 {
 	enterprise: '',
 	receive: '',

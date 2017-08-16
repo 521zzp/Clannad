@@ -27,7 +27,7 @@
 		    	</div>
 		    </div>
 		    <div class="taps-detail">
-		    	<ProInfoTaps :taps="product.productItems"/>
+		    	<ProInfoTaps :taps="product.productItems" :list="product.records"/>
 		    </div>
 		</div>
 		<AFooter/>
@@ -60,7 +60,7 @@ export default {
 		}
 	},
 	created () {
-		let id =  this.$route.params.id
+		let id =  parseInt(this.$route.params.id)
 		this.$store.dispatch('getProDetailInfo', {id: id})
 	  },
 	computed: {

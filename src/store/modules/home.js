@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {HOME_PRODUCTS, HOME_NEWS_LIST, HOME_INVEST_RECORD} from '@/config/url'
+import {HOME_PRODUCTS, HOME_NEWS_LIST, HOME_INVEST_RECORD, HOME_NOTICE} from '@/config/url'
 import {getModel,analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import store from '@/store'
@@ -44,25 +44,31 @@ const state = {
 	],
 	investList: [],
 	newsList: {},
+	notice: '',
 	
 }
 
 const actions = {
 	homeProducts ({commit}) {
 		fetch(HOME_PRODUCTS, getModel()).then(analy).then(
-			(datas) => commit(types.HOME_PRODUCTS,datas)
+			(datas) => commit(types.HOME_PRODUCTS, datas)
 		)
 	},
 	homeInvestRecords ({commit}, obj) {
 		fetch(HOME_INVEST_RECORD, getModel()).then(analy).then(
-			(datas) => commit(types.HOME_INVEST_RECORD,datas)
+			(datas) => commit(types.HOME_INVEST_RECORD, datas)
 		)
 	},
 	homeNewsList ({commit}, obj) {
 		fetch(HOME_NEWS_LIST, getModel()).then(analy).then(
-			(datas) => commit(types.HOME_NEWS_LIST,datas)
+			(datas) => commit(types.HOME_NEWS_LIST, datas)
 		)
 	},
+	homeNotice ({commit}, obj) {
+		fetch(HOME_NOTICE, getModel()).then(analy).then(
+			(datas) => commit(types.HOME_NOTICE, datas.notice)
+		)
+	}
 }
 
 const mutations = {
@@ -121,6 +127,9 @@ const mutations = {
     },
     [types.HOME_NEWS_LIST] (state,obj) {
     	state.newsList = obj
+    },
+    [types.HOME_NOTICE] (state,obj) {
+    	state.notice = obj
     },
 }
 

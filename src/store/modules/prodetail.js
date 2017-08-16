@@ -19,8 +19,8 @@ const state = {
 		time: '',
 		day: 0,
 		percent: 0,
+		records:[]
 	},
-	records:[]
 }
 
 
@@ -28,15 +28,15 @@ const actions = {
 	getProDetailInfo ({commit},obj){
 		fetch(PRO_DETAIL_INFO, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
-				commit(types.PRO_DETAIL_INFO,datas);
+				commit(types.PRO_DETAIL_INFO, datas);
 			}).catch(function(error) {
-			    console.log('用户登陆异常', error)
+			    console.log('查询产品详情信息异常', error)
 			  });
   	}
 }
 
 const mutations = {
-	[types.PRO_DETAIL_INFO] (state,obj) {
+	[types.PRO_DETAIL_INFO] (state, obj) {
 		if (!obj) {
 			router.go(-1)
 		} else {

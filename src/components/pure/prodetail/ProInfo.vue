@@ -15,7 +15,7 @@
 				<span class="desc">项目期限</span>
 			</div>
 			<div class="progress sec fl">
-				<Progress class="i-pro-detail-progress" :percent="product.percent" 
+				<Progress class="i-pro-detail-progress" :percent="product.percent > 100 ? 100 : product.percent" 
 					status="active" :stroke-width="6" hide-info></Progress>
 				<span class="desc">进度：{{product.percent}}%</span>
 			</div>

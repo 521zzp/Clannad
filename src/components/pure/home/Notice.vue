@@ -2,17 +2,32 @@
 	<div class="notice">
 		<div class="time fl">
 			<Icon class="notice-icon" type="volume-medium" size=30 ></Icon>
-			<span>2017年05月30日</span>
+			<span>{{time}}</span>
 		</div>
 		<em class="r-border"></em>
-		<marquee class="notice-info">恭喜月色成功突围进入b站番剧前9！！！</marquee>
+		<marquee class="notice-info">{{notice}}</marquee>
 		<router-link to="/publicity/news" class="notice-more fr">更多>></router-link>
 	</div>
 </template>
 
 <script>
 export default {
-	
+	data () {
+		return {
+			
+		}
+	},
+	mounted () {
+		this.$store.dispatch('homeNotice')
+	},
+	computed: {
+		notice () {
+			return this.$store.state.home.notice
+		},
+		time () {
+			return new Date().Format('yyyy年MM月dd日')
+		}
+	}
 }
 </script>
 

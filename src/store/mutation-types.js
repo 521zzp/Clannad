@@ -15,6 +15,7 @@ export const HOME_PRODUCTS = 'HOME_PRODUCTS'  //主页产品渲染
 export const HOME_IMG_UPLOAD = 'HOME_IMG_UPLOAD' //主页用户头像上传
 export const HOME_INVEST_RECORD = 'HOME_INVEST_RECORD' //主页投资记录
 export const HOME_NEWS_LIST = 'HOME_NEWS_LIST'  //首页新闻列表
+export const HOME_NOTICE = 'HOME_NOTICE' //首页公告
 
 
 export const PRO_DETAIL_INFO = 'PRO_DETAIL_INFO' //产品详情信息
@@ -26,6 +27,11 @@ export const ACC_BIND_STATE = 'ACC_BIND_STATE' //用户中心四种绑定状态
 export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
 export const ACC_RECHARGE_LOADING = 'ACC_RECHARGE_LOADING' //用户总览充值加载中
 
+export const ACC_MSG_TOTAL = 'ACC_MSG_TOTAL' //我的消息总条数
+export const ACC_MSG_LIST = 'ACC_MSG_LIST' //我的消息列表集合
+export const ACC_MSG_READ = 'ACC_MSG_READ' //我的消息标记为已读
+export const ACC_MSG_DELETE = 'ACC_MSG_DELETE' //我的消息删除
+export const ACC_MSG_SELECT = 'ACC_MSG_SELECT' //我的消息选中
 
 //银行卡管理
 export const SUPPORT_BANK_UPDATE = 'SUPPORT_BANK_UPDATE' //获取支持的银行列表

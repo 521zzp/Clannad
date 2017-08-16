@@ -3,25 +3,25 @@
 		<b class="user-account-common-title">我的消息</b>
 		<div class="op-head">
 			<Checkbox v-model="single"><span class="select-all">全选</span></Checkbox>
-			<button class="all-read">标记为已读</button>
+			<button class="all-read" @click="allRead">标记为已读</button>
 		</div>
 		<div class="list-title">
 			<span>来源</span>
 			<span>内容</span>
 			<span>时间</span>
 		</div>
-		<div class="list-item" v-for="item,index in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+		<div class="list-item" v-for="item,index in list">
 			<Checkbox class="fl"></Checkbox>
 			<em class="envelope read fl"></em>
-			<span class="origin fl">系统消息</span>
-			<router-link to="/" class="preview fl">系统消息系统消统系统消统系统消统系统消统系统消统消统消息</router-link>
-			<span class="time fl">2017-04-26 17:47:26</span>
-			<Poptip class="fr delete" confirm title="您确认删除这条内容吗？" @on-ok="deleteMsg(index)" :width="190">
+			<span class="origin fl">{{item.origin}}</span>
+			<router-link to="/" class="preview fl">{{item.content}}</router-link>
+			<span class="time fl">{{item.time}}</span>
+			<Poptip class="fr delete" confirm title="您确认删除这条内容吗？" @on-ok="deleteMsg(item.id)" :width="190">
 		        <Icon type="trash-a" title="删除" class="trash" :size="20"></Icon>
 		    </Poptip>
 		</div>
     	<div class="my-page">
-    		<Page :total="400" size="small" class="page-nav"></Page>
+    		<Page :total="total" size="small" class="page-nav" @on-change="change"></Page>
     	</div>
 	</div>
 </template>
@@ -30,7 +30,8 @@
 export default {
 	data () {
 		return {
-			single: false
+			single: false,
+			size: 10,
 		}
 	},
 	mounted () {
@@ -49,10 +50,38 @@ export default {
 				},
 			];
 		this.$store.dispatch('accountBreadChange', bread)
+		this.$store.dispatch('accountMessageTotal', {} )
+	},
+	computed: {
+		total () {
+			return this.$store.state.account.message.total
+		},
+		list () {
+			return this.$store.state.account.message.list
+		}
+	},
+	watch:{
+		total () {
+			this.$store.dispatch('accountMessageList', {size: this.size, current: 1})
+		}
 	},
 	methods: {
         deleteMsg (e) {
             this.$Message.info('删除'+e);
+        },
+        allRead () {
+        	let ids = []
+        	for (let item in this.list) {
+        		if (item.checked) {
+        			ids.push(item.id)
+        		} 
+        	}
+        	if (ids.length > 0) {
+        		this.$store.dispatch('accountMessageRead', {ids: ids} )
+        	}
+        },
+        change (current) {
+        	this.$store.dispatch('publicityNewsList', {size: this.size, current: current})
         }
     }
 }
@@ -102,6 +131,7 @@ export default {
 }
 .origin{
 	margin-left: 16px;
+	width: 80px;
 	font-size: @fz;
 }
 .envelope.read{
