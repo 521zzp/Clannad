@@ -6,7 +6,7 @@
 			<span class="time-btn" :class="{active: selectTap === 3}" @click="selectTapChange(3)">近15天</span>
 			<span class="time-btn" :class="{active: selectTap === 4}" @click="selectTapChange(4)">近1个月</span>
 			<div class="time-picker fr">
-				日期<Date-picker class="data-input" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+				日期<Date-picker class="data-input" v-model="dates" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" @on-change="timeChange"></Date-picker>
 			</div>
 		</div>
 		<div class="clearfix item-group">
@@ -17,21 +17,21 @@
 				<div class="chief clearfix">
 					<div class="c-head fl">
 						<div class="head-box">
-							<span class="c-h-name">三月惠发</span>
-							<span class="c-h-time">到期：2017-03-26</span>
+							<span class="c-h-name">{{item.name}}</span>
+							<span class="c-h-time">到期：{{item.eTime}}</span>
 						</div>
 					</div>
 					<div class="c-body clearfix fl">
 						<div class="money fl">
-							<span class="value">78.90</span>
+							<span class="value">{{item.profit}}</span>
 							<span class="desc">收益金额（元）</span>
 						</div>
 						<div class="rate fl">
-							<span class="value">9.60%</span>
+							<span class="value">{{item.rate}}%</span>
 							<span class="desc">年化收益率</span>
 						</div>
 						<div class="freeze fl">
-							<span class="value">4200.00</span>
+							<span class="value">{{item.freeze}}</span>
 							<span class="desc">冻结金额（元）</span>
 						</div>
 					</div>
@@ -41,12 +41,12 @@
 				</div>
 				<div class="other clearfix" :class="{open : open === index}">
 					<div class="other-time fl">
-						<span>购买时间：2017-02-26</span>
-						<span>到期时间：2018-02-25</span>
+						<span>购买时间：{{item.bTime}}</span>
+						<span>到期时间：{{item.eTime}}</span>
 					</div>
 					<div class="day-money fl">
-						<span>产品期限（天）：<span>30</span></span>
-						<span >购买金额（元）：<span>40000.00</span></span>
+						<span>产品期限（天）：<span>{{item.day}}</span></span>
+						<span >购买金额（元）：<span>{{item.money}}</span></span>
 					</div>
 					<div class="o-operate fr">
 						<router-link to="/account/financing" class="contract">理财协议</router-link>
@@ -55,7 +55,7 @@
 			</div>
 		</div>
 		<div class="acc-page-wrap">
-    		<Page :total="400" size="small" class="acc-page-nav-center"></Page>
+    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
     	</div>
 	</div>
 </template>
@@ -66,12 +66,25 @@ export default{
 		return {
 			selectTap: 1,
 			open: -1,
-			list: [1, 2, 3, 4, ]
+			size: 4,
+			dates: [],
+			time: []
+		}
+	},
+	computed: {
+		total () {
+			return this.$store.state.accfinance.endTotal
+		},
+		list () {
+			return this.$store.state.accfinance.endList
 		}
 	},
 	watch: {
 		open () {
 			console.log(this.open)
+		},
+		total () {
+			this.$store.dispatch('accFinanceList', { type: 1, time: this.time, size: this.size, current: 1 })
 		}
 	},
 	methods: {
@@ -79,7 +92,35 @@ export default{
 			this.open = this.open == index ? -1 : index
 		},
 		selectTapChange (index) {
+			let start = new Date()
+			let end = new Date()
+			switch (index){
+				case 2:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+					break;
+				case 3:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 15)
+					break;
+				case 4:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+					break;
+				default:
+					start = null
+					end = null
+					break;
+			}
+			this.dates = [start, end]
 			this.selectTap = index
+			this.time = [start ? start.Format('yyyy-MM-dd') : '', end ? end.Format('yyyy-MM-dd') : '']
+			this.$store.dispatch('accFinanceTotal', { type: 1, time: this.time })
+		},
+		timeChange (value) {
+			const [start, end, ...rest] = value
+			this.time = [start ? start : '', end ? end : '']
+			this.$store.dispatch('accFinanceTotal', { type: 1, time: this.time })
+		},
+		change (current) {
+			this.$store.dispatch('accFinanceList', { type: 1, time: this.time, size: this.size, current: current })
 		}
 	}
 }

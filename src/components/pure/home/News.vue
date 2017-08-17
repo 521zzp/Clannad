@@ -12,7 +12,7 @@
 							<img :src="item.img" alt="" />
 							<span class="hidden-msg">{{item.title}}</span>
 						</router-link>
-						<a v-if="item.type === 'out'" :href="item.link" class="a clearfix">
+						<a v-if="item.type === 'out'" target="_blank" :href="item.link" class="a clearfix">
 							<img :src="item.img" alt="" />
 							<span class="hidden-msg">{{item.title}}</span>
 						</a>
@@ -26,7 +26,7 @@
 								<em></em>
 								<span class="news-title">{{item.title}}！</span>
 							</router-link>
-							<a v-if="item.type === 'out'" :href="item.link" class="b clearfix">
+							<a v-if="item.type === 'out'" target="_blank" :href="item.link" class="b clearfix">
 								<span class="time">{{item.time}}</span>
 								<em></em>
 								<span class="news-title">{{item.title}}！</span>

@@ -34,7 +34,7 @@
 						<router-link  v-else to="/app"><button>下载APP购买</button></router-link>
 					</div>
 				</div>
-				 <Progress :title="product.percent + '%'" class="i-p-progress" :percent="product.percent" status="active" :stroke-width="6" hide-info></Progress>
+				 <Progress :title="product.percent + '%'" class="i-p-progress" :percent="product.percent > 100 ? 100 : product.percent" status="active" :stroke-width="6" hide-info></Progress>
 			</div>
 		</div>
 	</div>

@@ -2,8 +2,7 @@ import * as types from '../mutation-types'
 import {ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE} from '@/config/url'
 import {postModelOne, onanaly} from '@/tool/net'
 import {message} from '@/tool/talk'
-import store from '@/store'
-import router from '@/router'
+
 
 const state = {
 	bread: [], //面包屑导航
@@ -34,6 +33,7 @@ const state = {
 	},
 	message: {
 		total: 0,
+		allSelect: false,
 		list: []
 	}
 }
@@ -77,16 +77,31 @@ const actions = {
   	},
   	accountMessageRead ({ commit }, obj) {
   		fetch(ACC_MSG_READ, postModelOne(obj)).then(onanaly).then(
-			(datas) => commit(types.ACC_MSG_READ, datas)
+			(datas) => {
+				if (datas.result) {
+					commit(types.ACC_MSG_READ, obj.ids)
+				} else {
+					message(datas.message, 4) 
+				}
+			}
 		)
   	},
   	accountMessageDelete ({ commit }, obj) {
   		fetch(ACC_MSG_DELETE, postModelOne(obj)).then(onanaly).then(
-			(datas) => commit(types.ACC_MSG_DELETE, datas)
+			(datas) => {
+				if (datas.result) {
+					commit(types.ACC_MSG_DELETE, obj.ids)
+				} else {
+					
+				}
+			}
 		)
   	},
   	accountMessageSelect ({ commit }, obj) {
   		commit(types.ACC_MSG_SELECT, obj)
+  	},
+  	accountMessageSelectAll ({ commit }, obj) {
+  		commit(types.ACC_MSG_SELECT_ALL, obj)
   	}
 }
 
@@ -107,26 +122,49 @@ const mutations = {
 		state.recharge.loading= obj
     },
     [types.ACC_MSG_TOTAL] (state, obj) {
-    	console.log(4444)
 		state.message.total = obj.total
     },
     [types.ACC_MSG_LIST] (state, obj) {
-    	console.log(obj)
     	let list = obj.map(
     		(x) => Object.assign({}, x, {checked: false})
     	)
 		state.message.list = list
     },
     [types.ACC_MSG_READ] (state, obj) {
-		console.log(obj)
+		for (let index in state.message.list ) {
+			if (~obj.indexOf(state.message.list[index].id)) {
+				console.log(state.message.list[index].id)
+				state.message.list[index].read = true
+			}
+		}
+		state.message.list.map(
+			item => item.checked = false
+		)
+		state.message.allSelect = false
     },
     [types.ACC_MSG_DELETE] (state, obj) {
-		console.log(obj)
+		for (let index in state.message.list ) {
+			if (~obj.indexOf(state.message.list[index].id)) {
+				state.message.list.splice(index,1)
+			}
+		}
+		state.message.allSelect = false
     },
     [types.ACC_MSG_SELECT] (state, obj) {
-		console.log(obj)
+    	state.message.list.map(
+    		item => {
+    			if (item.id === obj.id) {
+    				item.checked = !item.checked
+    			}
+    		}
+    	)
     },
-    
+    [types.ACC_MSG_SELECT_ALL] (state, obj) {
+    	state.message.allSelect = true
+    	state.message.list.map(
+    		item => item.checked = obj
+    	)
+    }
 }
 
 

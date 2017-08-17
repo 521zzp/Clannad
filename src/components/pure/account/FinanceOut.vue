@@ -6,7 +6,7 @@
 			<span class="time-btn" :class="{active: selectTap === 3}" @click="selectTapChange(3)">近15天</span>
 			<span class="time-btn" :class="{active: selectTap === 4}" @click="selectTapChange(4)">近1个月</span>
 			<div class="time-picker fr">
-				日期<Date-picker class="data-input" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px"></Date-picker>
+				日期<Date-picker class="data-input" v-model="dates" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" @on-change="timeChange"></Date-picker>
 			</div>
 		</div>
 		<div class="clearfix item-group">
@@ -20,21 +20,21 @@
 				<div class="fl seven">状态</div>
 			</div>
 			<div class="out-item col" v-for="item,index in list">
-				<div class="fl one name"><b>惠丰年发</b></div>
-				<div class="fl two">2017-05-17 13:36:18</div>
-				<div class="fl three theme-color">9000</div>
-				<div class="fl four theme-color">8000</div>
-				<div class="fl five theme-color">8000</div>
-				<div class="fl six theme-color">500</div>
+				<div class="fl one name"><b>{{item.name}}</b></div>
+				<div class="fl two">{{item.time}}</div>
+				<div class="fl three theme-color">{{item.outMoney}}</div>
+				<div class="fl four theme-color">{{item.getMoney}}</div>
+				<div class="fl five theme-color">{{item.breachMoney}}</div>
+				<div class="fl six theme-color">{{item.profit}}</div>
 				<div class="fl seven">
-					<!--<span class="uncheck">待审核</span>-->
-					<span class="check-ok">审核通过</span>
-					<!--<span class="check-no">未通过</span>-->
+					<span v-if="item.state === 0" class="uncheck">待审核</span>
+					<span v-else-if="item.state === 1" class="check-ok">审核通过</span>
+					<span v-else-if="item.state === 2" class="check-no">未通过</span>
 				</div>
 			</div>
 		</div>
 		<div class="acc-page-wrap">
-    		<Page :total="400" size="small" class="acc-page-nav-center"></Page>
+    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
     	</div>
 	</div>
 </template>
@@ -44,17 +44,58 @@ export default{
 	data () {
 		return {
 			selectTap: 1,
-			list: [1, 2, 3, 4, 5, 6, ]
+			size: 4,
+			dates: [],
+			time: []
+		}
+	},
+	computed: {
+		total () {
+			return this.$store.state.accfinance.outTotal
+		},
+		list () {
+			return this.$store.state.accfinance.outList
 		}
 	},
 	watch: {
 		open () {
 			console.log(this.open)
+		},
+		total () {
+			this.$store.dispatch('accFinanceOutList', { time: this.time, size: this.size, current: 1 })
 		}
 	},
 	methods: {
 		selectTapChange (index) {
+			let start = new Date()
+			let end = new Date()
+			switch (index){
+				case 2:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
+					break;
+				case 3:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 15)
+					break;
+				case 4:
+					start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
+					break;
+				default:
+					start = null
+					end = null
+					break;
+			}
+			this.dates = [start, end]
 			this.selectTap = index
+			this.time = [start ? start.Format('yyyy-MM-dd') : '', end ? end.Format('yyyy-MM-dd') : '']
+			this.$store.dispatch('accFinanceOutTotal', { time: this.time })
+		},
+		timeChange (value) {
+			const [start, end, ...rest] = value
+			this.time = [start ? start : '', end ? end : '']
+			this.$store.dispatch('accFinanceOutTotal', { time: this.time })
+		},
+		change (current) {
+			this.$store.dispatch('accFinanceOutList', { time: this.time, size: this.size, current: current })
 		}
 	}
 }

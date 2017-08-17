@@ -35,10 +35,18 @@ export const HOME_NOTICE = BASEURL + '/Zindex/notice.do'  //首页平台公告
 export const PRO_DETAIL_INFO = BASEURL + '/Zcenter/productDetail.do' //产品详情信息
 
 //个人中心
-export const ACC_BIND_STATE = BASEURL + '/user/grade' //四种绑定状态
+export const ACC_BIND_STATE = BASEURL + '/Zcenter/baseInfo.do' //四种绑定状态
 
 //账户总览
 export const ACC_OV_CAP = BASEURL + '/user/info'  //账户总览资金概况
+
+//我的理财
+export const ACC_YESTER_PROFIT = BASEURL + '' //昨日收益
+export const ACC_FIN_TOTAL = BASEURL + '' //我的理财总条数 ，持有中/已结束
+export const ACC_FIN_LIST = BASEURL + '' //我的理财集合，持有中/已结束
+export const ACC_FIN_OUT_TOTAL = BASEURL + '' //我的理财转出中总条数
+export const ACC_FIN_OUT_LIST = BASEURL + ''  //我的理财转出中集合
+
 
 //银行卡管理 
 export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的银行列表
@@ -46,8 +54,8 @@ export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的
 //我的消息
 export const ACC_MSG_TOTAL = BASEURL + '/Zcenter/messageCount.do' //我的消息总条数
 export const ACC_MSG_LIST = BASEURL + '/Zcenter/messagePage.do' //我的消息列表集合
-export const ACC_MSG_READ = BASEURL + '' //我的消息标记为已读
-export const ACC_MSG_DELETE = BASEURL + '' //我的消息删除
+export const ACC_MSG_READ = BASEURL + '/Zcenter/messageRead.do' //我的消息标记为已读
+export const ACC_MSG_DELETE = BASEURL + '/Zcenter/messageDel.do' //我的消息删除
 
 
 

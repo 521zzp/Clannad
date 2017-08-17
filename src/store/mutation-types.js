@@ -27,11 +27,22 @@ export const ACC_BIND_STATE = 'ACC_BIND_STATE' //用户中心四种绑定状态
 export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
 export const ACC_RECHARGE_LOADING = 'ACC_RECHARGE_LOADING' //用户总览充值加载中
 
+//我的理财
+export const ACC_YESTER_PROFIT = 'ACC_YESTER_PROFIT' //昨日收益
+export const ACC_FIN_TOTAL = 'ACC_FIN_TOTAL' //我的理财总条数 ，持有中/已结束
+export const ACC_FIN_LIST = 'ACC_FIN_LIST' //我的理财集合，持有中/已结束
+export const ACC_FIN_OUT_TOTAL = 'ACC_FIN_OUT_TOTAL' //我的理财转出中总条数
+export const ACC_FIN_OUT_LIST = 'ACC_FIN_OUT_LIST' //我的理财转出中集合
+
+
+
+//我的消息
 export const ACC_MSG_TOTAL = 'ACC_MSG_TOTAL' //我的消息总条数
 export const ACC_MSG_LIST = 'ACC_MSG_LIST' //我的消息列表集合
 export const ACC_MSG_READ = 'ACC_MSG_READ' //我的消息标记为已读
 export const ACC_MSG_DELETE = 'ACC_MSG_DELETE' //我的消息删除
 export const ACC_MSG_SELECT = 'ACC_MSG_SELECT' //我的消息选中
+export const ACC_MSG_SELECT_ALL = 'ACC_MSG_SELECT_ALL' //我的消息全选和反选
 
 //银行卡管理
 export const SUPPORT_BANK_UPDATE = 'SUPPORT_BANK_UPDATE' //获取支持的银行列表

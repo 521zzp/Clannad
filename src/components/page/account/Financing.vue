@@ -1,7 +1,7 @@
 <template>
 	<div class="clearfix">
 		<b class="user-account-common-title">我的理财</b>
-		<span class="yesterday">昨日收益（元）：<span class="theme-color">50</span></span>
+		<span class="yesterday">昨日收益（元）：<span class="theme-color">{{money}}</span></span>
 		<Tabs class="only-financing-taps" value="on">
 	        <Tab-pane label="持有中" name="on">
 	        	<FinanceOn/>
@@ -26,6 +26,11 @@ export default {
 			
 		}
 	},
+	computed: {
+		money () {
+			return this.$store.state.accfinance.yesterdayProfit
+		}
+	},
 	mounted () {
 		let bread = [
 				{
@@ -42,6 +47,7 @@ export default {
 				},
 			];
 		this.$store.dispatch('accountBreadChange', bread)
+		this.$store.dispatch('accYesterdayProfitGet')
 	},
 	components: {
 		FinanceOn,

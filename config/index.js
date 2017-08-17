@@ -1,6 +1,9 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
 
+const testEnviroment = true
+
+
 module.exports = {
   build: {
     env: require('./prod.env'),
@@ -30,9 +33,9 @@ module.exports = {
     proxyTable: {
     	"/api": {
 	      /*"target": "http://106.14.40.100/",*/
-	      "target": "http://192.168.3.25:8080/",
+	      "target": testEnviroment ? "http://106.14.40.100/" : "http://192.168.3.25:8080/",
 	      "changeOrigin": true,
-	      "pathRewrite": { "^/api" : "p2p_pb" }
+	      "pathRewrite": { "^/api" : testEnviroment ? "" : "p2p_pb" }
 	     /*"pathRewrite": { "^/api" : "" }*/
 	    }
     },

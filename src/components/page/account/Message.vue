@@ -2,7 +2,7 @@
 	<div class="my-message-list">
 		<b class="user-account-common-title">我的消息</b>
 		<div class="op-head">
-			<Checkbox v-model="single"><span class="select-all">全选</span></Checkbox>
+			<Checkbox :value="single" @on-change="checkAll"><span class="select-all">全选</span></Checkbox>
 			<button class="all-read" @click="allRead">标记为已读</button>
 		</div>
 		<div class="list-title">
@@ -11,10 +11,10 @@
 			<span>时间</span>
 		</div>
 		<div class="list-item" v-for="item,index in list">
-			<Checkbox class="fl"></Checkbox>
+			<Checkbox class="fl" :value="item.checked" @on-change="singleCheck(item.id)"></Checkbox>
 			<em class="envelope read fl"></em>
 			<span class="origin fl">{{item.origin}}</span>
-			<router-link to="/" class="preview fl">{{item.content}}</router-link>
+			<span class="preview fl" :class="{ 'no-read': !item.read }" :title="item.content">{{item.content}}</span>
 			<span class="time fl">{{item.time}}</span>
 			<Poptip class="fr delete" confirm title="您确认删除这条内容吗？" @on-ok="deleteMsg(item.id)" :width="190">
 		        <Icon type="trash-a" title="删除" class="trash" :size="20"></Icon>
@@ -27,10 +27,11 @@
 </template>
 
 <script>
+import { message } from '@/tool/talk'
+ 	
 export default {
 	data () {
 		return {
-			single: false,
 			size: 10,
 		}
 	},
@@ -58,6 +59,9 @@ export default {
 		},
 		list () {
 			return this.$store.state.account.message.list
+		},
+		single () {
+			return this.$store.state.account.message.allSelect
 		}
 	},
 	watch:{
@@ -66,22 +70,32 @@ export default {
 		}
 	},
 	methods: {
-        deleteMsg (e) {
-            this.$Message.info('删除'+e);
+        deleteMsg (id) {
+            this.$Message.info('删除'+id);
+            this.$store.dispatch('accountMessageDelete', {ids: [id]})
         },
         allRead () {
         	let ids = []
-        	for (let item in this.list) {
+        	for (let item of this.list) {
         		if (item.checked) {
         			ids.push(item.id)
         		} 
         	}
         	if (ids.length > 0) {
         		this.$store.dispatch('accountMessageRead', {ids: ids} )
+        	} else {
+        		message('您还未选择消息', 3)
         	}
         },
         change (current) {
-        	this.$store.dispatch('publicityNewsList', {size: this.size, current: current})
+        	this.$store.dispatch('accountMessageList', {size: this.size, current: current})
+        },
+        singleCheck (id) {
+        	this.$store.dispatch('accountMessageSelect', {id: id})
+        },
+        checkAll (value) {
+        	console.log(value)
+        	this.$store.dispatch('accountMessageSelectAll', value)
         }
     }
 }
@@ -98,8 +112,7 @@ export default {
 	position: relative;
 }
 .my-page{
-	position: absolute;
-	bottom: 10px;
+	margin-top: 40px;
 	text-align: center;
 	width: 100%;
 }
@@ -116,6 +129,9 @@ export default {
 .time{
 	margin-left: 144px;
 }
+.preview.no-read{
+	color: @theme;
+}
 .preview:hover{
 	color: @theme;
 }
@@ -124,6 +140,7 @@ export default {
 	color: @gray-one;
 	display: inline-block;
 	margin-left: 92px;
+	height: 60px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	word-break: keep-all;
