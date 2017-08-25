@@ -65,14 +65,26 @@ export default {
             }
         }
     },
+    computed: {
+    	resetFlag () {
+    		return this.$store.state.account.changeLoginPwdFlag
+    	}
+    },
+    watch: {
+    	resetFlag () {
+    		this.handleReset('myForm')
+    	}
+    },
     methods: {
         handleSubmit (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$Message.success('提交成功!');
-                } else {
-                    this.$Message.error('表单验证失败!');
-                }
+                    const obj = {
+                    	oldPassword: this.myForm.oldPwd,
+                    	password: this.myForm.newPwd
+                    }
+                    this.$store.dispatch('accountInfoLoginPwd', obj)
+                } 
             })
         },
         handleReset (name) {

@@ -1,22 +1,10 @@
 <template>
 	<div>
 		<CouponFilter @filterChange="filterChange"/>
-		<div v-show="state === 0">
-			<CouponRaiseList :list="listOne"/>
-			<div class="common-center-page-wrap" style="margin-top: 20px;">
-	    		<Page :total="400" size="small" class="common-center-page-nav"></Page>
-	    	</div>
-		</div>
-		<div v-show="state === 1">
-			<CouponRaiseList :list="listTwo"/>
-			<div class="common-center-page-wrap" style="margin-top: 20px;">
-	    		<Page :total="400" size="small" class="common-center-page-nav"></Page>
-	    	</div>
-		</div>
-		<div v-show="state === 2">
-			<CouponRaiseList :list="listThree"/>
-			<div class="common-center-page-wrap" style="margin-top: 20px;">
-	    		<Page :total="400" size="small" class="common-center-page-nav"></Page>
+		<div>
+			<CouponRaiseList :list="list"/>
+			<div class="common-center-page-wrap" style="margin-top: 20px;margin-bottom: 110px;">
+	    		<Page :total="total" size="small" :page-size="size" class="common-center-page-nav" :page-size-opts="sizeList" @on-change="change" show-sizer @on-page-size-change="sizeChange"></Page>
 	    	</div>
 		</div>
 	</div>
@@ -29,138 +17,49 @@ import CouponRaiseList from "@/components/pure/account/CouponRaiseList"
 export default {
 	data () {
 		return {
-			state: 0 ,
-			listOne : [
-				{
-					state: 0, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 0, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 0, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 0, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-			],
-			listTwo : [
-				{
-					state: 1, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 1, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 1, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-				{
-					state: 1, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '',
-				},
-			],
-			listThree : [
-				{
-					state: 2, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '已过期',
-				},
-				{
-					state: 2, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '已使用',
-				},
-				{
-					state: 2, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '已过期',
-				},
-				{
-					state: 2, // 0：未使用，1：已使用，2：已过期
-					value: 5.18,
-					name: '嗨翻518加息券',
-					remarks: '518产品专属加息券，加息周期30天',
-					getTime: '2017-03-20 12:29:24',
-					overdueTime: '2017-03-20 12:29:24',
-					day: '23',
-					unuse: '已使用',
-				},
-			],
+			state: {
+				stateTap: 0, 
+				rankTap: 'value'
+			},
+			sizeList: [4, 6, 8 ],
+			size: 4,
+		}
+	},
+	computed: {
+		total () {
+			return this.$store.state.acccoupon.raiseTotal
+		},
+		totalFlag () {
+			return this.$store.state.acccoupon.raiseTotalFlag
+		},
+		list () {
+			return this.$store.state.acccoupon.raiseList
+		}
+	},
+	mounted () {
+		this.$store.dispatch('accCouponTotal', Object.assign({}, this.state, { type: 3 }))
+	},
+	watch: {
+		totalFlag () {
+			console.log('ssssssssssssss')
+			if (this.total > 0) {
+				const params = Object.assign( {}, this.state, { type: 3, size: this.size, current: 1} )
+				this.$store.dispatch('accCouponList', params)
+			}
 		}
 	},
 	methods: {
 		filterChange (obj) {
-			this.state = obj.stateTap
+			this.state = obj
+			this.$store.dispatch('accCouponTotal', Object.assign({}, this.state, { type: 3 }))
+		},
+		change (current) {
+			const params = Object.assign( {}, this.state, { type: 3, size: this.size, current: current} )
+			this.$store.dispatch('accCouponList', params)
+		},
+		sizeChange (size) {
+			this.size = size
+			this.$store.dispatch('accCouponTotal', Object.assign({}, this.state, { type: 3 }))
 		}
 	},
 	components: {

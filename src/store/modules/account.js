@@ -1,7 +1,10 @@
 import * as types from '../mutation-types'
-import {ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE} from '@/config/url'
-import {postModelOne, onanaly} from '@/tool/net'
-import {message} from '@/tool/talk'
+import { ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE, 
+	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, SMSCODE, ACC_INFO_PAY_PWD_BACK_ONE,ACC_INFO_PAY_PWD_BACK_TWO,
+	ACC_INFO_PAY_PWD_SET,
+	} from '@/config/url'
+import {postModelOne, onanaly } from '@/tool/net'
+import { message } from '@/tool/talk'
 
 
 const state = {
@@ -35,6 +38,22 @@ const state = {
 		total: 0,
 		allSelect: false,
 		list: []
+	},
+	accInfoBase: {
+		idCard: 'idcard',
+		bankCard: 'bankcard',
+		phone: 'phone',
+		loginTime: 'logintime'
+	},
+	changeLoginPwdFlag: 0, //更改登录密码后表单重置标志
+	changePayPwdFlag: 0, //更改支付密码后表单重置标志
+	payPwdBack: {
+		step: 1,
+		text: '发送验证码',
+		sendAbel: true,
+		account: '',
+		phoneCode: '',
+		idCard: '',
 	}
 }
 
@@ -69,8 +88,6 @@ const actions = {
   	accountMessageList ({ commit }, obj) {
   		fetch(ACC_MSG_LIST, postModelOne(obj)).then(onanaly).then(
 			(datas) => {
-				console.log(110)
-				console.log(datas)
 				commit(types.ACC_MSG_LIST, datas)
 			}
 		)
@@ -102,7 +119,95 @@ const actions = {
   	},
   	accountMessageSelectAll ({ commit }, obj) {
   		commit(types.ACC_MSG_SELECT_ALL, obj)
+  	},
+  	accountInfoLoginPwd ({ commit }, obj) {
+  		fetch(ACC_INFO_LOGIN_PWD_CHANGE, postModelOne(obj)).then(onanaly).then(
+  			datas => {
+  				if (datas.code === 200) {
+  					commit(types.ACC_INFO_LOGIN_PWD_CHANGE)
+  					message(datas.msg, 2)
+  				} else {
+  					message(datas.msg, 4)
+  				}
+  			}
+  		).catch((e) => {
+  			message('网络异常，请您稍后再试', 4)
+  		})
+  	},
+  	accountInfoPayPwdChange ({ commit }, obj) {
+  		fetch(ACC_INFO_PAY_PWD_CHANGE, postModelOne(obj)).then(onanaly).then(
+  			datas => {
+  				if (datas.code === 200) {
+  					commit(types.ACC_INFO_PAY_PWD_CHANGE, datas)
+  					message(datas.msg, 2)
+  				} else {
+  					message(datas.msg, 4)
+  				}
+  			}
+  		)
+  	},
+  	accountInfoBaseGet ({ commit }, obj) {
+  		fetch(ACC_INFO_BASE, postModelOne(obj)).then(onanaly).then(
+  			datas => {datas ? commit(types.ACC_INFO_BASE, datas) : ''}
+  		)
+  	},
+  	payPwdBackSendCode ({ commit }, obj){
+		if (state.payPwdBack.sendAbel) {
+			state.payPwdBack.sendAbel = false;
+			fetch(SMSCODE, postModelOne(obj)).then(onanaly)
+				.then((datas)=>{
+					if (datas.code === 200){
+						message(datas.msg,2);
+						let time = 60;
+						state.payPwdBack.text = time + 's后重新发送';
+						let clock = setInterval(function () {
+							time--;
+							state.payPwdBack.text = time + 's后重新发送';
+							if(time==0){
+								state.payPwdBack.text = '发送验证码';
+								clearInterval(clock);
+								state.payPwdBack.sendAbel = true;
+							}
+						},1000);
+					}else{
+						message(datas.msg,4);
+						state.payPwdBack.sendAbel = true;
+					}
+			}).catch(function(error) {
+				state.payPwdBack.sendAbel = true;
+			  });
+		}
+  	},
+  	payPwdBackStepOne ({ commit }, obj) {
+  		fetch(ACC_INFO_PAY_PWD_BACK_ONE, postModelOne(obj)).then(onanaly).then(
+  			datas => {
+  				if (datas.code === 200) {
+  					commit(types.ACC_INFO_PAY_PWD_BACK_ONE, obj)
+  				} else {
+  					message(datas.msg, 4)
+  				}
+  			}
+  		)
+  	},
+  	payPwdBackStepTwo ({ commit }, obj) {
+  		const temp = {
+  			account: state.payPwdBack.account,
+  			phoneCode: state.payPwdBack.phoneCode,
+  			idCard: state.payPwdBack.idCard
+  		}
+  		fetch(ACC_INFO_PAY_PWD_BACK_TWO, postModelOne(Object.assign({}, obj, temp))).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_INFO_PAY_PWD_BACK_TWO) : ''
+  		)
+  	},
+  	payPwdBackStepInit ({ commit }, obj) {
+  		commit(types.ACC_INFO_PAY_PWD_BACK_STEP_INIT, obj)
+  	},
+  	accountPayPwdSet ({ commit }, obj) {
+  		fetch(ACC_INFO_PAY_PWD_SET, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_INFO_PAY_PWD_SET, datas) : ''
+  		)
   	}
+  	
 }
 
 const mutations = {
@@ -164,9 +269,33 @@ const mutations = {
     	state.message.list.map(
     		item => item.checked = obj
     	)
+    },
+    [types.ACC_INFO_LOGIN_PWD_CHANGE] (state, obj) {
+    	state.changeLoginPwdFlag = state.changeLoginPwdFlag + 1
+    },
+    [types.ACC_INFO_PAY_PWD_CHANGE] (state, obj) {
+    	state.changePayPwdFlag = state.changePayPwdFlag + 1
+    },
+    [types.ACC_INFO_BASE] (state, obj) {
+		state.accInfoBase = obj
+    },
+    [types.ACC_INFO_PAY_PWD_BACK_ONE] (state, obj) {
+    	state.payPwdBack.step = state.payPwdBack.step + 1
+    	state.payPwdBack.account = obj.account
+    	state.payPwdBack.phoneCode = obj.phoneCode
+    	state.payPwdBack.idCard = obj.idCard
+    },
+    [types.ACC_INFO_PAY_PWD_BACK_STEP_INIT] (state, ojb) {
+    	state.payPwdBack.step = 0
+    },
+    [types.ACC_INFO_PAY_PWD_BACK_TWO] (state, obj) {
+    	state.payPwdBack.step = state.payPwdBack.step + 1
+    },
+    [types.ACC_INFO_PAY_PWD_SET] (state, obj) {
+    	state.bindStatus.payPwd = true
     }
+    
 }
-
 
 export default{
 	state,

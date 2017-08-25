@@ -67,7 +67,7 @@ export default{
 			open: -1,
 			size: 4,
 			dates: [],
-			time: []
+			time: ["", ""]
 		}
 	},
 	computed: {
@@ -79,14 +79,22 @@ export default{
 		},
 		list () {
 			return this.$store.state.accfinance.onList
+		},
+		totalFlag () {
+			return this.$store.state.accfinance.onTotalFlag
 		}
+	},
+	mounted(){
+		this.$store.dispatch('accFinanceTotal', { type: 1, time: this.time })
 	},
 	watch: {
 		open () {
 			console.log(this.open)
 		},
-		total () {
-			this.$store.dispatch('accFinanceList', { type: 0, time: this.time, size: this.size, current: 1 })
+		totalFlag () {
+			if (this.total > 0) {
+				this.$store.dispatch('accFinanceList', { type: 1, time: this.time, size: this.size, current: 1 })
+			}
 		}
 	},
 	methods: {
@@ -114,15 +122,15 @@ export default{
 			this.dates = [start, end]
 			this.selectTap = index
 			this.time = [start ? start.Format('yyyy-MM-dd') : '', end ? end.Format('yyyy-MM-dd') : '']
-			this.$store.dispatch('accFinanceTotal', { type: 0, time: this.time })
+			this.$store.dispatch('accFinanceTotal', { type: 1, time: this.time })
 		},
 		timeChange (value) {
 			const [start, end, ...rest] = value
 			this.time = [start ? start : '', end ? end : '']
-			this.$store.dispatch('accFinanceTotal', { type: 0, time: this.time })
+			this.$store.dispatch('accFinanceTotal', { type: 1, time: this.time })
 		},
 		change (current) {
-			this.$store.dispatch('accFinanceList', { type: 0, time: this.time, size: this.size, current: current })
+			this.$store.dispatch('accFinanceList', { type: 1, time: this.time, size: this.size, current: current })
 		}
 	}
 }

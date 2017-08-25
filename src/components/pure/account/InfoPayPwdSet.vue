@@ -1,6 +1,6 @@
 <template>
 	<div class="set">
-		<Form ref="setForm" :model="setForm" :rules="ruleCustom" :label-width="100">
+		<Form ref="setForm" :model="setForm" :rules="ruleCustom" :label-width="120">
 	        <Form-item label="设置新支付密码" prop="passwd">
 	            <Input type="password" size="large" v-model="setForm.passwd" :maxlength="6"  placeholder="请输入当前支付密码"></Input>
 	        </Form-item>
@@ -48,10 +48,12 @@ export default {
             },
             ruleCustom: {
                 passwd: [
-                   { validator: validatePassSet, trigger: 'blur' }
+                	{ required: true, message: '支付密码不能为空', trigger: 'blur' },
+                	{ validator: validatePassSet, trigger: 'blur' }
                 ],
                 passwdCheck: [
-                    { validator: validatePassCheckSet, trigger: 'blur' }
+                	{ required: true, message: '确认支付密码不能为空', trigger: 'blur' },
+                	{ validator: validatePassCheckSet, trigger: 'blur' }
                 ]
                
             }
@@ -61,9 +63,8 @@ export default {
         handleSubmitSet (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$Message.success('提交成功!');
-                } else {
-                    this.$Message.error('表单验证失败!');
+                	this.$store.dispatch('accountPayPwdSet', {payPwd: this.setForm.passwd})
+                	this.$refs[name].resetFields()
                 }
             })
         },

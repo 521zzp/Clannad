@@ -34,6 +34,9 @@ export const ACC_FIN_LIST = 'ACC_FIN_LIST' //我的理财集合，持有中/已�
 export const ACC_FIN_OUT_TOTAL = 'ACC_FIN_OUT_TOTAL' //我的理财转出中总条数
 export const ACC_FIN_OUT_LIST = 'ACC_FIN_OUT_LIST' //我的理财转出中集合
 
+//我的礼券
+export const ACC_COUPON_TOTAL = 'ACC_COUPON_TOTAL' //礼券总页数
+export const ACC_COUPON_LIST = 'ACC_COUPON_LIST'  //礼券集合
 
 
 //我的消息
@@ -43,6 +46,17 @@ export const ACC_MSG_READ = 'ACC_MSG_READ' //我的消息标记为已读
 export const ACC_MSG_DELETE = 'ACC_MSG_DELETE' //我的消息删除
 export const ACC_MSG_SELECT = 'ACC_MSG_SELECT' //我的消息选中
 export const ACC_MSG_SELECT_ALL = 'ACC_MSG_SELECT_ALL' //我的消息全选和反选
+
+//账户信息
+export const ACC_INFO_BASE = 'ACC_INFO_BASE'  //账户信息基本信息
+export const ACC_INFO_LOGIN_PWD_CHANGE = 'ACC_INFO_LOGIN_PWD_CHANGE' //更改登录密码
+export const ACC_INFO_PAY_PWD_SET = 'ACC_INFO_PAY_PWD_SET' //设置支付密码
+export const ACC_INFO_PAY_PWD_CHANGE = 'ACC_INFO_PAY_PWD_CHANGE'  //记得原支付密码更改支付密码
+export const ACC_INFO_PAY_PWD_BACK_ONE = 'ACC_INFO_PAY_PWD_BACK_ONE'  //找回支付密码第一步
+export const ACC_INFO_PAY_PWD_BACK_TWO = 'ACC_INFO_PAY_PWD_BACK_TWO'  //找回支付密码第二步
+export const ACC_INFO_PAY_PWD_BACK_STEP_INIT = 'ACC_INFO_PAY_PWD_BACK_STEP_INIT'  //Z找回支付密码步骤初始化
+
+
 
 //银行卡管理
 export const SUPPORT_BANK_UPDATE = 'SUPPORT_BANK_UPDATE' //获取支持的银行列表

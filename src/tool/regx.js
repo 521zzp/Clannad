@@ -71,7 +71,7 @@ export const validateBankcard = (rule, value, callback) => {
 export const validatePayPwd = (rule, value, callback) => {
 	let regx = /^\d{6}$/;
 	if (!regx.test(value)) {
-		 callback(new Error('支付密码不正确'));
+		 callback(new Error('支付密码为6为数字'));
 	} else{
 		callback();
 	}

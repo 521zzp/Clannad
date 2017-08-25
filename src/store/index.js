@@ -11,6 +11,7 @@ import resetpwd from './modules/resetpwd'
 import prodetail from './modules/prodetail'
 import account from './modules/account'
 import accfinance from './modules/accfinance'
+import acccoupon from './modules/acccoupon'
 import publicity from './modules/publicity'
 
 
@@ -72,7 +73,8 @@ const store = new Vuex.Store({
 		prodetail,
 		account,
 		publicity,
-		accfinance
+		accfinance,
+		acccoupon,
 	}
 })
 

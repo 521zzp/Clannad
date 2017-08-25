@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="clearfix item-group">
-			<div class="out-title col clearfix">
+			<div v-if="total > 0" class="out-title col clearfix">
 				<div class="fl one">项目名称</div>
 				<div class="fl two">申请时间</div>
 				<div class="fl three">转出金额</div>
@@ -27,9 +27,9 @@
 				<div class="fl five theme-color">{{item.breachMoney}}</div>
 				<div class="fl six theme-color">{{item.profit}}</div>
 				<div class="fl seven">
-					<span v-if="item.state === 0" class="uncheck">待审核</span>
-					<span v-else-if="item.state === 1" class="check-ok">审核通过</span>
+					<span v-if="item.state === 1" class="uncheck">待审核</span>
 					<span v-else-if="item.state === 2" class="check-no">未通过</span>
+					<span v-else-if="item.state === 3" class="check-ok">审核通过</span>
 				</div>
 			</div>
 		</div>
@@ -46,7 +46,7 @@ export default{
 			selectTap: 1,
 			size: 4,
 			dates: [],
-			time: []
+			time: ["", ""]
 		}
 	},
 	computed: {
@@ -55,14 +55,22 @@ export default{
 		},
 		list () {
 			return this.$store.state.accfinance.outList
+		},
+		totalFlag () {
+			return this.$store.state.accfinance.outTotalFlag
 		}
+	},
+	mounted(){
+		this.$store.dispatch('accFinanceOutTotal', { time: this.time })
 	},
 	watch: {
 		open () {
 			console.log(this.open)
 		},
-		total () {
-			this.$store.dispatch('accFinanceOutList', { time: this.time, size: this.size, current: 1 })
+		totalFlag () {
+			if (this.total > 0) {
+				this.$store.dispatch('accFinanceOutList', { time: this.time, size: this.size, current: 1 })
+			}
 		}
 	},
 	methods: {

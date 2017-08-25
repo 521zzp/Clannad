@@ -36,12 +36,6 @@ const mutations = {
 				router.push('/')
 			}
 		);
-		/*if (obj.code === 200) {
-			console.log('用户登陆返回信息' + obj);
-			
-		}else{
-			message(obj.msg, 4)
-		}*/
     }
 }
 

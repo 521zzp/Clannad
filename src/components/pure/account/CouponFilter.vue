@@ -8,9 +8,9 @@
 		</div>
 		<div class="rank">
 			<span class="condition-head">排列：</span>
-			<span class="filter-btn" :class="{active: rankTap === 1}" @click="rankTapChange(1)">按金额</span>
-			<span class="filter-btn" :class="{active: rankTap === 2}" @click="rankTapChange(2)">按获取时间</span>
-			<span class="filter-btn" :class="{active: rankTap === 3}" @click="rankTapChange(3)">按过期时间</span>
+			<span class="filter-btn" :class="{active: rankTap === 'value'}" @click="rankTapChange('value')">按金额</span>
+			<span class="filter-btn" :class="{active: rankTap === 'getTime'}" @click="rankTapChange('getTime')">按获取时间</span>
+			<span class="filter-btn" :class="{active: rankTap === 'endTime'}" @click="rankTapChange('endTime')">按过期时间</span>
 		</div>
 	</div>
 </template>
@@ -20,27 +20,29 @@ export default {
 	data () {
 		return {
 			stateTap: 0,
-			rankTap: 1,
+			rankTap: 'value',
 		}
 	},
 	methods: {
 		stateTapChange (e) {
-			this.stateTap = e
-			let obj = {
-				stateTap: this.stateTap,
-				rankTap: this.rankTap,
+			if (this.stateTap !== e) {
+				this.stateTap = e
+				let obj = {
+					stateTap: this.stateTap,
+					rankTap: this.rankTap,
+				}
+				this.$emit('filterChange',obj)
 			}
-			console.log(1)
-			console.log(obj)
-			this.$emit('filterChange',obj)
 		},
 		rankTapChange (e) {
-			this.rankTap = e
-			let obj = {
-				stateTap: this.stateTap,
-				rankTap: this.rankTap,
+			if (this.rankTap !== e) {
+				this.rankTap = e
+				let obj = {
+					stateTap: this.stateTap,
+					rankTap: this.rankTap,
+				}
+				this.$emit('filterChange',obj)
 			}
-			this.$emit('filterChange',obj)
 		}
 	}
 }

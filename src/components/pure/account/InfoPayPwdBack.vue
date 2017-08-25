@@ -3,7 +3,7 @@
 		<div class="clearfix step">
 			<Steps :current="step" :status="status">
 		        <Step title="第一步" content="验证手机号码"></Step>
-		        <Step title="第二步" content="重置登陆密码"></Step>
+		        <Step title="第二步" content="重置交易密码"></Step>
 		        <Step title="第三步" content="重置密码成功"></Step>
 		    </Steps>
 		    <div v-if="step === 0" class="step-one">
@@ -38,7 +38,7 @@
 		    </div>
 		    <div v-if="step === 2" class="step-three">
 		    	<Icon class="result" size="60" type="checkmark-circled"></Icon>
-				<span class="result-msg">手机绑定修改成功</span>
+				<span class="result-msg">支付密码重置成功</span>
 		    </div>
 		</div>		
 	</div>
@@ -69,9 +69,7 @@ export default{
             }
         };
 		return {
-			step: 1,
 			status: 'process',
-			text: 'send code',
 			oneForm: {
                 account: '15773270836',
                 phoneCode: '',
@@ -102,33 +100,46 @@ export default{
             }
 		}
 	},
+	computed: {
+		text () {
+			return this.$store.state.account.payPwdBack.text
+		},
+		step () {
+			return this.$store.state.account.payPwdBack.step
+		}
+	},
+	mounted () {
+		this.$store.dispatch('payPwdBackStepInit')
+	},
 	methods: {
         handleSubmitOne (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
                 	let obj = {
                 		account: this.oneForm.account,
-	                    phoneCode: this.oneForm.phoneCode
+	                    phoneCode: this.oneForm.phoneCode,
+	                    idCard: this.oneForm.idCard
                 	}
-                	console.log(obj)
-                	this.step++
-                } else {
-                }
+                	this.$store.dispatch('payPwdBackStepOne', obj)
+                } 
             })
         },
        handleSubmitTwo (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$Message.success('提交成功!');
-                } else {
-                    this.$Message.error('表单验证失败!');
-                }
+                    this.$store.dispatch('payPwdBackStepTwo', {payPwd: this.twoForm.passwd})
+                } 
             })
         },
         sendCodeOne () {
         	if (checkPhone(this.oneForm.account)) {
-        		/*this.$emit('sendCode',{account:this.oneForm.account})*/
         		console.log(this.oneForm.account)
+        		const datas = {
+        			account: this.oneForm.account,
+        			state: 2, //用于区分什么业务发的短信
+        		}
+        		this.$store.dispatch('payPwdBackSendCode', datas)
+        		
         	} else {
         		this.$refs.oneForm.validateField('account');
         	}
@@ -136,6 +147,8 @@ export default{
         sendCodeTwo () {
         	if (checkPhone(this.twoForm.account)) {
         		/*this.$emit('sendCode',{account:this.twoForm.account})*/
+        		
+        		
         		console.log(this.twoForm.account)
         	} else {
         		this.$refs.twoForm.validateField('account');

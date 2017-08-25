@@ -6,7 +6,7 @@
 			<Icon v-else class="faild-icon" :size="15" type="information-circled"></Icon>	
 			<span class="bind-status">{{idCard ? '已认证' : '未认证' }}</span>
 			<span class="item-desc">实名认证</span>
-			<span class="item-info">{{idCard ? '4654651*******54854645' : '只有通过实名认证，才能充值投资' }}</span>
+			<span class="item-info">{{idCard ? baseInfo.idCard : '只有通过实名认证，才能充值投资' }}</span>
 			<span v-if="idCard" class="fr link-btn" @click="openChange(1)">详情</span>
 			<router-link v-else to="/account/bankcard-add" class="fr">立即设置</router-link>
 		</div>
@@ -16,15 +16,15 @@
 			<Icon v-else class="faild-icon" :size="15" type="information-circled"></Icon>
 			<span class="bind-status">{{bankCard ? '已认证' : '未认证' }}</span>
 			<span class="item-desc">银行卡</span>
-			<span class="item-info">{{bankCard ? '4654*******54645' : '保障资金安全，充值、取现资金同卡进出' }}</span>
+			<span class="item-info">{{bankCard ? baseInfo.bankCard : '保障资金安全，充值、取现资金同卡进出' }}</span>
 			<router-link v-if="bankCard" to="/account/bankcard" class="fr">详情</router-link>
-			<router-link v-else to="/account/bankcard-add" class="fr">立即设置</router-link>
+			<router-link v-else to="/account/bankcard/add" class="fr">立即设置</router-link>
 		</div>
 		<div class="item-head">
 			<Icon class="success-icon" :size="15" type="checkmark-circled"></Icon>
 			<span class="bind-status">已设置</span>
 			<span class="item-desc">手机号码</span>
-			<span class="item-info">182****6699</span>
+			<span class="item-info">{{baseInfo.phone}}</span>
 			<span class="fr link-btn" @click="openChange(2)">修改</span>
 		</div>
 		<InfoPhone class="fold" :class="{open: open === 2}"/>
@@ -32,7 +32,7 @@
 			<Icon class="success-icon" :size="15" type="checkmark-circled"></Icon>
 			<span class="bind-status">已设置</span>
 			<span class="item-desc">登陆密码</span>
-			<span class="item-info">上次登陆时间：2017-05-11 16:59:17</span>
+			<span class="item-info">上次登陆时间：{{baseInfo.loginTime}}</span>
 			<span class="fr link-btn" @click="openChange(3)">修改</span>
 		</div>
 		<InfoPassword class="fold" :class="{open: open === 3}"/>
@@ -45,7 +45,7 @@
 			<span v-if="payPwd" class="fr link-btn">
 				<span  @click="payPwdTypeSet(2)">修改</span>
 				|
-				<span @click="payPwdTypeSet(3)">找回</span>
+				<span @click="payPwdTypeSet(3)">重置</span>
 			</span>
 			<span v-else class="fr link-btn" @click="payPwdTypeSet(1)" >立即设置</span>
 		</div>
@@ -68,19 +68,19 @@ export default {
 	},
 	computed: {
 		idCard () {
-			/*return this.$store.state.account.bindStatus.idCard */
-			return true
+			return this.$store.state.account.bindStatus.idCard 
 		},
 		bankCard (){
-			/*return this.$store.state.account.bindStatus.bankCard*/
-			return true
+			return this.$store.state.account.bindStatus.bankCard
 		},
 		payPwd () {
-			/*return this.$store.state.account.bindStatus.payPwd*/
-			return true
+			return this.$store.state.account.bindStatus.payPwd
 		},
 		payPwdTypeChild () {
 			return this.payPwdType
+		},
+		baseInfo () {
+			return this.$store.state.account.accInfoBase
 		}
 	},
 	mounted () {
@@ -123,6 +123,9 @@ export default {
 				
 			}
 		}
+	},
+	mounted () {
+		this.$store.dispatch('accountInfoBaseGet')
 	},
 	components: {
 		InfoIdCard,

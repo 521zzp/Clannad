@@ -41,12 +41,23 @@ export const ACC_BIND_STATE = BASEURL + '/Zcenter/baseInfo.do' //四种绑定状
 export const ACC_OV_CAP = BASEURL + '/user/info'  //账户总览资金概况
 
 //我的理财
-export const ACC_YESTER_PROFIT = BASEURL + '' //昨日收益
-export const ACC_FIN_TOTAL = BASEURL + '' //我的理财总条数 ，持有中/已结束
-export const ACC_FIN_LIST = BASEURL + '' //我的理财集合，持有中/已结束
-export const ACC_FIN_OUT_TOTAL = BASEURL + '' //我的理财转出中总条数
-export const ACC_FIN_OUT_LIST = BASEURL + ''  //我的理财转出中集合
+export const ACC_YESTER_PROFIT = BASEURL + '/Zcenter/yesIncome.do' //昨日收益
+export const ACC_FIN_TOTAL = BASEURL + '/Zcenter/myProsCount.do' //我的理财总条数 ，持有中/已结束
+export const ACC_FIN_LIST = BASEURL + '/Zcenter/myProsList.do' //我的理财集合，持有中/已结束
+export const ACC_FIN_OUT_TOTAL = BASEURL + '/Zcenter/rollOutCount.do' //我的理财转出中总条数
+export const ACC_FIN_OUT_LIST = BASEURL + '/Zcenter/rollOutList.do'  //我的理财转出中集合
 
+//我的礼券
+export const ACC_COUPON_TOTAL = BASEURL + '/Zcoupon/total.do' //礼券总页数
+export const ACC_COUPON_LIST = BASEURL + '/Zcoupon/list.do'  //礼券集合
+
+//账户信息
+export const ACC_INFO_BASE = BASEURL + '/Zbasic/getBasicInfo.do'  //账户信息基本信息
+export const ACC_INFO_LOGIN_PWD_CHANGE = BASEURL + '/Zbasic/modifyPassword.do' //更改登录密码
+export const ACC_INFO_PAY_PWD_SET = BASEURL + '/Zbasic/setpayPassword.do' //设置支付密码
+export const ACC_INFO_PAY_PWD_CHANGE = BASEURL + '/Zbasic/modifypayPassword.do' //更改支付密码
+export const ACC_INFO_PAY_PWD_BACK_ONE = BASEURL + '/Zbasic/VerificationIdentity.do'  //找回支付密码第一步
+export const ACC_INFO_PAY_PWD_BACK_TWO = BASEURL + '/Zbasic/resetpayPassword.do'  //找回支付密码第二步
 
 //银行卡管理 
 export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的银行列表

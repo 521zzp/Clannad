@@ -52,7 +52,7 @@ const mutations = {
 	[types.REGISTER] (state,obj) {
 		if (obj.code === 200) {
 			store.state.token = obj.token;
-			store.state.user = obj.obj;
+			store.state.user = obj.user;
 			message(obj.msg, 2, ()=>router.push('/'))
 		}else{
 			message(obj.msg,4);

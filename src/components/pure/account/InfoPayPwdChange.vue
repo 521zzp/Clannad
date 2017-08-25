@@ -65,14 +65,26 @@ export default {
             }
         }
     },
+    computed: {
+    	resetFlag () {
+    		return this.$store.state.account.changePayPwdFlag
+    	}
+    },
+    watch: {
+    	resetFlag () {
+    		this.handleReset('myForm')
+    	}
+    },
     methods: {
         handleSubmit (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$Message.success('提交成功!');
-                } else {
-                    this.$Message.error('表单验证失败!');
-                }
+                    const obj = {
+                    	oldPayPwd: this.myForm.oldPwd,
+                    	payPwd: this.myForm.newPwd
+                    }
+                    this.$store.dispatch('accountInfoPayPwdChange', obj)
+                } 
             })
         },
         handleReset (name) {

@@ -30,7 +30,7 @@ export const resultAny = (datas) => {
 		if (Object.getOwnPropertyNames(datas.result).length === 1 && datas.result.list && Array.isArray(datas.result.list)) {
 			return datas.result.list
 		} else{
-			return Object.assign({}, datas.result, {msg: datas.message})
+			return Object.assign({}, {msg: datas.message}, datas.result )
 		}
 		
 	} else{
