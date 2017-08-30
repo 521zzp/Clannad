@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {PHONECODEVALI, SMSCODE, RESETPWD} from '@/config/url'
+import {PHONECODEVALI, RESETPWD_SEND_CODE, RESETPWD} from '@/config/url'
 import {postModelTwo, analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import router from '@/router'
@@ -19,7 +19,7 @@ const actions = {
 	resetPwdSendCode ({commit},obj){
 		if (state.sendAbel) {
 			state.sendAbel = false;
-			fetch(SMSCODE, postModelTwo(obj)).then(analy)
+			fetch(RESETPWD_SEND_CODE, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
 					if (datas.code === 200){
 						message(datas.msg,2);

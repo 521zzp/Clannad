@@ -46,7 +46,7 @@
 		},
 		methods: {
 			sendCode (obj) {
-				this.$store.dispatch('resetPwdSendCode',Object.assign({}, obj, {state: 1}))
+				this.$store.dispatch('resetPwdSendCode', obj)
 			},
 			resetPwdOne (obj) {
 				this.$store.dispatch('resetPwdOne',obj)

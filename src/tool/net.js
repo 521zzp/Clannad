@@ -27,9 +27,10 @@ export const resultAny = (datas) => {
 	
 	console.log(JSON.stringify(datas)) //数据打印
 	if (datas.code === 200) {
-		if (Object.getOwnPropertyNames(datas.result).length === 1 && datas.result.list && Array.isArray(datas.result.list)) {
+		if (Object.getOwnPropertyNames(datas.result).length === 1 && datas.result.list && Array.isArray(datas.result.list)) { 
+			//返回数据里面仅有一个属性，属性名为list，且对应值类型为Array时返回该list
 			return datas.result.list
-		} else{
+		} else {
 			return Object.assign({}, {msg: datas.message}, datas.result )
 		}
 		

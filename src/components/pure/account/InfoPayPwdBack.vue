@@ -9,7 +9,7 @@
 		    <div v-if="step === 0" class="step-one">
 		    	<Form id="one-form" ref="oneForm" :model="oneForm" :rules="rules" :label-width="100">
 			        <Form-item label="手机号码" prop="account">
-			            <Input size="large" class="regist-item" type="text"  v-model="oneForm.account" :readonly="true"></Input>
+			            <Input size="large" class="regist-item" type="text"  v-model="oneForm.account"></Input>
 			        </Form-item>
 			        <Form-item class="rela-plant" label="手机验证码" prop="phoneCode">
 			            <Input size="large" type="text" placeholder="请输入手机验证码" v-model="oneForm.phoneCode"></Input>
@@ -71,7 +71,7 @@ export default{
 		return {
 			status: 'process',
 			oneForm: {
-                account: '15773270836',
+                account: '',
                 phoneCode: '',
                 idCard: ''
             },
@@ -136,7 +136,6 @@ export default{
         		console.log(this.oneForm.account)
         		const datas = {
         			account: this.oneForm.account,
-        			state: 2, //用于区分什么业务发的短信
         		}
         		this.$store.dispatch('payPwdBackSendCode', datas)
         		

@@ -12,10 +12,10 @@
 	            <Input type="text" placeholder="请输入手机验证码" v-model="registForm.phoneCode"></Input>
 	            <span class="send-code" @click="sendCode">{{text}}</span>
 	        </Form-item>
-	        <Form-item  class="rela-plant" label="验证码" prop="picCode">
+	       <!-- <Form-item  class="rela-plant" label="验证码" prop="picCode">
 	            <Input type="text" placeholder="请输入图形验证码" v-model="registForm.picCode"></Input>
 	            <img class="imgVali" :src="imgCodeSrc" @click="imgRefresh" alt="点击更新" title="点击更新" />
-	        </Form-item>
+	        </Form-item>-->
 	        <Form-item>
 	        	 <span class="invite-btn" @click="inviteChange">> 邀请码（选填）</span>
 	        </Form-item>
@@ -41,7 +41,6 @@
                     account: '',
                     password: '',
                     phoneCode: '',
-                    picCode: '',
                     inviteCode:''
                 },
                 rules: {
@@ -56,9 +55,9 @@
                     phoneCode: [
                         { required: true, message: '请填写手机验证码', trigger: 'blur' }
                     ],
-                    picCode: [
+                    /*picCode: [
                         { required: true, message: '请填写图片验证码', trigger: 'blur' }
-                    ],
+                    ],*/
                     inviteCode: [
                     	{ validator: validateInvitePhone, trigger: 'blur' }
                     ]
@@ -85,7 +84,7 @@
                     		account: this.registForm.account,
 		                    password: this.registForm.password,
 		                    phoneCode: this.registForm.phoneCode,
-		                    picCode: this.registForm.picCode,
+		                   /* picCode: this.registForm.picCode,*/
 		                    inviteCode: this.registForm.inviteCode
                     	}
                     	this.$store.dispatch('regist',obj)

@@ -12,7 +12,7 @@
 		</div>
 		<div class="list-item" v-for="item,index in list">
 			<Checkbox class="fl" :value="item.checked" @on-change="singleCheck(item.id)"></Checkbox>
-			<em class="envelope read fl"></em>
+			<em class="envelope fl" :class="{ 'read': item.read }"></em>
 			<span class="origin fl">{{item.origin}}</span>
 			<span class="preview fl" :class="{ 'no-read': !item.read }" :title="item.content">{{item.content}}</span>
 			<span class="time fl">{{item.time}}</span>

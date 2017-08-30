@@ -12,9 +12,6 @@
 		        <Tab-pane label="加息券" name="raise-rates">
 		        	<CouponRaise/>
 		        </Tab-pane>
-		        <Tab-pane label="分享金" name="share">
-		        	<CouponShare/>
-		        </Tab-pane>
 		    </Tabs>
 		    <router-link to="/coupon/rule" class="rule">使用规则</router-link>
 		</div>
@@ -25,7 +22,6 @@
 import CouponRed from "@/components/pure/account/CouponRed"
 import CouponExperience from "@/components/pure/account/CouponExperience"
 import CouponRaise from "@/components/pure/account/CouponRaise"
-import CouponShare from "@/components/pure/account/CouponShare"
 
 export default {
 	data () {
@@ -36,7 +32,6 @@ export default {
 		CouponRed,
 		CouponExperience,
 		CouponRaise,
-		CouponShare
 	}
 }
 </script>

@@ -22,7 +22,7 @@ export default {
 				rankTap: 'value'
 			},
 			sizeList: [4, 6, 8 ],
-			current: 3,
+			current: 1,
 			size: 4,
 		}
 	},

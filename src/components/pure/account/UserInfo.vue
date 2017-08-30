@@ -12,7 +12,7 @@
 			<router-link to="/product" class="info-item fl id-card" :class="{active: idCard}" :title="idCardT"></router-link>
 			<router-link to="/product" class="info-item fl bank-acrd" :class="{active: bankCard}" :title="bankCardT"></router-link>
 			<router-link to="/product" class="info-item fl pay-pwd" :class="{active: payPwd}" :title="payPwdT"></router-link>
-			<router-link to="/product" class="info-item fl assurance" :class="{active: assuer}" :title="assuerT"></router-link>
+			<!--<router-link to="/product" class="info-item fl assurance" :class="{active: assuer}" :title="assuerT"></router-link>-->
 		</div>
 	</div>
 </template>
@@ -89,7 +89,7 @@ export default {
 	background-image: url(../../../assets/account/s-one-def.png);
 }
 .info-item{
-	margin-right: 20px;
+	margin-right: 35px;
 	display: inline-block;
 	margin-top: 10px;
 	margin-bottom: 20px;

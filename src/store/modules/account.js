@@ -1,17 +1,18 @@
 import * as types from '../mutation-types'
 import { ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE, 
-	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, SMSCODE, ACC_INFO_PAY_PWD_BACK_ONE,ACC_INFO_PAY_PWD_BACK_TWO,
-	ACC_INFO_PAY_PWD_SET,
+	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, ACC_INFO_PAY_PWD_BACK_SEND_CODE, ACC_INFO_PAY_PWD_BACK_ONE,ACC_INFO_PAY_PWD_BACK_TWO,
+	ACC_INFO_PAY_PWD_SET, ACC_BANK_INFO, ACC_BANK_DETAIL_INFO, ACC_BANK_SUPPORT, ACC_AREA_SUPPORT, ACC_BANK_BAND, ACC_BANK_CHANGE
 	} from '@/config/url'
-import {postModelOne, onanaly } from '@/tool/net'
+import {postModelOne, onanaly, getModel, analy } from '@/tool/net'
 import { message } from '@/tool/talk'
+import router from '@/router'
 
 
 const state = {
 	bread: [], //面包屑导航
 	bindStatus: { //用户绑定的些东西
 		insur: false,
-		bankCard: false,
+		bankCard: true,
 		payPwd: false,
 		idCard: false
 	},
@@ -25,11 +26,6 @@ const state = {
 	},
 	recharge: {
 		loading: false
-	},
-	bankCard: { //银行卡信息
-		baseInfo: {
-		},
-		banks: [] //支持银行列表
 	},
 	current: {
 		balance: 5000
@@ -54,6 +50,29 @@ const state = {
 		account: '',
 		phoneCode: '',
 		idCard: '',
+	},
+	bankInfo: {
+		bankName: '',
+		bankCard: '',
+		userName: '',
+		branch: '', //分行
+		subbranch: '', //支行
+		pro: '', //省份
+		city: '', //城市
+		time: '', //绑定时间
+		status: '', //状态
+	},
+	banks: [], //支持的银行列表
+	areas: [], //省市级联
+	bankDetailInfo: {
+		name: '',//展示，不可编辑
+		idcard: '',//展示，不可编辑
+		bank: '', //支持银行卡列表,
+		area: [], //省市级联列表,
+		branch: '',
+		subbranch: '',
+		card: '',//银行卡号
+		phone: '',
 	}
 }
 
@@ -73,11 +92,6 @@ const actions = {
   	ovCap ({commit},obj) {
   		fetch(ACC_OV_CAP, postModelOne(obj)).then(onanaly).then(
 			(datas) => commit(types.ACC_OV_CAP, datas)
-		)
-  	},
-  	supportBankUpdate ({commit},obj) {
-  		fetch(SUPPORT_BANK_UPDATE, postModelOne(obj)).then(onanaly).then(
-			(datas) => commit(types.SUPPORT_BANK_UPDATE, datas)
 		)
   	},
   	accountMessageTotal ({ commit }, obj) {
@@ -108,9 +122,7 @@ const actions = {
 			(datas) => {
 				if (datas.result) {
 					commit(types.ACC_MSG_DELETE, obj.ids)
-				} else {
-					
-				}
+				} 
 			}
 		)
   	},
@@ -154,7 +166,7 @@ const actions = {
   	payPwdBackSendCode ({ commit }, obj){
 		if (state.payPwdBack.sendAbel) {
 			state.payPwdBack.sendAbel = false;
-			fetch(SMSCODE, postModelOne(obj)).then(onanaly)
+			fetch(ACC_INFO_PAY_PWD_BACK_SEND_CODE, postModelOne(obj)).then(onanaly)
 				.then((datas)=>{
 					if (datas.code === 200){
 						message(datas.msg,2);
@@ -206,8 +218,41 @@ const actions = {
   		fetch(ACC_INFO_PAY_PWD_SET, postModelOne(obj)).then(onanaly).then(
   			datas => datas ? commit(types.ACC_INFO_PAY_PWD_SET, datas) : ''
   		)
+  	},
+  	accountBankInfoGet ({ commit }, obj) {
+  		fetch(ACC_BANK_INFO, postModelOne()).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_BANK_INFO, datas) : ''
+  		)
+  	},
+  	accountBankDetailInfoGet ({ commit }, ojb) {
+  		fetch(ACC_BANK_DETAIL_INFO, postModelOne()).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_BANK_DETAIL_INFO, datas) : ''
+  		)
+  	},
+  	accountBankSupport ({ commit }, obj) {
+  		fetch(ACC_BANK_SUPPORT, getModel()).then(analy).then(
+  			datas => datas ? commit(types.ACC_BANK_SUPPORT, datas) : ''
+  		)
+  	},
+  	accountAreaSupport ({ commit }, obj) {
+  		fetch(ACC_AREA_SUPPORT, getModel()).then(analy).then(
+  			datas => datas ? commit(types.ACC_AREA_SUPPORT, datas) : ''
+  		)
+  	},
+  	accountBankBandAdd ({ commit }, obj) {
+  		fetch(ACC_BANK_BAND, postModelOne(obj)).then(analy).then(
+  			datas => {
+  				if (datas) {
+  					message(datas.msg, 2, () => router.push('/account/bankcard') )
+  				}
+  			}
+  		)
+  	},
+  	accountBankChange ({ commit }, obj) {
+  		fetch(ACC_BANK_CHANGE, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? message(datas.msg, 2, () => router.push('/account/bankcard')) : ''
+  		)
   	}
-  	
 }
 
 const mutations = {
@@ -219,9 +264,6 @@ const mutations = {
     },
     [types.ACC_OV_CAP] (state, obj) {
 		state.overViewCapital = obj
-    },
-    [types.SUPPORT_BANK_UPDATE] (state, obj) {
-		state.bankCard.banks = []
     },
     [types.ACC_RECHARGE_LOADING] (state, obj) {
 		state.recharge.loading= obj
@@ -293,8 +335,20 @@ const mutations = {
     },
     [types.ACC_INFO_PAY_PWD_SET] (state, obj) {
     	state.bindStatus.payPwd = true
+    },
+    [types.ACC_BANK_INFO] (state, obj) {
+    	state.bankInfo = obj
+    },
+    [types.ACC_BANK_DETAIL_INFO] (state, obj) {
+    	state.bankDetailInfo = obj
+    },
+    [types.ACC_BANK_SUPPORT] (state, obj) {
+    	state.banks = obj
+    },
+    [types.ACC_AREA_SUPPORT] (state, obj) {
+    	state.areas = obj
     }
-    
+     
 }
 
 export default{

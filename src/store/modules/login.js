@@ -32,7 +32,6 @@ const mutations = {
 		store.state.user = obj.user;
 		message(obj.msg, 2, () => 
 			{
-				console.log('路由跳转')
 				router.push('/')
 			}
 		);

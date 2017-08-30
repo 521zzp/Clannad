@@ -54,8 +54,15 @@ export const ACC_INFO_PAY_PWD_SET = 'ACC_INFO_PAY_PWD_SET' //设置支付密码
 export const ACC_INFO_PAY_PWD_CHANGE = 'ACC_INFO_PAY_PWD_CHANGE'  //记得原支付密码更改支付密码
 export const ACC_INFO_PAY_PWD_BACK_ONE = 'ACC_INFO_PAY_PWD_BACK_ONE'  //找回支付密码第一步
 export const ACC_INFO_PAY_PWD_BACK_TWO = 'ACC_INFO_PAY_PWD_BACK_TWO'  //找回支付密码第二步
-export const ACC_INFO_PAY_PWD_BACK_STEP_INIT = 'ACC_INFO_PAY_PWD_BACK_STEP_INIT'  //Z找回支付密码步骤初始化
+export const ACC_INFO_PAY_PWD_BACK_STEP_INIT = 'ACC_INFO_PAY_PWD_BACK_STEP_INIT'  //找回支付密码步骤初始化
 
+//银行卡管理
+export const ACC_BANK_INFO = 'ACC_BANK_INFO' //获取已经绑定银行卡基本信息
+export const ACC_BANK_DETAIL_INFO = 'ACC_BANK_DETAIL_INFO' //已经绑定的银行卡详细信息
+export const ACC_BANK_SUPPORT = 'ACC_BANK_SUPPORT' //支持的银行卡列表
+export const ACC_AREA_SUPPORT = 'ACC_AREA_SUPPORT' //支持的地区（省市）列表
+export const ACC_BANK_BAND = 'ACC_BANK_BAND' //绑定银行卡
+export const ACC_BANK_CHANGE = 'ACC_BANK_CHANGE' //更好银行卡
 
 
 //银行卡管理

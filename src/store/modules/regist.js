@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {REGISTER,SMSCODE} from '@/config/url'
+import { REGISTER, REGISTER_SEND_CODE } from '@/config/url'
 import {postModelTwo,analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import store from '@/store'
@@ -14,7 +14,7 @@ const actions = {
 	registSendCode ({commit},obj){
 		if (state.sendAbel) {
 			state.sendAbel = false;
-			fetch(SMSCODE, postModelTwo(obj)).then(analy)
+			fetch(REGISTER_SEND_CODE, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
 					if (datas.code === 200){
 						message(datas.msg,2);
@@ -50,9 +50,11 @@ const actions = {
 
 const mutations = {
 	[types.REGISTER] (state,obj) {
+		debugger
 		if (obj.code === 200) {
 			store.state.token = obj.token;
 			store.state.user = obj.user;
+			
 			message(obj.msg, 2, ()=>router.push('/'))
 		}else{
 			message(obj.msg,4);

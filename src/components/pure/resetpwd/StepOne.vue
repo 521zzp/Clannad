@@ -54,7 +54,7 @@ import {validatePhone,checkPhone} from '@/tool/regx'
             },
             sendCode () {
             	if (checkPhone(this.oneForm.account)) {
-            		this.$emit('sendCode',{account:this.oneForm.account})
+            		this.$emit('sendCode',{account: this.oneForm.account})
             	} else {
             		this.$refs.oneForm.validateField('account');
             	}

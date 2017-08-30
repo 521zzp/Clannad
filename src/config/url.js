@@ -11,14 +11,20 @@ export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=p
 
 
 export const LOGIN = BASEURL + '/Zbasic/login.do' //登录接口
-export const REGISTER = BASEURL + '/inlet/register' //注册接口
+
+//注册
+export const REGISTER_SEND_CODE = BASEURL + '/Zbasic/sendRegistVerificationCode.do' //注册发送验证码
+export const REGISTER = BASEURL + '/Zbasic/regist.do ' //注册接口
 export const EXIT = BASEURL + '/inlet/exit' //退出接口
 export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码接口
 
 export const RECHARGE = BASEURL + '/pay/toDeposit' //充值信息请求后台接口
 
-export const PHONECODEVALI = BASEURL + '/inlet/checkPhoneVerifCodeJson' //短信验证码验证接口
+//短信验证
+export const PHONECODEVALI = BASEURL + '/Zbasic/VerificationIdentity.do' //通用的短信验证码验证接口
 
+//未登录找回登录密码
+export const RESETPWD_SEND_CODE = BASEURL + '/Zbasic/sendLoginVerificationCodez.do' //找回登录密码发送验证码
 export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密码接口
 
 //配置项
@@ -47,6 +53,9 @@ export const ACC_FIN_LIST = BASEURL + '/Zcenter/myProsList.do' //我的理财集
 export const ACC_FIN_OUT_TOTAL = BASEURL + '/Zcenter/rollOutCount.do' //我的理财转出中总条数
 export const ACC_FIN_OUT_LIST = BASEURL + '/Zcenter/rollOutList.do'  //我的理财转出中集合
 
+
+
+
 //我的礼券
 export const ACC_COUPON_TOTAL = BASEURL + '/Zcoupon/total.do' //礼券总页数
 export const ACC_COUPON_LIST = BASEURL + '/Zcoupon/list.do'  //礼券集合
@@ -56,11 +65,18 @@ export const ACC_INFO_BASE = BASEURL + '/Zbasic/getBasicInfo.do'  //账户信息
 export const ACC_INFO_LOGIN_PWD_CHANGE = BASEURL + '/Zbasic/modifyPassword.do' //更改登录密码
 export const ACC_INFO_PAY_PWD_SET = BASEURL + '/Zbasic/setpayPassword.do' //设置支付密码
 export const ACC_INFO_PAY_PWD_CHANGE = BASEURL + '/Zbasic/modifypayPassword.do' //更改支付密码
-export const ACC_INFO_PAY_PWD_BACK_ONE = BASEURL + '/Zbasic/VerificationIdentity.do'  //找回支付密码第一步
+export const ACC_INFO_PAY_PWD_BACK_SEND_CODE = BASEURL + '/Zbasic/sendVerificationCode.do' //找回支付密码发送验证码
+export const ACC_INFO_PAY_PWD_BACK_ONE = BASEURL + '/Zbasic/VerificationPayIdentity.do'  //找回支付密码第一步
 export const ACC_INFO_PAY_PWD_BACK_TWO = BASEURL + '/Zbasic/resetpayPassword.do'  //找回支付密码第二步
 
-//银行卡管理 
-export const SUPPORT_BANK_UPDATE = BASEURL + '/user/bankList' // 获取支持的银行列表
+//银行卡管理
+export const ACC_BANK_INFO = BASEURL + '/Zbank/getBankCardInfo.do' //获取已经绑定银行卡基本信息
+export const ACC_BANK_DETAIL_INFO = BASEURL + '/Zbank/getBankCardDetailInfo.do' //已经绑定的银行卡详细信息
+export const ACC_BANK_SUPPORT = BASEURL + '/Zbank/getAllBank.do' //支持的银行卡列表
+export const ACC_AREA_SUPPORT = BASEURL + '/Zbank/getCities.do' //支持的地区（省市）列表
+export const ACC_BANK_BAND = BASEURL + '/Zbank/addBankCard.do' //绑定银行卡
+export const ACC_BANK_CHANGE = BASEURL + '/Zbank/addBankCard.do' //更好银行卡
+
 
 //我的消息
 export const ACC_MSG_TOTAL = BASEURL + '/Zcenter/messageCount.do' //我的消息总条数

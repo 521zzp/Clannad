@@ -8,13 +8,14 @@
 			<span class="add-desc">添加银行卡</span>
 		</div>
 		<div v-else class="clearfix">
-			<div class="change">
+			<div class="change"  :style="{backgroundImage: 'url('+info.backgroundImg+')'}">
 				<div class="clearfix">
-					<span class="name fl">浦发银行</span>
+					<span class="name fl">{{info.bankName}}</span>
+					<img :src="info.logo" class="fl bank-logo" alt="" />
 					<span class="type fr">储蓄卡</span>
 				</div>
-				<span class="card-num">15163151520561</span>
-				<span class="card-master">持卡人：音无结弦</span>
+				<span class="card-num">{{info.bankCard}}</span>
+				<span class="card-master">持卡人：{{info.userName}}</span>
 			</div>
 			<div class="operate clearfix">
 				<span class="fl" @click="bankInfoOpen = !bankInfoOpen">详细信息<Icon class="arrow" :class="{down: bankInfoOpen}" type="chevron-down"></Icon></span>
@@ -22,13 +23,13 @@
 			</div>
 			<transition name="slide-fade">
 				<div v-if="bankInfoOpen" class="bank-info clearfix">
-					<span>姓名：张艺兴</span>
-					<span>开户分行：湖北省武汉市</span>
-					<span>开户支行：武汉大学支行</span>
-					<span>省份：湖北省</span>
-					<span>城市：武汉市</span>
-					<span>创建时间：2017-03-23 16：46：32</span>
-					<span>审核状态：审核成功</span>
+					<span>姓名：{{info.userName}}</span>
+					<span>开户分行：{{info.branch}}</span>
+					<span>开户支行：{{info.subbranch}}</span>
+					<span>省份：{{info.pro}}</span>
+					<span>城市：{{info.city}}</span>
+					<span>创建时间：{{info.time}}</span>
+					<span>审核状态：{{info.status}}</span>
 				</div>
 		    </transition>
 		</div>
@@ -43,8 +44,19 @@
 			}
 		},
 		computed: {
-			
+			info () {
+				return this.$store.state.account.bankInfo
+			}
 		},
+		created () {
+	    	if (this.$store.state.account.banks.length === 0) {
+	    		this.$store.dispatch('accountBankSupport')
+	    	}
+	    	if (this.$store.state.account.areas.length === 0) {
+	    		this.$store.dispatch('accountAreaSupport')
+	    	}
+	    	this.$store.dispatch('accountBankInfoGet')
+	    },
 		mounted () {
 			let bread = [
 					{
@@ -80,6 +92,10 @@
 .bank-info {
 	margin-left: 22px;
 	margin-top: 20px;
+}
+.bank-logo{
+	width: 24px;
+	margin-left: .5em;
 }
 .arrow{
 	transition: transform .3s;
@@ -146,7 +162,9 @@
 }
 .change{
 	padding: 16px 16px;
-	color: @gray-three;
+	color: @white;
+	background-size: 100% 100%;
+	background-color: gainsboro;
 }
 .add:hover,.change:hover{
 	box-shadow: 0 2px 7px rgba(0,0,0,.15);

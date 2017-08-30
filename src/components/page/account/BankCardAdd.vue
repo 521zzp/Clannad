@@ -10,13 +10,11 @@
 	        </Form-item>
 	        <Form-item label="选择银行" prop="bank">
 	            <Select size="large" v-model="form.bank" placeholder="请选择所在地">
-	                <Option value="beijing">北京市</Option>
-	                <Option value="shanghai">上海市</Option>
-	                <Option value="shenzhen">深圳市</Option>
+	                <Option v-for="item in bankList" :value=" '' +item.value" :key="item.value">{{item.label}}</Option>
 	            </Select>
 	        </Form-item>
 	        <Form-item label="开户省/市" prop="area" class="add-bankcard-pro-city">
-	            <Cascader size="large" v-model="form.area" :data="form.areaList"></Cascader>
+	            <Cascader size="large" v-model="form.area" :data="areaList"></Cascader>
 	        </Form-item>
 	        <Form-item label="开户支行" prop="branch">
 	            <Input size="large" v-model="form.branch" placeholder="请输入开户支行"></Input>
@@ -24,16 +22,16 @@
 	        <Form-item label="开户分行" prop="subbranch">
 	            <Input size="large" v-model="form.subbranch" placeholder="请输入开户分行"></Input>
 	        </Form-item>
-	        <Form-item label="银行卡号" prop="card">
-	            <Input size="large" v-model="form.card" placeholder="请输入银行卡号" :maxlength="19"></Input>
+	        <Form-item label="银行卡号" prop="bankCard">
+	            <Input size="large" v-model="form.bankCard" placeholder="请输入银行卡号" :maxlength="19"></Input>
 	        </Form-item>
 	        <Form-item label="预留手机号" prop="phone">
 	            <Input size="large" v-model="form.phone" placeholder="请输入银行预留手机号" :maxlength="11"></Input>
 	        </Form-item>
-	        <Form-item label="验证码" class="rela-plant" prop="phoneCode">
+	        <!--<Form-item label="验证码" class="rela-plant" prop="phoneCode">
 	            <Input size="large" v-model="form.phoneCode" placeholder="请输入验证码"></Input>
 	            <span class="send-code" @click="sendCode">发送验证码</span>
-	        </Form-item>
+	        </Form-item>-->
 	        <Form-item>
 	            <Button size="large" type="primary" @click="handleSubmit('form')">提交</Button>
 	            <Button size="large" type="ghost" @click="handleReset('form')" style="margin-left: 8px">重置</Button>
@@ -50,62 +48,15 @@ export default {
             form: {
                 name: '',
                 idcard: '',
-                bank:'',
+                bank: '',
                 area: [],
 				pro:'',
 				city:'',
 				branch:'',
 				subbranch: '',
-				card:'',
+				bankCard:'',
 				phone:'',
-				phoneCode:'',
-				areaList: [{
-                    value: 'beijing',
-                    label: '北京',
-                    children: [
-                        {
-                            value: 'gugong',
-                            label: '故宫'
-                        },
-                        {
-                            value: 'tiantan',
-                            label: '天坛'
-                        },
-                        {
-                            value: 'wangfujing',
-                            label: '王府井'
-                        }
-                    ]
-                }, {
-                    value: 'jiangsu',
-                    label: '江苏',
-                    children: [
-                        {
-                            value: 'nanjing',
-                            label: '南京',
-                            children: [
-                                {
-                                    value: 'fuzimiao',
-                                    label: '夫子庙',
-                                }
-                            ]
-                        },
-                        {
-                            value: 'suzhou',
-                            label: '苏州',
-                            children: [
-                                {
-                                    value: 'zhuozhengyuan',
-                                    label: '拙政园',
-                                },
-                                {
-                                    value: 'shizilin',
-                                    label: '狮子林',
-                                }
-                            ]
-                        }
-                    ],
-                }]
+				/*phoneCode:'',*/
             },
             ruleValidate: {
                 name: [
@@ -127,7 +78,7 @@ export default {
                 subbranch: [
                     { required: true, message: '开户分行不能为空', trigger: 'blur' }
                 ],
-                card: [
+                bankCard: [
                     { required: true, message: '银行卡号不能为空', trigger: 'blur' },
                     { validator: validateBankcard, trigger: 'blur' }
                 ],
@@ -135,22 +86,26 @@ export default {
                     { required: true, message: '银行预留手机号不能为空', trigger: 'blur' },
                     { validator: validatePhone, trigger: 'blur' }
                 ],
-                phoneCode: [
+             /*   phoneCode: [
                 	{ required: true, message: '验证码不能为空', trigger: 'blur' },
-                ]
+                ]*/
             }
         }
     },
     created () {
-    	if (this.$store.state.account.bankCard.banks.length === 0) {
-    		this.$store.dispatch('supportBankUpdate')
+    	if (this.$store.state.account.banks.length === 0) {
+    		this.$store.dispatch('accountBankSupport')
+    	}
+    	if (this.$store.state.account.areas.length === 0) {
+    		this.$store.dispatch('accountAreaSupport')
     	}
     },
     computed: {
     	bankList () {
-    		console.log(1)
-    		console.log(this.$store.state.account.bankCard.banks)
-    		return this.$store.state.account.bankCard.banks
+    		return this.$store.state.account.banks
+    	},
+    	areaList () {
+    		return this.$store.state.account.areas
     	}
     },
     mounted () {
@@ -177,11 +132,18 @@ export default {
     methods: {
         handleSubmit (name) {
             this.$refs[name].validate((valid) => {
-            	console.log(this.form.area)
                 if (valid) {
-                    this.$Message.success('提交成功!');
-                } else {
-                    this.$Message.error('表单验证失败!');
+                	const obj = {
+                		name: this.form.name,
+		                idcard: this.form.idcard,
+		                bank: parseInt(this.form.bank),
+		                area: this.form.area.map( x => parseInt(x)),
+						branch: this.form.branch,
+						subbranch: this.form.subbranch,
+						bankCard: this.form.bankCard,
+						phone: this.form.phone,
+                	}
+                	this.$store.dispatch('accountBankBandAdd', obj)
                 }
             })
         },
