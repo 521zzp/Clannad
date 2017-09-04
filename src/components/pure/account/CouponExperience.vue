@@ -2,10 +2,13 @@
 	<div>
 		<CouponFilter @filterChange="filterChange"/>
 		<div>
-			<CouponExperienceList :list="list"/>
-			<div class="common-center-page-wrap" style="margin-top: 20px;margin-bottom: 110px;">
-	    		<Page :total="total" size="small" :current="current" :page-size-opts="sizeList" :page-size="size" class="common-center-page-nav" @on-change="change" show-sizer @on-page-size-change="sizeChange"></Page>
-	    	</div>
+			<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+			<div v-else>
+				<CouponExperienceList :list="list"/>
+				<div class="common-center-page-wrap" style="margin-top: 20px;margin-bottom: 110px;">
+		    		<Page :total="total" size="small" :current="current" :page-size-opts="sizeList" :page-size="size" class="common-center-page-nav" @on-change="change" show-sizer @on-page-size-change="sizeChange"></Page>
+		    	</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -72,4 +75,6 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
+
+
 </style>

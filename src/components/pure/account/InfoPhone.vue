@@ -40,7 +40,7 @@
 				        </Form-item>
 				        <Form-item class="rela-plant" label="手机验证码" prop="phoneCode">
 				            <Input size="large" type="text" placeholder="请输入手机验证码" v-model="twoForm.phoneCode"></Input>
-				            <span class="send-code" @click="sendCodeTwo">{{text}}</span>
+				            <span class="send-code" @click="sendCodeTwo">{{newText}}</span>
 				        </Form-item>
 				        <Form-item>
 				            <Button class="next" type="primary" @click="handleSubmitTwo('twoForm')">下一步</Button>
@@ -62,9 +62,7 @@ export default{
 	data () {
 		return {
 			change: true,
-			step: 0,
 			status: 'process',
-			text: 'send code',
 			oneForm: {
                 account: '',
                 phoneCode: ''
@@ -84,6 +82,17 @@ export default{
             }
 		}
 	},
+	computed: {
+		text () {
+			return this.$store.state.account.changePhone.text
+		},
+		newText (){
+			return this.$store.state.account.changePhone.newText
+		},
+		step () {
+			return this.$store.state.account.changePhone.step
+		}
+	},
 	methods: {
         handleSubmitOne (name) {
             this.$refs[name].validate((valid) => {
@@ -92,29 +101,27 @@ export default{
                 		account: this.oneForm.account,
 	                    phoneCode: this.oneForm.phoneCode
                 	}
-                	console.log(obj)
-                	this.step++
-                } else {
-                }
+                	this.$store.dispatch('accountChangePhoneCodeVali', obj)
+                } 
             })
         },
         handleSubmitTwo (name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
                 	let obj = {
-                		account: this.twoForm.account,
-	                    phoneCode: this.twoForm.phoneCode
+                		newAccount: this.twoForm.account,
+	                    newPhoneCode: this.twoForm.phoneCode
                 	}
-                	console.log(obj)
-                	this.step++
-                } else {
-                }
+                	this.$store.dispatch('accountChangePhone', obj)
+                } 
             })
         },
         sendCodeOne () {
         	if (checkPhone(this.oneForm.account)) {
         		/*this.$emit('sendCode',{account:this.oneForm.account})*/
         		console.log(this.oneForm.account)
+        		this.$store.dispatch('accountChangePhoneSendCode', { account:this.oneForm.account })
+        		
         	} else {
         		this.$refs.oneForm.validateField('account');
         	}
@@ -123,6 +130,7 @@ export default{
         	if (checkPhone(this.twoForm.account)) {
         		/*this.$emit('sendCode',{account:this.twoForm.account})*/
         		console.log(this.twoForm.account)
+        		this.$store.dispatch('accountChangePhoneSendCodeNext', { account:this.oneForm.account })
         	} else {
         		this.$refs.twoForm.validateField('account');
         	}

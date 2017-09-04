@@ -12,8 +12,8 @@
 				<span class="time">{{item.getTime}} 至  {{item.overdueTime}}</span>
 				<span class="left-time">{{"剩余"+item.day+"天过期"}}</span>
 			</div>
-			<router-link v-if="item.state === 0"  to="/"  class="fr use" >
-				<span>立即使用</span>
+			<router-link v-if="item.state === 0"  to="/app"  class="fr use" >
+				<span class="unable-to-app">APP使用</span>
 			</router-link>
 			<span v-else-if="item.state === 1"  to="/"  class="fr use" >
 				<span  class="unuse">已使用</span>
@@ -48,6 +48,10 @@ export default {
 
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
+.use .unable-to-app{
+	word-break: break-all;
+	margin-top: 15px;
+}
 .overdus-stamp{
 	position: absolute;
 	right: 48px;

@@ -1,7 +1,8 @@
 import * as types from '../mutation-types'
 import { ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE, 
-	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, ACC_INFO_PAY_PWD_BACK_SEND_CODE, ACC_INFO_PAY_PWD_BACK_ONE,ACC_INFO_PAY_PWD_BACK_TWO,
-	ACC_INFO_PAY_PWD_SET, ACC_BANK_INFO, ACC_BANK_DETAIL_INFO, ACC_BANK_SUPPORT, ACC_AREA_SUPPORT, ACC_BANK_BAND, ACC_BANK_CHANGE
+	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, ACC_INFO_PAY_PWD_BACK_SEND_CODE, ACC_INFO_PAY_PWD_BACK_ONE, ACC_INFO_PAY_PWD_BACK_TWO,
+	ACC_INFO_PAY_PWD_SET, ACC_BANK_INFO, ACC_BANK_DETAIL_INFO, ACC_BANK_SUPPORT, ACC_AREA_SUPPORT, ACC_BANK_BAND, ACC_BANK_CHANGE, ACC_INFO_PHONE_SEND_CODE,
+	ACC_INFO_PHONE_SEND_CODE_NEW, ACC_INFO_PHONE_CHANGE, PHONECODEVALI, ACC_INFO_INIT
 	} from '@/config/url'
 import {postModelOne, onanaly, getModel, analy } from '@/tool/net'
 import { message } from '@/tool/talk'
@@ -73,7 +74,16 @@ const state = {
 		subbranch: '',
 		card: '',//银行卡号
 		phone: '',
-	}
+	},
+	changePhone: {
+		step: 0,
+		text: '发送验证码',
+		sendAbel: true,
+		account: '',
+		phoneCode: '',
+		newText: '发送验证码',
+		newSendAbel: true,
+	},
 }
 
 
@@ -211,8 +221,8 @@ const actions = {
   			datas => datas ? commit(types.ACC_INFO_PAY_PWD_BACK_TWO) : ''
   		)
   	},
-  	payPwdBackStepInit ({ commit }, obj) {
-  		commit(types.ACC_INFO_PAY_PWD_BACK_STEP_INIT, obj)
+  	accountLoadInit ({ commit }, obj) {
+  		commit(types.ACC_INFO_INIT, obj)
   	},
   	accountPayPwdSet ({ commit }, obj) {
   		fetch(ACC_INFO_PAY_PWD_SET, postModelOne(obj)).then(onanaly).then(
@@ -251,6 +261,79 @@ const actions = {
   	accountBankChange ({ commit }, obj) {
   		fetch(ACC_BANK_CHANGE, postModelOne(obj)).then(onanaly).then(
   			datas => datas ? message(datas.msg, 2, () => router.push('/account/bankcard')) : ''
+  		)
+  	},
+  	accountChangePhoneSendCode ({ commit }, obj){
+		if (state.changePhone.sendAbel) {
+			state.changePhone.sendAbel = false;
+			fetch(ACC_INFO_PHONE_SEND_CODE, postModelOne(obj)).then(onanaly)
+				.then((datas)=>{
+					if (datas.code === 200){
+						message(datas.msg,2);
+						let time = 60;
+						state.changePhone.text = time + 's后重新发送';
+						let clock = setInterval(function () {
+							time--;
+							state.changePhone.text = time + 's后重新发送';
+							if(time==0){
+								state.changePhone.text = '发送验证码';
+								clearInterval(clock);
+								state.changePhone.sendAbel = true;
+							}
+						},1000);
+					}else{
+						message(datas.msg,4);
+						state.changePhone.sendAbel = true;
+					}
+			}).catch(function(error) {
+				state.changePhone.sendAbel = true;
+			  });
+		}
+  	},
+  	accountChangePhoneCodeVali ({ commit }, obj) {
+  		fetch(PHONECODEVALI, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_INFO_PHONE_VALI_CODE, obj) : ''
+  		)
+  	},
+  	accountChangePhoneSendCodeNext ({ commit }, obj){
+		if (state.changePhone.newSendAbel) {
+			state.changePhone.newSendAbel = false;
+			fetch(ACC_INFO_PHONE_SEND_CODE_NEW, postModelOne(obj)).then(onanaly)
+				.then((datas)=>{
+					if (datas.code === 200){
+						message(datas.msg,2);
+						let time = 60;
+						state.changePhone.newText = time + 's后重新发送';
+						let clock = setInterval(function () {
+							time--;
+							state.changePhone.newText = time + 's后重新发送';
+							if(time==0){
+								state.changePhone.newText = '发送验证码';
+								clearInterval(clock);
+								state.changePhone.newSendAbel = true;
+							}
+						},1000);
+					}else{
+						message(datas.msg,4);
+						state.changePhone.newSendAbel = true;
+					}
+			}).catch(function(error) {
+				state.changePhone.newSendAbel = true;
+			  });
+		}
+  	},
+  	accountChangePhone ({ commit }, obj) {
+  		const old = {
+  			account: state.changePhone.account,
+  			phoneCode: state.changePhone.phoneCode
+  		}
+  		fetch(ACC_INFO_PHONE_CHANGE, postModelOne(Object.assign({}, obj, old))).then(onanaly).then(
+  			datas => {
+  				if (datas) {
+  					message(datas.msg, 2)
+  					commit(types.ACC_INFO_PHONE_CHANGE, datas)
+  				}
+  			}
   		)
   	}
 }
@@ -327,8 +410,9 @@ const mutations = {
     	state.payPwdBack.phoneCode = obj.phoneCode
     	state.payPwdBack.idCard = obj.idCard
     },
-    [types.ACC_INFO_PAY_PWD_BACK_STEP_INIT] (state, ojb) {
+    [types.ACC_INFO_INIT] (state, ojb) {
     	state.payPwdBack.step = 0
+    	state.changePhone.step = 0
     },
     [types.ACC_INFO_PAY_PWD_BACK_TWO] (state, obj) {
     	state.payPwdBack.step = state.payPwdBack.step + 1
@@ -347,6 +431,14 @@ const mutations = {
     },
     [types.ACC_AREA_SUPPORT] (state, obj) {
     	state.areas = obj
+    },
+    [types.ACC_INFO_PHONE_VALI_CODE] (state, obj) {
+    	state.changePhone.step = state.changePhone.step + 1
+    	state.changePhone.account = obj.account
+    	state.changePhone.phoneCode = obj.phoneCode
+    },
+    [types.ACC_INFO_PHONE_CHANGE] (state,boj) {
+    	state.changePhone.step = state.changePhone.step + 1
     }
      
 }

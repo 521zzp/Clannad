@@ -2,8 +2,8 @@
 export const BASEURL = '/api'  //服务器地址  林
 
 
-//export const IMG = 'http://www.art.com' //图片服务器地址
-export const IMG = 'http://192.168.3.4'
+export const IMG = 'http://www.art.com' //图片服务器地址
+//export const IMG = '/image'
 //export const IMG = 'http://www.yhb118.com/res' //正式环境图片服务器地址
 //export const IMG = 'http://139.196.25.57/res' //57图片服务器地址
 
@@ -68,6 +68,10 @@ export const ACC_INFO_PAY_PWD_CHANGE = BASEURL + '/Zbasic/modifypayPassword.do' 
 export const ACC_INFO_PAY_PWD_BACK_SEND_CODE = BASEURL + '/Zbasic/sendVerificationCode.do' //找回支付密码发送验证码
 export const ACC_INFO_PAY_PWD_BACK_ONE = BASEURL + '/Zbasic/VerificationPayIdentity.do'  //找回支付密码第一步
 export const ACC_INFO_PAY_PWD_BACK_TWO = BASEURL + '/Zbasic/resetpayPassword.do'  //找回支付密码第二步
+export const ACC_INFO_PHONE_SEND_CODE = BASEURL + '/ACC_INFO_PHONE_SEND_CODE'  //更换手机给当前手机发送短信
+export const ACC_INFO_PHONE_SEND_CODE_NEW = BASEURL + '/ACC_INFO_PHONE_SEND_CODE_NEW' //给新手机发短信
+export const ACC_INFO_PHONE_CHANGE = BASEURL + '/ACC_INFO_PHONE_CHANGE' //更换手机
+
 
 //银行卡管理
 export const ACC_BANK_INFO = BASEURL + '/Zbank/getBankCardInfo.do' //获取已经绑定银行卡基本信息

@@ -1,9 +1,9 @@
 <template>
-    <div class="container">
+    <div class="container" @keyup.enter="handleSubmit('loginForm')">
     	<span class="title">欢迎登陆余惠宝</span>
-    	<Form class="loign-form dsbjfs" ref="loginForm" :model="loginForm" :rules="ruleInline" >
+    	<Form class="loign-form dsbjfs" ref="loginForm" :model="loginForm" :rules="ruleInline">
 	        <Form-item class="item" prop="account">
-	            <Input type="text" v-model="loginForm.account" placeholder="手机号">
+	            <Input type="text" v-model="loginForm.account" placeholder="手机号" >
 	                <Icon type="ios-person-outline" slot="prepend"></Icon>
 	            </Input>
 	        </Form-item>

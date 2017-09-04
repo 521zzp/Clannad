@@ -108,9 +108,6 @@ export default{
 			return this.$store.state.account.payPwdBack.step
 		}
 	},
-	mounted () {
-		this.$store.dispatch('payPwdBackStepInit')
-	},
 	methods: {
         handleSubmitOne (name) {
             this.$refs[name].validate((valid) => {

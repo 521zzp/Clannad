@@ -9,33 +9,36 @@
 				日期<Date-picker class="data-input" v-model="dates" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" @on-change="timeChange"></Date-picker>
 			</div>
 		</div>
-		<div class="clearfix item-group">
-			<div v-if="total > 0" class="out-title col clearfix">
-				<div class="fl one">项目名称</div>
-				<div class="fl two">申请时间</div>
-				<div class="fl three">转出金额</div>
-				<div class="fl four">实际到账</div>
-				<div class="fl five">违约金</div>
-				<div class="fl six">违约利息</div>
-				<div class="fl seven">状态</div>
-			</div>
-			<div class="out-item col" v-for="item,index in list">
-				<div class="fl one name"><b>{{item.name}}</b></div>
-				<div class="fl two">{{item.time}}</div>
-				<div class="fl three theme-color">{{item.outMoney}}</div>
-				<div class="fl four theme-color">{{item.getMoney}}</div>
-				<div class="fl five theme-color">{{item.breachMoney}}</div>
-				<div class="fl six theme-color">{{item.profit}}</div>
-				<div class="fl seven">
-					<span v-if="item.state === 1" class="uncheck">待审核</span>
-					<span v-else-if="item.state === 2" class="check-no">未通过</span>
-					<span v-else-if="item.state === 3" class="check-ok">审核通过</span>
+		<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+		<div v-else>
+			<div class="clearfix item-group">
+				<div v-if="total > 0" class="out-title col clearfix">
+					<div class="fl one">项目名称</div>
+					<div class="fl two">申请时间</div>
+					<div class="fl three">转出金额</div>
+					<div class="fl four">实际到账</div>
+					<div class="fl five">违约金</div>
+					<div class="fl six">违约利息</div>
+					<div class="fl seven">状态</div>
+				</div>
+				<div class="out-item col" v-for="item,index in list">
+					<div class="fl one name"><b>{{item.name}}</b></div>
+					<div class="fl two">{{item.time}}</div>
+					<div class="fl three theme-color">{{item.outMoney}}</div>
+					<div class="fl four theme-color">{{item.getMoney}}</div>
+					<div class="fl five theme-color">{{item.breachMoney}}</div>
+					<div class="fl six theme-color">{{item.profit}}</div>
+					<div class="fl seven">
+						<span v-if="item.state === 1" class="uncheck">待审核</span>
+						<span v-else-if="item.state === 2" class="check-no">未通过</span>
+						<span v-else-if="item.state === 3" class="check-ok">审核通过</span>
+					</div>
 				</div>
 			</div>
+			<div class="acc-page-wrap">
+	    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
+	    	</div>
 		</div>
-		<div class="acc-page-wrap">
-    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
-    	</div>
 	</div>
 </template>
 

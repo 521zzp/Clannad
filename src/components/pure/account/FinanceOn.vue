@@ -9,53 +9,56 @@
 				日期<Date-picker class="data-input" v-model="dates" type="daterange" placement="bottom-end" placeholder="选择日期" style="width: 200px" @on-change="timeChange"></Date-picker>
 			</div>
 		</div>
-		<div class="clearfix item-group">
-			<div v-for="item,index in list" class="on-item clearfix animated flipInX" :style="{animationDelay: index * 0.1 + 's'}">
-				<div v-if="index % 2 === 0" class="seckill-tap"></div>
-				<div class="chief clearfix">
-					<div class="c-head fl">
-						<div class="head-box">
-							<span class="c-h-name">{{item.name}}</span>
-							<span class="c-h-time">到期：2017-03-26</span>
+		<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+		<div v-else>
+			<div class="clearfix item-group">
+				<div v-for="item,index in list" class="on-item clearfix animated flipInX" :style="{animationDelay: index * 0.1 + 's'}">
+					<div v-if="index % 2 === 0" class="seckill-tap"></div>
+					<div class="chief clearfix">
+						<div class="c-head fl">
+							<div class="head-box">
+								<span class="c-h-name">{{item.name}}</span>
+								<span class="c-h-time">到期：2017-03-26</span>
+							</div>
+						</div>
+						<div class="c-body clearfix fl">
+							<div class="money fl">
+								<span class="value">{{item.profit}}</span>
+								<span class="desc">收益金额（元）</span>
+							</div>
+							<div class="rate fl">
+								<span class="value">{{item.rate}}%</span>
+								<span class="desc">年化收益率</span>
+							</div>
+							<div class="freeze fl">
+								<span class="value">{{item.freeze}}</span>
+								<span class="desc">冻结金额（元）</span>
+							</div>
+						</div>
+						<div class="c-tail fr">
+							<span class="info-btn" @click="flodOpen(index)">查看详情<Icon class="arrow-icon" :class="{open : open === index}"  type="ios-arrow-down"></Icon></span>
 						</div>
 					</div>
-					<div class="c-body clearfix fl">
-						<div class="money fl">
-							<span class="value">{{item.profit}}</span>
-							<span class="desc">收益金额（元）</span>
+					<div class="other clearfix" :class="{open : open === index}">
+						<div class="other-time fl">
+							<span>购买时间：{{item.bTime}}</span>
+							<span>到期时间：{{item.eTime}}</span>
 						</div>
-						<div class="rate fl">
-							<span class="value">{{item.rate}}%</span>
-							<span class="desc">年化收益率</span>
+						<div class="day-money fl">
+							<span>产品期限（天）：<span class="attention">{{item.day}}</span></span>
+							<span >购买金额（元）：<span class="attention">{{item.money}}</span></span>
 						</div>
-						<div class="freeze fl">
-							<span class="value">{{item.freeze}}</span>
-							<span class="desc">冻结金额（元）</span>
+						<div class="o-operate fr">
+							<router-link to="/account/financing" class="contract">理财协议</router-link>
+							<router-link to="/account/financing" class="apply-out" v-if="trade">申请转出</router-link>
 						</div>
-					</div>
-					<div class="c-tail fr">
-						<span class="info-btn" @click="flodOpen(index)">查看详情<Icon class="arrow-icon" :class="{open : open === index}"  type="ios-arrow-down"></Icon></span>
-					</div>
-				</div>
-				<div class="other clearfix" :class="{open : open === index}">
-					<div class="other-time fl">
-						<span>购买时间：{{item.bTime}}</span>
-						<span>到期时间：{{item.eTime}}</span>
-					</div>
-					<div class="day-money fl">
-						<span>产品期限（天）：<span class="attention">{{item.day}}</span></span>
-						<span >购买金额（元）：<span class="attention">{{item.money}}</span></span>
-					</div>
-					<div class="o-operate fr">
-						<router-link to="/account/financing" class="contract">理财协议</router-link>
-						<router-link to="/account/financing" class="apply-out" v-if="trade">申请转出</router-link>
 					</div>
 				</div>
 			</div>
+			<div class="acc-page-wrap">
+	    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
+	    	</div>
 		</div>
-		<div class="acc-page-wrap">
-    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
-    	</div>
 	</div>
 </template>
 

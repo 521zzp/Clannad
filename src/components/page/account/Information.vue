@@ -62,7 +62,7 @@ import InfoPayPwd from '@/components/pure/account/InfoPayPwd'
 export default {
 	data () {
 		return {
-			open: 1,
+			open: 2,
 			payPwdType: 1
 		}
 	},
@@ -100,6 +100,7 @@ export default {
 				},
 			];
 		this.$store.dispatch('accountBreadChange', bread)
+		this.$store.dispatch('accountLoadInit')
 	},
 	methods: {
 		openChange (index) {

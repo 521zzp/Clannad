@@ -48,13 +48,17 @@ export const ACC_MSG_SELECT = 'ACC_MSG_SELECT' //我的消息选中
 export const ACC_MSG_SELECT_ALL = 'ACC_MSG_SELECT_ALL' //我的消息全选和反选
 
 //账户信息
+export const ACC_INFO_INIT = 'ACC_INFO_INIT'  //找回支付密码步骤初始化
 export const ACC_INFO_BASE = 'ACC_INFO_BASE'  //账户信息基本信息
 export const ACC_INFO_LOGIN_PWD_CHANGE = 'ACC_INFO_LOGIN_PWD_CHANGE' //更改登录密码
 export const ACC_INFO_PAY_PWD_SET = 'ACC_INFO_PAY_PWD_SET' //设置支付密码
 export const ACC_INFO_PAY_PWD_CHANGE = 'ACC_INFO_PAY_PWD_CHANGE'  //记得原支付密码更改支付密码
 export const ACC_INFO_PAY_PWD_BACK_ONE = 'ACC_INFO_PAY_PWD_BACK_ONE'  //找回支付密码第一步
 export const ACC_INFO_PAY_PWD_BACK_TWO = 'ACC_INFO_PAY_PWD_BACK_TWO'  //找回支付密码第二步
-export const ACC_INFO_PAY_PWD_BACK_STEP_INIT = 'ACC_INFO_PAY_PWD_BACK_STEP_INIT'  //找回支付密码步骤初始化
+export const ACC_INFO_PHONE_SEND_CODE = 'ACC_INFO_PHONE_SEND_CODE'  //更换手机给当前手机发送短信
+export const ACC_INFO_PHONE_VALI_CODE = 'ACC_INFO_PHONE_VALI_CODE'  //验证当前手机号及验证码
+export const ACC_INFO_PHONE_SEND_CODE_NEW = 'ACC_INFO_PHONE_SEND_CODE_NEW' //给新手机发短信
+export const ACC_INFO_PHONE_CHANGE = 'ACC_INFO_PHONE_CHANGE' //更换手机
 
 //银行卡管理
 export const ACC_BANK_INFO = 'ACC_BANK_INFO' //获取已经绑定银行卡基本信息

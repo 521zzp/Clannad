@@ -2,10 +2,13 @@
 	<div>
 		<CouponFilter @filterChange="filterChange"/>
 		<div>
-			<CouponRedList :list="list"/>
-			<div class="common-center-page-wrap" style="margin-top: 20px;margin-bottom: 110px;">
-	    		<Page :total="total" size="small" :page-size="size" class="common-center-page-nav" :page-size-opts="sizeList" @on-change="change" show-sizer @on-page-size-change="sizeChange"></Page>
-	    	</div>
+			<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+			<div v-else>
+				<CouponRedList :list="list"/>
+				<div class="common-center-page-wrap" style="margin-top: 20px;margin-bottom: 110px;">
+		    		<Page :total="total" size="small" :page-size="size" class="common-center-page-nav" :page-size-opts="sizeList" @on-change="change" show-sizer @on-page-size-change="sizeChange"></Page>
+		    	</div>
+			</div>
 		</div>
 		<!--<div v-show="state === 1">
 			<CouponRedList :list="listTwo"/>

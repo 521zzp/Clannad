@@ -32,10 +32,10 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
     	"/api": {
-	      /*"target": "http://localhost:3000/",*/
+	      /*"target": "http://localhost:3000",*/
 	      "target": testEnviroment ? "http://106.14.40.100" : "http://192.168.3.25:8080",
 	      "changeOrigin": true,
-	      "pathRewrite": { "^/api" : testEnviroment ? "" : "/p2p_pb" }
+	      "pathRewrite": { "^/api" : testEnviroment ? "" : "/p2p_pb/api" }
 	      /*"pathRewrite": { "^/api" : "/api" }*/
 	    }
     },
@@ -47,3 +47,5 @@ module.exports = {
     cssSourceMap: false
   }
 }
+
+

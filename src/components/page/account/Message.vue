@@ -10,19 +10,22 @@
 			<span>内容</span>
 			<span>时间</span>
 		</div>
-		<div class="list-item" v-for="item,index in list">
-			<Checkbox class="fl" :value="item.checked" @on-change="singleCheck(item.id)"></Checkbox>
-			<em class="envelope fl" :class="{ 'read': item.read }"></em>
-			<span class="origin fl">{{item.origin}}</span>
-			<span class="preview fl" :class="{ 'no-read': !item.read }" :title="item.content">{{item.content}}</span>
-			<span class="time fl">{{item.time}}</span>
-			<Poptip class="fr delete" confirm title="您确认删除这条内容吗？" @on-ok="deleteMsg(item.id)" :width="190">
-		        <Icon type="trash-a" title="删除" class="trash" :size="20"></Icon>
-		    </Poptip>
+		<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+		<div v-else>
+			<div class="list-item" v-for="item,index in list">
+				<Checkbox class="fl" :value="item.checked" @on-change="singleCheck(item.id)"></Checkbox>
+				<em class="envelope fl" :class="{ 'read': item.read }"></em>
+				<span class="origin fl">{{item.origin}}</span>
+				<span class="preview fl" :class="{ 'no-read': !item.read }" :title="item.content">{{item.content}}</span>
+				<span class="time fl">{{item.time}}</span>
+				<Poptip class="fr delete" confirm title="您确认删除这条内容吗？" @on-ok="deleteMsg(item.id)" :width="190">
+			        <Icon type="trash-a" title="删除" class="trash" :size="20"></Icon>
+			    </Poptip>
+			</div>
+	    	<div class="my-page">
+	    		<Page :total="total" size="small" class="page-nav" @on-change="change"></Page>
+	    	</div>
 		</div>
-    	<div class="my-page">
-    		<Page :total="total" size="small" class="page-nav" @on-change="change"></Page>
-    	</div>
 	</div>
 </template>
 

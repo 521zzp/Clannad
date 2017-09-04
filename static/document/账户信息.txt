@@ -101,3 +101,55 @@ rerurn:
 	msg: '',
 }
 
+
+
+更改手机第一步发送验证码  --online status
+method: post 
+prarams: 
+{
+	account: ''
+}
+return :
+{
+	code: 200
+}
+
+第一步手机号码验证  --online status 已走通用验证
+
+method: post 
+prarams: 
+{
+	account: ''，
+	phoneCode: ''
+}
+return :
+{
+	code: 200
+}
+
+
+更改手机第二步发送验证码  --online status
+method: post 
+prarams: 
+{
+	account: ''
+}
+return :
+{
+	code: 200
+}
+
+更改手机号 --online status
+method: post
+params: 
+{
+	account: '',
+	phpneCode: '',
+	newAccount: '',
+	newPhoneCode: ''
+}
+return: 
+{
+	code: 200, //可选
+	msg: 'asgagas', //可选
+}
