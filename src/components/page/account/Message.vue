@@ -41,7 +41,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{
@@ -97,7 +97,6 @@ export default {
         	this.$store.dispatch('accountMessageSelect', {id: id})
         },
         checkAll (value) {
-        	console.log(value)
         	this.$store.dispatch('accountMessageSelectAll', value)
         }
     }

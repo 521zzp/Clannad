@@ -2,10 +2,10 @@
 	<div class="set">
 		<Form ref="setForm" :model="setForm" :rules="ruleCustom" :label-width="120">
 	        <Form-item label="设置新支付密码" prop="passwd">
-	            <Input type="password" size="large" v-model="setForm.passwd" :maxlength="6"  placeholder="请输入当前支付密码"></Input>
+	            <Input type="password" size="large" v-model="setForm.passwd" :maxlength="6"  placeholder="请输入当前支付密码(6位数字)"></Input>
 	        </Form-item>
 	        <Form-item label="确认新支付密码" prop="passwdCheck">
-	            <Input type="password" size="large" v-model="setForm.passwdCheck" :maxlength="6" placeholder="请确认支付新密码"></Input>
+	            <Input type="password" size="large" v-model="setForm.passwdCheck" :maxlength="6" placeholder="请确认支付新密码(6位数字)"></Input>
 	        </Form-item>
 	        <Form-item>
 	            <Button type="primary" class="form-submit" @click="handleSubmitSet('setForm')">保存密码</Button>

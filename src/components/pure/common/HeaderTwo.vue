@@ -29,9 +29,9 @@
 						<router-link v-if="trade" to="/publicity/partner" class="level-two">合作伙伴</router-link>
 					</nav>
 				</div>
-				<div v-if="trade" class="nav-item">
+				<!--<div v-if="trade" class="nav-item">
 					<router-link to="/" class="level-one fl">积分商城</router-link>
-				</div>
+				</div>-->
 				<div v-if="online" class="nav-item more-items user-info">
 					<span class="level-one fl ">
 							<img v-if="!!this.$store.state.token" :src="face" alt="" class="user-face" @click="modal = true"/>
@@ -41,12 +41,12 @@
 					<nav class="nav-two clearfix">
 						<router-link to="/account" class="level-two">账户总览</router-link>
 						<router-link to="/account/financing" class="level-two">我的理财</router-link>
-						<router-link to="/account/current" class="level-two">活期宝</router-link>
+						<!--<router-link to="/account/current" class="level-two">活期宝</router-link>-->
 						<router-link to="/account/coupon" class="level-two">我的礼券</router-link>
-						<router-link v-if="trade" to="/account" class="level-two">我的商品</router-link>
+						<!--<router-link v-if="trade" to="/account" class="level-two">我的商品</router-link>-->
 						<router-link to="/account/platform" class="level-two">我是经销商</router-link>
 						<router-link to="/account/information" class="level-two">个人资料</router-link>
-						<router-link to="/account" class="level-two">资金记录</router-link>
+						<!--<router-link to="/account" class="level-two">资金记录</router-link>-->
 					</nav>
 				</div>
 			</nav>
@@ -154,6 +154,7 @@ export default {
 .nav-two a:hover{
 	text-indent: 1.5em;
 	background-color: @gray-two;
+	font-style: italic;
 }
 .nav-two a{
 	display: block;
@@ -196,7 +197,6 @@ export default {
 .level-one{
 	font-size: 18px;
 	color: #4c4c4c;
-	font-weight: 600;
 }
 .container{
 	width: 1200px;

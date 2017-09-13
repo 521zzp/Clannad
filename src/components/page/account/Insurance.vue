@@ -40,7 +40,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

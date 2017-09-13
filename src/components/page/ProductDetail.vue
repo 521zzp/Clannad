@@ -49,7 +49,7 @@ export default {
 			placeholder: 1000 + '元起投',
 			breadcrumbs: [
 				{
-					name: '余惠宝首页',
+					name: '掌柜金服首页',
 					url: '/'
 				},
 				{

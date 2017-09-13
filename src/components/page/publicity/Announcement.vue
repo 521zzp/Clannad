@@ -4,7 +4,8 @@
 			<img :src="img" alt="" />
 		</div>
 		<span class="title">官方公告</span>
-		<div class="content clearfix">
+		<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
+		<div v-else class="content clearfix">
 			<ul class="clearfix">
 				<li v-for="item,index in list" class="news-item clearfix">
 					<router-link :to="'/publicity/announcement/' + item.id" class="link-item">
@@ -52,7 +53,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

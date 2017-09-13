@@ -4,7 +4,7 @@ export const BASEURL = '/api'  //服务器地址  林
 
 export const IMG = 'http://www.art.com' //图片服务器地址
 //export const IMG = '/image'
-//export const IMG = 'http://www.yhb118.com/res' //正式环境图片服务器地址
+//export const IMG = '/bilibili' //正式环境图片服务器地址
 //export const IMG = 'http://139.196.25.57/res' //57图片服务器地址
 
 export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=personinfo' //余惠宝官方微博
@@ -15,7 +15,7 @@ export const LOGIN = BASEURL + '/Zbasic/login.do' //登录接口
 //注册
 export const REGISTER_SEND_CODE = BASEURL + '/Zbasic/sendRegistVerificationCode.do' //注册发送验证码
 export const REGISTER = BASEURL + '/Zbasic/regist.do ' //注册接口
-export const EXIT = BASEURL + '/inlet/exit' //退出接口
+export const EXIT = BASEURL + '/Zbasic/quit.do' //退出接口
 export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码接口
 
 export const RECHARGE = BASEURL + '/pay/toDeposit' //充值信息请求后台接口
@@ -31,11 +31,12 @@ export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密�
 export const TRADE = BASEURL + '/index/getTransaction' //平台是否开启交易接口
 
 // 首页
-export const FACEUPLOAD = BASEURL + '/file/uploadImage'  //用户头像上传接口
+export const FACEUPLOAD = BASEURL + '/Zcenter/uploadHeadImg.do'  //用户头像上传接口
 export const HOME_PRODUCTS = BASEURL + '/Zindex/pros.do' //获取产品列表
 export const HOME_INVEST_RECORD = BASEURL + '/Zindex/investments.do' //首页投资记录
 export const HOME_NEWS_LIST = BASEURL + '/Zindex/news.do'  //首页新闻列表
 export const HOME_NOTICE = BASEURL + '/Zindex/notice.do'  //首页平台公告
+export const HOME_BANNER = BASEURL +'/Zindex/getPictures.do' //首页轮播图
 
 
 export const PRO_DETAIL_INFO = BASEURL + '/Zcenter/productDetail.do' //产品详情信息
@@ -44,7 +45,9 @@ export const PRO_DETAIL_INFO = BASEURL + '/Zcenter/productDetail.do' //产品详
 export const ACC_BIND_STATE = BASEURL + '/Zcenter/baseInfo.do' //四种绑定状态
 
 //账户总览
-export const ACC_OV_CAP = BASEURL + '/user/info'  //账户总览资金概况
+export const ACC_OV_CAP = BASEURL + '/Zcenter/accountOverview.do'  //账户总览资金概况
+export const ACC_CAP_RECORD_TOTAL = BASEURL + '/Zcenter/capitalRecordsCount.do' //资金记录总条数
+export const ACC_CAP_RECORD_LIST = BASEURL + '/Zcenter/capitalRecords.do' //资金记录集合
 
 //我的理财
 export const ACC_YESTER_PROFIT = BASEURL + '/Zcenter/yesIncome.do' //昨日收益
@@ -59,6 +62,10 @@ export const ACC_FIN_OUT_LIST = BASEURL + '/Zcenter/rollOutList.do'  //我的理
 //我的礼券
 export const ACC_COUPON_TOTAL = BASEURL + '/Zcoupon/total.do' //礼券总页数
 export const ACC_COUPON_LIST = BASEURL + '/Zcoupon/list.do'  //礼券集合
+
+//我的团队
+export const ACC_TEAM_TOTAL = BASEURL + '/Zcenter/myTeamCount.do' //团队总数
+export const ACC_TEAM_LIST = BASEURL + '/Zcenter/myTeamList.do'  //团队集合
 
 //账户信息
 export const ACC_INFO_BASE = BASEURL + '/Zbasic/getBasicInfo.do'  //账户信息基本信息

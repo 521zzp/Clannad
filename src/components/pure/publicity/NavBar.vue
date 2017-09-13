@@ -2,21 +2,21 @@
 	<div class="clearfix">
 		<div class="clearfix">
 			<div class="nav-title" @click="open(1)"><span>平台介绍<Icon class="title-arrow fr open" :class="{open : openGroup === 1}" type="chevron-right"></Icon></span></div>
-				<!--<template v-if="openGroup === 1">-->
+				<template v-if="openGroup === 1">
 					<router-link v-for="item,index in listOne" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
-				<!--</template>-->
+				</template>
 		</div>
 		<div class="clearfix">
 			<div class="nav-title"  @click="open(2)"><span>新闻与公告<Icon class="fr title-arrow open" :class="{open : openGroup === 6}" type="chevron-right"></Icon></span></div>
-				<!--<template v-if="openGroup === 2">-->
+				<template v-if="openGroup === 2">
 					<router-link v-for="item,index in listTwo" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
-				<!--</template>-->
+				</template>
 		</div>
 		<div class="clearfix">
 			<div class="nav-title"  @click="open(3)"><span>关于我们<Icon class="fr title-arrow open" :class="{open : openGroup === 3}" type="chevron-right"></Icon></span></div>
-				<!--<template v-if="openGroup === 3">-->
+				<template v-if="openGroup === 3">
 					<router-link v-for="item,index in listThree" :to="item.path" key="item.active"  :style="{animationDelay: index * 0.1 + 's'}" class="nav-item animated lightSpeedIn" :class="{active: active === item.active}">{{item.name}}</router-link>
-				<!--</template>-->
+				</template>
 		</div>
 	</div>
 </template>
@@ -193,6 +193,7 @@ export default {
 	background-color: #ffe4d9;
 	color: @theme;
 	text-indent: 2em;
+	font-style: italic;
 }
 .nav-item{
 	height: 50px;

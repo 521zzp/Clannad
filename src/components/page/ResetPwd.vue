@@ -4,9 +4,9 @@
 			<div class="container">
 				<div class="clearfix step">
 					<Steps :current="step" :status="status">
-				        <Step title="Step-One" content="验证手机号码"></Step>
-				        <Step title="Step-Two" content="重置登陆密码"></Step>
-				        <Step title="Step-Three" content="重置密码成功"></Step>
+				        <Step title="第一步" content="验证手机号码"></Step>
+				        <Step title="第二步" content="重置登陆密码"></Step>
+				        <Step title="第三步" content="重置密码成功"></Step>
 				    </Steps>
 				</div>
 				<StepOne v-if="step === 0" :text="text" @sendCode="sendCode" @submit="resetPwdOne" @tempRestore="tempRestore"/>

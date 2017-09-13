@@ -72,3 +72,33 @@
 {
 	notice： ''
 }
+
+
+
+获取轮播图片
+method: get
+return: 
+{
+	list : [
+		{
+			img: 'http://www.art.com/home/banner/banner-one.jpg',
+			url: 'a'
+		},
+		...
+	
+	]
+}
+
+
+退出
+method: post
+params:
+{
+	token: '',
+	datas: {}
+}
+
+return: 
+{
+	code: 
+}

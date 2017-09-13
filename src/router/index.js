@@ -9,6 +9,7 @@ import ProductCenter from '@/components/page/ProductCenter'
 import ProductDetail from '@/components/page/ProductDetail'
 import Account from '@/components/page/Account'*/
 
+
 const Login = resolve => {
   // require.ensure 是 Webpack 的特殊语法，用来设置 code-split point
   // （代码分块）
@@ -101,9 +102,14 @@ const Coupon = resolve => {
     resolve(require('@/components/page/account/Coupon.vue'))
   })
 }
-const AgentPlatform = resolve => {
+/*const AgentPlatform = resolve => {
   require.ensure(['@/components/page/account/AgentPlatform.vue'], () => {
     resolve(require('@/components/page/account/AgentPlatform.vue'))
+  })
+}*/
+const MyPartner = resolve => {
+  require.ensure(['@/components/page/account/Partner.vue'], () => {
+    resolve(require('@/components/page/account/Partner.vue'))
   })
 }
 const Insurance = resolve => {
@@ -279,7 +285,7 @@ const Error = resolve => {
 Vue.use(Router)
 import store from '../store'
 
-export default new Router({
+const router =  new Router({
 	mode: 'history',
 	routes: [
 	  	{
@@ -291,25 +297,11 @@ export default new Router({
 	      path: '/login',
 	      name: 'Login',
 	      component: Login,
-	      beforeEnter: (to, from, next) => {
-	        if (store.state.trade) {
-	        	next()
-	        } else {
-	        	 next({ path: '/developing' })
-	        }
-	      }
 	    },
 	    {
 	      path: '/regist',
 	      name: 'Regist',
 	      component: Regist,
-	      beforeEnter: (to, from, next) => {
-	        if (store.state.trade) {
-	        	next()
-	        } else {
-	        	 next({ path: '/developing' })
-	        }
-	      }
 	    },
 	    {
 	      path: '/resetpwd',
@@ -392,10 +384,16 @@ export default new Router({
 	      	  component: Coupon,
 	      	  meta: {accBar: 4}
 	      	},
-	      	{
+	      	/*{
 	      		path: 'platform',
 	      		name: 'agentPlatform',
 	      	  component: AgentPlatform,
+	      	  meta: {accBar: 6}
+	      	},*/
+	      	{
+	      		path: 'partner',
+	      		name: 'myPartner',
+	      	  component: MyPartner,
 	      	  meta: {accBar: 6}
 	      	},
 	      	{
@@ -620,5 +618,14 @@ export default new Router({
 		  } else {
 		    return { x: 0, y: 0 }
 		  }
-		}
+		},
 })
+router.beforeEach((to, from, next) => {
+	store.state.progress = true
+	next()
+})
+router.afterEach((to, from, next) => {
+	store.state.progress = false
+})
+
+export default router

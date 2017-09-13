@@ -34,7 +34,7 @@ const store = new Vuex.Store({
 			name: '音无结弦',
 			img: '//i0.hdslb.com/bfs/face/121922b3ec1235997d5611f826e19faf31bd6d40.jpg_52x52.jpg',
 		},
-		trade: true, //平台是否开启交易
+		trade: false, //平台是否开启交易
 		capital: {
 			balance: 1000
 		},
@@ -60,7 +60,8 @@ const store = new Vuex.Store({
 		confirmMoadl: {
 			state: 1,
 			config: null
-		}
+		},
+		progress: false,
 	},
 	mutations,
 	actions,

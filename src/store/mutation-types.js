@@ -16,6 +16,7 @@ export const HOME_IMG_UPLOAD = 'HOME_IMG_UPLOAD' //主页用户头像上传
 export const HOME_INVEST_RECORD = 'HOME_INVEST_RECORD' //主页投资记录
 export const HOME_NEWS_LIST = 'HOME_NEWS_LIST'  //首页新闻列表
 export const HOME_NOTICE = 'HOME_NOTICE' //首页公告
+export const HOME_BANNER = 'HOME_BANNER' //轮播图片
 
 
 export const PRO_DETAIL_INFO = 'PRO_DETAIL_INFO' //产品详情信息
@@ -24,8 +25,13 @@ export const PRO_DETAIL_LIST = 'PRO_DETAIL_LIST' //产品投资记录
 //用户中心
 export const ACC_BREAD_CHANGE = 'ACC_BREAD_CHANGE' //用户中心面包屑切换
 export const ACC_BIND_STATE = 'ACC_BIND_STATE' //用户中心四种绑定状态
-export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
 export const ACC_RECHARGE_LOADING = 'ACC_RECHARGE_LOADING' //用户总览充值加载中
+
+//账户总览
+export const ACC_OV_CAP = 'ACC_OV_CAP' //账户总览各种金额
+export const ACC_CAP_RECORD_TOTAL = 'ACC_CAP_RECORD_TOTAL' //资金记录总条数
+export const ACC_CAP_RECORD_LIST = 'ACC_CAP_RECORD_LIST' //资金记录集合
+
 
 //我的理财
 export const ACC_YESTER_PROFIT = 'ACC_YESTER_PROFIT' //昨日收益
@@ -37,6 +43,10 @@ export const ACC_FIN_OUT_LIST = 'ACC_FIN_OUT_LIST' //我的理财转出中集合
 //我的礼券
 export const ACC_COUPON_TOTAL = 'ACC_COUPON_TOTAL' //礼券总页数
 export const ACC_COUPON_LIST = 'ACC_COUPON_LIST'  //礼券集合
+
+//我的团队
+export const ACC_TEAM_TOTAL = 'ACC_TEAM_TOTAL' //团队总数
+export const ACC_TEAM_LIST = 'ACC_TEAM_LIST'  //团队集合
 
 
 //我的消息

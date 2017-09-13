@@ -67,7 +67,7 @@ export const analyJson = (dp) => {
 		router.push('/login');
 		return null;
 	} else{
-		return dp.datas;
+		return dp.result;
 	}
 }
 

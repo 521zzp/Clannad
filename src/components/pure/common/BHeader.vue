@@ -2,10 +2,10 @@
 	<div>
 		<div class="container">
 			<div class="logo fl">
-				<router-link to="/" class="clearfix to-home"><img :src="logo" alt="余惠宝" /></router-link>
+				<router-link to="/" class="clearfix to-home"><img :src="logo" alt="掌柜金服" /></router-link>
 			</div>
 			<nav class="nav-group fr">
-				<router-link to="/" class="fl">余惠宝首页</router-link>
+				<router-link to="/" class="fl">掌柜金服首页</router-link>
 				<router-link to="/" class="fl">帮助中心</router-link>
 			</nav>
 		</div>

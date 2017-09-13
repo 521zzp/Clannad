@@ -6,7 +6,7 @@
 			</div>
 			<div class="info">
 				<span class="title">运营时间</span>
-				<span class="desc">自余惠宝上线以来已安全运营1000天</span>
+				<span class="desc">自掌柜金服上线以来已安全运营1000天</span>
 			</div>
 		</router-link><router-link to="/regist" class="show-item">
 			<div class="show-pic">

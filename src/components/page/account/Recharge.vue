@@ -28,7 +28,7 @@
 	    	<span class="hint-title">温馨提示</span>
 	    	<ul class="clearfix">
 	    		<li class="hint-item">为了您的账户安全，请在充值前进行实名认证、银行卡绑定及交易密码设置。</li>
-	    		<li class="hint-item">选择的银行卡开户名必须与您的余惠宝实名认证一致，否则提现申请将无法提交。</li>
+	    		<li class="hint-item">选择的银行卡开户名必须与您的掌柜金服实名认证一致，否则提现申请将无法提交。</li>
 	    		<li class="hint-item">禁止洗钱、信用卡套现、虚假交易等行为，一经发现并确认，将终止该账户的使用。</li>
 	    		<li class="hint-item">充值前请确认您的银行卡限额。如充值成功后未能及时到账，请联系客服：400-838-8304</li>
 	    	</ul>
@@ -213,7 +213,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

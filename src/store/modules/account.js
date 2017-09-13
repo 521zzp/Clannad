@@ -2,7 +2,8 @@ import * as types from '../mutation-types'
 import { ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_MSG_TOTAL, ACC_MSG_LIST, ACC_MSG_READ, ACC_MSG_DELETE, 
 	ACC_INFO_LOGIN_PWD_CHANGE, ACC_INFO_PAY_PWD_CHANGE, ACC_INFO_BASE, ACC_INFO_PAY_PWD_BACK_SEND_CODE, ACC_INFO_PAY_PWD_BACK_ONE, ACC_INFO_PAY_PWD_BACK_TWO,
 	ACC_INFO_PAY_PWD_SET, ACC_BANK_INFO, ACC_BANK_DETAIL_INFO, ACC_BANK_SUPPORT, ACC_AREA_SUPPORT, ACC_BANK_BAND, ACC_BANK_CHANGE, ACC_INFO_PHONE_SEND_CODE,
-	ACC_INFO_PHONE_SEND_CODE_NEW, ACC_INFO_PHONE_CHANGE, PHONECODEVALI, ACC_INFO_INIT
+	ACC_INFO_PHONE_SEND_CODE_NEW, ACC_INFO_PHONE_CHANGE, PHONECODEVALI, ACC_INFO_INIT, ACC_TEAM_TOTAL, ACC_TEAM_LIST, ACC_CAP_RECORD_TOTAL, ACC_CAP_RECORD_LIST
+	
 	} from '@/config/url'
 import {postModelOne, onanaly, getModel, analy } from '@/tool/net'
 import { message } from '@/tool/talk'
@@ -18,12 +19,18 @@ const state = {
 		idCard: false
 	},
 	overViewCapital: {
-		yesterday: 0,
+		yesterday: 0, //昨日受益
+		total: 0, //总资产
+		current: 0, //活期宝
+		balance: 0, //账户余额
+		freeze: 0, //冻结金额
+		accumulate: 0, //累计受益
+		points: 0, //积分
+	},
+	ovReacord: {
 		total: 0,
-		current: 0,
-		balance: 0,
-		accumulate: 0,
-		points: 0
+		totalFlag: 0,
+		list: [],
 	},
 	recharge: {
 		loading: false
@@ -45,7 +52,7 @@ const state = {
 	changeLoginPwdFlag: 0, //更改登录密码后表单重置标志
 	changePayPwdFlag: 0, //更改支付密码后表单重置标志
 	payPwdBack: {
-		step: 1,
+		step: 0,
 		text: '发送验证码',
 		sendAbel: true,
 		account: '',
@@ -84,6 +91,11 @@ const state = {
 		newText: '发送验证码',
 		newSendAbel: true,
 	},
+	team: {
+		total: 0,
+		totalFlag: 0,
+		list: []
+	}
 }
 
 
@@ -99,7 +111,7 @@ const actions = {
   	accountRechargeLoading ({commit},obj) {
   		commit(types.ACC_RECHARGE_LOADING, obj)
   	},
-  	ovCap ({commit},obj) {
+  	ovCap ({commit}, obj) {
   		fetch(ACC_OV_CAP, postModelOne(obj)).then(onanaly).then(
 			(datas) => commit(types.ACC_OV_CAP, datas)
 		)
@@ -335,6 +347,26 @@ const actions = {
   				}
   			}
   		)
+  	},
+  	accountTeamTotal({ commit }, obj) {
+  		fetch(ACC_TEAM_TOTAL, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_TEAM_TOTAL, datas) : ''
+  		)
+  	},
+  	accountTeamList ({ commit }, obj) {
+  		fetch(ACC_TEAM_LIST, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_TEAM_LIST, datas) : ''
+  		)
+  	},
+  	accountCapitalRecordTotal ({ commit }, obj) {
+  		fetch(ACC_CAP_RECORD_TOTAL, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_CAP_RECORD_TOTAL, datas) : ''
+  		)
+  	},
+  	accountCapitalRecordList ({ commit }, obj) {
+  		fetch(ACC_CAP_RECORD_LIST, postModelOne(obj)).then(onanaly).then(
+  			datas => datas ? commit(types.ACC_CAP_RECORD_LIST, datas) : ''
+  		)
   	}
 }
 
@@ -363,7 +395,6 @@ const mutations = {
     [types.ACC_MSG_READ] (state, obj) {
 		for (let index in state.message.list ) {
 			if (~obj.indexOf(state.message.list[index].id)) {
-				console.log(state.message.list[index].id)
 				state.message.list[index].read = true
 			}
 		}
@@ -419,6 +450,7 @@ const mutations = {
     },
     [types.ACC_INFO_PAY_PWD_SET] (state, obj) {
     	state.bindStatus.payPwd = true
+    	message(obj.msg, 2)
     },
     [types.ACC_BANK_INFO] (state, obj) {
     	state.bankInfo = obj
@@ -437,8 +469,22 @@ const mutations = {
     	state.changePhone.account = obj.account
     	state.changePhone.phoneCode = obj.phoneCode
     },
-    [types.ACC_INFO_PHONE_CHANGE] (state,boj) {
+    [types.ACC_INFO_PHONE_CHANGE] (state, obj) {
     	state.changePhone.step = state.changePhone.step + 1
+    },
+    [types.ACC_TEAM_TOTAL] (state, { total }) {
+    	state.team.total = total
+    	state.team.totalFlag++
+    },
+    [types.ACC_TEAM_LIST] (state, obj) {
+    	state.team.list = obj
+    },
+    [types.ACC_CAP_RECORD_TOTAL] (state, { total }) {
+    	state.ovReacord.total = total
+    	state.ovReacord.totalFlag++
+    },
+    [types.ACC_CAP_RECORD_LIST] (state, obj) {
+    	state.ovReacord.list = obj
     }
      
 }

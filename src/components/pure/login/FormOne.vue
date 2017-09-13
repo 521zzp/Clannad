@@ -1,6 +1,6 @@
 <template>
     <div class="container" @keyup.enter="handleSubmit('loginForm')">
-    	<span class="title">欢迎登陆余惠宝</span>
+    	<span class="title">欢迎登陆掌柜金服</span>
     	<Form class="loign-form dsbjfs" ref="loginForm" :model="loginForm" :rules="ruleInline">
 	        <Form-item class="item" prop="account">
 	            <Input type="text" v-model="loginForm.account" placeholder="手机号" >

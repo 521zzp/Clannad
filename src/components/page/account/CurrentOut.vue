@@ -28,19 +28,19 @@
 			<ul class="clearfix">
 				<li class="tip-item">
 					<span class="question">什么是活期宝？</span>
-					<span class="answer">答：活期宝是余惠宝推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持余惠宝账户余额的资金转入。目前步收取任何手续费。</span>
+					<span class="answer">答：活期宝是掌柜金服推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持掌柜金服账户余额的资金转入。目前步收取任何手续费。</span>
 				</li>
 				<li class="tip-item">
 					<span class="question">什么是活期宝？</span>
-					<span class="answer">答：活期宝是余惠宝推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持余惠宝账户余额的资金转入。目前步收取任何手续费。</span>
+					<span class="answer">答：活期宝是掌柜金服推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持掌柜金服账户余额的资金转入。目前步收取任何手续费。</span>
 				</li>
 				<li class="tip-item">
 					<span class="question">什么是活期宝？</span>
-					<span class="answer">答：活期宝是余惠宝推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持余惠宝账户余额的资金转入。目前步收取任何手续费。</span>
+					<span class="answer">答：活期宝是掌柜金服推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持掌柜金服账户余额的资金转入。目前步收取任何手续费。</span>
 				</li>
 				<li class="tip-item">
 					<span class="question">什么是活期宝？</span>
-					<span class="answer">答：活期宝是余惠宝推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持余惠宝账户余额的资金转入。目前步收取任何手续费。</span>
+					<span class="answer">答：活期宝是掌柜金服推出的余额增值服务，把钱转入活期宝种就可以获得一定的收益。支持掌柜金服账户余额的资金转入。目前步收取任何手续费。</span>
 				</li>
 			</ul>
 		</div>
@@ -84,7 +84,7 @@ export default {
     mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

@@ -41,7 +41,7 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="trade" class="fr record">
+		<div class="fr record">
 			<div class="title">
 				<span class="one">投资记录</span>
 				<span class="two">惠生活 惠理财</span>
@@ -171,6 +171,7 @@
 	height: 280px;
 	border: 1px solid @border-two;
 	background-color: @white;
+	border-radius: @br;
 }
 .record{
 	width: 340px;
@@ -224,6 +225,7 @@
 	border: 1px solid @border-two;
 	background-color: @white;
 	overflow: hidden;
+	border-radius: @br;
 }
 .news{
 	width: 840px;

@@ -25,6 +25,9 @@
 			},
 			confirmMoadl () {
 				return this.$store.state.confirmMoadl.state
+			},
+			progress () {
+				return this.$store.state.progress
 			}
 		},
 		mounted () {
@@ -115,6 +118,13 @@
 			confirmMoadl: function () {
 				let config = this.$store.state.confirmMoadl.config;
 				this.$Modal.confirm(config);
+			},
+			progress: function() {
+				if (this.progress) {
+					this.$Loading.start();
+				} else {
+					 this.$Loading.finish();
+				}
 			}
 		}
 	}

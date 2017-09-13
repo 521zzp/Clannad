@@ -3,13 +3,13 @@
 		<div class="clearfix form-pwd">
 			<Form ref="myForm" :model="myForm" :rules="ruleCustom" :label-width="100">
 			 	 <Form-item label="当前支付密码" prop="oldPwd">
-		            <Input type="password" size="large" v-model="myForm.oldPwd" :maxlength="6"  placeholder="请输入当前支付密码"></Input>
+		            <Input type="password" size="large" v-model="myForm.oldPwd" :maxlength="6"  placeholder="请输入当前支付密码(6位数字)"></Input>
 		        </Form-item>
 		        <Form-item label="设置新支付密码" prop="newPwd">
-		            <Input type="password" size="large" v-model="myForm.newPwd" :maxlength="6" placeholder="请输入新支付密码"></Input>
+		            <Input type="password" size="large" v-model="myForm.newPwd" :maxlength="6" placeholder="请输入新支付密码(6位数字)"></Input>
 		        </Form-item>
 		        <Form-item label="确认新支付密码" prop="passwdCheck">
-		            <Input type="password" size="large" v-model="myForm.passwdCheck" :maxlength="6" placeholder="请确认新支付密码"></Input>
+		            <Input type="password" size="large" v-model="myForm.passwdCheck" :maxlength="6" placeholder="请确认新支付密码(6位数字)"></Input>
 		        </Form-item>
 		        <Form-item>
 		            <Button type="primary" class="form-submit" @click="handleSubmit('myForm')">保存密码</Button>

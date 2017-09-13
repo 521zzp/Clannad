@@ -28,13 +28,13 @@ export default {
 	},
 	computed: {
 		money () {
-			return this.$store.state.accfinance.yesterdayProfit
+			return this.$store.state.account.overViewCapital.yesterday
 		}
 	},
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

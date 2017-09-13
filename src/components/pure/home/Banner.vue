@@ -14,23 +14,22 @@
         data () {
             return {
                 value2: 0,
-                /*banners: this.$store.state.home.banner,*/
-                banners: [
+                bannersBackup: [
 					{
 						img: IMG + '/home/banner/banner-one.jpg',
-						url: 'a'
+						url: ''
 					},
 					{
 						img: IMG + '/home/banner/banner-two.jpg',
-						url: 'b'
+						url: ''
 					},
 					{
 						img: IMG + '/home/banner/banner-three.jpg',
-						url: 'c'
+						url: ''
 					},
 					{
 						img: IMG + '/home/banner/banner-four.jpg',
-						url: 'd'
+						url: ''
 					},
 				],
                 setting: {
@@ -38,8 +37,17 @@
                 }
             }
         },
+        computed: {
+        	banners () {
+        		const bannerList = this.$store.state.home.banner
+        		return bannerList.length > 0 ? bannerList : this.bannersBackup
+        	}
+        },
         methods: {
         	location (url) {
+        		if (url) {
+        			window.open(url)
+        		}
         	}
         }
     }

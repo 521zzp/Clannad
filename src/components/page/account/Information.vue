@@ -8,7 +8,7 @@
 			<span class="item-desc">实名认证</span>
 			<span class="item-info">{{idCard ? baseInfo.idCard : '只有通过实名认证，才能充值投资' }}</span>
 			<span v-if="idCard" class="fr link-btn" @click="openChange(1)">详情</span>
-			<router-link v-else to="/account/bankcard-add" class="fr">立即设置</router-link>
+			<router-link v-else to="/account/bankcard/add" class="fr">立即设置</router-link>
 		</div>
 		<InfoIdCard class="fold" :class="{open: open === 1}"/>
 		<div class="item-head">
@@ -62,7 +62,7 @@ import InfoPayPwd from '@/components/pure/account/InfoPayPwd'
 export default {
 	data () {
 		return {
-			open: 2,
+			open: 0,
 			payPwdType: 1
 		}
 	},
@@ -87,7 +87,7 @@ export default {
 		this.open = 0
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

@@ -2,7 +2,7 @@
 	<div>
 		<b class="user-account-common-title">邀请好友</b>
 		<InviteTemplate :wxConfig="wxConfig" :qqConfig="qqConfig" :qqZoneConfig="qqZoneConfig" :msgConfig="msgConfig" :copyConfig="copyConfig"/>
-		<div class="my-profit-wrap">
+		<!--<div class="my-profit-wrap">
 			<span class="my-profit">我的奖励：<b class="my-profit-value">45</b>元</span>
 		</div>
 		<Table class="only-invite-profit-list" :columns="profitHeader" :data="profitList"></Table>
@@ -14,10 +14,7 @@
 			<span class="rule-item">1.好友通过您分享的链接注册并绑定银行卡，您可以获得2元奖励</span>
 			<span class="rule-item">2.好友首次购买理财产品，您可以获得3元奖励</span>
 			<span class="rule-item">4.每日分享到微信朋友圈（仅限APP分享微信朋友圈功能），您可以获得0.5元奖励</span>
-		</div>
-    	
-    	
-		
+		</div>-->
 	    
 	</div>
 </template>
@@ -39,15 +36,15 @@ export default {
         	},
         	qqConfig: {
         		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入余惠宝大家庭',
+        		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入余惠宝加入余惠宝加入余惠宝加入余惠宝'
+        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	qqZoneConfig: {
         		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入余惠宝大家庭',
+        		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入余惠宝加入余惠宝加入余惠宝加入余惠宝'
+        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	msgConfig: {
 	        	msgForm: {
@@ -124,7 +121,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

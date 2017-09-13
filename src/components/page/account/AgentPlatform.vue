@@ -7,7 +7,7 @@
 				<div class="condition">
 					<span style="display: block;">申请条件：</span>
 					<span style="display: block;">（1）、普通投资者想成为经销商，首次购买理财产品数额必须达到5万</span>
-					<span style="display: block;">（2）、余惠宝星级商户，每日收益未0.3%00（万分之零点三），可发展自己的团队，星级商户享有直接推荐人理财额的0.3%00每日分润（万分之零点三）无团队奖金</span>
+					<span style="display: block;">（2）、掌柜金服星级商户，每日收益未0.3%00（万分之零点三），可发展自己的团队，星级商户享有直接推荐人理财额的0.3%00每日分润（万分之零点三）无团队奖金</span>
 				</div>
 				<router-link to="/distributor" class="apply-btn">申请经销商</router-link>
 			</div>
@@ -15,7 +15,7 @@
 				<div class="condition">
 					<span style="display: block;">申请条件：</span>
 					<span style="display: block;">（1）、普通投资者想成为经销商，首次购买理财产品数额必须达到5万</span>
-					<span style="display: block;">（2）、余惠宝星级商户，每日收益未0.3%00（万分之零点三），可发展自己的团队，星级商户享有直接推荐人理财额的0.3%00每日分润（万分之零点三）无团队奖金</span>
+					<span style="display: block;">（2）、掌柜金服星级商户，每日收益未0.3%00（万分之零点三），可发展自己的团队，星级商户享有直接推荐人理财额的0.3%00每日分润（万分之零点三）无团队奖金</span>
 				</div>
 				<router-link to="/agent" class="apply-btn">进入代理商</router-link>
 			</div>
@@ -34,7 +34,7 @@ export default {
 	mounted () {
 		let bread = [
 				{
-					name: '余惠宝',
+					name: '掌柜金服',
 					url: '/'
 				},
 				{

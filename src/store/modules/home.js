@@ -1,5 +1,5 @@
 import * as types from '../mutation-types'
-import {HOME_PRODUCTS, HOME_NEWS_LIST, HOME_INVEST_RECORD, HOME_NOTICE} from '@/config/url'
+import {HOME_PRODUCTS, HOME_NEWS_LIST, HOME_INVEST_RECORD, HOME_NOTICE, HOME_BANNER} from '@/config/url'
 import {getModel,analy} from '@/tool/net'
 import {message} from '@/tool/talk'
 import store from '@/store'
@@ -24,24 +24,7 @@ const state = {
 		day: 0
 	},
 	products:[],
-	banner:[
-		{
-			img: 'http://www.art.com/home/banner/banner-one.jpg',
-			url: 'a'
-		},
-		{
-			img: 'http://www.art.com/home/banner/banner-two.jpg',
-			url: 'b'
-		},
-		{
-			img: 'http://www.art.com/home/banner/banner-three.jpg',
-			url: 'c'
-		},
-		{
-			img: 'http://www.art.com/home/banner/banner-four.jpg',
-			url: 'd'
-		},
-	],
+	banner:[],
 	investList: [],
 	newsList: {},
 	notice: '',
@@ -64,9 +47,14 @@ const actions = {
 			(datas) => commit(types.HOME_NEWS_LIST, datas)
 		)
 	},
-	homeNotice ({commit}, obj) {
+	homeNotice ({ commit }, obj) {
 		fetch(HOME_NOTICE, getModel()).then(analy).then(
 			(datas) => commit(types.HOME_NOTICE, datas.notice)
+		)
+	},
+	homeBannerList ({ commit }, obj) {
+		fetch(HOME_BANNER, getModel()).then(analy).then(
+			(datas) => commit(types.HOME_BANNER, datas)
 		)
 	}
 }
@@ -122,15 +110,18 @@ const mutations = {
 			}, maxTimeDelay)
 		}
     },
-    [types.HOME_INVEST_RECORD] (state,obj) {
+    [types.HOME_INVEST_RECORD] (state, obj) {
     	state.investList = obj
     },
     [types.HOME_NEWS_LIST] (state,obj) {
-    	state.newsList = obj
+    	state.newsList = obj 
     },
-    [types.HOME_NOTICE] (state,obj) {
+    [types.HOME_NOTICE] (state, obj) {
     	state.notice = obj
     },
+    [types.HOME_BANNER] (state, obj) {
+    	state.banner = obj
+    }
 }
 
 

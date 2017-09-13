@@ -20,15 +20,15 @@ export default {
         	},
         	qqConfig: {
         		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入余惠宝大家庭',
+        		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入余惠宝加入余惠宝加入余惠宝加入余惠宝'
+        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	qqZoneConfig: {
         		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入余惠宝大家庭',
+        		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入余惠宝加入余惠宝加入余惠宝加入余惠宝'
+        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	msgConfig: {
 	        	msgForm: {

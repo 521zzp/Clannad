@@ -13,7 +13,7 @@
 		        	<CouponRaise/>
 		        </Tab-pane>
 		    </Tabs>
-		    <router-link to="/coupon/rule" class="rule">使用规则</router-link>
+		    <!--<router-link to="/coupon/rule" class="rule">使用规则</router-link>-->
 		</div>
 	</div>
 </template>
