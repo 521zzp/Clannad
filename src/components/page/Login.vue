@@ -38,8 +38,8 @@
 .content{
 	width: 100%;
 	height: 724px;
-	background-image: url('@{image}/login-regist/login-bg.png');
-	background-position: center;
+	background-image: url('@{image}/login-regist/login-bg.jpg');
+	background-position: center top;
 	min-width: @mw;
 	position: relative;
 }

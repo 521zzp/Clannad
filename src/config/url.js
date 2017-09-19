@@ -2,7 +2,7 @@
 export const BASEURL = '/api'  //服务器地址  林
 
 
-export const IMG = 'http://www.art.com' //图片服务器地址
+export const IMG = '/image' //图片服务器地址
 //export const IMG = '/image'
 //export const IMG = '/bilibili' //正式环境图片服务器地址
 //export const IMG = 'http://139.196.25.57/res' //57图片服务器地址

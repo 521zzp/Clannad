@@ -44,7 +44,7 @@
 						<!--<router-link to="/account/current" class="level-two">活期宝</router-link>-->
 						<router-link to="/account/coupon" class="level-two">我的礼券</router-link>
 						<!--<router-link v-if="trade" to="/account" class="level-two">我的商品</router-link>-->
-						<router-link to="/account/platform" class="level-two">我是经销商</router-link>
+						<!--<router-link to="/account/platform" class="level-two">我是经销商</router-link>-->
 						<router-link to="/account/information" class="level-two">个人资料</router-link>
 						<!--<router-link to="/account" class="level-two">资金记录</router-link>-->
 					</nav>

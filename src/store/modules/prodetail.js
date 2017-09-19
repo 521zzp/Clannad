@@ -30,7 +30,6 @@ const actions = {
 				.then((datas)=>{
 				commit(types.PRO_DETAIL_INFO, datas);
 			}).catch(function(error) {
-			    console.log('查询产品详情信息异常', error)
 			  });
   	}
 }

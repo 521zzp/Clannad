@@ -23,7 +23,7 @@
 			    </Poptip>
 			</div>
 	    	<div class="my-page">
-	    		<Page :total="total" size="small" class="page-nav" @on-change="change"></Page>
+	    		<Page :total="total" size="small" class="page-nav" @on-change="change" :page-size="size"></Page>
 	    	</div>
 		</div>
 	</div>
@@ -74,7 +74,6 @@ export default {
 	},
 	methods: {
         deleteMsg (id) {
-            this.$Message.info('删除'+id);
             this.$store.dispatch('accountMessageDelete', {ids: [id]})
         },
         allRead () {

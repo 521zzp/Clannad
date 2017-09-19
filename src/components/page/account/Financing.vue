@@ -6,9 +6,9 @@
 	        <Tab-pane label="持有中" name="on">
 	        	<FinanceOn/>
 	        </Tab-pane>
-	        <Tab-pane label="转出中" name="out">
+	        <!--<Tab-pane label="转出中" name="out">
 	        	<FinanceOut/>
-	        </Tab-pane>
+	        </Tab-pane>-->
 	        <Tab-pane label="已结束" name="end">
 	        	<FinanceEnd/>
 	        </Tab-pane>
@@ -18,7 +18,7 @@
 
 <script>
 import FinanceOn from '@/components/pure/account/FinanceOn'
-import FinanceOut from '@/components/pure/account/FinanceOut'
+//import FinanceOut from '@/components/pure/account/FinanceOut'
 import FinanceEnd from '@/components/pure/account/FinanceEnd'
 export default {
 	data () {
@@ -47,11 +47,11 @@ export default {
 				},
 			];
 		this.$store.dispatch('accountBreadChange', bread)
-		this.$store.dispatch('accYesterdayProfitGet')
+		//this.$store.dispatch('accYesterdayProfitGet')
 	},
 	components: {
 		FinanceOn,
-		FinanceOut,
+		//FinanceOut,
 		FinanceEnd
 	}
 }

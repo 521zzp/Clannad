@@ -43,7 +43,6 @@ const actions = {
 				.then((datas)=>{
 				commit(types.REGISTER,datas);
 			}).catch(function(error) {
-		    console.log('新用户注册异常', error)
 		  });
   	}
 }

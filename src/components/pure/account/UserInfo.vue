@@ -9,9 +9,9 @@
 			</div>
 		</div>
 		<div class="infos clearfix">
-			<router-link to="/account/bankcard/add" class="info-item fl id-card" :class="{active: idCard}" :title="idCardT"></router-link>
-			<router-link to="/account/bankcard/add" class="info-item fl bank-acrd" :class="{active: bankCard}" :title="bankCardT"></router-link>
-			<router-link to="/account/information" class="info-item fl pay-pwd" :class="{active: payPwd}" :title="payPwdT"></router-link>
+			<router-link :to="idCard ? '' : '/account/bankcard/add' " class="info-item fl id-card" :class="{active: idCard}" :title="idCardT"></router-link>
+			<router-link :to="bankCard ? '' : '/account/bankcard/add' " class="info-item fl bank-acrd" :class="{active: bankCard}" :title="bankCardT"></router-link>
+			<router-link :to="payPwd ? '' : '/account/information' " class="info-item fl pay-pwd" :class="{active: payPwd}" :title="payPwdT"></router-link>
 			<!--<router-link to="/product" class="info-item fl assurance" :class="{active: assuer}" :title="assuerT"></router-link>-->
 		</div>
 	</div>

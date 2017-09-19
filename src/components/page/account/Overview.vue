@@ -34,7 +34,7 @@
 				    </Select>
 		        </FormItem>
 		        <FormItem prop="time" label="时间：">
-		        	 <DatePicker v-model="form.time" format="yyyy-MM-dd" type="daterange" placeholder="选择注册日期" style="width: 200px"></DatePicker>
+		        	 <DatePicker v-model="form.time" format="yyyy-MM-dd" type="daterange" placeholder="请选择时间" style="width: 200px"></DatePicker>
 		        </FormItem>
 		        <FormItem>
 		            <Button type="primary" @click="handleSubmit('form')">搜索</Button>

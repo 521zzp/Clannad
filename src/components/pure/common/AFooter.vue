@@ -24,11 +24,11 @@
 				</li>-->
 				<li class="item-msg fl clearfix">
 					<span class="title">热线电话</span>
-					<span class="foot-phone line-span">400-838-8304</span>
+					<span class="foot-phone line-span">135-2409-5928</span>
 				</li>
 				<li class="item-msg fl clearfix">
 					<span class="line-span">服务时间：08:00-18:00（工作日）</span>
-					<span class="line-span">邮箱：yhb_service@163.com</span>
+					<span class="line-span">邮箱：pbjr001@163.com</span>
 				</li>
 				<li class="item-pic fl clearfix">
 					<img class="wechat-img" :src="wechatImg"/>
@@ -36,9 +36,9 @@
 			</ul>
 		</div>
 		<div class="copyRight">
-			<span v-if="trade">Copyright © yhb118.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
-			<span>Copyright © yhb118.com  网站备案号:沪ICP备15026013号</span>
-			<span>上海岚儒金融信息服务有限公司</span>
+			<span v-if="trade">Copyright © zhangguijf.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
+			<span>Copyright © zhangguijf.com  网站备案号:沪ICP备16049393号-1 </span>
+			<span>上海蓬宝互联网金融信息服务有限公司</span>
 		</div>
 	</footer>
 </template>

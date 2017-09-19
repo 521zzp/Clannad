@@ -16,18 +16,18 @@
 				<div class="invite-icon invite-qq-zone"></div>
 				<div class="invite-desc">QQ空间</div>
 			</a>
-			<div v-if="!!msgConfig" class="invite-item" @click="msgModel = true">
+			<!--<div v-if="!!msgConfig" class="invite-item" @click="msgModel = true">
 				<div class="invite-icon invite-message"></div>
 				<div class="invite-desc">短信</div>
-			</div>
+			</div>-->
 			<div v-if="!!copyConfig" class="invite-item" @click="copyModel = true">
 				<div class="invite-icon invite-copy-link"></div>
 				<div class="invite-desc">复制连接</div>
 			</div>
 		</div>
-		<div class="step">
+		<!--<div class="step">
 			<img class="invite-step-img" src="../../../assets/account/invite-step.png"/>
-		</div>
+		</div>-->
 		<!--modal place-->
 		<Modal v-if="!!msgConfig" v-model="msgModel" width="360" title="短信推荐" :width="500" class="only-invite-model">
 	         <Form ref="msgConfig.msgForm" :model="msgConfig.msgForm" :rules="msgConfig.msgRules" :label-width="90" class="msgForm">

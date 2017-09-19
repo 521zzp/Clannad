@@ -61,7 +61,7 @@ export default {
 					url: '/publicity/introduce'
 				},
 				{
-					name: '惠宝公告',
+					name: '掌柜公告',
 					url: ''
 				},
 			];

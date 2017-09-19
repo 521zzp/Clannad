@@ -3,7 +3,7 @@
 		<div class="clearfix top-bg">
 			<img :src="img" alt="" />
 		</div>
-		<span class="title">惠宝新闻</span>
+		<span class="title">掌柜新闻</span>
 		<span v-if="total === 0" class="table-no-data" ><Icon type="android-sad" style="margin-right: .5em;"></Icon>暂无数据</span>
 		<div v-else class="content clearfix">
 			<ul class="clearfix">
@@ -65,7 +65,7 @@ export default {
 					url: '/publicity/introduce'
 				},
 				{
-					name: '惠宝新闻',
+					name: '掌柜新闻',
 					url: ''
 				},
 			];

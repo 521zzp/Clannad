@@ -28,41 +28,6 @@ import InviteTemplate from '@/components/pure/common/InviteTemplate'
 export default {
 	data () {
 		return {
-			wxConfig: {
-	            value: 'https://www.baidu.com',
-	            imagePath: '../../../static/logo.png',
-	            filter: 'color',
-	            downloadButton: false,
-        	},
-        	qqConfig: {
-        		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入掌柜金服大家庭',
-        		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
-        	},
-        	qqZoneConfig: {
-        		value: 'http://www.yhb118.com',
-        		title: '诚挚邀请您加入掌柜金服大家庭',
-        		pics: IMG+ '/common/header/logo.png',
-        		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
-        	},
-        	msgConfig: {
-	        	msgForm: {
-	        		message: '好友注册，详情点击http://www.yhb118.com',
-	        		phone: ''
-	        	},
-        		msgRules : {
-	        		phone: [
-	                    { required: true, message: '手机号码不能为空', trigger: 'blur' },
-	                    { validator: validatePhone, trigger: 'blur' }
-	                ],
-	        	},
-        	},
-        	copyConfig: {
-	        	copyForm: {
-	        		content: 'http://www.yhb118.com',
-	        	},
-        	},
         	profitHeader: [
                 {
                     title: '奖励（元）',
@@ -112,11 +77,57 @@ export default {
                     time: '2017-03-21'
                 }
             ]
-        	
 		}
 	},
 	computed: {
-		
+		invitor () {
+			return this.$store.state.user.account
+		},
+		wxConfig() {
+            return {
+            	value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	            imagePath: '../../../static/logo.png',
+	            filter: 'color',
+	            downloadButton: false,
+            }
+    	},
+    	qqConfig () {
+    		return {
+    			value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	    		title: '诚挚邀请您加入掌柜金服大家庭',
+	    		pics: IMG+ '/common/header/logo.png',
+	    		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
+    		}
+    	},
+    	qqZoneConfig () {
+    		return {
+    			value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	    		title: '诚挚邀请您加入掌柜金服大家庭',
+	    		pics: IMG+ '/common/header/logo.png',
+	    		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
+    		}
+    	},
+    	msgConfig () {
+        	return {
+        		msgForm: {
+        			message: '好友注册，详情点击http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	        		phone: ''
+	        	},
+	    		msgRules : {
+	        		phone: [
+	                    { required: true, message: '手机号码不能为空', trigger: 'blur' },
+	                    { validator: validatePhone, trigger: 'blur' }
+	                ],
+	        	},
+        	}
+    	},
+    	copyConfig () {
+        	return {
+        		copyForm: {
+	        		content: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	        	},
+        	}
+    	},
 	},
 	mounted () {
 		let bread = [

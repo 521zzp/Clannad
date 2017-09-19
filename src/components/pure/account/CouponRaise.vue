@@ -44,7 +44,6 @@ export default {
 	},
 	watch: {
 		totalFlag () {
-			console.log('ssssssssssssss')
 			if (this.total > 0) {
 				const params = Object.assign( {}, this.state, { type: 3, size: this.size, current: 1} )
 				this.$store.dispatch('accCouponList', params)

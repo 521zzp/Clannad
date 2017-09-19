@@ -17,11 +17,8 @@ const actions = {
 	login ({commit},obj){
 		fetch(LOGIN, postModelTwo(obj)).then(analy)
 				.then((datas)=>{
-					console.log(1)
-					console.log(datas)
 				commit(types.LOGIN, datas);
 			}).catch(function(error) {
-			    console.log('用户登陆异常', error)
 			  });
   	}
 }

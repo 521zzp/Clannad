@@ -21,4 +21,7 @@ export default {
 <style lang="less">
 @import 'config/animate.css';
 @import 'config/loading.less';
+
+
+
 </style>

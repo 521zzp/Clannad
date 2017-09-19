@@ -122,7 +122,6 @@ export default {
 			}
 		},
 		buy (id) {
-			console.log(id)
 		}
 	}
 }

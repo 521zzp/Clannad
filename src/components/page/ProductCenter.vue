@@ -129,7 +129,6 @@ export default {
 		},
 		rankDefault () {
 			this.rankWay = 1;
-			console.log('rankDefault');
 		},
 		rankMoney () {
 			if (this.rankWay === 2) {

@@ -106,7 +106,6 @@ export default {
             this.$refs[name].validate((valid) => {
                 if (valid) {
                     this.$Message.success('提交成功!');
-                    console.log(this.form.time)
                 } else {
                     this.$Message.error('表单验证失败!');
                 }

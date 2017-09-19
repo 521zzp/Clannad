@@ -119,8 +119,7 @@ export default{
         sendCodeOne () {
         	if (checkPhone(this.oneForm.account)) {
         		/*this.$emit('sendCode',{account:this.oneForm.account})*/
-        		console.log(this.oneForm.account)
-        		this.$store.dispatch('accountChangePhoneSendCode', { account:this.oneForm.account })
+        		this.$store.dispatch('accountChangePhoneSendCode', { account: this.oneForm.account })
         		
         	} else {
         		this.$refs.oneForm.validateField('account');
@@ -129,8 +128,7 @@ export default{
         sendCodeTwo () {
         	if (checkPhone(this.twoForm.account)) {
         		/*this.$emit('sendCode',{account:this.twoForm.account})*/
-        		console.log(this.twoForm.account)
-        		this.$store.dispatch('accountChangePhoneSendCodeNext', { account:this.oneForm.account })
+        		this.$store.dispatch('accountChangePhoneSendCodeNext', { account: this.oneForm.account })
         	} else {
         		this.$refs.twoForm.validateField('account');
         	}

@@ -18,7 +18,6 @@ const actions = {
 				.then((datas)=>{
 				commit(types.RECHARGE,datas);
 			}).catch(function(error) {
-			    console.log('用户登陆异常', error)
 			  });
   	}
 }

@@ -16,11 +16,11 @@
 	            <Input type="text" placeholder="请输入图形验证码" v-model="registForm.picCode"></Input>
 	            <img class="imgVali" :src="imgCodeSrc" @click="imgRefresh" alt="点击更新" title="点击更新" />
 	        </Form-item>-->
-	        <Form-item>
+	        <!--<Form-item>
 	        	 <span class="invite-btn" @click="inviteChange">> 邀请码（选填）</span>
-	        </Form-item>
-	        <Form-item label="请输入邀请码" prop="inviteCode" v-if="invitor">
-	            <Input type="text" placeholder="请输入邀请码" v-model="registForm.inviteCode"></Input>
+	        </Form-item>-->
+	        <Form-item label="请输入邀请码" prop="inviteCode" v-if="invitorShow">
+	            <Input type="text" placeholder="请输入邀请码（选填）" v-model="registForm.inviteCode"></Input>
 	        </Form-item>
 	        <Form-item>
 	            <Button class="regist-btn" type="primary" @click="handleSubmit('registForm')">注册</Button>
@@ -31,11 +31,12 @@
 <script>
 	import {validatePhone, validatePwd, validateInvitePhone, checkPhone} from '@/tool/regx'
 	import {BASEURL} from '@/config/url'
+	import { isPc } from '@/tool/tool'
     export default {
         data () {
             return {
             	imgCodeSrc: BASEURL + '/captcha.svl',
-            	invitor: false,
+            	invitorShow: true,
             	open: false,
                 registForm: {
                     account: '',
@@ -109,6 +110,16 @@
             imgRefresh () {
             	this.imgCodeSrc = BASEURL + '/captcha.svl?t=' + new Date()*1
             }
+        },
+        mounted () {
+        	const invitor = this.$route.query.invitor
+			invitor ? this.registForm.inviteCode = invitor : ''
+			invitor ? this.invitorShow = false : ''
+			if (!isPc() && invitor) {
+				//window.location = 'http://m.zhangguijf.com/register?invitor=' + invitor
+			} else{
+				//window.location = 'http://m.zhangguijf.com/register'	
+			}
         }
     }
 </script>

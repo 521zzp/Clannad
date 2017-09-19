@@ -32,8 +32,6 @@ const actions = {
   	accFinanceList ({ commit }, obj) {
   		fetch(ACC_FIN_LIST, postModelOne(obj)).then(onanaly).then(
   			datas => {
-  				console.log('datas:')
-  				console.log(datas)
   				commit(types.ACC_FIN_LIST, Object.assign({}, {list: datas}, {type: obj.type}))
   			}
   		)

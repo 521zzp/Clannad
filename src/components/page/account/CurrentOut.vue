@@ -52,8 +52,6 @@ import {validatePayPwd,ValidateChangeMoney } from '@/tool/regx'
 import tempStore from '@/store'
 
 const ValidateMoneyRange = (rule, value, callback) => {  //转入金额范围验证
-	console.log('value'+value)
-	console.log('range:'+tempStore.state.capital.balance)
 	if (value > tempStore.state.capital.balance) {
 		 callback(new Error('账户余额不足'));
 	} else{

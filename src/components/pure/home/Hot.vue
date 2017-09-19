@@ -1,10 +1,10 @@
 <template>
 	<div class="container clearfix">
-		<router-link to="/guide" class="clearfix fr pic-link animated fadeInLeft" style="animation-delay: 1s;">
+		<router-link to="/guide" class="clearfix fr pic-link" >
 			<img src="../../../assets/home/about-yhb.png" alt="一分钟了解掌柜金服" />
 		</router-link>
 		<!--热门-->
-		<div v-if="main.type === 0" class="main-product animated fadeInDown">
+		<div v-if="main.type === 0" class="main-product">
 			<span class="label">热门</span>
 			<span class="title fl">热门活动</span>
 			<div class="content clearfix fl">
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		
-		<router-link to="/regist" class="clearfix fl pic-link animated fadeInRight" style="animation-delay: 1s;">
+		<router-link to="/regist" class="clearfix fl pic-link" >
 			<img src="../../../assets/home/sprog-gift.png" alt="新手福利" />
 		</router-link>
 	</div>

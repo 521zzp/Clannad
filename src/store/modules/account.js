@@ -8,6 +8,12 @@ import { ACC_BREAD_CHANGE, ACC_BIND_STATE, ACC_OV_CAP, SUPPORT_BANK_UPDATE, ACC_
 import {postModelOne, onanaly, getModel, analy } from '@/tool/net'
 import { message } from '@/tool/talk'
 import router from '@/router'
+import areas from '@/config/area.json' 
+
+
+
+
+
 
 
 const state = {
@@ -71,19 +77,18 @@ const state = {
 		status: '', //状态
 	},
 	banks: [], //支持的银行列表
-	areas: [], //省市级联
+	areas: areas, //省市级联
 	bankDetailInfo: {
 		name: '',//展示，不可编辑
 		idcard: '',//展示，不可编辑
 		bank: '', //支持银行卡列表,
-		area: [], //省市级联列表,
 		branch: '',
 		subbranch: '',
 		card: '',//银行卡号
 		phone: '',
 	},
 	changePhone: {
-		step: 0,
+		step: 1,
 		text: '发送验证码',
 		sendAbel: true,
 		account: '',
@@ -144,6 +149,7 @@ const actions = {
 			(datas) => {
 				if (datas.result) {
 					commit(types.ACC_MSG_DELETE, obj.ids)
+					message(datas.msg, 2)
 				} 
 			}
 		)
@@ -462,7 +468,8 @@ const mutations = {
     	state.banks = obj
     },
     [types.ACC_AREA_SUPPORT] (state, obj) {
-    	state.areas = obj
+    	/*
+    	state.areas = obj*/
     },
     [types.ACC_INFO_PHONE_VALI_CODE] (state, obj) {
     	state.changePhone.step = state.changePhone.step + 1

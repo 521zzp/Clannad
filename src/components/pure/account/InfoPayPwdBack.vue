@@ -130,7 +130,6 @@ export default{
         },
         sendCodeOne () {
         	if (checkPhone(this.oneForm.account)) {
-        		console.log(this.oneForm.account)
         		const datas = {
         			account: this.oneForm.account,
         		}
@@ -142,10 +141,9 @@ export default{
         },
         sendCodeTwo () {
         	if (checkPhone(this.twoForm.account)) {
-        		/*this.$emit('sendCode',{account:this.twoForm.account})*/
+        		this.$emit('sendCode',{account:this.twoForm.account})
         		
         		
-        		console.log(this.twoForm.account)
         	} else {
         		this.$refs.twoForm.validateField('account');
         	}

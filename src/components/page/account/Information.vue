@@ -25,7 +25,7 @@
 			<span class="bind-status">已设置</span>
 			<span class="item-desc">手机号码</span>
 			<span class="item-info">{{baseInfo.phone}}</span>
-			<span class="fr link-btn" @click="openChange(2)">修改</span>
+			<!--<span class="fr link-btn" @click="openChange(2)">修改</span>-->
 		</div>
 		<InfoPhone class="fold" :class="{open: open === 2}"/>
 		<div class="item-head">

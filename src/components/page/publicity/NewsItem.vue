@@ -46,7 +46,7 @@ export default {
 					url: '/publicity/introduce'
 				},
 				{
-					name: '惠宝新闻',
+					name: '掌柜新闻',
 					url: ''
 				},
 			];

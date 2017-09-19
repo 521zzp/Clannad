@@ -60,14 +60,6 @@
 						this.$Notice.open(config)
 						break;
 				}
-			/*	console.log(obj)
-				console.log(obj.name)
-				console.log(this.$store.state.notice.obj)
-				let {name,msg} = obj
-				this.$Notice.info({
-	                title: name,
-	                desc: msg
-	            });*/
 			},
 			noticeClose: function () {
 				let key = this.$store.state.noticeClose.key;

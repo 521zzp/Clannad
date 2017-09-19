@@ -68,7 +68,6 @@ export default{
 	},
 	watch: {
 		open () {
-			console.log(this.open)
 		},
 		totalFlag () {
 			if (this.total > 0) {

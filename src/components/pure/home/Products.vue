@@ -153,6 +153,7 @@
 	padding-right: 24px;
 	text-align: left;
 	border: 1px solid #e5e5e5;
+	border-radius: @bbr;
 }
 .msg-title{
 	font-size:@fz + 6;

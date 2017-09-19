@@ -40,7 +40,6 @@
 		},
 		watch: {
 			count () {
-				console.log(1)
 				setTimeout(function(){
 					document.getElementById("form").submit();
 				},5000)

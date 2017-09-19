@@ -29,12 +29,12 @@ export default {
 				{
 					path: '/publicity/news',
 					active:8,
-					name: '惠宝新闻'
+					name: '掌柜新闻'
 				},
 				{
 					path: '/publicity/announcement',
 					active: 7,
-					name: '惠宝公告'
+					name: '掌柜公告'
 				},
 			],
 		}
@@ -149,11 +149,11 @@ export default {
 					active:14,
 					name: '联系我们'
 				},
-				{
+				/*{
 					path: '/publicity/join',
 					active:15,
 					name: '加入我们'
-				},
+				},*/
 			]
 		}
 		

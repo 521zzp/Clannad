@@ -13,7 +13,7 @@
 		<div v-else>
 			<div class="clearfix item-group">
 				<div v-for="item,index in list" class="on-item clearfix animated flipInX" :style="{animationDelay: index * 0.1 + 's'}">
-					<div v-if="index % 2 === 0" class="seckill-tap"></div>
+					<!--<div v-if="index % 2 === 0" class="seckill-tap"></div>-->
 					<div class="chief clearfix">
 						<div class="c-head fl">
 							<div class="head-box">
@@ -48,15 +48,15 @@
 							<span>产品期限（天）：<span class="attention">{{item.day}}</span></span>
 							<span >购买金额（元）：<span class="attention">{{item.money}}</span></span>
 						</div>
-						<div class="o-operate fr">
+						<!--<div class="o-operate fr">
 							<router-link to="/account/financing" class="contract">理财协议</router-link>
 							<router-link to="/account/financing" class="apply-out" v-if="trade">申请转出</router-link>
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
 			<div class="acc-page-wrap">
-	    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change"></Page>
+	    		<Page :total="total" size="small" class="acc-page-nav-center" @on-change="change" :page-size="size"></Page>
 	    	</div>
 		</div>
 	</div>
@@ -92,7 +92,6 @@ export default{
 	},
 	watch: {
 		open () {
-			console.log(this.open)
 		},
 		totalFlag () {
 			if (this.total > 0) {
@@ -142,6 +141,7 @@ export default{
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
 .finance-on{
+	overflow: hidden;
 	min-height: 500px;
 }
 .seckill-tap{

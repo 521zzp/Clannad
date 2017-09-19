@@ -6,7 +6,6 @@
 			</div>
 			<nav class="nav-group fr">
 				<router-link to="/" class="fl">掌柜金服首页</router-link>
-				<router-link to="/" class="fl">帮助中心</router-link>
 			</nav>
 		</div>
 	</div>

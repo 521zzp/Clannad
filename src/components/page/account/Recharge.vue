@@ -186,7 +186,6 @@ export default {
 	},
 	methods: {
 		change (e) {
-			console.log(e)
 			this.bankCode = e
 			this.bankNotice = ''
 		},

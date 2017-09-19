@@ -11,14 +11,14 @@
 						<span class="exit" @click="exit">退出</span>
 					</span>
 					<span v-else>您好，<router-link to="/login" class="to-login">请登陆</router-link>
-							   <router-link to="/regist" class="to-regist">注册</router-link>
+							   <router-link to="/register" class="to-regist">注册</router-link>
 					</span>
 				</div>
 				<div class="fr">
-					<div class="icon-s wechat">
+					<!--<div class="icon-s wechat">
 						<img class="wechat-img" :src="wechatImg"/>
 					</div>
-					<div class="icon-s weibo" @click="weibo"></div>
+					<div class="icon-s weibo" @click="weibo"></div>-->
 					<span>市场有风险，投资需要谨慎</span>
 				</div>
 			</div>

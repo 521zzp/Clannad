@@ -2,10 +2,10 @@
 	<div>
 		<b class="user-account-common-title">我的礼券</b>
 		<div class="coupon-content">
-			<Tabs class="only-coupon-taps" value="red-packet">
-		        <Tab-pane label="红包" name="red-packet">
+			<Tabs class="only-coupon-taps" value="experience">
+		        <!--<Tab-pane label="红包" name="red-packet">
 		        	<CouponRed/>
-		        </Tab-pane>
+		        </Tab-pane>-->
 		        <Tab-pane label="体验金" name="experience">
 		        	<CouponExperience/>
 		        </Tab-pane>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import CouponRed from "@/components/pure/account/CouponRed"
+//import CouponRed from "@/components/pure/account/CouponRed"
 import CouponExperience from "@/components/pure/account/CouponExperience"
 import CouponRaise from "@/components/pure/account/CouponRaise"
 
@@ -29,7 +29,7 @@ export default {
 		}
 	},
 	components: {
-		CouponRed,
+		//CouponRed,
 		CouponExperience,
 		CouponRaise,
 	}

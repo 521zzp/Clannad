@@ -154,7 +154,7 @@ export default {
                 		name: this.form.name,
 		                idcard: this.form.idcard,
 		                bank: parseInt(this.form.bank),
-		                area: this.form.area.map( x => parseInt(x)),
+		                area: this.form.area,
 						branch: this.form.branch,
 						subbranch: this.form.subbranch,
 						bankCard: this.form.bankCard,

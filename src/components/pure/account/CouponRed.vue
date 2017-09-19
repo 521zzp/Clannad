@@ -64,7 +64,6 @@ export default {
 	},
 	methods: {
 		filterChange (obj) {
-			console.log(obj)
 			this.state = obj
 			this.$store.dispatch('accCouponTotal', Object.assign({}, this.state, { type: 1 }))
 		},

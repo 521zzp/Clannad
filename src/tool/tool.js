@@ -1,7 +1,7 @@
-import router from '@/router'
 
-
-
+/*
+ * 判断浏览器类型
+ */
 export const browser = () => {
     let userAgent = navigator.userAgent;
    	
@@ -25,7 +25,37 @@ export const browser = () => {
         return "IE";
     }; 
 }
+/*
+ * 判断操作系统
+ */
+export const os = () => {  
+     var ua = navigator.userAgent,  
+     isWindowsPhone = /(?:Windows Phone)/.test(ua),  
+     isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,   
+     isAndroid = /(?:Android)/.test(ua),   
+     isFireFox = /(?:Firefox)/.test(ua),   
+     isChrome = /(?:Chrome|CriOS)/.test(ua),  
+     isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),  
+     isPhone = /(?:iPhone)/.test(ua) && !isTablet,  
+     isPc = !isPhone && !isAndroid && !isSymbian;  
+     return {  
+          isTablet: isTablet,  
+          isPhone: isPhone,  
+          isAndroid : isAndroid,  
+          isPc : isPc  
+     };  
+};
 
+/*
+ * 判断是否是PC
+ */
+
+export const isPc = () => os().isPc
+
+
+/*
+ * 动态载入js文件
+ */
 export const loadJs = (loadUrl,callBack,argObj) =>{
 	let loadScript=document.createElement('script');
         loadScript.setAttribute("type","text/javascript");
@@ -51,7 +81,7 @@ export const loadJs = (loadUrl,callBack,argObj) =>{
 }
 
 //滚动条在Y轴上的滚动距离
-export const getScrollTop = () =>{ 
+export const getScrollTop = () => { 
    let scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
 　　if(document.body){
 　　　　bodyScrollTop = document.body.scrollTop;
@@ -88,8 +118,9 @@ export const getWindowHeight = () => {
 　　return windowHeight;
 }
 
+
 //判断是否滑倒底部
-export const isFoot = () =>{
+export const isFoot = () => {
 	return (getScrollTop() + getWindowHeight()) == getScrollHeight()
 }
 
