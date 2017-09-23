@@ -1,0 +1,42 @@
+发送验证码
+方法：post
+参数：
+{
+	account: '', 
+	state: 1, //1表示未登录找回密码发送验证码
+}
+返回：
+{
+	code: 200,
+	msg: ''
+}
+
+验证验证码
+方法：post
+参数：
+{
+	account: '',
+	phoneCode: ''
+}
+返回：
+{
+	code: 200,
+	msg: ''
+}
+
+最后一步重新设置密码
+方法:post
+参数： 
+{
+	account: '',
+	phoneCode: '',
+	password: ''
+}
+返回：
+{
+	code: 200,
+	msg: ''
+}
+
+
+

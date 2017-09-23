@@ -1,7 +1,7 @@
 <template>
 	<div class="container clearfix">
 		<router-link to="/guide" class="clearfix fr pic-link" >
-			<img src="../../../assets/home/about-yhb.png" alt="一分钟了解掌柜金服" />
+			<img src="../../../assets/home/about-zgjf.png" alt="一分钟了解掌柜金服" />
 		</router-link>
 		<!--热门-->
 		<div v-if="main.type === 0" class="main-product">
@@ -64,9 +64,6 @@
 			</div>
 		</div>
 		
-		<router-link to="/regist" class="clearfix fl pic-link" >
-			<img src="../../../assets/home/sprog-gift.png" alt="新手福利" />
-		</router-link>
 	</div>
 </template>
 
@@ -91,11 +88,16 @@
 
 .pic-link{
 	z-index: 0;
+	border-radius: @br;
+	border: 1px solid @theme;
+	overflow: hidden;
+}
+.pic-link img{
+	display: block;
 }
 .main-product{
-	width: 580px;
+	width: 840px;
 	height: 222px;
-	display: inline-block;
 	border: 1px solid @theme;
 	background-color: #ffffff;
 	position: relative;
@@ -132,7 +134,7 @@
 	color: @gray-one;
 }
 .day{
-	margin-left: 55px;
+	margin-left: 120px;
 }
 .day-value{
 	color: @gray-three;
@@ -156,13 +158,13 @@
 	width: 100%;
 	text-align: left;
 	margin-top: 20px;
-	padding: 0 26px 0 48px;
+	padding: 0 66px 0 120px;
 	
 }
 .title{
 	font-size: @sfz * 2;
 	color: @gray-three; 
-	margin-left: 80px;
+	margin-left: 120px;
 	margin-top: 20px;
 }
 .main-product .label{

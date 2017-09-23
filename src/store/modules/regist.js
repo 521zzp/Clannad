@@ -30,6 +30,7 @@ const actions = {
 							}
 						},1000);
 					}else{
+						debugger
 						message(datas.msg,4);
 						state.sendAbel = true;
 					}

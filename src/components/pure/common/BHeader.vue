@@ -38,6 +38,10 @@ export default {
 .to-home{
 	height: 100%;
 	display: block;
+	line-height: 90px;
+	img { 
+		vertical-align: middle;
+	}
 }
 .container{
 	width: @mw;

@@ -19,7 +19,7 @@
 	            <Button class="login-btn" type="primary" @click="handleSubmit('loginForm')">登录</Button>
 	        </Form-item>
 	        <span class="link-one clearfix to-regist">
-	        	<router-link to="/regist">立即注册</router-link>
+	        	<router-link to="/register">立即注册</router-link>
 	        </span>
 	    </Form>
     </div>

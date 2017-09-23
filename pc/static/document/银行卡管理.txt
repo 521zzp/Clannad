@@ -1,0 +1,131 @@
+//进中心获取卡信息
+post: {
+	token: '',
+	datas:{}
+}
+返回：
+{
+	status:true,
+	datas:{
+		bankName: '',
+		bankCard: '',
+		userName: '',
+		branch: '', //分行
+		subbranch: '', //支行
+		pro: '', //省份
+		city: '', //城市
+		time: '', //绑定时间
+		status: '', //状态
+	}
+}
+//添加银行卡提交
+{
+	token:'',
+	datas:{
+		name:'',
+		idcard:'',
+		bank:'',
+		pro:'',
+		city:'',
+		branch：'',
+		subbranch: '',
+		card:'',
+		phone:'',
+		phoneCode:''
+	}
+}
+返回：
+{
+	code: 200,
+	msg: ''
+}
+
+
+//获取银行列表
+get
+返回：
+	{
+		status: true,
+		datas:[
+			{
+				value: '', //代号
+				label: '' //银行名
+			},
+			{
+				value: '', //代号
+				label: '' //银行名
+			},
+			...
+		]
+	}
+	
+省市
+{
+	status: true,
+	datas: [
+		{
+	        value: '565',
+	        label: '北京',
+	        children: [
+	            {
+	                value: '26',
+	                label: '故宫'
+	            },
+	            {
+	                value: '26',
+	                label: '天坛'
+	            },
+	            {
+	                value: '2323,',
+	                label: '王府井'
+	            }
+	        ]
+	    },
+	    ...
+	]
+}
+
+
+//更换获取已经绑定信息
+post: {
+	token: '',
+	datas:{}
+}
+
+{
+	status: true/false,
+	datas: {
+		name:'',//展示，不可编辑
+		idcard:'',//展示，不可编辑
+		bank: '5245', //选择的银行的值
+		pro: ['565', '26'], //选择的省市的value
+		branch：'',
+		subbranch: '',
+		card:'',//银行卡号
+		phone:'',
+	}
+}
+
+
+
+//更改银行卡提交
+{
+	token:'',
+	datas:{
+		name:'',
+		idcard:'',
+		bank:'',
+		pro:'',
+		city:'',
+		branch：'',
+		subbranch: '',
+		card:'',
+		phone:'',
+		phoneCode:''
+	}
+}
+返回：
+{
+	code: 200,
+	msg: ''
+}

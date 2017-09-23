@@ -25,7 +25,7 @@ export default {
 <style scoped="scoped" lang="less">
 @import '../../config/base.less';
 .content{
-	height: 3196px;
+	height: 5200px;
 	background-image: url('@{image}/publicity/novice-guide.png');
 	background-position: center;
 	min-width: @minw;

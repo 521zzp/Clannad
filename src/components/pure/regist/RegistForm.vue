@@ -22,22 +22,38 @@
 	        <Form-item label="请输入邀请码" prop="inviteCode" v-if="invitorShow">
 	            <Input type="text" placeholder="请输入邀请码（选填）" v-model="registForm.inviteCode"></Input>
 	        </Form-item>
+	        <Form-item >
+	        	<Checkbox v-model="agree"></Checkbox><span>同意掌柜金服<span class="agree" @click="modal = true">《注册协议》</span></span>
+	        </Form-item>
 	        <Form-item>
 	            <Button class="regist-btn" type="primary" @click="handleSubmit('registForm')">注册</Button>
 	        </Form-item>
 	    </Form>
+	    <Modal
+	        v-model="modal"
+	        width="800"
+	        title="掌柜金服《注册协议》"
+	        :styles="{top: '20px'}"
+	        @on-cancel="modal = false">
+	        <Agreement/>
+	        <p slot="footer">
+	        </p>
+	    </Modal>
     </div>
 </template>
 <script>
 	import {validatePhone, validatePwd, validateInvitePhone, checkPhone} from '@/tool/regx'
+	import Agreement from './Agreement'
 	import {BASEURL} from '@/config/url'
-	import { isPc } from '@/tool/tool'
+	
     export default {
         data () {
             return {
             	imgCodeSrc: BASEURL + '/captcha.svl',
             	invitorShow: true,
             	open: false,
+            	agree: false,
+            	modal: false,
                 registForm: {
                     account: '',
                     password: '',
@@ -88,8 +104,13 @@
 		                   /* picCode: this.registForm.picCode,*/
 		                    inviteCode: this.registForm.inviteCode
                     	}
-                    	this.$store.dispatch('regist',obj)
-                    } else {
+                    	if (this.agree) {
+                    		this.$store.dispatch('regist',obj)
+                    	} else{
+                    		this.$Message.error('请仔细阅读并同意掌柜金服《注册协议》');
+                    	}
+                    	
+                    	
                     }
                 })
             },
@@ -115,12 +136,10 @@
         	const invitor = this.$route.query.invitor
 			invitor ? this.registForm.inviteCode = invitor : ''
 			invitor ? this.invitorShow = false : ''
-			if (!isPc() && invitor) {
-				//window.location = 'http://m.zhangguijf.com/register?invitor=' + invitor
-			} else{
-				//window.location = 'http://m.zhangguijf.com/register'	
-			}
-        }
+       },
+       components: {
+       	Agreement
+       }
     }
 </script>
 
@@ -142,6 +161,12 @@
 <style scoped="scoped" lang="less">
 @import '../../../config/base.less';
 
+
+
+.agree{
+	color: @linkc;
+	cursor: pointer;
+}
 .container{
 	width: 400px;
 	margin-top: 80px;

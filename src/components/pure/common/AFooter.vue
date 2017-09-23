@@ -24,7 +24,7 @@
 				</li>-->
 				<li class="item-msg fl clearfix">
 					<span class="title">热线电话</span>
-					<span class="foot-phone line-span">135-2409-5928</span>
+					<span class="foot-phone line-span">400-008-2623</span>
 				</li>
 				<li class="item-msg fl clearfix">
 					<span class="line-span">服务时间：08:00-18:00（工作日）</span>

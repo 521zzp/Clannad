@@ -13,12 +13,25 @@
 import BHeader from '@/components/pure/common/BHeader'
 import BFooter from '@/components/pure/common/BFooter'
 import RegistForm from '@/components/pure/regist/RegistForm'
+import { isPc } from '@/tool/tool'
 export default {
 	components:{
 		BHeader,
 		BFooter,
 		RegistForm
-	}
+	},
+	beforeRouteEnter (to, from, next) {
+		const invitor = to.query.invitor
+		if (!isPc()) {
+			if (invitor) {
+				window.location = 'http://m.zhangguijf.com/register?invitor=' + invitor
+			} else{
+				window.location = 'http://m.zhangguijf.com/register'
+			}
+		} else {
+			next()
+		}
+	},
 }
 </script>
 
