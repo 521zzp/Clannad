@@ -48,7 +48,6 @@ const actions = {
 				.then((datas)=>{
 				commit(types.RESETPWDONE,datas);
 			}).catch(function(error) {
-		    console.log(error)
 		  });
   	},
   	resetPwdTwo ({commit},obj) {
@@ -56,7 +55,6 @@ const actions = {
 				.then((datas)=>{
 				commit(types.RESETPWDTWO,datas);
 			}).catch(function(error) {
-		    console.log(error)
 		  });
   	}
 }

@@ -3,7 +3,7 @@
 		<div class="fl news">
 			<div class="title">
 				<span class="one">掌柜新闻</span>
-				<span class="two">惠生活 惠理财</span>
+				<span class="two">您的理财掌柜</span>
 			</div>
 			<div class="content">
 				<div class="p fl clearfix">
@@ -44,7 +44,7 @@
 		<div class="fr record">
 			<div class="title">
 				<span class="one">投资记录</span>
-				<span class="two">惠生活 惠理财</span>
+				<span class="two">您的理财掌柜</span>
 			</div>
 			<div class="record-list">
 				<ul class="clearfix">

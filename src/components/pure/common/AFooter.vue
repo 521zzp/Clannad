@@ -27,7 +27,7 @@
 					<span class="foot-phone line-span">400-008-2623</span>
 				</li>
 				<li class="item-msg fl clearfix">
-					<span class="line-span">服务时间：08:00-18:00（工作日）</span>
+					<span class="line-span">服务时间：09:30-18:30（工作日）</span>
 					<span class="line-span">邮箱：pbjr001@163.com</span>
 				</li>
 				<li class="item-pic fl clearfix">
@@ -36,8 +36,7 @@
 			</ul>
 		</div>
 		<div class="copyRight">
-			<span v-if="trade">Copyright © zhangguijf.com  网站备案号:沪ICP备15026013号     增值电信业务经营许可证：浙B2-20080224-1</span>
-			<span>Copyright © zhangguijf.com  网站备案号:沪ICP备16049393号-1 </span>
+			<span>Copyright © zhangguijf.com  网站备案号:<a class="beian-link" href="http:\\www.miitbeian.gov.cn" target="_blank">沪ICP备16049393号-1</a> </span>
 			<span>上海蓬宝互联网金融信息服务有限公司</span>
 		</div>
 	</footer>
@@ -64,6 +63,14 @@ export default {
 footer{
 	width: 100%;
 	background-color: @gray-one;
+}
+.beian-link{
+	color: @white;
+	margin-left: .5em;
+}
+.beian-link:hover{
+	color: @linkc;
+	text-decoration: underline;
 }
 .copyRight{
 	font-size: 14px;
