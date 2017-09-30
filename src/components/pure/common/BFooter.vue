@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="copyRight">
-			<span>Copyright © zhangguijf.com&nbsp;&nbsp;网站备案号:<a class="beian-link" href="http:\\www.miitbeian.gov.cn" target="_blank">沪ICP备16049393号-1</a></span>
+			<span>Copyright © 2017&nbsp;&nbsp;网站备案号:<a class="beian-link" href="http:\\www.miitbeian.gov.cn" target="_blank">沪ICP备16049393号-1</a></span>
 			<span style="width:100%;text-align:center;height: 20px;line-height: 0px;">上海蓬宝互联网金融信息服务有限公司</span>
 		</div>
 	</div>

@@ -24,9 +24,9 @@ export default {
 		const invitor = to.query.invitor
 		if (!isPc()) {
 			if (invitor) {
-				window.location = 'http://m.zhangguijf.com/register?invitor=' + invitor
+				window.location = 'http://m.shangnongtou.com/register?invitor=' + invitor
 			} else{
-				window.location = 'http://m.zhangguijf.com/register'
+				window.location = 'http://m.shangnongtou.com/register'
 			}
 		} else {
 			next()

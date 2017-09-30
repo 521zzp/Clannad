@@ -1,0 +1,104 @@
+获取产品列表：
+方法：get
+返回：
+{
+	main:{
+		endMilliseconds: 0,  //离结束毫秒
+		startMillFlag: 0,  //阈值，开始抢购变毫秒倒计时
+		type: 0,  //类型 0:主推, 1:秒杀
+		people: 0, //已购人数
+		percent: 0, //投资百分比
+		endMillFlag: 0,   //阈值，抢购结束变毫秒倒计时
+		total: 0, //总金额
+		min: 0, //最低投资金额
+		rate: 0, //利率
+		left: 0, //剩余可投基恩
+		name: '',  //产品名称
+		startMilliseconds: 0, //里抢购开始毫秒值
+		id: 0, //产品id
+		day: 0 //产品期限
+	},
+	list: [
+		{
+			name: '', //产品名称
+			rate: '', //预计年利率
+			day: '', //期限
+			total: '', //总金额
+			left: '', //剩余可投金额
+			percent: '', //投资百分比
+			id:'',  //产品id
+		}
+	]
+}
+
+
+
+首页投资记录
+方法get:
+返回：
+[
+	{
+		phone: '', //手机号
+		money: 4000, //金额
+	}
+
+]
+
+
+首页新闻列表
+方法：get
+返回：
+{
+	picList: [ //图片新闻 ,size=2
+		{
+			type: 'in/out' //内链或者外链
+			img: '', //图片URL
+			title: '' //新闻标题
+		},
+	]
+	textList: [ //文本新闻
+		{
+			type: 'in/out' //内链或者外链
+			time: '07.31' //新闻发布时间
+			title: '' //新闻标题
+		}
+	]
+}
+
+
+获取公告信息
+方法:get
+返回:
+{
+	notice： ''
+}
+
+
+
+获取轮播图片
+method: get
+return: 
+{
+	list : [
+		{
+			img: 'http://www.art.com/home/banner/banner-one.jpg',
+			url: 'a'
+		},
+		...
+	
+	]
+}
+
+
+退出
+method: post
+params:
+{
+	token: '',
+	datas: {}
+}
+
+return: 
+{
+	code: 
+}

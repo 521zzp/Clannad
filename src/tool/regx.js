@@ -24,7 +24,7 @@ export const validatePhoneFilter = (rule, value, callback) => {
  * 验证密码格式
  */
 export const validatePwd = (rule, value, callback) => {
-	let regx = /^(?![^a-zA-Z]+$)(?!\D+$).{6,18}$/;
+	let regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
 	if (!regx.test(value)) {
 		 callback(new Error('密码为6~18为数字字母组合'));
 	} else{
@@ -118,7 +118,7 @@ export const checkPhone = ( phone ) => {
  * 验证密码格式，返回布尔
  */
 export const checkPwd = ( value ) => {
-	let regx = /^(?![^a-zA-Z]+$)(?!\D+$).{6,18}$/;
+	let regx =  /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,18}$/;
 	if (!regx.test(value)) {
 		return false;
 	} else{

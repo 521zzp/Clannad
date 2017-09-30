@@ -31,11 +31,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-    	"/api": {
+    	"/webapi": {
 	     /* "target": "http://localhost:3000",*/
 	      "target": testEnviroment ? "http://106.14.40.100" : "http://192.168.3.8:8080",
 	      "changeOrigin": true,
-	      "pathRewrite": { "^/api" : testEnviroment ? "" : "/p2p_zgjf/api" }
+	      "pathRewrite": { "^/webapi" : testEnviroment ? "" : "/p2p_zgjf/webapi" }
 	      /*"pathRewrite": { "^/api" : "/api" }*/
 	    }
     },

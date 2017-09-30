@@ -15,7 +15,7 @@
 					<router-link to="/app" class="level-one fl">APP下载</router-link>
 				</div>
 				<div class="nav-item more-items info-show">
-					<router-link to="/publicity/systemIllustrate" class="level-one fl ">信息披露
+					<router-link to="/publicity/introduce" class="level-one fl ">信息披露
 						 <Icon type="arrow-down-b" class="drop-arrow"></Icon>
 					</router-link>
 					<nav class="nav-two clearfix">

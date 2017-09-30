@@ -26,7 +26,7 @@
 			<div v-else>
 				<Table class="no-border-ivu-table" :columns="columns" :data="list"></Table>
 		    	<div class="my-page">
-		    		<Page :total="total" size="small" class="page-nav" @on-change="change"></Page>
+		    		<Page :total="total" size="small" :page-size="size"  class="page-nav" @on-change="change"></Page>
 		    	</div>
 			</div>
 		</div>

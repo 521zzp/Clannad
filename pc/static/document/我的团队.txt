@@ -1,0 +1,37 @@
+获取团队数据条数
+method: post
+params: 
+{
+	account: '', //账号
+	generation: '1', //代数，0表示所有，1表示一代，2表示二代，3表示三代，0表示所有类型：字符串
+	time: ['', ''], //注册时间
+}
+return:
+{
+	total: 100
+}
+
+获取集合
+method: post
+params: 
+{
+	account: '', //账号
+	generation: '1', //代数，0表示所有，1表示一代，2表示二代，3表示三代，0表示所有类型：字符串
+	time: ['', ''], //注册时间
+	size: 10,
+	current: 1
+}
+return:
+{
+	list: [
+		{
+			account: '',
+			name: '',
+			money: 10000, //投资金额，能拿提成部分
+			bonus: 100, //获取提成金额
+			time: '2017-01-01' //注册时间
+		},
+		...
+	
+	]
+}

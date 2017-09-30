@@ -85,7 +85,7 @@ export default {
 		},
 		wxConfig() {
             return {
-            	value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+            	value: 'http://www.shangnongtou.com/register?invitor=' + this.invitor,
 	            imagePath: '../../../static/logo.png',
 	            filter: 'color',
 	            downloadButton: false,
@@ -93,7 +93,7 @@ export default {
     	},
     	qqConfig () {
     		return {
-    			value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+    			value: 'http://www.shangnongtou.com/register?invitor=' + this.invitor,
 	    		title: '诚挚邀请您加入掌柜金服大家庭',
 	    		pics: IMG+ '/common/header/logo.png',
 	    		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
@@ -101,7 +101,7 @@ export default {
     	},
     	qqZoneConfig () {
     		return {
-    			value: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+    			value: 'http://www.shangnongtou.com/register?invitor=' + this.invitor,
 	    		title: '诚挚邀请您加入掌柜金服大家庭',
 	    		pics: IMG+ '/common/header/logo.png',
 	    		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
@@ -110,7 +110,7 @@ export default {
     	msgConfig () {
         	return {
         		msgForm: {
-        			message: '好友注册，详情点击http://www.zhangguijf.com/register?invitor=' + this.invitor,
+        			message: '好友注册，详情点击http://www.shangnongtou.com/register?invitor=' + this.invitor,
 	        		phone: ''
 	        	},
 	    		msgRules : {
@@ -124,7 +124,7 @@ export default {
     	copyConfig () {
         	return {
         		copyForm: {
-	        		content: 'http://www.zhangguijf.com/register?invitor=' + this.invitor,
+	        		content: 'http://www.shangnongtou.com/register?invitor=' + this.invitor,
 	        	},
         	}
     	},

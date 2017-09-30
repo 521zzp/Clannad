@@ -10,7 +10,7 @@
 					<span v-if="online">您好，{{this.$store.state.user.name}}
 						<span class="exit" @click="exit">退出</span>
 					</span>
-					<span v-else>您好，<router-link to="/login" class="to-login">请登陆</router-link>
+					<span v-else>您好，<router-link to="/login" class="to-login">请登录</router-link>
 							   <router-link to="/register" class="to-regist">注册</router-link>
 					</span>
 				</div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {IMG,WEIBO} from '@/config/url'
+import { IMG } from '@/config/url'
 	export default {
 		data () {
 			return {
@@ -41,9 +41,6 @@ import {IMG,WEIBO} from '@/config/url'
 			}
 		},
 		methods: {
-			weibo () {
-				window.open(WEIBO)
-			},
 			exit () {
 				this.$store.dispatch('exit');
 			}

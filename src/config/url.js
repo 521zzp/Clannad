@@ -1,13 +1,11 @@
 //export const BASEURL = 'http://192.168.1.3:8080/p2p_pb'  //服务器地址  林
-export const BASEURL = '/api'  //服务器地址  林
+export const BASEURL = '/webapi'  //服务器地址  林
 
 
 export const IMG = '/assets/pc' //图片服务器地址
 //export const IMG = '/image'
 //export const IMG = '/bilibili' //正式环境图片服务器地址
 //export const IMG = 'http://139.196.25.57/res' //57图片服务器地址
-
-export const WEIBO = 'http://weibo.com/5676187359/profile?rightmod=1&wvr=6&mod=personinfo' //余惠宝官方微博
 
 
 export const LOGIN = BASEURL + '/Zbasic/login.do' //登录接口

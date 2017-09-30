@@ -36,7 +36,7 @@
 			</ul>
 		</div>
 		<div class="copyRight">
-			<span>Copyright © zhangguijf.com  网站备案号:<a class="beian-link" href="http:\\www.miitbeian.gov.cn" target="_blank">沪ICP备16049393号-1</a> </span>
+			<span>Copyright © 2017  网站备案号:<a class="beian-link" href="http:\\www.miitbeian.gov.cn" target="_blank">沪ICP备16049393号-1</a> </span>
 			<span>上海蓬宝互联网金融信息服务有限公司</span>
 		</div>
 	</footer>
@@ -47,7 +47,7 @@ import {IMG} from '@/config/url'
 export default {
 	data () {
 		return {
-			wechatImg: IMG + '/common/footer/wechat.png'
+			wechatImg: IMG + '/common/footer/wechat.png',
 		}
 	},
 	computed : {
