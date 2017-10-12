@@ -13,6 +13,7 @@ import account from './modules/account'
 import accfinance from './modules/accfinance'
 import acccoupon from './modules/acccoupon'
 import publicity from './modules/publicity'
+import enterpriseRecharge from './modules/enterpriseRecharge'
 
 
 Vue.use(Vuex)
@@ -77,6 +78,7 @@ const store = new Vuex.Store({
 		publicity,
 		accfinance,
 		acccoupon,
+		enterpriseRecharge,
 	}
 })
 

@@ -18,6 +18,10 @@ export const HOME_NEWS_LIST = 'HOME_NEWS_LIST'  //首页新闻列表
 export const HOME_NOTICE = 'HOME_NOTICE' //首页公告
 export const HOME_BANNER = 'HOME_BANNER' //轮播图片
 
+//企业充值
+export const ENTERPRISE_RECHARGE_CONFIRM = 'ENTERPRISE_RECHARGE_CONFIRM' //企业充值验证是否可充值
+export const ENTERPRISE_RECHARGE = 'ENTERPRISE_RECHARGE' //企业充值请求后台信息
+
 
 export const PRO_DETAIL_INFO = 'PRO_DETAIL_INFO' //产品详情信息
 export const PRO_DETAIL_LIST = 'PRO_DETAIL_LIST' //产品投资记录

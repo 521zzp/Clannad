@@ -18,6 +18,10 @@ export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码�
 
 export const RECHARGE = BASEURL + '/pay/toDeposit' //充值信息请求后台接口
 
+//企业充值
+export const ENTERPRISE_RECHARGE_CONFIRM = BASEURL + '/enter/check' //企业充值验证是否可充值
+export const ENTERPRISE_RECHARGE = BASEURL + '/enter/trade' //企业充值请求后台信息
+
 //短信验证
 export const PHONECODEVALI = BASEURL + '/Zbasic/VerificationIdentity.do' //通用的短信验证码验证接口
 

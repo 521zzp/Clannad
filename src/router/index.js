@@ -270,6 +270,15 @@ const AgentRank = resolve => {
   })
 }
 
+/*
+ * 企业充值模块
+ */
+const EnterpriseRecharge = resolve => {
+  require.ensure(['@/components/page/EnterpriseRecharge.vue'], () => {
+    resolve(require('@/components/page/EnterpriseRecharge.vue'))
+  })
+}
+
 const Developing = resolve => {
   require.ensure(['@/components/page/Developing.vue'], () => {
     resolve(require('@/components/page/Developing.vue'))
@@ -280,6 +289,8 @@ const Error = resolve => {
     resolve(require('@/components/page/Error.vue'))
   })
 }
+
+
 
 
 Vue.use(Router)
@@ -312,6 +323,11 @@ const router =  new Router({
 	      path: '/product',
 	      name: 'ProductCenter',
 	      component: ProductCenter
+	    },
+	    {
+	      path: '/enterpriseRecharge/:id',
+	      name: 'enterpriseRecharge',
+	      component: EnterpriseRecharge
 	    },
 	    {
 	      path: '/product/:id',
