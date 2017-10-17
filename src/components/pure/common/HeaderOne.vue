@@ -1,7 +1,7 @@
 <template>
 	<div class="clearfix top-bar">
 		<div class="container">
-			<span class="t-info"><Icon class="icon-top" type="android-call" ></Icon>客服专线：400-838-8304</span>
+			<span class="t-info"><Icon class="icon-top" type="android-call" ></Icon>客服专线：400-008-2623</span>
 			<span class="t-info app-dl"><Icon class="icon-top" type="iphone" size=14 ></Icon>手机客户端
 				<img class="app-download" :src="appDownladImg"/>
 			</span>

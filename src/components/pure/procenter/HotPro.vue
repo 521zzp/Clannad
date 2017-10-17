@@ -49,7 +49,7 @@
 							<button class="unable" v-else-if="hot.left > 0 && hot.endMilliseconds <= 0">已结束</button>
 							<button v-else class="unable">已售罄</button>
 						</template>
-						<router-link  v-else to="/app"><button>APP了解更多</button></router-link>
+						<router-link  v-else to="/app"><button>下载APP购买</button></router-link>
 					</div>
 				</div>
 				 <Progress title="45%" class="i-p-progress" :percent="45" status="active" :stroke-width="6" hide-info></Progress>

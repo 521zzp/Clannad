@@ -18,7 +18,7 @@
 				</div>
 				<div class="buy fr clearfix">
 					<router-link v-if="trade" to="/product" class="buy-now">立即投资</router-link to="/product">
-					<router-link v-else to="/app" class="buy-now">APP了解更多</router-link to="/product">
+					<router-link v-else to="/app" class="buy-now">下载APP了解更多</router-link to="/product">
 					<span class="desc">已购：{{main.people}}人</span>
 				</div>
 			</div>
@@ -58,7 +58,7 @@
 						<span class="buy-now unable" v-else-if="main.left > 0 && main.endMilliseconds <= 0">已结束</span>
 						<span v-else class="buy-now unable">已售罄</span>
 					</template>
-					<router-link v-else to="/app" class="buy-now">APP了解更多</router-link>
+					<router-link v-else to="/app" class="buy-now">下载APP了解更多</router-link>
 					<span class="desc">已购：{{main.people}}人</span>
 				</div>
 			</div>

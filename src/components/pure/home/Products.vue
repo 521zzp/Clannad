@@ -28,7 +28,7 @@
 						 	<router-link  v-if="item.left > 0" :to="'/product/'+item.id"><button class="buy">立即购买</button></router-link>
 						 	<button v-else class="buy unable">已售罄</button>
 						 </template>
-						 <router-link  v-else to="/app"><button class="buy">APP了解更多</button></router-link>
+						 <router-link  v-else to="/app"><button class="buy">下载APP了解更多</button></router-link>
 					</div>
 				</li>
 			</ul>
@@ -128,6 +128,7 @@
 	display: block;
 	color: @gray-three;
 	margin-top: @fz * 2;
+	text-align: center;
 }
 .product-list{
 	display: flex;
@@ -168,6 +169,9 @@
 }
 .more{
 	color: @gray-one;
+}
+.more:hover{
+	color: @linkc;
 }
 .title{
 	height: 60px;

@@ -1,6 +1,6 @@
 # clannad
 
-> Yhb project base on Vue.js
+> ZGJF project base on Vue.js
 
 ## Build Setup
 

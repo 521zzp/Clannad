@@ -34,6 +34,9 @@ export default {
 <style scoped="scoped" lang="less">
 @import url("../../../config/base.less");
 
+.notice-more:hover{
+	color: @linkc;
+}
 .notice-more{ 
 	color: @gray-one;
 }

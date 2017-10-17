@@ -10,7 +10,7 @@ const state = {
 	navOpen: 1,
 	newsDetails : {
 		title: '', //新闻标题
-		origin: '余惠宝', //来源
+		origin: '掌柜金服', //来源
 		time: '', //发布时间
 		content: '', //内容，带标签的文本
 		previous: {  //上一条新闻
@@ -24,7 +24,7 @@ const state = {
 	},
 	announcementDetails: {
 		title: '', //公告标题
-		origin: '余惠宝', //来源
+		origin: '掌柜金服', //来源
 		time: '', //发布时间
 	    id: '', //公告id
 	    previous: {  //上一条新闻

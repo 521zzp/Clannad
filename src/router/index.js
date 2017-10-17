@@ -168,7 +168,7 @@ const ServiceNote = resolve => {
     resolve(require('@/components/page/publicity/ServiceNote.vue'))
   })
 }
-const YhbData = resolve => {
+const ZgjfData = resolve => {
   require.ensure(['@/components/page/publicity/Data.vue'], () => {
     resolve(require('@/components/page/publicity/Data.vue'))
   })
@@ -188,12 +188,12 @@ const Aptitude = resolve => {
     resolve(require('@/components/page/publicity/Aptitude.vue'))
   })
 }
-const YhbIntroduce = resolve => {
+const ZgjfIntroduce = resolve => {
   require.ensure(['@/components/page/publicity/Introduce.vue'], () => {
     resolve(require('@/components/page/publicity/Introduce.vue'))
   })
 }
-const YhbAnnouncement = resolve => {
+const ZgjfAnnouncement = resolve => {
   require.ensure(['@/components/page/publicity/Announcement.vue'], () => {
     resolve(require('@/components/page/publicity/Announcement.vue'))
   })
@@ -203,7 +203,7 @@ const AnnouncementItem = resolve => {
     resolve(require('@/components/page/publicity/AnnouncementItem.vue'))
   })
 }
-const YhbNews = resolve => {
+const ZgjfNews = resolve => {
   require.ensure(['@/components/page/publicity/News.vue'], () => {
     resolve(require('@/components/page/publicity/News.vue'))
   })
@@ -463,8 +463,8 @@ const router =  new Router({
 	      children: [
 	     	  {
 	      		path: 'introduce',
-	      		name: 'yhbIntroduce',
-	      	  component: YhbIntroduce,
+	      		name: 'zgjfIntroduce',
+	      	  component: ZgjfIntroduce,
 	      	  meta: {pubBar: 1}
 	      	},
 	      	{
@@ -487,8 +487,8 @@ const router =  new Router({
 	      	},
 	      	{
 	      		path: 'data',
-	      		name: 'yhbData',
-	      	  component: YhbData,
+	      		name: 'zgjfData',
+	      	  component: ZgjfData,
 	      	  meta: {pubBar: 5}
 	      	},
 	      	{
@@ -499,8 +499,8 @@ const router =  new Router({
 	      	},
 	      	{
 	      		path: 'announcement',
-	      		name: 'yhbAnnouncement',
-	      	  component: YhbAnnouncement,
+	      		name: 'zgjfAnnouncement',
+	      	  component: ZgjfAnnouncement,
 	      	  meta: {pubBar: 7}
 	      	},
 	      	{
@@ -511,8 +511,8 @@ const router =  new Router({
 	      	},
 	      	{
 	      		path: 'news',
-	      		name: 'yhbNews',
-	      	  component: YhbNews,
+	      		name: 'zgjfNews',
+	      	  component: ZgjfNews,
 	      	  meta: {pubBar: 8}
 	      	},
 	      	{

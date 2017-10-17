@@ -19,20 +19,20 @@ export default {
 	            downloadButton: false,
         	},
         	qqConfig: {
-        		value: 'http://www.yhb118.com',
+        		value: 'http://www.shangnongtou.com',
         		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
         		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	qqZoneConfig: {
-        		value: 'http://www.yhb118.com',
+        		value: 'http://www.shangnongtou.com',
         		title: '诚挚邀请您加入掌柜金服大家庭',
         		pics: IMG+ '/common/header/logo.png',
         		summary: '加入掌柜金服加入掌柜金服加入掌柜金服加入掌柜金服'
         	},
         	msgConfig: {
 	        	msgForm: {
-	        		message: '好友注册，详情点击http://www.yhb118.com',
+	        		message: '好友注册，详情点击http://www.shangnongtou.com',
 	        		phone: ''
 	        	},
         		msgRules : {
@@ -44,7 +44,7 @@ export default {
         	},
         	copyConfig: {
 	        	copyForm: {
-	        		content: 'http://www.yhb118.com',
+	        		content: 'http://www.shangnongtou.com',
 	        	},
         	},
 		}

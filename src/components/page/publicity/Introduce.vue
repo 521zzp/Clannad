@@ -26,7 +26,7 @@ import {IMG} from '@/config/url'
 export default {
 	data () {
 		return {
-			img: IMG + '/publicity/yhb-illustrate.png' 
+			img: IMG + '/publicity/zgjf-illustrate.png' 
 		}
 	},
 	mounted () {

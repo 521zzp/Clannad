@@ -222,7 +222,7 @@ export default {
                     }
                 }
             })
-        },
+        },youh
 	},
 	created () {
 		const account = this.$route.params.id
