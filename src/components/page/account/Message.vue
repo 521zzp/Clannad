@@ -170,6 +170,7 @@ export default {
 	padding-left: 4px;
 	color: @gray-three;
 	border-bottom: 1px solid @border-three;
+	overflow: hidden;
 }
 .list-title .span{
 	color: @gray-three;

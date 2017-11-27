@@ -82,7 +82,7 @@ export default {
 		this.$store.dispatch('homeProducts') //产品列表
 		this.$store.dispatch('homeInvestRecords') //投资记录
 		this.$store.dispatch('homeNewsList') //新闻列表
-		//this.$store.dispatch('homeBannerList') //轮播图片
+		this.$store.dispatch('homeBannerList') //轮播图片
 	}
 }
 </script>
