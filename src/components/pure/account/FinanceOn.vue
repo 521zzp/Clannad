@@ -18,7 +18,7 @@
 						<div class="c-head fl">
 							<div class="head-box">
 								<span class="c-h-name">{{item.name}}</span>
-								<span class="c-h-time">到期：2017-03-26</span>
+								<span class="c-h-time">到期：{{item.eTime}}</span>
 							</div>
 						</div>
 						<div class="c-body clearfix fl">

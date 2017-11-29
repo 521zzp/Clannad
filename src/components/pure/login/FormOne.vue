@@ -12,6 +12,9 @@
 	                <Icon type="ios-locked-outline" slot="prepend"></Icon>
 	            </Input>
 	        </Form-item>
+	        <Form-item class="item" >
+	        	<div class="geetest" ref="geetest"></div>
+	        </Form-item>
 	        <span class="link-one clearfix">
 	        	<router-link to="/resetpwd" class="fr">忘记密码</router-link>
 	        </span>
@@ -54,6 +57,12 @@ import {validatePhone,validatePwd} from '@/tool/regx'
                     }
                 })
             }
+        },
+        mounted () {
+        	const geetest = this.$refs.geetest
+        	console.log('dodo')
+        	console.log(geetest)
+        	this.$store.dispatch('loginGeetestInit', geetest)
         }
     }
 </script>

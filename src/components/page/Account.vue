@@ -76,6 +76,7 @@ export default {
 }
 .navs{
 	width: 228px;
+	position: absolute;
 }
 .user-info{
 	width: 100%;

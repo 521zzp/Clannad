@@ -9,10 +9,12 @@ export const IMG = '/assets/pc' //图片服务器地址
 
 
 export const LOGIN = BASEURL + '/Zbasic/login.do' //登录接口
+export const LOGIN_GEETEST_INIT = BASEURL + '/Zbasic/initialization.do' //登录极验初始化
 
 //注册
 export const REGISTER_SEND_CODE = BASEURL + '/Zbasic/sendRegistVerificationCode.do' //注册发送验证码
 export const REGISTER = BASEURL + '/Zbasic/regist.do ' //注册接口
+export const REGISTER_GEETEST_INIT = BASEURL + '/Zbasic/initialization.do'  //注册极验证初始化
 export const EXIT = BASEURL + '/Zbasic/quit.do' //退出接口
 export const SMSCODE = BASEURL + '/inlet/sendPhoneVerifCode' //发送验证码接口
 
@@ -25,8 +27,8 @@ export const ENTERPRISE_RECHARGE = BASEURL + '/enter/trade' //企业充值请求
 //短信验证
 export const PHONECODEVALI = BASEURL + '/Zbasic/VerificationIdentity.do' //通用的短信验证码验证接口
 
-//未登录找回登录密码
-export const RESETPWD_SEND_CODE = BASEURL + '/Zbasic/sendLoginVerificationCodez.do' //找回登录密码发送验证码
+//未登录找回登录密码 
+export const RESETPWD_SEND_CODE = BASEURL + '/Zbasic/sendLoginVerificationCode.do' //找回登录密码发送验证码
 export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密码接口
 
 //配置项

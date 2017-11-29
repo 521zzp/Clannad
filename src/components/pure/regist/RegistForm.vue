@@ -19,6 +19,9 @@
 	        <!--<Form-item>
 	        	 <span class="invite-btn" @click="inviteChange">> 邀请码（选填）</span>
 	        </Form-item>-->
+	        <Form-item label="人工验证" >
+	        	<div class="geetest" ref="geetest"></div>
+	        </Form-item>
 	        <Form-item label="请输入邀请码" prop="inviteCode" v-if="invitorShow">
 	            <Input type="text" placeholder="请输入邀请码（选填）" v-model="registForm.inviteCode"></Input>
 	        </Form-item>
@@ -136,6 +139,10 @@
         	const invitor = this.$route.query.invitor
 			invitor ? this.registForm.inviteCode = invitor : ''
 			invitor ? this.invitorShow = false : ''
+			
+			const geetest = this.$refs.geetest
+			this.$store.dispatch('registerGeetestInit', geetest)
+			
        },
        components: {
        	Agreement

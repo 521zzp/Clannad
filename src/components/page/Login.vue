@@ -50,7 +50,7 @@
 }
 .form-plant{
 	width: 400px;
-	height: 410px;
+	height: 420px;
 	margin-top: 95px;
 	background-color: rgba(0,0,0,0.2);
 }

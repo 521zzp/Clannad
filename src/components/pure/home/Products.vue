@@ -2,7 +2,7 @@
 	<div class="container clearfix">
 		<div class="title">
 			<span class="msg-title">精选产品</span><span class="msg-slogan">您的理财掌柜</span>
-			<router-link to="/login" class="more fr">更多>></router-link>
+			<router-link to="/product" class="more fr">更多>></router-link>
 		</div>
 		<div class="content clearfix">
 			<ul class="product-list">
