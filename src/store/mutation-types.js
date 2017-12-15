@@ -3,8 +3,10 @@ export const TRADE = 'TRADE' //平台是否开启交易
 
 export const LOGIN = 'LOGIN' //登录
 export const LOGIN_GEETEST_INIT = 'LOGIN_GEETEST_INIT' //登录极验初始化
+export const LOGIN_GEETEST_SWITCH = 'LOGIN_GEETEST_SWITCH' //登录极验开关
 export const REGISTER = 'REGISTER' //注册
 export const REGISTER_GEETEST_INIT = 'REGISTER_GEETEST_INIT'  //注册极验证初始化
+export const REGISTER_GEETEST_SWITCH = 'REGISTER_GEETEST_SWITCH'  //注册极验开关
 export const EXIT = 'EXIT' //退出
 export const RECHARGE ='RECHARGE' //充值
 

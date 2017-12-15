@@ -12,7 +12,7 @@
 	                <Icon type="ios-locked-outline" slot="prepend"></Icon>
 	            </Input>
 	        </Form-item>
-	        <Form-item class="item" >
+	        <Form-item v-show="geetestOpen" class="item" >
 	        	<div class="geetest" ref="geetest"></div>
 	        </Form-item>
 	        <span class="link-one clearfix">
@@ -57,6 +57,11 @@ import {validatePhone,validatePwd} from '@/tool/regx'
                     }
                 })
             }
+        },
+        computed: {
+        	geetestOpen () {
+        		return !!this.$store.state.login.geetestOpen
+        	}
         },
         mounted () {
         	const geetest = this.$refs.geetest

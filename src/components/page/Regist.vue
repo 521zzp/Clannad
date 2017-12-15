@@ -32,9 +32,6 @@ export default {
 			next()
 		}
 	},
-	created() {
-		//this.$router.push('/')
-	}
 }
 </script>
 

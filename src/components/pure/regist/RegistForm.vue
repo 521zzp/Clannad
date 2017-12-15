@@ -12,14 +12,14 @@
 	            <Input type="text" placeholder="请输入手机验证码" v-model="registForm.phoneCode"></Input>
 	            <span class="send-code" @click="sendCode">{{text}}</span>
 	        </Form-item>
-	       <!-- <Form-item  class="rela-plant" label="验证码" prop="picCode">
+	        <!-- <Form-item  class="rela-plant" label="验证码" prop="picCode">
 	            <Input type="text" placeholder="请输入图形验证码" v-model="registForm.picCode"></Input>
 	            <img class="imgVali" :src="imgCodeSrc" @click="imgRefresh" alt="点击更新" title="点击更新" />
 	        </Form-item>-->
 	        <!--<Form-item>
 	        	 <span class="invite-btn" @click="inviteChange">> 邀请码（选填）</span>
 	        </Form-item>-->
-	        <Form-item label="人工验证" >
+	        <Form-item v-show="geetestOpen" label="人工验证" >
 	        	<div class="geetest" ref="geetest"></div>
 	        </Form-item>
 	        <Form-item label="请输入邀请码" prop="inviteCode" v-if="invitorShow">
@@ -94,6 +94,9 @@
         	},
         	text () {
         		return this.$store.state.regist.text
+        	},
+        	geetestOpen () {
+        		return !!this.$store.state.regist.geetestOpen
         	}
         },
         methods: {

@@ -7,7 +7,8 @@ import router from '@/router'
 import gt from '@/tool/gt'
 
 const state = {
-	captchaObj: '',
+	captchaObj: null, //极验实例
+	geetestOpen: 0, //极验开关，0 ：关 1 ： 开
 }
 
 const getters = {
@@ -18,7 +19,7 @@ const actions = {
 	login ({commit},obj){
 		const vali = state.captchaObj ? state.captchaObj.getValidate() : false;
   		
-  		if (!vali) { 
+  		if (state.geetestOpen && !vali) { 
   			message('请先完成验证!') 
   		} else {
   			const valiResult = {
@@ -33,30 +34,28 @@ const actions = {
 					state.captchaObj && state.captchaObj.reset() 
 			});
   		}
-		
-		
-		
   	},
   	async loginGeetestInit ({commit}, domNode) {
   		const data = await fetch(LOGIN_GEETEST_INIT, getModel()).then(analy)
-  		console.log('data', data)
-  		gt()
-  		
-  		initGeetest({
-		   	// 以下配置参数来自服务端 SDK
-		   	gt: data.gt,
-		   	challenge: data.challenge,
-		   	offline: !data.success,
-		   	new_captcha: true,
-		   	width: '100%',
-		   	product: 'float',
-		}, function (captchaObj) {
-			commit(types.LOGIN_GEETEST_INIT, captchaObj)
-			console.log('domNode')
-			console.log(domNode)
-			captchaObj.appendTo(domNode)
-		   	// 这里可以调用验证实例 captchaObj 的实例方法
-		})
+  		commit(types.LOGIN_GEETEST_SWITCH, data.login)
+  		if (data.login) {
+  			gt()
+	  		initGeetest({
+			   	// 以下配置参数来自服务端 SDK
+			   	gt: data.gt,
+			   	challenge: data.challenge,
+			   	offline: !data.success,
+			   	new_captcha: true,
+			   	width: '100%',
+			   	product: 'float',
+			}, function (captchaObj) {
+				commit(types.LOGIN_GEETEST_INIT, captchaObj)
+				console.log('domNode')
+				console.log(domNode)
+				captchaObj.appendTo(domNode)
+			   	// 这里可以调用验证实例 captchaObj 的实例方法
+			})
+  		}
   	}
 }
 
@@ -69,9 +68,12 @@ const mutations = {
 				router.push('/')
 			}
 		);
-   },
-   [types.LOGIN_GEETEST_INIT] (state, obj) {
+    },
+    [types.LOGIN_GEETEST_INIT] (state, obj) {
    		state.captchaObj = obj
+    },
+    [types.LOGIN_GEETEST_SWITCH] (state, obj) {
+    	state.geetestOpen = obj
     }
 }
 

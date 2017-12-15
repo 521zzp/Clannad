@@ -29,7 +29,7 @@ export const PHONECODEVALI = BASEURL + '/Zbasic/VerificationIdentity.do' //通�
 
 //未登录找回登录密码 
 export const RESETPWD_SEND_CODE = BASEURL + '/Zbasic/sendLoginVerificationCode.do' //找回登录密码发送验证码
-export const RESETPWD = BASEURL + '/inlet/setNewUserPassword' //修改登陆密码接口
+export const RESETPWD = BASEURL + '/Zbasic/setNewUserPassword.do' //修改登陆密码接口
 
 //配置项
 export const TRADE = BASEURL + '/index/getTransaction' //平台是否开启交易接口
